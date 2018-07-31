@@ -1,23 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "module": "es6",
+    "target": "es2017",
+    "experimentalDecorators": true,
     "sourceMap": true,
-    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "allowJs": true,
+    "baseUrl": "./src",
     "moduleResolution": "node",
-    "rootDir": "src",
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true
+    "paths": {
+      "dva": [
+        "../node_modules/dva/index"
+      ]
+    }
   },
   "exclude": [
     "node_modules"
-  ],
-  "types": [
-    "typePatches"
   ]
 }
