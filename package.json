@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "umi dev",
     "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
@@ -11,14 +12,16 @@
   "dependencies": {
     "dva": "^2.3.1",
     "lodash": "^4.17.10",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "umi": "^1.3.17",
+    "umi-plugin-dva": "^0.9.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
+    "cross-env": "^5.2.0",
     "husky": "^0.14.3",
-    "roadhog": "^2.4.2",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3",
     "stylelint": "^9.4.0",
     "typescript": "^3.0.1"
   }
