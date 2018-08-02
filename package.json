@@ -12,12 +12,19 @@
   "author": "wangxingkang <wangxingkang@sensoro.com>",
   "license": "MIT",
   "dependencies": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.10",
+    "bizcharts-plugin-slider": "^2.0.4",
     "classnames": "^2.2.6",
+    "dayjs": "^1.7.4",
     "lodash": "^4.17.10",
+    "qs": "^6.5.2",
+    "react-document-title": "^2.0.3",
     "react-transition-group": "^2.4.0",
+    "rollbar": "^2.4.4",
     "umi": "^1.3.17",
-    "umi-plugin-dll": "^0.2.1",
     "umi-plugin-dva": "^0.9.1",
+    "umi-plugin-locale": "^1.0.1",
     "umi-plugin-polyfill": "^0.2.0",
     "umi-plugin-routes": "^0.1.5",
     "url-polyfill": "^1.0.13"
@@ -26,9 +33,16 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
+    "@types/qs": "^6.5.1",
+    "@types/react-document-title": "^2.0.2",
     "cross-env": "^5.2.0",
     "husky": "^0.14.3",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
     "typescript": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
