@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Form, Tabs } from 'antd';
 
 export interface LoginProps {
-  className: string;
+  className?: string;
   defaultActiveKey: string;
-  onTabChange: () => {},
-  onSubmit: () => {}
+  onTabChange?: () => {},
+  onSubmit?: () => {}
 }
 
 class Login extends React.Component<LoginProps, any> {
@@ -17,6 +17,11 @@ class Login extends React.Component<LoginProps, any> {
       active: {}
     };
   }
+
+  // 设置默认的props
+  static defaultProps: Partial<LoginProps> = {
+    className: '',
+  };
 
   handleSubmit = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

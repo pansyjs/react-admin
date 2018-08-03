@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link, Redirect, Switch, Route } from 'dva/router';
 import { Icon } from 'antd';
@@ -32,14 +32,10 @@ const copyright = (
 );
 
 class UserLayout extends React.PureComponent {
-  getPageTitle() {
-    // const { routerData, location } = this.props;
-  }
-
   render() {
     const { children } = this.props;
     return (
-      <DocumentTitle title={'123'}>
+      <DocumentTitle title={'欢迎登陆'}>
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles.top}>
