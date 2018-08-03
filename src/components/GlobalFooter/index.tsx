@@ -4,8 +4,8 @@ import styles from './index.scss';
 
 interface GlobalFooterProps {
   className: string;
-  links: any[];
-  copyright: any;
+  links: Array<any>;
+  copyright: React.ReactNode;
 }
 
 class GlobalFooter extends React.Component<GlobalFooterProps, any> {
