@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './index.scss';
 
 interface GlobalFooterProps {
-  className: string;
+  className?: string;
   links: Array<any>;
   copyright: React.ReactNode;
 }

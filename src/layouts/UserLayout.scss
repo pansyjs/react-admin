@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #f0f2f5;
+}
+
+.content {
+  padding: 32px 0;
+  flex: 1;
+}
+
+.top {
+  text-align: center;
+}
+
+.header {
+  height: 44px;
+  line-height: 44px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  height: 44px;
+  vertical-align: top;
+  margin-right: 16px;
+}
+
+.title {
+  position: relative;
+  font-size: 33px;
+  font-weight: 600;
+  top: 2px;
+}
+
+.desc {
+
+}
