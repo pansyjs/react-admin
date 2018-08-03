@@ -6,6 +6,7 @@
     "bootstrap": "yarn || npm i",
     "start": "umi dev",
     "build": "umi build",
+    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
@@ -34,12 +35,16 @@
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
     "@types/qs": "^6.5.1",
+    "@types/react": "^16.4.7",
     "@types/react-document-title": "^2.0.2",
+    "@types/react-dom": "^16.0.6",
     "cross-env": "^5.2.0",
     "husky": "^0.14.3",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
+    "stylelint-config-prettier": "^3.3.0",
+    "stylelint-config-standard": "^18.2.0",
     "typescript": "^3.0.1"
   },
   "engines": {
