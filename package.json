@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "start": "umi dev",
+    "start": "cross-env PORT=8888 umi dev",
     "build": "umi build",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
