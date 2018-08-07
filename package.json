@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "start": "cross-env PORT=8888 umi dev",
+    "dev": "cross-env PORT=8888 umi dev",
     "build": "umi build",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
@@ -34,6 +34,7 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
+    "@types/node": "^10.5.7",
     "@types/qs": "^6.5.1",
     "@types/react": "^16.4.7",
     "@types/react-document-title": "^2.0.2",
@@ -45,6 +46,7 @@
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
+    "svg-sprite-loader": "^3.8.0",
     "typescript": "^3.0.1"
   },
   "engines": {
