@@ -9,5 +9,8 @@ export default {
   },
   cssLoaderOptions: {
     localIdentName: '[name]--[hash:base64:6]'
-  }
+  },
+  urlLoaderExcludes: [
+    path.join(__dirname, 'src/icons')
+  ]
 }
