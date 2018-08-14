@@ -7,14 +7,14 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "allowJs": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@": ["./src/*"],
-      "@assets": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@icons/*": ["./src/icons/*"],
-      "@layouts/*": ["./src/layouts/*"]
+      "@": ["src/*"],
+      "@assets": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@icons/*": ["src/icons/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "exclude": [
