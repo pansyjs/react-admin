@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "dev": "cross-env PORT=8888 umi dev",
+    "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
@@ -19,6 +19,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.7.4",
     "lodash": "^4.17.10",
+    "lodash-decorators": "^6.0.0",
     "qs": "^6.5.2",
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
@@ -35,6 +36,7 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
+    "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.7",
     "@types/qs": "^6.5.1",
     "@types/react": "^16.4.7",
