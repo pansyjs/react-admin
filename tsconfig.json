@@ -10,9 +10,11 @@
     "baseUrl": "./src",
     "moduleResolution": "node",
     "paths": {
-      "dva": [
-        "../node_modules/dva/index"
-      ]
+      "@": ["./src/*"],
+      "@assets": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@icons/*": ["./src/icons/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   },
   "exclude": [
