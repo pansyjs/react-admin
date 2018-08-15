@@ -1,11 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Tabs } from 'antd';
+import LoginContext from './LoginContext';
 
 const { TabPane } = Tabs;
 
-/**
- * 生成ID
- */
 const generateId = (() => {
   let i = 0;
   return (prefix = '') => {
@@ -15,12 +13,14 @@ const generateId = (() => {
 })();
 
 export interface LoginTabProps {
-  tabUtil: object
+  tabUtil: {
+    addTab: (id: string) => void
+  }
 }
 
-export default class LoginTab extends React.Component {
+class LoginTab extends React.Component<LoginTabProps, any> {
 
-  private uniqueId: string;
+  readonly uniqueId: string;
 
   constructor(props) {
     super(props);
@@ -28,10 +28,28 @@ export default class LoginTab extends React.Component {
   }
 
   componentWillMount() {
-
+    const { tabUtil } = this.props;
+    tabUtil.addTab(this.uniqueId);
   }
 
   render() {
-    return <TabPane />;
+    const { children } = this.props;
+    return (
+      <TabPane {...this.props}>
+        {children}
+      </TabPane>
+    );
   }
 }
+
+const warpContext = props => {
+  return (
+    <LoginContext.Consumer>
+      {value => {
+        return (<LoginTab tabUtil={value.tabUtil} {...props}/>)
+      }}
+    </LoginContext.Consumer>
+  )
+};
+
+export default warpContext;
