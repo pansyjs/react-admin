@@ -1,40 +1,12 @@
-import * as React from 'react';
-import { Form, Tabs } from 'antd';
+import Login from './Login';
+import LoginTab from './LoginTab';
+import LoginSubmit from './LoginSubmit';
+import LoginItem from './LoginItem';
 
-export interface LoginProps {
-  className?: string;
-  defaultActiveKey: string;
-  onTabChange?: () => {},
-  onSubmit?: () => {}
+export {
+  LoginTab,
+  LoginSubmit,
+  LoginItem
 }
 
-class Login extends React.Component<LoginProps, any> {
-  constructor(props: LoginProps) {
-    super(props);
-    this.state = {
-      type: props.defaultActiveKey,
-      tabs: [],
-      active: {}
-    };
-  }
-
-  // 设置默认的props
-  static defaultProps: Partial<LoginProps> = {
-    className: '',
-  };
-
-  handleSubmit = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-  };
-
-  render() {
-    return (
-      <div>
-        <Form onSubmit={this.handleSubmit}>
-
-        </Form>
-      </div>
-    )
-  }
-}
+export default Login;

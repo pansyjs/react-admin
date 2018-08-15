@@ -4,6 +4,12 @@ $text-color-secondary   : fade(#000, 45%);
 
 $font-size-base         : 14px;
 
+
+$border-color-base      : #d9d9d9;
+
+// Disabled states
+$disabled-color         : fade(#000, 25%);
+
 // Media queries breakpoints
 // Extra small screen / phone
 $screen-xs              : 480px;

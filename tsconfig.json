@@ -7,12 +7,14 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "allowJs": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "dva": [
-        "../node_modules/dva/index"
-      ]
+      "@": ["src/*"],
+      "@assets": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@icons/*": ["src/icons/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "exclude": [
