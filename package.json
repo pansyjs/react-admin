@@ -1,6 +1,6 @@
 {
   "name": "react-admin-template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
@@ -14,6 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
+    "@types/nprogress": "^0.0.29",
+    "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.4",
     "classnames": "^2.2.6",
@@ -21,12 +23,13 @@
     "dayjs": "^1.7.4",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
+    "nprogress": "^0.2.0",
     "qs": "^6.5.2",
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
     "rollbar": "^2.4.4",
-    "umi": "^1.3.17",
+    "umi": "^1.3.18",
     "umi-plugin-dva": "^0.9.1",
     "umi-plugin-locale": "^1.0.1",
     "umi-plugin-polyfill": "^0.2.0",
