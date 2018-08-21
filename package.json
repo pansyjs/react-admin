@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
+    "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.4",
     "classnames": "^2.2.6",
