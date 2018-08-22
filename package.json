@@ -4,9 +4,11 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
+    "precommit": "lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
-    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "lint-staged:js": "eslint --ext .tsx",
+    "lint-staged:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
@@ -44,8 +46,14 @@
     "@types/react-intl": "^2.3.9",
     "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-typescript": "^0.12.0",
+    "gh-pages": "^1.2.0",
     "husky": "^0.14.3",
     "image-webpack-loader": "^4.3.1",
+    "lint-staged": "^7.2.2",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
@@ -53,8 +61,17 @@
     "stylelint-config-standard": "^18.2.0",
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
+    "typescript-eslint-parser": "^18.0.0",
     "umi": "^2.0.0-beta.16",
     "umi-plugin-react": "^1.0.0-beta.16"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,scss}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{ts,tsx}": "npm run lint-staged:js",
+    "**/*.scss": "npm run lint-staged:style"
   },
   "engines": {
     "node": ">=8.0.0"
