@@ -4,9 +4,10 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "precommit": "lint-staged",
+    "precommit": "npm run lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
+    "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .tsx",
     "lint-staged:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
