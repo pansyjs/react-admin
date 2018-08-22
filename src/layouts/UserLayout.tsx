@@ -3,7 +3,7 @@ import DocumentTitle from 'react-document-title';
 import { Link, Redirect, Switch, Route } from 'dva/router';
 import { Icon } from 'antd';
 import GlobalFooter from '../components/GlobalFooter';
-import logo from '../assets/logo.svg';
+import logo from '@assets/logo.svg';
 import styles from './UserLayout.scss';
 
 const Fragment = React.Fragment;
@@ -41,7 +41,7 @@ class UserLayout extends React.PureComponent {
             <div className={styles.top}>
               <div className={styles.header}>
                 <Link to="/">
-                  <img className={styles.logo} src={logo} alt="logo"/>
+                  <img alt="logo" className={styles.logo} src={logo} />
                   <span className={styles.title}>Ant Design</span>
                 </Link>
                 <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
