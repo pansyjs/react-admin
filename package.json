@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
+    "antd": "^3.8.2",
     "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.4",
@@ -42,6 +43,7 @@
     "@types/react-dom": "^16.0.6",
     "@types/react-intl": "^2.3.9",
     "cross-env": "^5.2.0",
+    "eslint": "^5.4.0",
     "husky": "^0.14.3",
     "image-webpack-loader": "^4.3.1",
     "node-sass": "^4.9.2",
@@ -49,7 +51,7 @@
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
-    "svg-sprite-loader": "^3.8.0",
+    "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "umi": "^2.0.0-beta.16",
     "umi-plugin-react": "^1.0.0-beta.16"
