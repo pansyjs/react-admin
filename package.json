@@ -4,12 +4,15 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "precommit": "lint-staged",
+    "precommit": "npm run lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
+    "tsc": "tsc",
+    "lint-staged": "lint-staged",
+    "lint-staged:ts": "npm run tsc",
     "lint:ts": "eslint --ext .tsx src mock",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
-    "commitmsg": "commitlint -E GIT_PARAMS",
+    "commitmsg": "commitlint --env HUSKY_GIT_PARAMS",
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
@@ -24,6 +27,7 @@
     "classnames": "^2.2.6",
     "create-react-context": "^0.2.2",
     "dayjs": "^1.7.4",
+    "husky": "^1.0.0-rc.13",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
     "nprogress": "^0.2.0",
@@ -35,6 +39,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-angular": "^7.0.1",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
     "@types/lodash": "^4.14.116",
@@ -51,7 +56,6 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-typescript": "^0.12.0",
     "gh-pages": "^1.2.0",
-    "husky": "^0.14.3",
     "image-webpack-loader": "^4.3.1",
     "lint-staged": "^7.2.2",
     "mockjs": "^1.0.1-beta3",
@@ -66,6 +70,17 @@
     "typescript-eslint-parser": "^18.0.0",
     "umi": "^2.0.0-beta.16",
     "umi-plugin-react": "^1.0.0-beta.16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"
