@@ -46,6 +46,9 @@ export default {
   chainWebpack(config) {
     config.module.rule('svg')
       .test(/\.svg$/i)
+      .include
+      .add(resolve(__dirname, 'src/icons'))
+      .end()
       .use('svg-sprite-loader')
       .loader(require.resolve('svg-sprite-loader'));
   },
