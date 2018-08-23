@@ -4,17 +4,22 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
+    "precommit": "npm run lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
+    "lint-staged": "lint-staged",
+    "lint-staged:ts": "npm run tsc",
+    "lint:ts": "eslint --ext .tsx src mock",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "commitmsg": "commitlint --env HUSKY_GIT_PARAMS",
+    "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
   "author": "wangxingkang <wangxingkang@sensoro.com>",
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
-    "@types/nprogress": "^0.0.29",
+    "antd": "^3.8.2",
     "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.4",
@@ -28,35 +33,53 @@
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
-    "rollbar": "^2.4.4",
-    "umi": "^1.3.18",
-    "umi-plugin-dva": "^0.9.1",
-    "umi-plugin-locale": "^1.0.1",
-    "umi-plugin-polyfill": "^0.2.0",
-    "umi-plugin-routes": "^0.1.5",
-    "url-polyfill": "^1.0.13"
+    "rollbar": "^2.4.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-angular": "^7.0.1",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.7",
+    "@types/nprogress": "^0.0.29",
     "@types/qs": "^6.5.1",
     "@types/react": "^16.4.7",
     "@types/react-document-title": "^2.0.2",
     "@types/react-dom": "^16.0.6",
     "@types/react-intl": "^2.3.9",
     "cross-env": "^5.2.0",
-    "husky": "^0.14.3",
+    "eslint": "^5.4.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-typescript": "^0.12.0",
+    "gh-pages": "^1.2.0",
+    "husky": "^1.0.0-rc.13",
     "image-webpack-loader": "^4.3.1",
+    "lint-staged": "^7.2.2",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.2",
+    "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
-    "svg-sprite-loader": "^3.8.0",
-    "typescript": "^3.0.1"
+    "svg-sprite-loader": "^3.9.2",
+    "typescript": "^3.0.1",
+    "typescript-eslint-parser": "^18.0.0",
+    "umi": "^2.0.0-beta.17",
+    "umi-plugin-react": "^1.0.0-beta.17"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"
