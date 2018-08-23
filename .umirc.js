@@ -9,6 +9,8 @@ export default {
       antd: true,
       routes: {
         exclude: [
+          /model\.tsx?$/,
+          /service\.tsx?$/,
           /models\//,
           /components\//,
           /services\//

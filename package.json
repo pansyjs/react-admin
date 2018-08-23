@@ -15,7 +15,7 @@
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
-  "author": "wangxingkang <wangxingkang@sensoro.com>",
+  "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
