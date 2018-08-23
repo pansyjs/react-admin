@@ -4,10 +4,9 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "precommit": "npm run lint-staged",
+    "precommit": "lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
-    "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .tsx",
     "lint-staged:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "commitmsg": "commitlint -E GIT_PARAMS"
@@ -56,6 +55,7 @@
     "lint-staged": "^7.2.2",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.2",
+    "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
@@ -65,14 +65,6 @@
     "typescript-eslint-parser": "^18.0.0",
     "umi": "^2.0.0-beta.16",
     "umi-plugin-react": "^1.0.0-beta.16"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,scss}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{ts,tsx}": "npm run lint-staged:js",
-    "**/*.scss": "npm run lint-staged:style"
   },
   "engines": {
     "node": ">=8.0.0"
