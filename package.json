@@ -7,9 +7,10 @@
     "precommit": "lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
-    "lint-staged:js": "eslint --ext .tsx",
-    "lint-staged:style": "stylelint \"src/**/*.scss\" --syntax scss",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "lint:ts": "eslint --ext .tsx src mock",
+    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "commitmsg": "commitlint -E GIT_PARAMS",
+    "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
   "author": "wangxingkang <wangxingkang@sensoro.com>",
