@@ -1471,9 +1471,13 @@ acorn@^4.0.3:
   version "4.0.13"
   resolved "http://registry.npm.taobao.org/acorn/download/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
 
-acorn@^5.0.0, acorn@^5.0.3, acorn@^5.3.0, acorn@^5.5.3, acorn@^5.6.0, acorn@^5.6.2:
+acorn@^5.0.0, acorn@^5.0.3, acorn@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
+
+acorn@^5.3.0, acorn@^5.5.3, acorn@^5.6.2:
+  version "5.7.2"
+  resolved "http://registry.npm.taobao.org/acorn/download/acorn-5.7.2.tgz#91fa871883485d06708800318404e72bfb26dcc5"
 
 add-dom-event-listener@1.x:
   version "1.0.2"
@@ -1485,9 +1489,9 @@ address@1.0.3, address@>=0.0.1, address@^1.0.1, address@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/address/download/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
 
-af-webpack@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-1.0.0-beta.17.tgz#605914e81a893da8a59a758b8a40bc3993fef130"
+af-webpack@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-1.0.0-beta.18.tgz#13b4fc0fd971d33f65dd3cf8657ddf189cbb0725"
   dependencies:
     "@babel/core" "7.0.0-rc.1"
     "@babel/register" "7.0.0-rc.1"
@@ -1498,7 +1502,7 @@ af-webpack@^1.0.0-beta.17:
     babel-eslint "^8.0.1"
     babel-loader "^8.0.0-beta.0"
     babel-plugin-dynamic-import-node "^2.0.0"
-    babel-preset-umi "^1.0.0-beta.17"
+    babel-preset-umi "^1.0.0-beta.18"
     chalk "^2.1.0"
     chokidar "^2.0.3"
     clipboardy "^1.2.3"
@@ -2713,9 +2717,9 @@ babel-preset-react@^6.24.1, babel-preset-react@^6.5.0:
     babel-plugin-transform-react-jsx-source "^6.22.0"
     babel-preset-flow "^6.23.0"
 
-babel-preset-umi@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/babel-preset-umi/download/babel-preset-umi-1.0.0-beta.17.tgz#eef1560b9e0c2daebeaa2152bf70c77ca02bf43f"
+babel-preset-umi@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/babel-preset-umi/download/babel-preset-umi-1.0.0-beta.18.tgz#844b9f9d65e01f7d00fe65af79795a5d21d24bd7"
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "7.0.0-rc.1"
     "@babel/plugin-proposal-class-properties" "7.0.0-rc.1"
@@ -3248,7 +3252,15 @@ browserslist@^3.0.0, browserslist@^3.2.6:
     caniuse-lite "^1.0.30000844"
     electron-to-chromium "^1.3.47"
 
-browserslist@^4.0.0, browserslist@^4.0.2:
+browserslist@^4.0.0:
+  version "4.1.0"
+  resolved "http://registry.npm.taobao.org/browserslist/download/browserslist-4.1.0.tgz#81cbb8e52dfa09918f93c6e051d779cb7360785d"
+  dependencies:
+    caniuse-lite "^1.0.30000878"
+    electron-to-chromium "^1.3.61"
+    node-releases "^1.0.0-alpha.11"
+
+browserslist@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.0.2.tgz#294388f5844bb3ab15ef7394ca17f49bf7a4e6f1"
   dependencies:
@@ -3910,7 +3922,7 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5, combined-
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@*, commander@2, commander@2.17.x, commander@^2.12.1, commander@^2.13.0, commander@^2.14.1, commander@^2.9.0:
+commander@*, commander@2, commander@2.17.x, commander@^2.12.1, commander@^2.13.0, commander@^2.14.1, commander@^2.9.0, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
@@ -3925,10 +3937,6 @@ commander@2.15.1:
 commander@~2.13.0:
   version "2.13.0"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
-
-commander@~2.16.0:
-  version "2.16.0"
-  resolved "http://registry.npm.taobao.org/commander/download/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
 
 commander@~2.8.1:
   version "2.8.1"
@@ -5386,7 +5394,7 @@ ejs@^2.5.7, ejs@^2.5.9:
   version "2.6.1"
   resolved "http://registry.npm.taobao.org/ejs/download/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
 
-electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47:
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47, electron-to-chromium@^1.3.61:
   version "1.3.61"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.61.tgz#a8ac295b28d0f03d85e37326fd16b6b6b17a1795"
 
@@ -7766,8 +7774,8 @@ inquirer@^5.2.0:
     through "^2.3.6"
 
 inquirer@^6.0.0, inquirer@^6.1.0:
-  version "6.1.0"
-  resolved "http://registry.npm.taobao.org/inquirer/download/inquirer-6.1.0.tgz#8f65c7b31c498285f4ddf3b742ad8c487892040b"
+  version "6.2.0"
+  resolved "http://registry.npm.taobao.org/inquirer/download/inquirer-6.2.0.tgz#51adcd776f661369dc1e894859c2560a224abdd8"
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.0"
@@ -7775,7 +7783,7 @@ inquirer@^6.0.0, inquirer@^6.1.0:
     cli-width "^2.0.0"
     external-editor "^3.0.0"
     figures "^2.0.0"
-    lodash "^4.3.0"
+    lodash "^4.17.10"
     mute-stream "0.0.7"
     run-async "^2.2.0"
     rxjs "^6.1.0"
@@ -15220,10 +15228,10 @@ uglify-es@^3.3.4:
     source-map "~0.6.1"
 
 uglify-js@3.4.x:
-  version "3.4.7"
-  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.4.7.tgz#4df6b92e54789aa921a254cb1e33704d6ec12b89"
+  version "3.4.8"
+  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.4.8.tgz#d590777b208258b54131b1ae45bc9d3f68033a3e"
   dependencies:
-    commander "~2.16.0"
+    commander "~2.17.1"
     source-map "~0.6.1"
 
 uglify-js@^2.6, uglify-js@^2.6.2, uglify-js@^2.8.29:
@@ -15260,15 +15268,15 @@ uglifyjs-webpack-plugin@^1.1.2, uglifyjs-webpack-plugin@^1.2.4:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-umi-build-dev@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.0-beta.17.tgz#9b7e154e954cc8194064cc6c84b88801e04f328c"
+umi-build-dev@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.0-beta.18.tgz#03cf9374220a54ee69b437206c54a4dde9842075"
   dependencies:
     "@babel/runtime" "7.0.0-rc.1"
     address "^1.0.3"
-    af-webpack "^1.0.0-beta.17"
+    af-webpack "^1.0.0-beta.18"
     atool-monitor "^1.0.6"
-    babel-preset-umi "^1.0.0-beta.17"
+    babel-preset-umi "^1.0.0-beta.18"
     body-parser "^1.18.2"
     chalk "^2.1.0"
     cheerio "^1.0.0-rc.2"
@@ -15305,7 +15313,7 @@ umi-build-dev@^1.0.0-beta.17:
     rimraf "^2.6.1"
     string.prototype.padend "^3.0.0"
     umi-history "^0.1.0"
-    umi-test "^1.0.0-beta.17"
+    umi-test "^1.0.0-beta.18"
     umi-utils "^0.2.2"
     yeoman-generator "^3.1.1"
 
@@ -15324,17 +15332,17 @@ umi-history@^0.1.0:
     value-equal "^0.4.0"
     warning "^3.0.0"
 
-umi-plugin-dll@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.0.0-beta.17.tgz#49a3d1c766416d94ef1e1f04e0963f5ae218b8be"
+umi-plugin-dll@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.0.0-beta.18.tgz#d37aefe2fcb9c5f50df8501a759145793724a4e0"
   dependencies:
     lodash.pullall "^4.2.0"
     lodash.uniq "^4.5.0"
     serve-static "^1.13.2"
 
-umi-plugin-dva@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.0-beta.17.tgz#c7414c5c5e855c2bf07436ff879aacac2d243e1f"
+umi-plugin-dva@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.0-beta.18.tgz#9bd40b2a95354f350f5b7b3e012da31cbb1ccf33"
   dependencies:
     babel-plugin-dva-hmr "^0.4.1"
     dva "^2.4.0"
@@ -15347,26 +15355,26 @@ umi-plugin-dva@^1.0.0-beta.17:
     path-to-regexp "^1.7.0"
     slash2 "^2.0.0"
 
-umi-plugin-locale@^2.0.0-beta.17:
-  version "2.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.0.0-beta.17.tgz#c732364112c84e60ed8a17033b65c1d6babb3603"
+umi-plugin-locale@^2.0.0-beta.18:
+  version "2.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.0.0-beta.18.tgz#66a7c241c39d6a7b0dfb65896dffa6ab96956f68"
   dependencies:
     mustache "^2.3.0"
     prop-types "^15.6.2"
     react-intl "^2.4.0"
     umi-utils "^0.2.2"
 
-umi-plugin-polyfills@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.0-beta.17.tgz#4f6957b26d0b418b278256632f673b0cf084bc78"
+umi-plugin-polyfills@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.0-beta.18.tgz#4bd6a42305e21c428ab58db21e56e2b8b1d613d4"
   dependencies:
     core-js "^2.5.7"
     raf "3.4.0"
     setprototypeof "1.1.0"
 
-umi-plugin-react@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.0-beta.17.tgz#142838bee0f7944c0114f9636195c7228e1dbdac"
+umi-plugin-react@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.0-beta.18.tgz#2d10c8d0bf37fbbad6b6a48d8478ed9a379b49f7"
   dependencies:
     antd "^3.8.1"
     antd-mobile "^2.2.3"
@@ -15380,28 +15388,28 @@ umi-plugin-react@^1.0.0-beta.17:
     react-document-title "^2.0.3"
     register-service-worker "^1.4.1"
     umi-hd "^5.0.1"
-    umi-plugin-dll "^1.0.0-beta.17"
-    umi-plugin-dva "^1.0.0-beta.17"
-    umi-plugin-locale "^2.0.0-beta.17"
-    umi-plugin-polyfills "^1.0.0-beta.17"
-    umi-plugin-routes "^1.0.0-beta.17"
+    umi-plugin-dll "^1.0.0-beta.18"
+    umi-plugin-dva "^1.0.0-beta.18"
+    umi-plugin-locale "^2.0.0-beta.18"
+    umi-plugin-polyfills "^1.0.0-beta.18"
+    umi-plugin-routes "^1.0.0-beta.18"
     webpack "^4.16.5"
     workbox-webpack-plugin "^3.4.1"
 
-umi-plugin-routes@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.0.0-beta.17.tgz#8e122220e11e172de52b6992c55098991831ecc3"
+umi-plugin-routes@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.0.0-beta.18.tgz#549677e913f957330c60fda8dc4a8ee10dc0338c"
 
-umi-test@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi-test/download/umi-test-1.0.0-beta.17.tgz#02f915d907e253ef87550f7cd12ba6eae2cef7ee"
+umi-test@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi-test/download/umi-test-1.0.0-beta.18.tgz#41fa2ea6709a0dd23ae76f08e369c0cebc4564f4"
   dependencies:
     "@babel/core" "7.0.0-rc.1"
     "@babel/polyfill" "7.0.0-rc.1"
     babel-core "7.0.0-bridge.0"
     babel-jest "^23.4.2"
     babel-plugin-module-resolver "^3.1.1"
-    babel-preset-umi "^1.0.0-beta.17"
+    babel-preset-umi "^1.0.0-beta.18"
     debug "^3.1.0"
     enzyme "^3.4.1"
     enzyme-adapter-react-16 "^1.2.0"
@@ -15419,14 +15427,14 @@ umi-utils@^0.2.2:
   dependencies:
     slash2 "^2.0.0"
 
-umi@^2.0.0-beta.17:
-  version "2.0.0-beta.17"
-  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.0-beta.17.tgz#237013a576ec2e8adc9c2ffd401a8a8d357f94e1"
+umi@^2.0.0-beta.18:
+  version "2.0.0-beta.18"
+  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.0-beta.18.tgz#3f64e0fec5bc3ab0e233010068dbf8932edeea16"
   dependencies:
     "@babel/core" "7.0.0-rc.1"
     "@babel/runtime" "7.0.0-rc.1"
     "@types/react" "^16.4.9"
-    babel-preset-umi "^1.0.0-beta.17"
+    babel-preset-umi "^1.0.0-beta.18"
     chai "^4.1.2"
     cross-spawn "^6.0.5"
     debug "^3.1.0"
@@ -15437,7 +15445,7 @@ umi@^2.0.0-beta.17:
     react-loadable "^5.5.0"
     resolve-cwd "^2.0.0"
     slash2 "^2.0.0"
-    umi-build-dev "^1.0.0-beta.17"
+    umi-build-dev "^1.0.0-beta.18"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"
     url "^0.11.0"
