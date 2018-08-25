@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import LoginContext from './LoginContext';
 
 const { TabPane } = Tabs;
+const Consumer = LoginContext.Consumer;
 
 const generateId = (() => {
   let i = 0;
@@ -14,12 +15,11 @@ const generateId = (() => {
 
 export interface LoginTabProps {
   tabUtil: {
-    addTab: (id: string) => void
-  }
+    addTab: (id: string) => void;
+  };
 }
 
 class LoginTab extends React.Component<LoginTabProps, any> {
-
   readonly uniqueId: string;
 
   constructor(props) {
@@ -34,22 +34,29 @@ class LoginTab extends React.Component<LoginTabProps, any> {
 
   render() {
     const { children } = this.props;
+    return <TabPane {...this.props}>{children}</TabPane>;
+  }
+}
+
+class warpContext extends React.Component {
+  static typeName: string;
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {} = this.props;
     return (
-      <TabPane {...this.props}>
-        {children}
-      </TabPane>
+      <Consumer>
+        {(value) => {
+          return <LoginTab tabUtil={value.tabUtil} {...this.props} />;
+        }}
+      </Consumer>
     );
   }
 }
 
-const warpContext = props => {
-  return (
-    <LoginContext.Consumer>
-      {value => {
-        return (<LoginTab tabUtil={value.tabUtil} {...props}/>)
-      }}
-    </LoginContext.Consumer>
-  )
-};
+warpContext.typeName = 'LoginTab';
 
 export default warpContext;

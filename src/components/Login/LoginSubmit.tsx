@@ -10,6 +10,14 @@ export interface LoginSubmitProps {
 }
 
 class LoginSubmit extends React.Component<LoginSubmitProps, any> {
+  static defaultProps = {
+    className: ''
+  };
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const { className, ...restProps } = this.props;
     const clsString = ClassNames(styles.submit, className);
@@ -24,7 +32,7 @@ class LoginSubmit extends React.Component<LoginSubmitProps, any> {
           {...restProps}
         />
       </FormItem>
-    )
+    );
   }
 }
 
