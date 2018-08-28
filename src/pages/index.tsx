@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SvgIcon from '@components/SvgIcon';
 import HeaderSearch from '@components/HeaderSearch';
-import SendCode from '@components/SendCode';
+import UploadExcel from '@components/UploadExcel';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,21 +11,17 @@ class App extends React.Component {
     };
   }
 
-  handleClick = () => {
-    this.setState({
-      start: 1
-    });
+  handleSuccess = (data) => {
+    console.log(data);
   };
 
   render() {
-    const { start } = this.state;
-
     return (
       <div>
         hello, 欢迎加入九毛科技。
         <SvgIcon icon="user" />
         <HeaderSearch onSearch={() => {}} />
-        <SendCode start={start} onClick={this.handleClick} />
+        <UploadExcel onSuccess={this.handleSuccess} />
       </div>
     );
   }
