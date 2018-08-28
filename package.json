@@ -15,7 +15,7 @@
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
-  "author": "wangxingkang <wangxingkang@sensoro.com>",
+  "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.8.9",
@@ -33,7 +33,8 @@
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
-    "rollbar": "^2.4.4"
+    "rollbar": "^2.4.4",
+    "xlsx": "^0.13.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
@@ -72,8 +73,8 @@
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.0.0-beta.17",
-    "umi-plugin-react": "^1.0.0-beta.17"
+    "umi": "^2.0.0-beta.19",
+    "umi-plugin-react": "^1.0.0-beta.19"
   },
   "husky": {
     "hooks": {

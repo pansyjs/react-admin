@@ -1,4 +1,12 @@
 import React from 'react';
 
-const LoginContext = React.createContext({tabUtil: {}});
+const defaultValue = {
+  tabUtil: {
+    addTab: () => {},
+    removeTab: () => {}
+  },
+  updateActive: () => {}
+};
+
+const LoginContext = React.createContext(defaultValue);
 export default LoginContext;
