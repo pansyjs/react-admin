@@ -33,7 +33,8 @@
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
-    "rollbar": "^2.4.4"
+    "rollbar": "^2.4.4",
+    "xlsx": "^0.13.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
