@@ -1,7 +1,4 @@
 import * as React from 'react';
-import SvgIcon from '@components/SvgIcon';
-import HeaderSearch from '@components/HeaderSearch';
-import UploadExcel from '@components/UploadExcel';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,19 +8,8 @@ class App extends React.Component {
     };
   }
 
-  handleSuccess = (data) => {
-    console.log(data);
-  };
-
   render() {
-    return (
-      <div>
-        hello, 欢迎加入九毛科技。
-        <SvgIcon icon="user" />
-        <HeaderSearch onSearch={() => {}} />
-        <UploadExcel onSuccess={this.handleSuccess} />
-      </div>
-    );
+    return <div>hello, 欢迎加入九毛科技。</div>;
   }
 }
 
