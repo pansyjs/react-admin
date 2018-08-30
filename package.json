@@ -38,7 +38,7 @@
     "xlsx": "^0.13.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.0.0",
+    "@commitlint/cli": "^7.1.1",
     "@commitlint/config-angular": "^7.0.1",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
