@@ -75,19 +75,13 @@
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.0.0-beta.20",
-    "umi-plugin-react": "^1.0.0-beta.20"
+    "umi": "^2.0.0-rc.1",
+    "umi-plugin-react": "^1.0.0-rc.1"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run precommit"
     }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "engines": {
     "node": ">=8.0.0"
