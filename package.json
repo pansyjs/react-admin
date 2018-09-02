@@ -18,18 +18,19 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@antv/data-set": "^0.8.9",
-    "antd": "^3.8.2",
+    "@antv/data-set": "^0.9.4",
+    "antd": "^3.9.0",
     "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.4",
     "classnames": "^2.2.6",
-    "create-react-context": "^0.2.2",
-    "dayjs": "^1.7.4",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
+    "moment": "^2.22.2",
     "nprogress": "^0.2.0",
     "qs": "^6.5.2",
+    "rc-animate": "^2.4.4",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
@@ -37,7 +38,7 @@
     "xlsx": "^0.13.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.0.0",
+    "@commitlint/cli": "^7.1.1",
     "@commitlint/config-angular": "^7.0.1",
     "@commitlint/config-lotus": "npm:commitlint-config-lotus",
     "@types/classnames": "^2.2.6",
@@ -46,6 +47,7 @@
     "@types/nprogress": "^0.0.29",
     "@types/qs": "^6.5.1",
     "@types/react": "^16.4.7",
+    "@types/react-copy-to-clipboard": "^4.2.6",
     "@types/react-document-title": "^2.0.2",
     "@types/react-dom": "^16.0.6",
     "@types/react-intl": "^2.3.9",
@@ -73,19 +75,13 @@
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.0.0-beta.19",
-    "umi-plugin-react": "^1.0.0-beta.19"
+    "umi": "^2.0.0-rc.1",
+    "umi-plugin-react": "^1.0.0-rc.1"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run precommit"
     }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "engines": {
     "node": ">=8.0.0"
