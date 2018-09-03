@@ -1,4 +1,4 @@
-@import "../../styles/common/var";
+@import '../../styles/common/var';
 
 .globalFooter {
   padding: 0 16px;
@@ -10,7 +10,6 @@
 
     a {
       color: $text-color-secondary;
-
       transition: all 0.3s;
 
       &:not(:last-child) {
@@ -21,7 +20,6 @@
         color: $text-color;
       }
     }
-
   }
 
   .copyright {
