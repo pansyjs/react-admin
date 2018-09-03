@@ -1534,9 +1534,9 @@ adler-32@~1.2.0:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
-af-webpack@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-1.0.0-rc.1.tgz#98786356c2644209921d1f3851bd0e829f132713"
+af-webpack@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-1.0.0.tgz#0aa9e39bc5090822d691355e5e006296ebdeaf20"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/register" "^7.0.0"
@@ -1545,7 +1545,7 @@ af-webpack@^1.0.0-rc.1:
     autoprefixer "^9.1.1"
     babel-loader "^8.0.0"
     babel-plugin-dynamic-import-node "^2.0.0"
-    babel-preset-umi "^1.0.0-rc.1"
+    babel-preset-umi "^1.0.0"
     chalk "^2.1.0"
     chokidar "^2.0.3"
     clipboardy "^1.2.3"
@@ -1557,7 +1557,7 @@ af-webpack@^1.0.0-rc.1:
     detect-port "^1.2.1"
     didyoumean "^1.2.1"
     duplicate-package-checker-webpack-plugin "^3.0.0"
-    es5-imcompatible-versions "^0.1.15"
+    es5-imcompatible-versions "^0.1.22"
     file-loader "^1.1.11"
     fork-ts-checker-webpack-plugin "^0.4.8"
     friendly-errors-webpack-plugin "^1.7.0"
@@ -1738,60 +1738,7 @@ antd-mobile@^2.2.3:
     rmc-tabs "~1.2.0"
     rmc-tooltip "~1.0.0"
 
-antd@^3.8.1:
-  version "3.8.4"
-  resolved "http://registry.npm.taobao.org/antd/download/antd-3.8.4.tgz#fa2b0fb09627a1774277a551efbae715455fde74"
-  dependencies:
-    array-tree-filter "^2.0.0"
-    babel-runtime "6.x"
-    classnames "~2.2.0"
-    create-react-class "^15.6.0"
-    create-react-context "^0.2.2"
-    css-animation "^1.2.5"
-    dom-closest "^0.2.0"
-    enquire.js "^2.1.1"
-    intersperse "^1.0.0"
-    lodash "^4.17.5"
-    moment "^2.19.3"
-    omit.js "^1.0.0"
-    prop-types "^15.5.7"
-    raf "^3.4.0"
-    rc-animate "^2.4.1"
-    rc-calendar "~9.6.0"
-    rc-cascader "~0.14.0"
-    rc-checkbox "~2.1.5"
-    rc-collapse "~1.9.0"
-    rc-dialog "~7.2.0"
-    rc-drawer "~1.7.3"
-    rc-dropdown "~2.2.0"
-    rc-editor-mention "^1.0.2"
-    rc-form "^2.1.0"
-    rc-input-number "~4.0.0"
-    rc-menu "~7.0.2"
-    rc-notification "~3.2.0"
-    rc-pagination "~1.16.1"
-    rc-progress "~2.2.2"
-    rc-rate "~2.4.0"
-    rc-select "~8.1.1"
-    rc-slider "~8.6.0"
-    rc-steps "~3.1.0"
-    rc-switch "~1.6.0"
-    rc-table "~6.2.0"
-    rc-tabs "~9.3.3"
-    rc-time-picker "~3.3.0"
-    rc-tooltip "~3.7.0"
-    rc-tree "~1.14.3"
-    rc-tree-select "~2.1.0"
-    rc-trigger "^2.5.4"
-    rc-upload "~2.5.0"
-    rc-util "^4.0.4"
-    react-lazy-load "^3.0.12"
-    react-lifecycles-compat "^3.0.2"
-    react-slick "~0.23.1"
-    shallowequal "^1.0.1"
-    warning "~4.0.1"
-
-antd@^3.9.0:
+antd@^3.8.1, antd@^3.9.0:
   version "3.9.0"
   resolved "http://registry.npm.taobao.org/antd/download/antd-3.9.0.tgz#fa6e0e7e5570dad6a381fc938110a714ecfcae70"
   dependencies:
@@ -2394,8 +2341,8 @@ babel-loader@^7.1.2:
     mkdirp "^0.5.1"
 
 babel-loader@^8.0.0:
-  version "8.0.1"
-  resolved "http://registry.npm.taobao.org/babel-loader/download/babel-loader-8.0.1.tgz#b1a45e81bb21b6f47b1df2e67d4c7fd7a64e8ad3"
+  version "8.0.2"
+  resolved "http://registry.npm.taobao.org/babel-loader/download/babel-loader-8.0.2.tgz#2079b8ec1628284a929241da3d90f5b3de2a5ae5"
   dependencies:
     find-cache-dir "^1.0.0"
     loader-utils "^1.0.2"
@@ -2854,9 +2801,9 @@ babel-preset-react@^6.24.1, babel-preset-react@^6.5.0:
     babel-plugin-transform-react-jsx-source "^6.22.0"
     babel-preset-flow "^6.23.0"
 
-babel-preset-umi@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/babel-preset-umi/download/babel-preset-umi-1.0.0-rc.1.tgz#25dddbd930270fb6ff8dac963b3963ea06af0893"
+babel-preset-umi@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/babel-preset-umi/download/babel-preset-umi-1.0.0.tgz#d62a220e54c4147b4f18ebf95b26cbbd870461cb"
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
@@ -5750,7 +5697,7 @@ es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
     es6-symbol "~3.1.1"
     next-tick "1"
 
-es5-imcompatible-versions@^0.1.15:
+es5-imcompatible-versions@^0.1.22:
   version "0.1.22"
   resolved "http://registry.npm.taobao.org/es5-imcompatible-versions/download/es5-imcompatible-versions-0.1.22.tgz#d051b0c1540dd5cb44a2dcbe44de4a1523707df5"
 
@@ -10177,13 +10124,9 @@ mockjs@^1.0.1-beta3:
   dependencies:
     commander "*"
 
-moment@2.x, moment@^2.19.3:
+moment@2.x, moment@^2.19.3, moment@^2.22.2:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
-
-moment@^2.22.2:
-  version "2.22.2"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 moo@^0.4.3:
   version "0.4.3"
@@ -15651,15 +15594,15 @@ uglifyjs-webpack-plugin@^1.1.2, uglifyjs-webpack-plugin@^1.2.4:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-umi-build-dev@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.0-rc.1.tgz#8c6808f008d52fd651261d094a03f124febcd63a"
+umi-build-dev@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.0.tgz#a07b8033bb570110c8c140f882caf6f8dc64a884"
   dependencies:
     "@babel/runtime" "^7.0.0"
     address "^1.0.3"
-    af-webpack "^1.0.0-rc.1"
+    af-webpack "^1.0.0"
     atool-monitor "^1.0.6"
-    babel-preset-umi "^1.0.0-rc.1"
+    babel-preset-umi "^1.0.0"
     body-parser "^1.18.2"
     chalk "^2.1.0"
     cheerio "^1.0.0-rc.2"
@@ -15696,7 +15639,7 @@ umi-build-dev@^1.0.0-rc.1:
     rimraf "^2.6.1"
     string.prototype.padend "^3.0.0"
     umi-history "^0.1.0"
-    umi-test "^1.0.0-rc.1"
+    umi-test "^1.0.0"
     umi-utils "^0.2.2"
     yeoman-generator "^3.1.1"
 
@@ -15715,17 +15658,17 @@ umi-history@^0.1.0:
     value-equal "^0.4.0"
     warning "^3.0.0"
 
-umi-plugin-dll@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.0.0-rc.1.tgz#004fc76a51e9a2eb23731171e80ff291cbbe07f9"
+umi-plugin-dll@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.0.0.tgz#19be626ee074c8275850d8d73501340aeb89d636"
   dependencies:
     lodash.pullall "^4.2.0"
     lodash.uniq "^4.5.0"
     serve-static "^1.13.2"
 
-umi-plugin-dva@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.0-rc.1.tgz#c2effbc31ef726b6b1e19237d36fbf3b7443e469"
+umi-plugin-dva@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.0.tgz#2bf54ff834ed9329ca4eb44e65f24fced444f687"
   dependencies:
     babel-plugin-dva-hmr "^0.4.1"
     dva "^2.4.0"
@@ -15738,26 +15681,26 @@ umi-plugin-dva@^1.0.0-rc.1:
     path-to-regexp "^1.7.0"
     slash2 "^2.0.0"
 
-umi-plugin-locale@^2.0.0-rc.1:
-  version "2.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.0.0-rc.1.tgz#ac14b7e6085fd7f52afb828ad9025ee07291abf5"
+umi-plugin-locale@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.0.0.tgz#a0b8080eeb606b7586e1931e7ce96da9ea8320dd"
   dependencies:
     mustache "^2.3.0"
     prop-types "^15.6.2"
     react-intl "^2.4.0"
     umi-utils "^0.2.2"
 
-umi-plugin-polyfills@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.0-rc.1.tgz#8e70a6db6e4fdf75d9173c49a77269eb73229f7c"
+umi-plugin-polyfills@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.0.tgz#6873b57ec668b71e22335be9bef8c742015e4c89"
   dependencies:
     core-js "^2.5.7"
     raf "3.4.0"
     url-polyfill "^1.0.14"
 
-umi-plugin-react@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.0-rc.1.tgz#5bba250df1eda61392b47b363965bb1407d206c3"
+umi-plugin-react@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.0.tgz#29bc7981ece2485622761a1416f5f1b4367d8748"
   dependencies:
     antd "^3.8.1"
     antd-mobile "^2.2.3"
@@ -15770,28 +15713,28 @@ umi-plugin-react@^1.0.0-rc.1:
     preact-compat "^3.18.3"
     register-service-worker "^1.4.1"
     umi-hd "^5.0.1"
-    umi-plugin-dll "^1.0.0-rc.1"
-    umi-plugin-dva "^1.0.0-rc.1"
-    umi-plugin-locale "^2.0.0-rc.1"
-    umi-plugin-polyfills "^1.0.0-rc.1"
-    umi-plugin-routes "^1.0.0-rc.1"
+    umi-plugin-dll "^1.0.0"
+    umi-plugin-dva "^1.0.0"
+    umi-plugin-locale "^2.0.0"
+    umi-plugin-polyfills "^1.0.0"
+    umi-plugin-routes "^1.0.0"
     webpack "^4.16.5"
     workbox-webpack-plugin "^3.4.1"
 
-umi-plugin-routes@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.0.0-rc.1.tgz#81065f12f40bf216b5f277355f2cb02ac0a8e89b"
+umi-plugin-routes@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.0.0.tgz#06a75d65ae9e286de53ba8938a5a017151074c41"
 
-umi-test@^1.0.0-rc.1:
-  version "1.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi-test/download/umi-test-1.0.0-rc.1.tgz#234e667ee730be528aa6d6c84686f7bf7fb51ae6"
+umi-test@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/umi-test/download/umi-test-1.0.0.tgz#c2697fa8b5ef48341f7ac40159b9ae8748c84a13"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     babel-core "7.0.0-bridge.0"
     babel-jest "^23.4.2"
     babel-plugin-module-resolver "^3.1.1"
-    babel-preset-umi "^1.0.0-rc.1"
+    babel-preset-umi "^1.0.0"
     debug "^3.1.0"
     enzyme "^3.4.1"
     enzyme-adapter-react-16 "^1.2.0"
@@ -15809,14 +15752,14 @@ umi-utils@^0.2.2:
   dependencies:
     slash2 "^2.0.0"
 
-umi@^2.0.0-rc.1:
-  version "2.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.0-rc.1.tgz#249f2adb709a2a353f9c759192757e3439c26f1f"
+umi@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.0.tgz#5378e3c25073f40c52ae72f820045c52cdf1f17a"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     "@types/react" "^16.4.9"
-    babel-preset-umi "^1.0.0-rc.1"
+    babel-preset-umi "^1.0.0"
     chai "^4.1.2"
     cross-spawn "^6.0.5"
     debug "^3.1.0"
@@ -15827,7 +15770,7 @@ umi@^2.0.0-rc.1:
     react-loadable "^5.5.0"
     resolve-cwd "^2.0.0"
     slash2 "^2.0.0"
-    umi-build-dev "^1.0.0-rc.1"
+    umi-build-dev "^1.0.0"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"
     url "^0.11.0"
