@@ -39,8 +39,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^7.1.1",
-    "@commitlint/config-angular": "^7.0.1",
-    "@commitlint/config-lotus": "npm:commitlint-config-lotus",
+    "@commitlint/config-angular": "^7.1.1",
     "@types/classnames": "^2.2.6",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.7",
@@ -75,8 +74,8 @@
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.0.0-rc.1",
-    "umi-plugin-react": "^1.0.0-rc.1"
+    "umi": "^2.0.0",
+    "umi-plugin-react": "^1.0.0"
   },
   "husky": {
     "hooks": {
