@@ -1064,19 +1064,15 @@
     lodash.pick "4.4.0"
     meow "^5.0.0"
 
-"@commitlint/config-angular-type-enum@^7.0.0":
-  version "7.0.0"
-  resolved "http://registry.npm.taobao.org/@commitlint/config-angular-type-enum/download/@commitlint/config-angular-type-enum-7.0.0.tgz#69702ba80a56a3d8bab3cc32898e496045d13323"
+"@commitlint/config-angular-type-enum@^7.1.1":
+  version "7.1.1"
+  resolved "http://registry.npm.taobao.org/@commitlint/config-angular-type-enum/download/@commitlint/config-angular-type-enum-7.1.1.tgz#971be030aac7bb9566c205e68e8c6f5275493d76"
 
-"@commitlint/config-angular@^7.0.1":
-  version "7.0.1"
-  resolved "http://registry.npm.taobao.org/@commitlint/config-angular/download/@commitlint/config-angular-7.0.1.tgz#559db668855076fe7e845a71ed490eacb7314903"
+"@commitlint/config-angular@^7.1.1":
+  version "7.1.1"
+  resolved "http://registry.npm.taobao.org/@commitlint/config-angular/download/@commitlint/config-angular-7.1.1.tgz#21633f92049bb3c7756fd342d5d97f13f7e4c217"
   dependencies:
-    "@commitlint/config-angular-type-enum" "^7.0.0"
-
-"@commitlint/config-lotus@npm:commitlint-config-lotus":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/commitlint-config-lotus/-/commitlint-config-lotus-0.0.4.tgz#f1ab5637f5d3434c757a4b7b7d45eb97905b2db5"
+    "@commitlint/config-angular-type-enum" "^7.1.1"
 
 "@commitlint/ensure@^7.1.1":
   version "7.1.1"
