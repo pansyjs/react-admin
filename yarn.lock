@@ -2066,13 +2066,13 @@ async-validator@1.x:
   dependencies:
     babel-runtime "6.x"
 
-async@2.6.1, async@^2.1.2, async@^2.1.4, async@^2.4.1, async@^2.6.0:
+async@2.6.1, async@^2.1.2, async@^2.1.4, async@^2.4.1, async@^2.5.0, async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
   dependencies:
     lodash "^4.17.10"
 
-async@^1.4.0, async@^1.5.2:
+async@^1.5.2:
   version "1.5.2"
   resolved "http://registry.npm.taobao.org/async/download/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -2122,12 +2122,23 @@ autoprefixer@^7.1.2, autoprefixer@^7.1.4:
     postcss "^6.0.17"
     postcss-value-parser "^3.2.3"
 
-autoprefixer@^9.0.0, autoprefixer@^9.1.1:
+autoprefixer@^9.0.0:
   version "9.1.3"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.1.3.tgz#bd5940ccb9d1bfa3508308659915f0a14394c8d5"
   dependencies:
     browserslist "^4.0.2"
     caniuse-lite "^1.0.30000878"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^7.0.2"
+    postcss-value-parser "^3.2.3"
+
+autoprefixer@^9.1.1:
+  version "9.1.5"
+  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-9.1.5.tgz#8675fd8d1c0d43069f3b19a2c316f3524e4f6671"
+  dependencies:
+    browserslist "^4.1.0"
+    caniuse-lite "^1.0.30000884"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.2"
@@ -3532,9 +3543,9 @@ caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000878"
   resolved "http://registry.npm.taobao.org/caniuse-db/download/caniuse-db-1.0.30000878.tgz#0d0c6d8500c3aea21441fad059bce4b8f3f509df"
 
-caniuse-lite@^1.0.0:
-  version "1.0.30000883"
-  resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000883.tgz#597c1eabfb379bd9fbeaa778632762eb574706ac"
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000884:
+  version "1.0.30000884"
+  resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000884.tgz#eb82a959698745033b26a4dcd34d89dba7cc6eb3"
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000876, caniuse-lite@^1.0.30000878:
   version "1.0.30000878"
@@ -4200,9 +4211,15 @@ conventional-commits-parser@^2.1.0:
     through2 "^2.0.0"
     trim-off-newlines "^1.0.0"
 
-convert-source-map@^1.1.0, convert-source-map@^1.1.1, convert-source-map@^1.4.0, convert-source-map@^1.5.1:
+convert-source-map@^1.1.0, convert-source-map@^1.1.1, convert-source-map@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
+
+convert-source-map@^1.4.0:
+  version "1.6.0"
+  resolved "http://registry.npm.taobao.org/convert-source-map/download/convert-source-map-1.6.0.tgz#51b537a8c43e0f04dec1993bffcdd504e758ac20"
+  dependencies:
+    safe-buffer "~5.1.1"
 
 cookie-signature@1.0.6:
   version "1.0.6"
@@ -5594,8 +5611,8 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
 enzyme-adapter-react-16@^1.2.0:
-  version "1.3.1"
-  resolved "http://registry.npm.taobao.org/enzyme-adapter-react-16/download/enzyme-adapter-react-16-1.3.1.tgz#a0f04273aee62c47521da7a2f6c7134182bd7f73"
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/enzyme-adapter-react-16/download/enzyme-adapter-react-16-1.4.0.tgz#c70aa6d085c5a6708b032406f5c73280d3f6a34b"
   dependencies:
     enzyme-adapter-utils "^1.6.0"
     function.prototype.name "^1.1.0"
@@ -5606,16 +5623,16 @@ enzyme-adapter-react-16@^1.2.0:
     react-test-renderer "^16.0.0-0"
 
 enzyme-adapter-utils@^1.6.0:
-  version "1.6.1"
-  resolved "http://registry.npm.taobao.org/enzyme-adapter-utils/download/enzyme-adapter-utils-1.6.1.tgz#f19acb8b23ddd21b2de99506b181e46138368f2a"
+  version "1.7.0"
+  resolved "http://registry.npm.taobao.org/enzyme-adapter-utils/download/enzyme-adapter-utils-1.7.0.tgz#83faceaf6d4dc9d3ce123c1b5200feefca04a59a"
   dependencies:
     function.prototype.name "^1.1.0"
     object.assign "^4.1.0"
     prop-types "^15.6.2"
 
 enzyme@^3.4.1:
-  version "3.5.1"
-  resolved "http://registry.npm.taobao.org/enzyme/download/enzyme-3.5.1.tgz#aad0cbd005fee4cfd800b6451b64112b5374da67"
+  version "3.6.0"
+  resolved "http://registry.npm.taobao.org/enzyme/download/enzyme-3.6.0.tgz#d213f280a258f61e901bc663d4cc2d6fd9a9dec8"
   dependencies:
     array.prototype.flat "^1.2.1"
     cheerio "^1.0.0-rc.2"
@@ -7251,14 +7268,14 @@ handle-thing@^1.2.5:
   resolved "http://registry.npm.taobao.org/handle-thing/download/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
 
 handlebars@^4.0.11:
-  version "4.0.11"
-  resolved "http://registry.npm.taobao.org/handlebars/download/handlebars-4.0.11.tgz#630a35dfe0294bc281edae6ffc5d329fc7982dcc"
+  version "4.0.12"
+  resolved "http://registry.npm.taobao.org/handlebars/download/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
   dependencies:
-    async "^1.4.0"
+    async "^2.5.0"
     optimist "^0.6.1"
-    source-map "^0.4.4"
+    source-map "^0.6.1"
   optionalDependencies:
-    uglify-js "^2.6"
+    uglify-js "^3.1.4"
 
 har-schema@^1.0.5:
   version "1.0.5"
@@ -7784,8 +7801,8 @@ imagemin@^5.3.1:
     replace-ext "^1.0.0"
 
 immer@^1.2.1:
-  version "1.5.0"
-  resolved "http://registry.npm.taobao.org/immer/download/immer-1.5.0.tgz#1ed9b1b653643fe9276bbc36377613523ea32a39"
+  version "1.6.0"
+  resolved "http://registry.npm.taobao.org/immer/download/immer-1.6.0.tgz#4e41801272d64bff12d4b58ada0276bb2f4ead81"
 
 immutability-helper@^2.7.1:
   version "2.7.1"
@@ -14228,7 +14245,7 @@ setprototypeof@1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/setprototypeof/download/setprototypeof-1.0.3.tgz#66567e37043eeb4f04d91bd658c0cbefb55b8e04"
 
-setprototypeof@1.1.0:
+setprototypeof@1.1.0, setprototypeof@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/setprototypeof/download/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
 
@@ -14473,7 +14490,7 @@ source-map@0.1.32:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.4.2, source-map@^0.4.4:
+source-map@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   dependencies:
@@ -15562,14 +15579,14 @@ uglify-es@^3.3.4:
     commander "~2.13.0"
     source-map "~0.6.1"
 
-uglify-js@3.4.x:
+uglify-js@3.4.x, uglify-js@^3.1.4:
   version "3.4.9"
   resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
 
-uglify-js@^2.6, uglify-js@^2.6.2, uglify-js@^2.8.29:
+uglify-js@^2.6.2, uglify-js@^2.8.29:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   dependencies:
@@ -15603,9 +15620,9 @@ uglifyjs-webpack-plugin@^1.1.2, uglifyjs-webpack-plugin@^1.2.4:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-umi-build-dev@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.1.tgz#962120ae4cfe9318f7470df2230100128ec633c0"
+umi-build-dev@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-1.0.2.tgz#87b502d00f07618d1e49db241dcc685baea7a719"
   dependencies:
     "@babel/runtime" "^7.0.0"
     address "^1.0.3"
@@ -15676,9 +15693,9 @@ umi-plugin-dll@^1.0.0:
     lodash.uniq "^4.5.0"
     serve-static "^1.13.2"
 
-umi-plugin-dva@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.0.tgz#2bf54ff834ed9329ca4eb44e65f24fced444f687"
+umi-plugin-dva@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.0.1.tgz#911cc0734d5517555c3bc00c7bc0280b2dcfbc96"
   dependencies:
     babel-plugin-dva-hmr "^0.4.1"
     dva "^2.4.0"
@@ -15700,17 +15717,18 @@ umi-plugin-locale@^2.0.0:
     react-intl "^2.4.0"
     umi-utils "^0.2.2"
 
-umi-plugin-polyfills@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.1.tgz#a1aba8d389f51f0d0a531550a33055c1d973f680"
+umi-plugin-polyfills@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/umi-plugin-polyfills/download/umi-plugin-polyfills-1.0.2.tgz#9e56c9c462356ad91010b4d35157feb9b8521e2c"
   dependencies:
     core-js "^2.5.7"
     raf "3.4.0"
+    setprototypeof "^1.1.0"
     url-polyfill "^1.0.14"
 
-umi-plugin-react@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.1.tgz#c00f2ae9e2bcbc34de7564d79be326209b870725"
+umi-plugin-react@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.0.2.tgz#966c5a9528b040a60e8ae4f64bb177ff18813151"
   dependencies:
     antd "^3.8.1"
     antd-mobile "^2.2.3"
@@ -15724,9 +15742,9 @@ umi-plugin-react@^1.0.1:
     register-service-worker "^1.4.1"
     umi-hd "^5.0.1"
     umi-plugin-dll "^1.0.0"
-    umi-plugin-dva "^1.0.0"
+    umi-plugin-dva "^1.0.1"
     umi-plugin-locale "^2.0.0"
-    umi-plugin-polyfills "^1.0.1"
+    umi-plugin-polyfills "^1.0.2"
     umi-plugin-routes "^1.0.0"
     webpack "^4.16.5"
     workbox-webpack-plugin "^3.4.1"
@@ -15762,9 +15780,9 @@ umi-utils@^0.2.2:
   dependencies:
     slash2 "^2.0.0"
 
-umi@^2.0.1:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.1.tgz#dbbc414ec574336b36e3aee689d2c8aefee6ea72"
+umi@^2.0.2:
+  version "2.0.2"
+  resolved "http://registry.npm.taobao.org/umi/download/umi-2.0.2.tgz#b4c079d58b842b4ad0a8de65212cfc66b4f46512"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -15780,7 +15798,7 @@ umi@^2.0.1:
     react-loadable "^5.5.0"
     resolve-cwd "^2.0.0"
     slash2 "^2.0.0"
-    umi-build-dev "^1.0.1"
+    umi-build-dev "^1.0.2"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"
     url "^0.11.0"
