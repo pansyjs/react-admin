@@ -3,13 +3,30 @@ import { Tag } from 'antd';
 
 const CheckableTag = Tag.CheckableTag;
 
-class TagSelectOption extends React.Component {
+export interface TagSelectOptionProps {
+  checked?: boolean;
+  onChange?: (value: string | number, state: boolean) => void;
+  value: number | string;
+}
+
+class TagSelectOption extends React.Component<TagSelectOptionProps, any> {
+  static isTagSelectOption = true;
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <div>134</div>;
+    const { checked, children, value, onChange } = this.props;
+    return (
+      <CheckableTag
+        checked={checked}
+        key={value}
+        onChange={(state) => onChange(value, state)}
+      >
+        {children}
+      </CheckableTag>
+    );
   }
 }
 
