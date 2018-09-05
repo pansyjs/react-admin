@@ -21,14 +21,19 @@ class AvatarList extends React.Component<AvatarListProps, any> {
   render() {
     const { size, children } = this.props;
 
-    const childrenWithProps = React.Children.map(children, (child) => {
-      // @ts-ignore
-      return React.cloneElement(child, {
-        size
-      });
-    });
+    const childrenWithProps = [];
 
-    console.log(size);
+    React.Children.map(
+      children as React.ReactNode,
+      (child: React.ReactElement<any>, index) => {
+        childrenWithProps.push(
+          React.cloneElement(child, {
+            size,
+            key: child.key || index
+          })
+        );
+      }
+    );
 
     return <div className={styles.avatarList}>{childrenWithProps}</div>;
   }
