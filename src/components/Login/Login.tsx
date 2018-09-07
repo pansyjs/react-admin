@@ -1,15 +1,16 @@
 import React from 'react';
+import { Form, Tabs, Button } from 'antd';
+import { FormComponentProps } from 'antd/lib/form';
 import ClassNames from 'classnames';
-import { Form, Tabs } from 'antd';
 import LoginContext from './LoginContext';
+import LoginTab from './LoginTab';
 import styles from 'index.scss';
 
-export interface LoginProps {
+export interface LoginProps extends FormComponentProps {
   className?: string;
-  defaultActiveKey: string;
-  onTabChange?: () => {},
-  onSubmit?: () => {},
-  from: any
+  defaultActiveKey?: string;
+  onTabChange?: (key: string) => void;
+  onSubmit?: (error: any, values: any) => void;
 }
 
 export interface LoginStates {
@@ -19,6 +20,9 @@ export interface LoginStates {
 }
 
 class Login extends React.Component<LoginProps, LoginStates> {
+  static Tab: typeof LoginTab;
+  static Submit: typeof Button;
+
   constructor(props: LoginProps) {
     super(props);
     this.state = {
@@ -30,7 +34,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
   // 设置默认的props
   static defaultProps: Partial<LoginProps> = {
-    className: '',
+    className: ''
   };
 
   getContext() {
@@ -38,19 +42,19 @@ class Login extends React.Component<LoginProps, LoginStates> {
     const { from } = this.props;
     return {
       tabUtil: {
-        addTab: id => {
+        addTab: (id) => {
           this.setState({
             tabs: [...tabs, id]
-          })
+          });
         },
-        removeTab: id => {
+        removeTab: (id) => {
           this.setState({
-            tabs: tabs.filter(currentId => currentId !== id)
-          })
+            tabs: tabs.filter((currentId) => currentId !== id)
+          });
         }
       },
       from,
-      updateActive: activeItem => {
+      updateActive: (activeItem) => {
         const { type, active } = this.state;
         if (active[type]) {
           active[type].push(activeItem);
@@ -61,7 +65,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
           active
         });
       }
-    }
+    };
   }
 
   handleSubmit = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -69,29 +73,69 @@ class Login extends React.Component<LoginProps, LoginStates> {
     const { onSubmit } = this.props;
   };
 
+  isLoginTab = (node) => {
+    return (
+      node &&
+      node.type &&
+      (node.type.typeName === 'LoginTab' ||
+        node.type.displayName === 'LoginTab')
+    );
+  };
+
+  onSwitch = (type) => {
+    this.setState({
+      type
+    });
+    const { onTabChange } = this.props;
+    onTabChange(type);
+  };
+
   render() {
     const { className, children } = this.props;
     const { type, tabs } = this.state;
-    const TabChildren = [];
-    const OtherChildren = [];
-    React.Children.forEach(children, item => {
-      if (!item) {
-        return;
+    const cls = ClassNames(className, styles.login);
+    const tabChildren = [];
+    const otherChildren = [];
+    React.Children.forEach(
+      children as React.ReactNode,
+      (child: React.ReactElement<any>) => {
+        if (!child) {
+          return;
+        }
+        if (this.isLoginTab(child)) {
+          tabChildren.push(child);
+        } else {
+          otherChildren.push(child);
+        }
       }
-      // if (item.type.typeName === 'LoginTab') {
-      //   TabChildren.push(item);
-      // } else {
-      //   OtherChildren.push(item);
-      // }
-    });
+    );
+
     return (
       <div>
         <LoginContext.Provider value={this.getContext()}>
-          <div>123</div>
+          <div className={cls}>
+            <Form onSubmit={this.handleSubmit}>
+              {tabs.length ? (
+                <React.Fragment>
+                  <Tabs
+                    animated={false}
+                    className={styles.tabs}
+                    activeKey={type}
+                    onChange={this.onSwitch}
+                  >
+                    {tabChildren}
+                  </Tabs>
+                  {otherChildren}
+                </React.Fragment>
+              ) : (
+                { children }
+              )}
+            </Form>
+          </div>
         </LoginContext.Provider>
       </div>
-    )
+    );
   }
 }
 
-export default Login;
+export default Form.create()(Login);

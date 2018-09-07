@@ -3,7 +3,6 @@ import { Tabs } from 'antd';
 import LoginContext from './LoginContext';
 
 const { TabPane } = Tabs;
-const Consumer = LoginContext.Consumer;
 
 const generateId = (() => {
   let i = 0;
@@ -38,7 +37,7 @@ class LoginTab extends React.Component<LoginTabProps, any> {
   }
 }
 
-class warpContext extends React.Component {
+class wrapContext extends React.Component {
   static typeName: string;
 
   constructor(props) {
@@ -46,17 +45,14 @@ class warpContext extends React.Component {
   }
 
   render() {
-    const {} = this.props;
     return (
-      <Consumer>
-        {(value) => {
-          return <LoginTab tabUtil={value.tabUtil} {...this.props} />;
-        }}
-      </Consumer>
+      <LoginContext.Consumer>
+        {(value) => <LoginTab tabUtil={value.tabUtil} {...this.props} />}
+      </LoginContext.Consumer>
     );
   }
 }
 
-warpContext.typeName = 'LoginTab';
+wrapContext.typeName = 'LoginTab';
 
-export default warpContext;
+export default wrapContext;
