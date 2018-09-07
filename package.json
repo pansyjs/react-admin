@@ -35,6 +35,7 @@
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.4.0",
     "rollbar": "^2.4.4",
+    "store": "^2.0.12",
     "xlsx": "^0.13.5"
   },
   "devDependencies": {
@@ -50,6 +51,7 @@
     "@types/react-document-title": "^2.0.2",
     "@types/react-dom": "^16.0.6",
     "@types/react-intl": "^2.3.9",
+    "@types/store": "^2.0.0",
     "bisheng": "^0.28.0",
     "bisheng-plugin-antd": "^0.16.5",
     "bisheng-plugin-description": "^0.1.4",
