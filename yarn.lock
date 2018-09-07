@@ -25,9 +25,9 @@
   dependencies:
     "@antv/util" "~1.0.11"
 
-"@antv/data-set@^0.9.4":
-  version "0.9.4"
-  resolved "http://registry.npm.taobao.org/@antv/data-set/download/@antv/data-set-0.9.4.tgz#4cef29e9a30cf0ac6f2380a2f987f524e2269f90"
+"@antv/data-set@^0.9.5":
+  version "0.9.5"
+  resolved "http://registry.npm.taobao.org/@antv/data-set/download/@antv/data-set-0.9.5.tgz#0c1207530434328ed62bbaa36f8154b23fbde1f8"
   dependencies:
     "@antv/hierarchy" "~0.3.14"
     "@antv/util" "~1.1.1"

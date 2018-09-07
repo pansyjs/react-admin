@@ -18,7 +18,7 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@antv/data-set": "^0.9.4",
+    "@antv/data-set": "^0.9.5",
     "antd": "^3.9.1",
     "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
