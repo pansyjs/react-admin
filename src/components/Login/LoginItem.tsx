@@ -6,7 +6,13 @@ import LoginContext from './LoginContext';
 const FormItem = Form.Item;
 
 export interface LoginItemProps {
-  type: string;
+  name?: string;
+  rules?: any[];
+  style?: React.CSSProperties;
+  onGetCaptcha?: () => void;
+  placeholder?: string;
+  buttonText?: React.ReactNode;
+  form: any;
 }
 
 class WarpFormItem extends React.Component<LoginItemProps, any> {
@@ -15,17 +21,16 @@ class WarpFormItem extends React.Component<LoginItemProps, any> {
   }
 
   render() {
-    const { type } = this.props;
+    const {
+      form: { getFieldDecorator }
+    } = this.props;
 
-    if (type === 'Captcha') {
-      return (
-        <div>123</div>
-      )
-    }
+    const { buttonText, name } = this.props;
+
+    return <FormItem>{getFieldDecorator}</FormItem>;
   }
 }
 
 const LoginItem = {};
 
 export default LoginItem;
-
