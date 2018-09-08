@@ -1,5 +1,6 @@
 import React from 'react';
-import Exception from '@components/Exception';
+import { Button } from 'antd';
+import FooterToolbar from '@components/FooterToolbar';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,10 @@ class App extends React.Component {
     return (
       <div>
         hello, 欢迎加入九毛科技。
-        <Exception />
+        <FooterToolbar extra="extra information">
+          <Button>Cancel</Button>
+          <Button type="primary">Submit</Button>
+        </FooterToolbar>
       </div>
     );
   }
