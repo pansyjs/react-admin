@@ -20,7 +20,8 @@ export default {
       locale: {},
       library: 'react',
       dynamicImport: {
-        webpackChunkName: true
+        webpackChunkName: true,
+        loadingComponent: './components/PageLoading/index'
       },
       dll: {
         exclude: [],
