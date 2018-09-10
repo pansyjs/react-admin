@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[3],{"i6+/":function(e,t,a){"use strict";var n=a("TqRt");Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var u=n(a("q1tI")),d=function(){return u.default.createElement("div",null,"I am a customized 404 page")};t.default=d}}]);
