@@ -15,7 +15,8 @@
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@icons/*": ["src/icons/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "exclude": [
