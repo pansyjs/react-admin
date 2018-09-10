@@ -11,7 +11,10 @@
     "lint-staged:ts": "npm run tsc",
     "lint:ts": "eslint --ext .tsx src mock",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "test:component": "umi test ./src/components",
     "commitmsg": "commitlint --env HUSKY_GIT_PARAMS",
+    "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
+    "build:view": "npm run build && cd ./dist && anywhere -p 8080",
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",

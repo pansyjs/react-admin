@@ -29,6 +29,7 @@ export default {
       },
     }]
   ],
+  publicPath: './',
   alias: {
     '@': resolve(__dirname, 'src'),
     '@assets': resolve(__dirname, 'src/assets'),
