@@ -6,7 +6,3 @@ package-lock.json
 /src/pages/.umi
 /.vscode/.react
 /.vscode/settings.json
-
-src/**/*.js
-src/**/*.js.map
-src/**/*.jsx

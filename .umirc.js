@@ -20,7 +20,8 @@ export default {
       locale: {},
       library: 'react',
       dynamicImport: {
-        webpackChunkName: true
+        webpackChunkName: true,
+        loadingComponent: './components/PageLoading/index'
       },
       dll: {
         exclude: [],
@@ -28,6 +29,7 @@ export default {
       },
     }]
   ],
+  publicPath: './',
   alias: {
     '@': resolve(__dirname, 'src'),
     '@assets': resolve(__dirname, 'src/assets'),
