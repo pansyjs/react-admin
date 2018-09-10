@@ -4,6 +4,11 @@ $primary-color: $blue-6;
 $success-color: $green-6;
 $error-color: $red-6;
 
+// Background color for `<body>`
+$body-background: #fff;
+// Base background color for most components
+$component-background: #fff;
+
 $heading-color: fade(#000, 85%);
 $text-color: fade(#000, 65%);
 $text-color-secondary: fade(#000, 45%);
@@ -12,8 +17,11 @@ $border-radius-sm: 2px;
 
 $font-size-base: 14px;
 
-$border-color-base: #d9d9d9;
+// Border
+$border-color-base: hsl(0, 0, 85%);
 $border-color-split: hsl(0, 0, 91%);
+$border-width-base: 1px; // width of the border for a component
+$border-style-base: solid; // style of a components border
 
 // Disabled states
 $disabled-color: fade(#000, 25%);
