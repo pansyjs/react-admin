@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
-import FooterToolbar from '@components/FooterToolbar';
+import CountDown from '@components/CountDown';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,13 +7,12 @@ class App extends React.Component {
   }
 
   render() {
+    const targetTime = new Date().getTime() + 3900000;
+
     return (
       <div>
         hello, 欢迎加入九毛科技。
-        <FooterToolbar extra="extra information">
-          <Button>Cancel</Button>
-          <Button type="primary">Submit</Button>
-        </FooterToolbar>
+        <CountDown style={{ fontSize: 20 }} target={targetTime} />
       </div>
     );
   }
