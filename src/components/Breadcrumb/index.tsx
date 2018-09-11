@@ -8,12 +8,12 @@ export interface LotusBreadcrumbProps {
   breadcrumbList?: Array<{ title: React.ReactNode; href?: string }>;
   breadcrumbSeparator?: React.ReactNode;
   linkElement?: React.ReactNode;
-  breadcrumbNameMap: object;
+  breadcrumbNameMap?: object;
   itemRender?: (menuItem) => React.ReactNode;
   routes?: any[];
   params?: object;
-  home: React.ReactNode;
-  location: any;
+  home?: React.ReactNode;
+  location?: any;
 }
 
 export const getBreadcrumb = (breadcrumbNameMap, url) => {
