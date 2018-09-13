@@ -13,9 +13,8 @@ const generateId = (() => {
 })();
 
 export interface LoginTabProps {
-  tabUtil: {
-    addTab: (id: string) => void;
-  };
+  key?: string;
+  tab?: React.ReactNode;
 }
 
 class LoginTab extends React.Component<LoginTabProps, any> {
@@ -27,8 +26,8 @@ class LoginTab extends React.Component<LoginTabProps, any> {
   }
 
   componentWillMount() {
-    const { tabUtil } = this.props;
-    tabUtil.addTab(this.uniqueId);
+    // const { tabUtil } = this.props;
+    // tabUtil.addTab(this.uniqueId);
   }
 
   render() {
@@ -37,22 +36,4 @@ class LoginTab extends React.Component<LoginTabProps, any> {
   }
 }
 
-class wrapContext extends React.Component {
-  static typeName: string;
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <LoginContext.Consumer>
-        {(value) => <LoginTab tabUtil={value.tabUtil} {...this.props} />}
-      </LoginContext.Consumer>
-    );
-  }
-}
-
-wrapContext.typeName = 'LoginTab';
-
-export default wrapContext;
+export default LoginTab;
