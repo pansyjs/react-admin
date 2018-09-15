@@ -9,6 +9,7 @@ export interface LoginSubmitProps {
   className?: string;
 }
 
+// 提交登录表单组件
 class LoginSubmit extends React.Component<LoginSubmitProps, any> {
   static defaultProps = {
     className: ''
@@ -20,15 +21,15 @@ class LoginSubmit extends React.Component<LoginSubmitProps, any> {
 
   render() {
     const { className, ...restProps } = this.props;
-    const clsString = ClassNames(styles.submit, className);
+    const cls = ClassNames(styles.submit, className);
 
     return (
       <FormItem>
         <Button
+          className={cls}
           size="large"
           type="primary"
           htmlType="submit"
-          className={clsString}
           {...restProps}
         />
       </FormItem>

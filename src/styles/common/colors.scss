@@ -7,6 +7,131 @@ $red-6: #f5222d;
 $orange-6: #fa8c16;
 $yellow-6: #fadb14;
 $volcano-6: #fa541c;
-$geekblue-6: #2f54eb;
 $lime-6: #a0d911;
-$gold-6: #faad14;
+
+/* Colors
+-------------------------- */
+$white: #fff !default;
+$black: #000 !default;
+
+// color palettes
+$blue: #1890ff !default;
+$blue-1: mix($white, $blue, 10%) !default;
+$blue-2: mix($white, $blue, 20%) !default;
+$blue-3: mix($white, $blue, 30%) !default;
+$blue-4: mix($white, $blue, 40%) !default;
+$blue-5: mix($white, $blue, 50%) !default;
+$blue-6: mix($white, $blue, 60%) !default;
+$blue-7: mix($white, $blue, 70%) !default;
+$blue-8: mix($white, $blue, 80%) !default;
+$blue-9: mix($white, $blue, 90%) !default;
+
+$purple: #722ed1 !default;
+$purple-1: mix($white, $purple, 10%) !default;
+$purple-2: mix($white, $purple, 20%) !default;
+$purple-3: mix($white, $purple, 30%) !default;
+$purple-4: mix($white, $purple, 40%) !default;
+$purple-5: mix($white, $purple, 50%) !default;
+$purple-6: mix($white, $purple, 60%) !default;
+$purple-7: mix($white, $purple, 70%) !default;
+$purple-8: mix($white, $purple, 80%) !default;
+$purple-9: mix($white, $purple, 90%) !default;
+
+$cyan: #13c2c2 !default;
+$cyan-1: mix($white, $cyan, 10%) !default;
+$cyan-2: mix($white, $cyan, 20%) !default;
+$cyan-3: mix($white, $cyan, 30%) !default;
+$cyan-4: mix($white, $cyan, 40%) !default;
+$cyan-5: mix($white, $cyan, 50%) !default;
+$cyan-6: mix($white, $cyan, 60%) !default;
+$cyan-7: mix($white, $cyan, 70%) !default;
+$cyan-8: mix($white, $cyan, 80%) !default;
+$cyan-9: mix($white, $cyan, 90%) !default;
+
+$green: #52c41a !default;
+$green-1: mix($white, $green, 10%) !default;
+$green-2: mix($white, $green, 20%) !default;
+$green-3: mix($white, $green, 30%) !default;
+$green-4: mix($white, $green, 40%) !default;
+$green-5: mix($white, $green, 50%) !default;
+$green-6: mix($white, $green, 60%) !default;
+$green-7: mix($white, $green, 70%) !default;
+$green-8: mix($white, $green, 80%) !default;
+$green-9: mix($white, $green, 90%) !default;
+
+$magenta: #eb2f96;
+$magenta-1: mix($white, $magenta, 10%) !default;
+$magenta-2: mix($white, $magenta, 20%) !default;
+$magenta-3: mix($white, $magenta, 30%) !default;
+$magenta-4: mix($white, $magenta, 40%) !default;
+$magenta-5: mix($white, $magenta, 50%) !default;
+$magenta-6: mix($white, $magenta, 60%) !default;
+$magenta-7: mix($white, $magenta, 70%) !default;
+$magenta-8: mix($white, $magenta, 80%) !default;
+$magenta-9: mix($white, $magenta, 90%) !default;
+
+$red: #f5222d;
+$red-1: mix($white, $red, 10%) !default;
+$red-2: mix($white, $red, 20%) !default;
+$red-3: mix($white, $red, 30%) !default;
+$red-4: mix($white, $red, 40%) !default;
+$red-5: mix($white, $red, 50%) !default;
+$red-6: mix($white, $red, 60%) !default;
+$red-7: mix($white, $red, 70%) !default;
+$red-8: mix($white, $red, 80%) !default;
+$red-9: mix($white, $red, 90%) !default;
+
+$orange: #fa8c16;
+$orange-1: mix($white, $orange, 10%) !default;
+$orange-2: mix($white, $orange, 20%) !default;
+$orange-3: mix($white, $orange, 30%) !default;
+$orange-4: mix($white, $orange, 40%) !default;
+$orange-5: mix($white, $orange, 50%) !default;
+$orange-6: mix($white, $orange, 60%) !default;
+$orange-7: mix($white, $orange, 70%) !default;
+$orange-8: mix($white, $orange, 80%) !default;
+$orange-9: mix($white, $orange, 90%) !default;
+
+$yellow: #fadb14 !default;
+$yellow-1: mix($white, $yellow, 10%) !default;
+$yellow-2: mix($white, $yellow, 20%) !default;
+$yellow-3: mix($white, $yellow, 30%) !default;
+$yellow-4: mix($white, $yellow, 40%) !default;
+$yellow-5: mix($white, $yellow, 50%) !default;
+$yellow-6: mix($white, $yellow, 60%) !default;
+$yellow-7: mix($white, $yellow, 70%) !default;
+$yellow-8: mix($white, $yellow, 80%) !default;
+$yellow-9: mix($white, $yellow, 90%) !default;
+
+$geek-blue: #2f54eb;
+$geek-blue-1: mix($white, $geek-blue, 10%) !default;
+$geek-blue-2: mix($white, $geek-blue, 20%) !default;
+$geek-blue-3: mix($white, $geek-blue, 30%) !default;
+$geek-blue-4: mix($white, $geek-blue, 40%) !default;
+$geek-blue-5: mix($white, $geek-blue, 50%) !default;
+$geek-blue-6: mix($white, $geek-blue, 60%) !default;
+$geek-blue-7: mix($white, $geek-blue, 70%) !default;
+$geek-blue-8: mix($white, $geek-blue, 80%) !default;
+$geek-blue-9: mix($white, $geek-blue, 90%) !default;
+
+$lime: #a0d911;
+$lime-1: mix($white, $lime, 10%) !default;
+$lime-2: mix($white, $lime, 20%) !default;
+$lime-3: mix($white, $lime, 30%) !default;
+$lime-4: mix($white, $lime, 40%) !default;
+$lime-5: mix($white, $lime, 50%) !default;
+$lime-6: mix($white, $lime, 60%) !default;
+$lime-7: mix($white, $lime, 70%) !default;
+$lime-8: mix($white, $lime, 80%) !default;
+$lime-9: mix($white, $lime, 90%) !default;
+
+$gold: #faad14;
+$gold-1: mix($white, $gold, 10%) !default;
+$gold-2: mix($white, $gold, 20%) !default;
+$gold-3: mix($white, $gold, 30%) !default;
+$gold-4: mix($white, $gold, 40%) !default;
+$gold-5: mix($white, $gold, 50%) !default;
+$gold-6: mix($white, $gold, 60%) !default;
+$gold-7: mix($white, $gold, 70%) !default;
+$gold-8: mix($white, $gold, 80%) !default;
+$gold-9: mix($white, $gold, 90%) !default;

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Tooltip, Icon, Row, Col } from 'antd';
-import { ChartCard } from '@components/Charts';
+import { WaterWave } from '@components/Charts';
 
-class App extends React.Component {
+class IndexPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -11,29 +10,10 @@ class App extends React.Component {
     return (
       <div>
         hello, 欢迎加入九毛科技。
-        <Row>
-          <Col span={4} style={{ marginTop: 24 }}>
-            <ChartCard
-              title="移动指标"
-              avatar={
-                <img
-                  style={{ width: 56, height: 56 }}
-                  src="https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png"
-                  alt="indicator"
-                />
-              }
-              action={
-                <Tooltip title="指标说明">
-                  <Icon type="info-circle-o" />
-                </Tooltip>
-              }
-              total={() => 123}
-            />
-          </Col>
-        </Row>
+        <WaterWave height={161} title="补贴资金剩余" percent={80} />
       </div>
     );
   }
 }
 
-export default App;
+export default IndexPage;
