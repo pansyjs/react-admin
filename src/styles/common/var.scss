@@ -1,8 +1,11 @@
 @import 'colors';
 
-$primary-color: $blue-6;
-$success-color: $green-6;
-$error-color: $red-6;
+$primary-color: $blue;
+$success-color: $green;
+$error-color: $red;
+
+$primary-1: darken($primary-color, 90%);
+$primary-2: darken($primary-color, 80%);
 
 // Background color for `<body>`
 $body-background: #fff;
