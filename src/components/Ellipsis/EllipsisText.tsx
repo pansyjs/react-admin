@@ -3,6 +3,7 @@ import { Tooltip } from 'antd';
 import { getStrFullLength, cutStrByFullLength } from './utils';
 
 export interface EllipsisTextProps {
+  className?: string;
   tooltip?: boolean;
   text: string;
   length?: number;
