@@ -1,5 +1,8 @@
 import React from 'react';
-import { WaterWave } from '@components/Charts';
+import EllipsisText from '@components/Ellipsis/EllipsisText';
+
+const article =
+  'There were injuries alleged in three cases in 2015, and a fourth incident in September, according to the safety recall report. After meeting with US regulators in October, the firm decided to issue a voluntary recall.';
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -10,7 +13,7 @@ class IndexPage extends React.Component {
     return (
       <div>
         hello, 欢迎加入九毛科技。
-        <WaterWave height={161} title="补贴资金剩余" percent={80} />
+        <EllipsisText length={100} text={article} />
       </div>
     );
   }
