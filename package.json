@@ -12,7 +12,7 @@
     "lint:ts": "eslint --ext .tsx src mock",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "test:component": "umi test ./src/components",
-    "commitmsg": "commitlint --env HUSKY_GIT_PARAMS",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
     "build:view": "npm run build && cd ./dist && anywhere -p 8080",
     "prettier": "prettier --write ./src/**/**/**/*"
@@ -70,7 +70,7 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-typescript": "^0.12.0",
     "gh-pages": "^1.2.0",
-    "husky": "^1.0.0-rc.13",
+    "husky": "^1.0.0",
     "image-webpack-loader": "^4.3.1",
     "lint-staged": "^7.2.2",
     "mockjs": "^1.0.1-beta3",
@@ -88,7 +88,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run precommit"
+      "pre-commit": "npm run precommit",
+      "commit-msg": "npm run commitmsg"
     }
   },
   "engines": {
