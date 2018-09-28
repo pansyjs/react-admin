@@ -16,7 +16,9 @@ export default {
           /services\//
         ],
       },
-      polyfills: ['ie9'],
+      targets: {
+        ie: 10,
+      },
       locale: {},
       library: 'react',
       dynamicImport: {
