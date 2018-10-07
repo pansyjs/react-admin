@@ -16,9 +16,6 @@ export default {
           /services\//
         ],
       },
-      targets: {
-        ie: 10,
-      },
       locale: {},
       library: 'react',
       dynamicImport: {
@@ -43,6 +40,9 @@ export default {
     '@services': resolve(__dirname, 'src/services'),
     '@styles': resolve(__dirname, 'src/styles'),
     '@utils': resolve(__dirname, 'src/utils'),
+  },
+  targets: {
+    ie: 10,
   },
   history: 'hash',
   ignoreMomentLocale: true,
