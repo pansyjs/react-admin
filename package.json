@@ -7,6 +7,7 @@
     "precommit": "npm run lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
+    "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc",
     "lint:ts": "eslint --ext .tsx src mock",
@@ -81,8 +82,8 @@
     "svg-sprite-loader": "^3.9.2",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.1.0",
-    "umi-plugin-react": "^1.1.0"
+    "umi": "^2.1.2",
+    "umi-plugin-react": "^1.1.1"
   },
   "husky": {
     "hooks": {
