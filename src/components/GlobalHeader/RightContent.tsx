@@ -1,8 +1,9 @@
-import React from 'react';
-import { Icon, Menu } from 'antd';
-import { Link } from 'dva/router';
+import React, { PureComponent } from 'react';
+import { Spin, Tag, Icon, Menu, Dropdown, Avatar, Tooltip } from 'antd';
 import groupBy from 'lodash/groupBy';
 import { ClickParam } from './index';
+import HeaderSearch from '../HeaderSearch';
+
 import styles from 'index.scss';
 
 export interface GlobalHeaderRightProps {
@@ -14,7 +15,7 @@ export interface GlobalHeaderRightProps {
   notices: any[];
 }
 
-class GlobalHeaderRight extends React.PureComponent<GlobalHeaderRightProps> {
+class GlobalHeaderRight extends PureComponent<GlobalHeaderRightProps, any> {
   constructor(props) {
     super(props);
   }
@@ -26,7 +27,7 @@ class GlobalHeaderRight extends React.PureComponent<GlobalHeaderRightProps> {
       return {};
     }
 
-    const newNotices = notices.map(notice => {
+    const newNotices = notices.map((notice) => {
       console.log(notice);
     });
 
@@ -43,10 +44,7 @@ class GlobalHeaderRight extends React.PureComponent<GlobalHeaderRightProps> {
     } = this.props;
 
     const menu = (
-      <Menu
-        className={styles.menu}
-        selectedKeys={[]}
-        onClick={onMenuClick}>
+      <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
         <Menu.Item key="userCenter">
           <Icon type="user" />
           个人中心
@@ -73,11 +71,7 @@ class GlobalHeaderRight extends React.PureComponent<GlobalHeaderRightProps> {
       className = `${styles.right}  ${styles.dark}`;
     }
 
-    return (
-      <div className={className}>
-
-      </div>
-    )
+    return <div className={className} />;
   }
 }
 
