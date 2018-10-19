@@ -1,8 +1,10 @@
 import React from 'react';
-import ClassNames from 'classnames';
 import { Popover, Icon, Tabs, Badge, Spin } from 'antd';
+import ClassNames from 'classnames';
+import { PopoverProps } from 'antd/es/popover';
+import { NoticeIconData } from './NoticeList';
 import List from './NoticeList';
-import styles from './index.scss';
+import styles from './index.less';
 
 const { TabPane } = Tabs;
 
@@ -11,8 +13,9 @@ export interface NoticeIconProps {
   bell?: React.ReactNode;
   className?: string;
   loading?: boolean;
-  onClear?: (tableTile: string) => void;
-  onTabChange?: (tableTile: string) => void;
+  onClear?: (tabName: string) => void;
+  onItemClick?: (item: NoticeIconData, tabProps: NoticeIconProps) => void;
+  onTabChange?: (tabTile: string) => void;
   popupAlign?: {
     points?: [string, string];
     offset?: [number, number];
@@ -29,6 +32,8 @@ export interface NoticeIconProps {
 }
 
 class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
+  static Tab = TabPane;
+
   static defaultProps = {
     onItemClick: () => {},
     onPopupVisibleChange: () => {},
@@ -36,23 +41,59 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
     onClear: () => {},
     loading: false,
     locale: {
-      emptyText: '暂无数据',
-      clear: '清空'
+      emptyText: 'No notifications',
+      clear: 'Clear'
     },
     emptyImage:
       'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg'
   };
 
-  constructor(props) {
-    super(props);
-  }
+  onItemClick = (item, tabProps) => {
+    const { onItemClick } = this.props;
+    onItemClick(item, tabProps);
+  };
 
+  onTabChange = (tabType) => {
+    const { onTabChange } = this.props;
+    onTabChange(tabType);
+  };
+
+  /**
+   *
+   */
   getNotificationBox() {
     const { children, loading, locale, onClear } = this.props;
     if (!children) {
       return null;
     }
-    const panes = React.Children.map(children, (child) => {});
+    const panes = React.Children.map(
+      children as React.ReactNode,
+      (child: React.ReactElement<any>) => {
+        const title =
+          child.props.list && child.props.list.length > 0
+            ? `${child.props.title} (${child.props.list.length})`
+            : child.props.title;
+        return (
+          <TabPane tab={title} key={child.props.name}>
+            <List
+              {...child.props}
+              data={child.props.list}
+              onClick={(item) => this.onItemClick(item, child.props)}
+              onClear={() => onClear(child.props.name)}
+              title={child.props.title}
+              locale={locale}
+            />
+          </TabPane>
+        );
+      }
+    );
+    return (
+      <Spin spinning={loading} delay={0}>
+        <Tabs className={styles.tabs} onChange={this.onTabChange}>
+          {panes}
+        </Tabs>
+      </Spin>
+    );
   }
 
   render() {
@@ -64,11 +105,11 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
       onPopupVisibleChange,
       bell
     } = this.props;
-    const cls = ClassNames(className, styles.noticeButton);
+    const noticeButtonClass = ClassNames(className, styles.noticeButton);
     const notificationBox = this.getNotificationBox();
     const NoticeBellIcon = bell || <Icon type="bell" className={styles.icon} />;
     const trigger = (
-      <span className={cls}>
+      <span className={noticeButtonClass}>
         <Badge
           count={count}
           style={{ boxShadow: 'none' }}
@@ -83,7 +124,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
       return trigger;
     }
 
-    const popoverProps = {};
+    const popoverProps: PopoverProps = {};
 
     if ('popupVisible' in this.props) {
       popoverProps.visible = popupVisible;
@@ -96,7 +137,6 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
         overlayClassName={styles.popover}
         trigger="click"
         arrowPointAtCenter
-        popupAlign={popupAlign}
         onVisibleChange={onPopupVisibleChange}
         {...popoverProps}
       >
@@ -106,5 +146,4 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
   }
 }
 
-// @ts-ignore
 export default NoticeIcon;

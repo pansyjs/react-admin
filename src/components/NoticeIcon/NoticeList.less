@@ -1,4 +1,4 @@
-@import '../../styles/common/var';
+@import '~antd/lib/style/themes/default.less';
 
 .list {
   max-height: 400px;
@@ -19,6 +19,7 @@
       background: #fff;
       margin-top: 4px;
     }
+
     .iconElement {
       font-size: 32px;
     }
@@ -32,24 +33,28 @@
     }
 
     &:hover {
-      background: $primary-1;
+      background: @primary-1;
     }
+
     .title {
       font-weight: normal;
       margin-bottom: 8px;
     }
+
     .description {
       font-size: 12px;
-      line-height: $line-height-base;
+      line-height: @line-height-base;
     }
+
     .datetime {
       font-size: 12px;
       margin-top: 4px;
-      line-height: $line-height-base;
+      line-height: @line-height-base;
     }
+
     .extra {
       float: right;
-      color: $text-color-secondary;
+      color: @text-color-secondary;
       font-weight: normal;
       margin-right: 0;
       margin-top: -1.5px;
@@ -60,7 +65,7 @@
 .notFound {
   text-align: center;
   padding: 73px 0 88px 0;
-  color: $text-color-secondary;
+  color: @text-color-secondary;
 
   img {
     display: inline-block;
@@ -73,13 +78,13 @@
   height: 46px;
   line-height: 46px;
   text-align: center;
-  color: $text-color;
-  border-radius: 0 0 $border-radius-base $border-radius-base;
-  border-top: 1px solid $border-color-split;
+  color: @text-color;
+  border-radius: 0 0 @border-radius-base @border-radius-base;
+  border-top: 1px solid @border-color-split;
   transition: all 0.3s;
   cursor: pointer;
 
   &:hover {
-    color: $heading-color;
+    color: @heading-color;
   }
 }
