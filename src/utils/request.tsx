@@ -1,13 +1,13 @@
 import axios from 'axios';
 import router from 'umi/router';
 import { message, notification } from 'antd';
-import { AJAX_DEFAULT_CONFIG } from '@config/index';
+import { AJAX_DEFAULT_CONFIG } from '@/config';
 import {
   requestSuccess,
   requestFail,
   responseSuccess,
   responseFail
-} from '@config/interceptors/axios';
+} from '@/config/interceptors/axios';
 
 axios.defaults.timeout = AJAX_DEFAULT_CONFIG.timeout;
 axios.defaults.baseURL = AJAX_DEFAULT_CONFIG.baseURL;
