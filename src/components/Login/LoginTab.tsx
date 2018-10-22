@@ -1,20 +1,23 @@
 import React from 'react';
 import { Tabs } from 'antd';
-import LoginContext from './LoginContext';
+import { TabPaneProps } from 'antd/es/tabs';
+import { Consumer } from './index';
 
 const { TabPane } = Tabs;
 
 const generateId = (() => {
   let i = 0;
-  return (prefix = '') => {
+  return (prefix: string) => {
     i += 1;
-    return `${prefix}${i}`;
+    return `${prefix || ''}${i}`;
   };
 })();
 
-export interface LoginTabProps {
-  key?: string;
-  tab?: React.ReactNode;
+export interface LoginTabProps extends TabPaneProps {
+  tabUtil: {
+    addTab: (id: string) => void;
+    removeTab: (id: string) => void;
+  };
 }
 
 class LoginTab extends React.Component<LoginTabProps, any> {
@@ -26,8 +29,8 @@ class LoginTab extends React.Component<LoginTabProps, any> {
   }
 
   componentWillMount() {
-    // const { tabUtil } = this.props;
-    // tabUtil.addTab(this.uniqueId);
+    const { tabUtil } = this.props;
+    tabUtil.addTab(this.uniqueId);
   }
 
   render() {
@@ -36,4 +39,16 @@ class LoginTab extends React.Component<LoginTabProps, any> {
   }
 }
 
-export default LoginTab;
+const wrapContext = (props) => {
+  return (
+    <Consumer>
+      {(value) => <LoginTab tabUtil={value.tabUtil} {...props} />}
+    </Consumer>
+  );
+};
+
+// 标志位 用来判断是不是自定义组件
+// @ts-ignore
+wrapContext.typeName = 'LoginTab';
+
+export default wrapContext;
