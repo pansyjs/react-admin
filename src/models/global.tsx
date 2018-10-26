@@ -1,3 +1,8 @@
 export default {
-  name: 'global'
+  name: 'global',
+
+  state: {
+    collapsed: false,
+    notices: []
+  }
 };

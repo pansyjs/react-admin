@@ -30,16 +30,7 @@ export default {
   ],
   publicPath: './',
   alias: {
-    '@': resolve(__dirname, 'src'),
-    '@assets': resolve(__dirname, 'src/assets'),
-    '@components': resolve(__dirname, 'src/components'),
-    '@config': resolve(__dirname, 'src/config'),
-    '@icons': resolve(__dirname, 'src/icons'),
-    '@layouts': resolve(__dirname, 'src/layouts'),
-    '@pages': resolve(__dirname, 'src/pages'),
-    '@services': resolve(__dirname, 'src/services'),
-    '@styles': resolve(__dirname, 'src/styles'),
-    '@utils': resolve(__dirname, 'src/utils'),
+    '@': resolve(__dirname, 'src')
   },
   targets: {
     ie: 10,

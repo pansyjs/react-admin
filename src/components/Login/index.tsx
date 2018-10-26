@@ -2,10 +2,9 @@ import React from 'react';
 import { Form, Tabs } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import ClassNames from 'classnames';
-import LoginContext from './LoginContext';
 import LoginTab from './LoginTab';
 import LoginSubmit from './LoginSubmit';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface LoginProps extends FormComponentProps {
   className?: string;
@@ -19,6 +18,16 @@ export interface LoginStates {
   tabs: any[];
   active: object;
 }
+
+export interface LoginStore {
+  tabUtil: {
+    addTab: (id: string) => void;
+    removeTab: (id: string) => void;
+  };
+  updateActive: (activeItem: string) => void;
+}
+
+const Context = React.createContext({} as LoginStore);
 
 class Login extends React.Component<LoginProps, LoginStates> {
   static Tab: typeof LoginTab;
@@ -72,37 +81,28 @@ class Login extends React.Component<LoginProps, LoginStates> {
     const { onSubmit } = this.props;
   };
 
-  isLoginTab = (node) => {
-    return (
-      node &&
-      node.type &&
-      (node.type.typeName === 'LoginTab' ||
-        node.type.displayName === 'LoginTab')
-    );
-  };
-
   onSwitch = (type) => {
     this.setState({
       type
     });
     const { onTabChange } = this.props;
-    onTabChange(type);
+    onTabChange && onTabChange(type);
   };
 
   render() {
     const { className, children } = this.props;
     const { type, tabs } = this.state;
-    const cls = ClassNames(className, styles.login);
-    const tabChildren = [];
+    const TabChildren = [];
     const otherChildren = [];
+
     React.Children.forEach(
       children as React.ReactNode,
       (child: React.ReactElement<any>) => {
         if (!child) {
           return;
         }
-        if (this.isLoginTab(child)) {
-          tabChildren.push(child);
+        if (child.type['typeName'] === 'LoginTab') {
+          TabChildren.push(child);
         } else {
           otherChildren.push(child);
         }
@@ -111,25 +111,27 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
     return (
       <div>
-        <LoginContext.Provider value={this.getContext()}>
-          <div className={cls}>
-            {tabs.length ? (
-              <React.Fragment>
-                <Tabs
-                  animated={false}
-                  className={styles.tabs}
-                  activeKey={type}
-                  onChange={this.onSwitch}
-                >
-                  {tabChildren}
-                </Tabs>
-                {otherChildren}
-              </React.Fragment>
-            ) : (
-              { children }
-            )}
+        <Context.Provider value={this.getContext()}>
+          <div className={ClassNames(className, styles.login)}>
+            <Form onSubmit={this.handleSubmit}>
+              {tabs.length ? (
+                <React.Fragment>
+                  <Tabs
+                    animated={false}
+                    className={styles.tabs}
+                    activeKey={type}
+                    onChange={this.onSwitch}
+                  >
+                    {TabChildren}
+                  </Tabs>
+                  {otherChildren}
+                </React.Fragment>
+              ) : (
+                [...(children as React.ReactNode[])]
+              )}
+            </Form>
           </div>
-        </LoginContext.Provider>
+        </Context.Provider>
       </div>
     );
   }
@@ -137,5 +139,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
 Login.Tab = LoginTab;
 Login.Submit = LoginSubmit;
+
+export const Consumer = Context.Consumer;
 
 export default Login;

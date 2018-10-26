@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'umi/link';
-import Exception from '@components/Exception';
+import Exception from '@/components/Exception';
 
 class Exception404 extends React.Component {
   constructor(props) {

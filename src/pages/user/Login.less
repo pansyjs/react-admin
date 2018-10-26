@@ -1,10 +1,9 @@
-@import '../../styles/common/var';
+@import '~antd/lib/style/themes/default.less';
 
-.login {
+.main {
   width: 368px;
   margin: 0 auto;
-
-  @media screen and (max-width: $screen-sm) {
+  @media screen and (max-width: @screen-sm) {
     width: 95%;
   }
 
@@ -17,7 +16,7 @@
     transition: color 0.3s;
 
     &:hover {
-      color: $primary-color;
+      color: @primary-color;
     }
   }
 
