@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button, Row, Col } from 'antd';
 import ItemMap from './map';
-import LoginContext from './LoginContext';
 
 const FormItem = Form.Item;
 
