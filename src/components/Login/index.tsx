@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, Tabs } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
+import { WrappedFormUtils } from 'antd/es/form/Form';
 import ClassNames from 'classnames';
+import LoginItem from './LoginItem';
 import LoginTab from './LoginTab';
 import LoginSubmit from './LoginSubmit';
 import styles from './index.less';
@@ -24,14 +26,19 @@ export interface LoginStore {
     addTab: (id: string) => void;
     removeTab: (id: string) => void;
   };
+  form: WrappedFormUtils;
   updateActive: (activeItem: string) => void;
 }
 
 const Context = React.createContext({} as LoginStore);
 
 class Login extends React.Component<LoginProps, LoginStates> {
-  static Tab: typeof LoginTab;
-  static Submit: typeof LoginSubmit;
+  public static Tab: typeof LoginTab;
+  public static UserName: typeof LoginItem;
+  public static Password: typeof LoginItem;
+  public static Mobile: typeof LoginItem;
+  public static Captcha: typeof LoginItem;
+  public static Submit: any;
 
   constructor(props: LoginProps) {
     super(props);
@@ -49,6 +56,8 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
   getContext() {
     const { tabs } = this.state;
+    const { form } = this.props;
+
     return {
       tabUtil: {
         addTab: (id) => {
@@ -62,6 +71,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
           });
         }
       },
+      form,
       updateActive: (activeItem) => {
         const { type, active } = this.state;
         if (active[type]) {
@@ -101,6 +111,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
         if (!child) {
           return;
         }
+        console.log(child);
         if (child.type['typeName'] === 'LoginTab') {
           TabChildren.push(child);
         } else {
@@ -139,7 +150,10 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
 Login.Tab = LoginTab;
 Login.Submit = LoginSubmit;
+Object.keys(LoginItem).forEach((item) => {
+  Login[item] = LoginItem[item];
+});
 
 export const Consumer = Context.Consumer;
 
-export default Login;
+export default Form.create()(Login);

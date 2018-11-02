@@ -1461,9 +1461,9 @@ adler-32@~1.2.0:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
-af-webpack@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/af-webpack/-/af-webpack-1.2.1.tgz#8815924266f8abc3fc6faac993253e5fbd25ff3d"
+af-webpack@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/af-webpack/-/af-webpack-1.2.2.tgz#ba70289e02c6b7cb3930c259a84a719d05ddec03"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
@@ -1478,7 +1478,7 @@ af-webpack@^1.2.1:
     babel-loader "^8.0.4"
     babel-plugin-dynamic-import-node "^2.0.0"
     babel-plugin-named-asset-import "^0.2.2"
-    babel-preset-umi "^1.2.0"
+    babel-preset-umi "^1.2.1"
     chalk "^2.1.0"
     chokidar "^2.0.3"
     clipboardy "^1.2.3"
@@ -2198,8 +2198,8 @@ babel-plugin-module-resolver@^3.1.1:
     resolve "^1.4.0"
 
 babel-plugin-named-asset-import@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.2.2.tgz#af1290f77e073411ef1a12f17fc458f1111122eb"
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.2.3.tgz#b40ed50a848e7bb0a2a7e34d990d1f9d46fe9b38"
 
 babel-plugin-react-require@3.0.0:
   version "3.0.0"
@@ -2235,9 +2235,9 @@ babel-preset-jest@^23.2.0:
     babel-plugin-jest-hoist "^23.2.0"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
-babel-preset-umi@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-umi/-/babel-preset-umi-1.2.0.tgz#fd1d86b33b11811dd7c22cb38a8b4c6ec5a02c2e"
+babel-preset-umi@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-umi/-/babel-preset-umi-1.2.1.tgz#2260a065f00a7a677def60b8ee71e56ef6406416"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-async-generator-functions" "^7.0.0"
@@ -2816,8 +2816,8 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000898, caniuse-lite@^1.0.30000899:
-  version "1.0.30000902"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000902.tgz#74eaf6ed7f1d31e5148725081c9df60051c5e2b3"
+  version "1.0.30000903"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000903.tgz#86d46227759279b3db345ddbe778335dbba9e858"
 
 caniuse-lite@^1.0.30000876, caniuse-lite@^1.0.30000878:
   version "1.0.30000878"
@@ -3488,8 +3488,8 @@ copy-to@^2.0.1:
   resolved "https://registry.yarnpkg.com/copy-to/-/copy-to-2.0.1.tgz#2680fbb8068a48d08656b6098092bdafc906f4a5"
 
 copy-webpack-plugin@^4.2.0:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-4.5.4.tgz#f2b2782b3cd5225535c3dc166a80067e7d940f27"
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-4.6.0.tgz#e7f40dd8a68477d405dd1b7a854aae324b158bae"
   dependencies:
     cacache "^10.0.4"
     find-cache-dir "^1.0.0"
@@ -3997,7 +3997,7 @@ d3-voronoi@~1.1.2:
 
 d@1:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
+  resolved "http://registry.npmjs.org/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
   dependencies:
     es5-ext "^0.10.9"
 
@@ -4719,8 +4719,8 @@ electron-to-chromium@^1.3.57:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.59.tgz#6377db04d8d3991d6286c72ed5c3fde6f4aaf112"
 
 electron-to-chromium@^1.3.82:
-  version "1.3.82"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.82.tgz#7d13ae4437d2a783de3f4efba96b186c540b67b1"
+  version "1.3.83"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.83.tgz#74584eb0972bb6777811c5d68d988c722f5e6666"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -6548,7 +6548,7 @@ hmac-drbg@^1.0.0:
 
 hoek@4.x.x:
   version "4.2.1"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
+  resolved "http://registry.npmjs.org/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
 hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
@@ -10998,8 +10998,8 @@ rc-calendar@~9.7.3:
     rc-util "^4.1.1"
 
 rc-calendar@~9.7.9:
-  version "9.7.10"
-  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-9.7.10.tgz#269393d9b5d4b5091cff65096bac7900ac809373"
+  version "9.7.11"
+  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-9.7.11.tgz#fa27a6e47018eb71eb6d1857cdcbd161c266dbe0"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -11300,8 +11300,8 @@ rc-select@~8.3.0:
     warning "^4.0.2"
 
 rc-select@~8.4.0:
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-8.4.3.tgz#8c62ed12744e76621a9f070a3869cc3cf8940658"
+  version "8.4.4"
+  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-8.4.4.tgz#b293bee3ebc2a45d4886b2b5f80b06f6d5a02b77"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -11421,8 +11421,8 @@ rc-tabs@~9.4.0:
     warning "^3.0.0"
 
 rc-tabs@~9.4.6:
-  version "9.4.7"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.4.7.tgz#0277032d8f60dbaf1e60cb7e6df6faece4a1b96a"
+  version "9.4.8"
+  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.4.8.tgz#62144284189d9e36472b6a6f6948bdba715bbccc"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -11458,9 +11458,25 @@ rc-tooltip@^3.7.0, rc-tooltip@~3.7.0:
     prop-types "^15.5.8"
     rc-trigger "^2.2.2"
 
-rc-tree-select@~2.3.0, rc-tree-select@~2.3.1:
+rc-tree-select@~2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.3.1.tgz#e4c4e611756277737b79b1d77195929695f0e256"
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "^2.2.1"
+    prop-types "^15.5.8"
+    raf "^3.4.0"
+    rc-animate "^3.0.0-rc.4"
+    rc-tree "~1.14.3"
+    rc-trigger "^3.0.0-rc.2"
+    rc-util "^4.5.0"
+    react-lifecycles-compat "^3.0.4"
+    shallowequal "^1.0.2"
+    warning "^4.0.1"
+
+rc-tree-select@~2.3.1:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.3.2.tgz#bf617a55c0ed365feeab5c3ee5ff5cf4dd5c7fc2"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "^2.2.1"
@@ -13908,7 +13924,7 @@ toggle-selection@^1.0.3:
 
 topo@2.x.x:
   version "2.0.2"
-  resolved "https://registry.yarnpkg.com/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
+  resolved "http://registry.npmjs.org/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
   dependencies:
     hoek "4.x.x"
 
@@ -14100,8 +14116,8 @@ typescript-eslint-parser@^18.0.0:
     semver "5.5.0"
 
 typescript@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
 
 typescript@^3.1.4:
   version "3.1.4"
@@ -14151,17 +14167,17 @@ uglifyjs-webpack-plugin@^1.2.4, uglifyjs-webpack-plugin@^1.3.0:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-umi-build-dev@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/umi-build-dev/-/umi-build-dev-1.2.1.tgz#1d2b53e8c903352ea771873b312365d7a3528828"
+umi-build-dev@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/umi-build-dev/-/umi-build-dev-1.2.2.tgz#42a480a19c123d6b4c23fbbbbb548483cf59130a"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     address "^1.0.3"
-    af-webpack "^1.2.1"
+    af-webpack "^1.2.2"
     atool-monitor "^1.0.6"
-    babel-preset-umi "^1.2.0"
+    babel-preset-umi "^1.2.1"
     body-parser "^1.18.2"
     chalk "^2.1.0"
     cheerio "^1.0.0-rc.2"
@@ -14201,7 +14217,7 @@ umi-build-dev@^1.2.1:
     signale "^1.3.0"
     string.prototype.padend "^3.0.0"
     umi-history "^0.1.0"
-    umi-test "^1.2.0"
+    umi-test "^1.2.1"
     umi-utils "^1.2.0"
     url-polyfill "^1.1.0"
     whatwg-fetch "^2.0.4"
@@ -14253,9 +14269,9 @@ umi-plugin-hd@^1.2.0:
     postcss-plugin-px2rem "^0.7.0"
     umi-hd "^5.0.1"
 
-umi-plugin-locale@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/umi-plugin-locale/-/umi-plugin-locale-2.2.0.tgz#4344d0e66b285628d7f59155ef1cceeb26dac7c3"
+umi-plugin-locale@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/umi-plugin-locale/-/umi-plugin-locale-2.2.1.tgz#e7b88fef8234b0ebf25eb88a48b3e47f2e4769ac"
   dependencies:
     intl "^1.2.5"
     moment "2.x"
@@ -14274,9 +14290,9 @@ umi-plugin-polyfills@^1.2.0:
     setprototypeof "^1.1.0"
     url-polyfill "^1.0.14"
 
-umi-plugin-react@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/umi-plugin-react/-/umi-plugin-react-1.2.0.tgz#4b52421d31ecff9795d66473b6b7c1a1a8f6f8fe"
+umi-plugin-react@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/umi-plugin-react/-/umi-plugin-react-1.2.1.tgz#da601e9dbd0fb67d7b7e3ad2f31cea53a0aea974"
   dependencies:
     antd "^3.8.1"
     antd-mobile "^2.2.3"
@@ -14290,7 +14306,7 @@ umi-plugin-react@^1.2.0:
     umi-plugin-dll "^1.2.0"
     umi-plugin-dva "^1.2.0"
     umi-plugin-hd "^1.2.0"
-    umi-plugin-locale "^2.2.0"
+    umi-plugin-locale "^2.2.1"
     umi-plugin-polyfills "^1.2.0"
     umi-plugin-routes "^1.0.1"
     webpack "4.19.0"
@@ -14300,16 +14316,16 @@ umi-plugin-routes@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/umi-plugin-routes/-/umi-plugin-routes-1.0.1.tgz#edea744a4814def24e3336d612bbd00b010f351d"
 
-umi-test@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/umi-test/-/umi-test-1.2.0.tgz#72de30d962b10d6018bbae5c3caea850a3791416"
+umi-test@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/umi-test/-/umi-test-1.2.1.tgz#d509ab505116dfde0f32e17294e5a129c5b738d1"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     babel-core "7.0.0-bridge.0"
     babel-jest "^23.4.2"
     babel-plugin-module-resolver "^3.1.1"
-    babel-preset-umi "^1.2.0"
+    babel-preset-umi "^1.2.1"
     debug "^3.1.0"
     enzyme "^3.4.1"
     enzyme-adapter-react-16 "^1.2.0"
@@ -14340,14 +14356,14 @@ umi-utils@^1.2.0:
     is-url "^1.2.4"
     slash2 "^2.0.0"
 
-umi@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/umi/-/umi-2.2.2.tgz#f0d54ee14e28a78d26ab2223a46ee524926b636d"
+umi@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/umi/-/umi-2.2.3.tgz#9b5237ace9722ec24aa75ef69b0f6bb7739e252c"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     "@types/react" "^16.4.9"
-    babel-preset-umi "^1.2.0"
+    babel-preset-umi "^1.2.1"
     chai "^4.1.2"
     cross-spawn "^6.0.5"
     debug "^3.1.0"
@@ -14361,7 +14377,7 @@ umi@^2.2.2:
     semver "5.5.1"
     signale "^1.3.0"
     slash2 "^2.0.0"
-    umi-build-dev "^1.2.1"
+    umi-build-dev "^1.2.2"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"
     url "^0.11.0"
@@ -14618,8 +14634,8 @@ url@^0.11.0:
     querystring "0.2.0"
 
 urllib@^2.29.1:
-  version "2.31.0"
-  resolved "https://registry.yarnpkg.com/urllib/-/urllib-2.31.0.tgz#2267208f7095d6620e0be9548803d89570cebdcd"
+  version "2.31.1"
+  resolved "https://registry.yarnpkg.com/urllib/-/urllib-2.31.1.tgz#5e564921b5ec6e00dc32f05de12e71ca403f1e47"
   dependencies:
     any-promise "^1.3.0"
     content-type "^1.0.2"
@@ -14653,7 +14669,7 @@ util.promisify@^1.0.0, util.promisify@~1.0.0:
 
 util@0.10.3:
   version "0.10.3"
-  resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
+  resolved "http://registry.npmjs.org/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
   dependencies:
     inherits "2.0.1"
 
