@@ -1,0 +1,33 @@
+{
+  "rules": {
+    //
+    // TypeScript 相关的检查
+    //
+    // 定义函数时如果用到了覆写，则必须将覆写的函数写到一起
+    "adjacent-overload-signatures": true,
+    // 禁用指定类型
+    // @off 用于限制某个具体的类型不能使用
+    "ban-types": false,
+    // 必须指定类的成员的可访问性
+    "member-access": [],
+    // 不允许使用内部module和namespace
+    "no-namespace": [true, "allow-declarations"],
+    // 不可使用断言
+    // non-null 已废弃的操作符
+    "no-non-null-assertion": true,
+
+    //
+    // 风格问题
+    // 这些规则与代码风格有关
+    //
+    // 强制竖向对其32
+    "align": [true, "parameters", "arguments", "statements"],
+    // 类名与接口名必须为驼峰式
+    "class-name": true
+  },
+  "jsRules": {
+    "max-line-length": {
+      "options": [120]
+    }
+  }
+}
