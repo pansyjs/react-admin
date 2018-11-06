@@ -1149,6 +1149,10 @@
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
 
+"@types/jest@^23.3.9":
+  version "23.3.9"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.9.tgz#c16b55186ee73ae65e001fbee69d392c51337ad1"
+
 "@types/lodash@^4.14.116":
   version "4.14.116"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.116.tgz#5ccf215653e3e8c786a58390751033a9adca0eb9"
@@ -1435,8 +1439,8 @@ acorn@^5.0.3, acorn@^5.6.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
 
 acorn@^6.0.1, acorn@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.2.tgz#6a459041c320ab17592c6317abbfdf4bbaa98ca4"
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.3.tgz#52adffeb02757f06420085a0ed0f7c0baf55fdf4"
 
 add-dom-event-listener@1.x:
   version "1.0.2"
@@ -1461,9 +1465,9 @@ adler-32@~1.2.0:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
-af-webpack@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/af-webpack/-/af-webpack-1.2.2.tgz#ba70289e02c6b7cb3930c259a84a719d05ddec03"
+af-webpack@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/af-webpack/-/af-webpack-1.2.3.tgz#2892f1bf1553d2bbc954930a27fcad15f6672400"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
@@ -1564,8 +1568,8 @@ ajv@^6.0.1, ajv@^6.5.0:
     uri-js "^4.2.2"
 
 ajv@^6.1.0:
-  version "6.5.4"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.4.tgz#247d5274110db653706b550fcc2b797ca28cfc59"
+  version "6.5.5"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.5.tgz#cf97cdade71c6399a92c6d6c4177381291b781a1"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -1728,8 +1732,8 @@ antd@^3.10.0:
     warning "~4.0.1"
 
 antd@^3.8.1:
-  version "3.10.3"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-3.10.3.tgz#7b28eb5c005c3c9701366c46f2f2e52d9e175b62"
+  version "3.10.4"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.10.4.tgz#e975c14e726801c7203d879a866f5ce8e47328c8"
   dependencies:
     "@ant-design/icons" "~1.1.15"
     "@ant-design/icons-react" "~1.1.2"
@@ -2816,8 +2820,8 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000898, caniuse-lite@^1.0.30000899:
-  version "1.0.30000903"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000903.tgz#86d46227759279b3db345ddbe778335dbba9e858"
+  version "1.0.30000904"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000904.tgz#4445d00da859a0e0ae6dbb2876c545f3324f6c74"
 
 caniuse-lite@^1.0.30000876, caniuse-lite@^1.0.30000878:
   version "1.0.30000878"
@@ -3375,8 +3379,8 @@ connect-history-api-fallback@^1.3.0:
   resolved "https://registry.yarnpkg.com/connect-history-api-fallback/-/connect-history-api-fallback-1.5.0.tgz#b06873934bc5e344fef611a196a6faae0aee015a"
 
 consola@^1.4.3:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-1.4.4.tgz#cf5eda375c0e99df8970cc8f5e98be023da24ce0"
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-1.4.5.tgz#09732d07cb50af07332e54e0f42fafb92b962c4a"
   dependencies:
     chalk "^2.3.2"
     figures "^2.0.0"
@@ -4876,8 +4880,8 @@ es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
     next-tick "1"
 
 es5-imcompatible-versions@^0.1.22:
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/es5-imcompatible-versions/-/es5-imcompatible-versions-0.1.22.tgz#d051b0c1540dd5cb44a2dcbe44de4a1523707df5"
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/es5-imcompatible-versions/-/es5-imcompatible-versions-0.1.23.tgz#46ebe842aafc803879c4f446512a675ee1e75b1b"
 
 es6-iterator@~2.0.3:
   version "2.0.3"
@@ -6241,9 +6245,13 @@ got@^7.0.0:
     url-parse-lax "^1.0.0"
     url-to-options "^1.0.1"
 
-graceful-fs@4.1.11, graceful-fs@^4.0.0, graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6:
+graceful-fs@4.1.11, graceful-fs@^4.0.0, graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
+
+graceful-fs@^4.1.11:
+  version "4.1.15"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
@@ -6717,9 +6725,9 @@ humanize-url@^1.0.0:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
 
-husky@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-1.1.1.tgz#7179043184f68a4d1ffc975cbd1c6132ef1fd7b3"
+husky@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-1.1.3.tgz#3ccfdb4d7332896bf7cd0e618c6fb8be09d9de4b"
   dependencies:
     cosmiconfig "^5.0.6"
     execa "^0.9.0"
@@ -7940,7 +7948,7 @@ jest-worker@^23.2.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@^23.5.0:
+jest@^23.5.0, jest@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-23.6.0.tgz#ad5835e923ebf6e19e7a1d7529a432edfee7813d"
   dependencies:
@@ -9272,7 +9280,7 @@ netmask@^1.0.6:
 
 next-tick@1:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+  resolved "http://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
 nice-try@^1.0.4:
   version "1.0.4"
@@ -9383,8 +9391,8 @@ node-releases@^1.0.0-alpha.11:
     semver "^5.3.0"
 
 node-releases@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.2.tgz#27c296d9fca3b659c64f7d43ea47a31ad2a90e4b"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.3.tgz#3414ed84595096459c251699bfcb47d88324a9e4"
   dependencies:
     semver "^5.3.0"
 
@@ -10887,9 +10895,15 @@ quick-lru@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
 
-raf@3.4.0, raf@^3.1.0, raf@^3.3.2, raf@^3.4.0:
+raf@3.4.0, raf@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
+  dependencies:
+    performance-now "^2.1.0"
+
+raf@^3.1.0, raf@^3.3.2:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
   dependencies:
     performance-now "^2.1.0"
 
@@ -11221,8 +11235,8 @@ rc-menu@^7.3.0, rc-menu@~7.4.1:
     resize-observer-polyfill "^1.5.0"
 
 rc-menu@~7.4.12:
-  version "7.4.18"
-  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-7.4.18.tgz#485769269e6089e1932108868a5775a0fb431e47"
+  version "7.4.19"
+  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-7.4.19.tgz#b65a35215966053fe6f6c3b7b12155051969f567"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -13105,8 +13119,8 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.0.tgz#7a7cd28470cc6d3a1cfe6d66886f6bc430d3ac87"
 
 spdy-transport@^2.0.18:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/spdy-transport/-/spdy-transport-2.1.0.tgz#4bbb15aaffed0beefdd56ad61dbdc8ba3e2cb7a1"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/spdy-transport/-/spdy-transport-2.1.1.tgz#c54815d73858aadd06ce63001e7d25fa6441623b"
   dependencies:
     debug "^2.6.8"
     detect-node "^2.0.3"
@@ -14042,7 +14056,13 @@ tslint-loader@^3.5.3:
     rimraf "^2.4.4"
     semver "^5.3.0"
 
-tslint@^5.8.0:
+tslint-react@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.6.0.tgz#7f462c95c4a0afaae82507f06517ff02942196a1"
+  dependencies:
+    tsutils "^2.13.1"
+
+tslint@^5.11.0, tslint@^5.8.0:
   version "5.11.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
   dependencies:
@@ -14059,7 +14079,7 @@ tslint@^5.8.0:
     tslib "^1.8.0"
     tsutils "^2.27.2"
 
-tsutils@^2.27.2:
+tsutils@^2.13.1, tsutils@^2.27.2:
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
   dependencies:
@@ -14167,15 +14187,15 @@ uglifyjs-webpack-plugin@^1.2.4, uglifyjs-webpack-plugin@^1.3.0:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-umi-build-dev@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/umi-build-dev/-/umi-build-dev-1.2.2.tgz#42a480a19c123d6b4c23fbbbbb548483cf59130a"
+umi-build-dev@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/umi-build-dev/-/umi-build-dev-1.2.3.tgz#69959e17cef114eb3fa21c17a606ec8b8aba7f0b"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     address "^1.0.3"
-    af-webpack "^1.2.2"
+    af-webpack "^1.2.3"
     atool-monitor "^1.0.6"
     babel-preset-umi "^1.2.1"
     body-parser "^1.18.2"
@@ -14218,7 +14238,7 @@ umi-build-dev@^1.2.2:
     string.prototype.padend "^3.0.0"
     umi-history "^0.1.0"
     umi-test "^1.2.1"
-    umi-utils "^1.2.0"
+    umi-utils "^1.2.1"
     url-polyfill "^1.1.0"
     whatwg-fetch "^2.0.4"
     yeoman-generator "^3.1.1"
@@ -14247,9 +14267,9 @@ umi-plugin-dll@^1.2.0:
     rimraf "^2.6.2"
     serve-static "^1.13.2"
 
-umi-plugin-dva@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/umi-plugin-dva/-/umi-plugin-dva-1.2.0.tgz#28822dbbbde2315baf7433ac18df81c7e9d2ef02"
+umi-plugin-dva@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/umi-plugin-dva/-/umi-plugin-dva-1.2.1.tgz#37b93394eb558eaeed2aa1e2c25580871cd557b8"
   dependencies:
     babel-plugin-dva-hmr "^0.4.1"
     dva "^2.5.0-beta.2"
@@ -14260,7 +14280,7 @@ umi-plugin-dva@^1.2.0:
     object-assign "^4.1.1"
     path-is-root "^0.1.0"
     path-to-regexp "^1.7.0"
-    umi-utils "^1.2.0"
+    umi-utils "^1.2.1"
 
 umi-plugin-hd@^1.2.0:
   version "1.2.0"
@@ -14269,16 +14289,16 @@ umi-plugin-hd@^1.2.0:
     postcss-plugin-px2rem "^0.7.0"
     umi-hd "^5.0.1"
 
-umi-plugin-locale@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/umi-plugin-locale/-/umi-plugin-locale-2.2.1.tgz#e7b88fef8234b0ebf25eb88a48b3e47f2e4769ac"
+umi-plugin-locale@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/umi-plugin-locale/-/umi-plugin-locale-2.2.2.tgz#581e6329b12ccd762224b667dfe8ce2e2fe046a2"
   dependencies:
     intl "^1.2.5"
     moment "2.x"
     mustache "^2.3.0"
     prop-types "^15.6.2"
     react-intl "^2.4.0"
-    umi-utils "^1.2.0"
+    umi-utils "^1.2.1"
 
 umi-plugin-polyfills@^1.2.0:
   version "1.2.0"
@@ -14290,9 +14310,9 @@ umi-plugin-polyfills@^1.2.0:
     setprototypeof "^1.1.0"
     url-polyfill "^1.0.14"
 
-umi-plugin-react@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/umi-plugin-react/-/umi-plugin-react-1.2.1.tgz#da601e9dbd0fb67d7b7e3ad2f31cea53a0aea974"
+umi-plugin-react@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/umi-plugin-react/-/umi-plugin-react-1.2.2.tgz#3cabb194194304b383f4a58860c8c45d14530558"
   dependencies:
     antd "^3.8.1"
     antd-mobile "^2.2.3"
@@ -14304,9 +14324,9 @@ umi-plugin-react@^1.2.1:
     preact-compat "^3.18.3"
     register-service-worker "^1.4.1"
     umi-plugin-dll "^1.2.0"
-    umi-plugin-dva "^1.2.0"
+    umi-plugin-dva "^1.2.1"
     umi-plugin-hd "^1.2.0"
-    umi-plugin-locale "^2.2.1"
+    umi-plugin-locale "^2.2.2"
     umi-plugin-polyfills "^1.2.0"
     umi-plugin-routes "^1.0.1"
     webpack "4.19.0"
@@ -14349,16 +14369,16 @@ umi-url-pnp-loader@^1.1.2:
     mime "^2.0.3"
     schema-utils "^1.0.0"
 
-umi-utils@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/umi-utils/-/umi-utils-1.2.0.tgz#f7c23ccde63604cbe68d38dbfaaf64ac75140b41"
+umi-utils@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/umi-utils/-/umi-utils-1.2.1.tgz#f39edecf4461db114a15085ff3fb7371ba333d9d"
   dependencies:
     is-url "^1.2.4"
     slash2 "^2.0.0"
 
-umi@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/umi/-/umi-2.2.3.tgz#9b5237ace9722ec24aa75ef69b0f6bb7739e252c"
+umi@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/umi/-/umi-2.2.4.tgz#60119a561d71ac4a6d7608ac130fae9abad3ce5b"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -14377,7 +14397,7 @@ umi@^2.2.3:
     semver "5.5.1"
     signale "^1.3.0"
     slash2 "^2.0.0"
-    umi-build-dev "^1.2.2"
+    umi-build-dev "^1.2.3"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"
     url "^0.11.0"
@@ -15486,8 +15506,8 @@ yauzl@^2.2.1, yauzl@^2.4.2:
     fd-slicer "~1.1.0"
 
 yeoman-environment@^2.0.5:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.3.3.tgz#1bd9720714cc49036e901503a789d809df8f51bf"
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.3.4.tgz#ae156147a1b85de939366e5438b00cb3eb54c3e9"
   dependencies:
     chalk "^2.4.1"
     cross-spawn "^6.0.5"

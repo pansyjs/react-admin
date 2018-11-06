@@ -1,6 +1,31 @@
-# react-admin-template
+# [react-video-player](https://github.com/jiumao-fe/react-admin-template)
+
+[![GitHub license](https://img.shields.io/github/license/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/issues)
+[![GitHub forks](https://img.shields.io/github/forks/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/network)
+[![GitHub stars](https://img.shields.io/github/stars/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/stargazers)
 
 > react 管理后台开发模板
+
+# Usage
+
+1. 安装依赖
+
+```
+npm run bootstrap
+```
+
+2. 开发
+
+```
+npm run dev || yarn dev
+```
+
+3. 编译
+
+```
+npm run build || yarn build
+```
 
 ## 项目目录
 
