@@ -1,4 +1,4 @@
-# [react-video-player](https://github.com/jiumao-fe/react-admin-template)
+# [react-admin-template](https://github.com/jiumao-fe/react-admin-template)
 
 [![GitHub license](https://img.shields.io/github/license/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/issues)
