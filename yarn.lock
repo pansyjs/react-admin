@@ -1216,6 +1216,12 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-text-mask@^5.4.2":
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/@types/react-text-mask/-/react-text-mask-5.4.2.tgz#90fe616fb223da6360a72c52527351c5ba59c171"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.4.7":
   version "16.4.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.11.tgz#330f3d864300f71150dc2d125e48644c098f8770"
@@ -11807,6 +11813,12 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.2"
     react-is "^16.6.1"
     scheduler "^0.11.0"
+
+react-text-mask@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.4.3.tgz#991efb4299e30c2e6c2c46d13f617169463e0d2d"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-transition-group@^2.4.0:
   version "2.4.0"
