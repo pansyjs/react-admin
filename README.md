@@ -63,6 +63,12 @@ npm run build || yarn build
 └── yarn.lock                   # yarn生成文件
 ```
 
+# commit-message
+
+> git 提交信息使用[commitlint](https://github.com/marionebl/commitlint) 进行规范
+
+具体配置以及説明请查看[commitlint-config-jiumao](https://github.com/jiumao-fe/commitlint-config-jiumao)
+
 ## 优雅的使用 icon
 
 > 主要参考 [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
