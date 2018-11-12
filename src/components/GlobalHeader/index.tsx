@@ -3,7 +3,7 @@ import { Icon, Divider } from 'antd';
 import { Link } from 'dva/router';
 import Debounce from 'lodash-decorators/debounce';
 import RightContent from './RightContent';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface ClickParam {
   key: string;
@@ -48,21 +48,10 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps> {
     return (
       <div className={styles.header}>
         {isMobile && [
-          <Link
-            to="/"
-            className={styles.logo}
-            key="logo"
-          >
-            <img
-              src={logo}
-              alt="logo"
-              width="32"
-            />
+          <Link to="/" className={styles.logo} key="logo">
+            <img src={logo} alt="logo" width="32" />
           </Link>,
-          <Divider
-            type="vertical"
-            key="line"
-          />
+          <Divider type="vertical" key="line" />
         ]}
         <Icon
           className={styles.trigger}
@@ -71,7 +60,7 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps> {
         />
         <RightContent {...restProps} />
       </div>
-    )
+    );
   }
 }
 

@@ -11,7 +11,7 @@
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
-    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "lint:style": "stylelint \"src/**/*.less\" --syntax less",
     "tsc": "tsc",
     "test:component": "umi test ./src/components",
     "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
@@ -29,11 +29,11 @@
     }
   },
   "dependencies": {
-    "@antv/data-set": "^0.9.5",
-    "antd": "^3.10.0",
+    "@antv/data-set": "^0.10.1",
+    "antd": "^3.10.7",
     "axios": "^0.18.0",
-    "bizcharts": "^3.1.10",
-    "bizcharts-plugin-slider": "^2.0.4",
+    "bizcharts": "^3.2.5-beta.4",
+    "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "classnames": "^2.2.6",
     "dva": "^2.4.0",
     "lodash": "^4.17.10",
@@ -81,9 +81,7 @@
     "jest": "^23.6.0",
     "lint-staged": "^8.0.4",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.9.2",
     "prettier": "^1.14.2",
-    "sass-loader": "^7.1.0",
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
@@ -93,8 +91,8 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.2.5",
-    "umi-plugin-react": "^1.2.2"
+    "umi": "^2.2.6",
+    "umi-plugin-react": "^1.2.3"
   },
   "engines": {
     "node": ">=8.0.0"

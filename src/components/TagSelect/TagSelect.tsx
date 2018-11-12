@@ -2,7 +2,7 @@ import React from 'react';
 import { Tag, Icon } from 'antd';
 import ClassNames from 'classnames';
 import Option from './TagSelectOption';
-import styles from './index.scss';
+import styles from './index.less';
 
 const CheckableTag = Tag.CheckableTag;
 

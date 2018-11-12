@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { Avatar, Tooltip } from 'antd';
 import { size } from './AvatarList';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface AvatarListItemProps {
   size: size;

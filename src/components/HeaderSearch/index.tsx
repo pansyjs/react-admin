@@ -3,7 +3,7 @@ import { Input, Icon, AutoComplete } from 'antd';
 import ClassNames from 'classnames';
 import Debounce from 'lodash-decorators/debounce';
 import Bind from 'lodash-decorators/bind';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface HeaderSearchProps {
   className?: string;
@@ -20,7 +20,10 @@ export interface HeaderSearchStates {
   value: string;
 }
 
-class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchStates> {
+class HeaderSearch extends React.PureComponent<
+  HeaderSearchProps,
+  HeaderSearchStates
+> {
   private input: any;
   private timeout: NodeJS.Timer;
 
@@ -40,14 +43,14 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
     this.state = {
       searchMode: props.defaultOpen,
       value: ''
-    }
+    };
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
-  onChange = value => {
+  onChange = (value) => {
     // @ts-ignore
     const { onChange } = this.props;
     this.setState({ value });
@@ -56,13 +59,13 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
     }
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (e.key === 'Enter') {
       const { onPressEnter } = this.props;
       const { value } = this.state;
       this.timeout = setTimeout(() => {
-        onPressEnter(value)
-      }, 0)
+        onPressEnter(value);
+      }, 0);
     }
   };
 
@@ -78,14 +81,14 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
   leaveSearchMode = () => {
     this.setState({
       searchMode: false,
-      value: '',
+      value: ''
     });
   };
 
   @Bind()
   @Debounce(500, {
     leading: true,
-    trailing: false,
+    trailing: false
   })
   debouncePressEnter() {
     const { onPressEnter } = this.props;
@@ -100,13 +103,10 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
     delete restProps.defaultOpen;
     const clsString = ClassNames(className, styles.headerSearch);
     const inputClass = ClassNames(styles.input, {
-      [styles.show]: searchMode,
+      [styles.show]: searchMode
     });
     return (
-      <span
-        className={clsString}
-        onClick={this.enterSearchMode}
-      >
+      <span className={clsString} onClick={this.enterSearchMode}>
         <Icon type="search" key="Icon" />
         <AutoComplete
           key="AutoComplete"
@@ -116,7 +116,7 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
           onChange={this.onChange}
         >
           <Input
-            ref={node => {
+            ref={(node) => {
               this.input = node;
             }}
             aria-label={placeholder}
@@ -126,7 +126,7 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, HeaderSearchSt
           />
         </AutoComplete>
       </span>
-    )
+    );
   }
 }
 

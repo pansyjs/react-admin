@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { Button } from 'antd';
 import config from './typeConfig';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface ExceptionProps {
   className?: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import styles from './index.scss';
+import styles from './index.less';
 
 interface GlobalFooterProps {
   className?: string;
