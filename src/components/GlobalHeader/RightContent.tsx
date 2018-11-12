@@ -4,7 +4,7 @@ import groupBy from 'lodash/groupBy';
 import { ClickParam } from './index';
 import HeaderSearch from '../HeaderSearch';
 
-import styles from 'index.scss';
+import styles from 'index.less';
 
 export interface GlobalHeaderRightProps {
   currentUser: object;

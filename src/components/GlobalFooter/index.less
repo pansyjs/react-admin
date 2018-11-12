@@ -1,4 +1,4 @@
-@import '../../styles/common/var';
+@import '~antd/lib/style/themes/default.less';
 
 .globalFooter {
   padding: 0 16px;
@@ -9,7 +9,7 @@
     margin-bottom: 8px;
 
     a {
-      color: $text-color-secondary;
+      color: @text-color-secondary;
       transition: all 0.3s;
 
       &:not(:last-child) {
@@ -17,13 +17,13 @@
       }
 
       &:hover {
-        color: $text-color;
+        color: @text-color;
       }
     }
   }
 
   .copyright {
-    color: $text-color-secondary;
-    font-size: $font-size-base;
+    color: @text-color-secondary;
+    font-size: @font-size-base;
   }
 }

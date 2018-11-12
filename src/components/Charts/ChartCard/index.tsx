@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 import ClassNames from 'classnames';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface ChartCardProps {
   loading?: boolean;

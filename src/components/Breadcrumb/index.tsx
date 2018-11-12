@@ -2,7 +2,7 @@ import React from 'react';
 import { Breadcrumb } from 'antd';
 import PathToRegexp from 'path-to-regexp';
 import { urlToLiat } from '@utils/index';
-import styles from './index.scss';
+import styles from './index.less';
 
 export interface LotusBreadcrumbProps {
   breadcrumbList?: Array<{ title: React.ReactNode; href?: string }>;

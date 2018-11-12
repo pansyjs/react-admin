@@ -1,4 +1,4 @@
-@import '../../styles/common/var';
+@import '~antd/lib/style/themes/default.less';
 
 .exception {
   display: flex;
@@ -48,7 +48,7 @@
     }
 
     .desc {
-      color: $text-color-secondary;
+      color: @text-color-secondary;
       font-size: 20px;
       line-height: 28px;
       margin-bottom: 16px;
@@ -62,7 +62,7 @@
   }
 }
 
-@media screen and (max-width: $screen-xl) {
+@media screen and (max-width: @screen-xl) {
   .exception {
     .imgBlock {
       padding-right: 88px;
@@ -70,7 +70,7 @@
   }
 }
 
-@media screen and (max-width: $screen-sm) {
+@media screen and (max-width: @screen-sm) {
   .exception {
     display: block;
     text-align: center;
@@ -81,7 +81,7 @@
   }
 }
 
-@media screen and (max-width: $screen-xs) {
+@media screen and (max-width: @screen-xs) {
   .exception {
     .imgBlock {
       margin-bottom: -24px;

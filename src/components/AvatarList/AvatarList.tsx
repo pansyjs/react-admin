@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.scss';
+import styles from './index.less';
 import Item from './AvatarListItem';
 
 export type size = 'large' | 'small' | 'default' | number;
