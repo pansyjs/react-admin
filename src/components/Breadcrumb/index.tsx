@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb } from 'antd';
 import PathToRegexp from 'path-to-regexp';
-import { urlToLiat } from '@/utils';
+import { urlToList } from '@/utils';
 import styles from './index.less';
 
 export interface LotusBreadcrumbProps {
@@ -66,7 +66,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
       linkElement = 'a'
     } = this.props;
 
-    const pathSnippets = urlToLiat(location.pathname);
+    const pathSnippets = urlToList(location.pathname);
     // Loop data mosaic routing
     const extraBreadcrumbItems = pathSnippets.map((url, index) => {
       const currentBreadcrumb = getBreadcrumb(breadcrumbNameMap, url);
