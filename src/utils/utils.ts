@@ -1,15 +1,29 @@
 /**
- * 判断值是否为Promise
- * @param obj
+ * 检查 `value` 是否为承诺（Promise）
+ *
+ * @since 0.1.0
+ * @param {*} value The value to check
+ * @return {boolean} Return `true` is a Promise, else `false`
+ * @example
+ *
+ * isPromise(new Promise())
+ * // => true
+ *
+ * isPromise(3)
+ * // => false
+ *
+ * isPromise('tom')
+ * // => false
+ *
  */
-export function isPromise(obj: any): obj is Promise<any> {
-  return !!obj && typeof obj.then === 'function';
+export function isPromise(value: any): value is Promise<any> {
+  return !!value && typeof value.then === 'function';
 }
 
 /**
  * 判断值是否已定义
- * @param val
+ * @param value
  */
-export function isDefined(val: any): boolean {
-  return val !== null && val !== undefined;
+export function isDefined(value: any): boolean {
+  return value !== null && value !== undefined;
 }
