@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb } from 'antd';
 import PathToRegexp from 'path-to-regexp';
-import { urlToLiat } from '@utils/index';
+import { urlToLiat } from '@/utils';
 import styles from './index.less';
 
 export interface LotusBreadcrumbProps {
