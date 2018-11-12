@@ -29,11 +29,11 @@
     }
   },
   "dependencies": {
-    "@antv/data-set": "^0.9.5",
-    "antd": "^3.10.0",
+    "@antv/data-set": "^0.10.1",
+    "antd": "^3.10.7",
     "axios": "^0.18.0",
-    "bizcharts": "^3.1.10",
-    "bizcharts-plugin-slider": "^2.0.4",
+    "bizcharts": "^3.2.5-beta.4",
+    "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "classnames": "^2.2.6",
     "dva": "^2.4.0",
     "lodash": "^4.17.10",
@@ -93,8 +93,8 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
     "typescript-eslint-parser": "^18.0.0",
-    "umi": "^2.2.5",
-    "umi-plugin-react": "^1.2.2"
+    "umi": "^2.2.6",
+    "umi-plugin-react": "^1.2.3"
   },
   "engines": {
     "node": ">=8.0.0"
