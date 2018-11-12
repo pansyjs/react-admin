@@ -13,6 +13,7 @@
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less",
     "tsc": "tsc",
+    "test": "umi test",
     "test:component": "umi test ./src/components",
     "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",

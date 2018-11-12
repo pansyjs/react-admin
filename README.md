@@ -30,9 +30,11 @@ npm run build || yarn build
 ## 项目目录
 
 ```
-├── mock                        # 模拟后端接口
-│   ├── login.js                # 登陆相关
-│   ├──
+├── config                      # 项目相关配置
+│   ├── config.js               # umi相关配置
+│   └── router.config.js        #
+├── mock                        # 后端接口模拟
+│   ├── login.js                # 登录相关
 │   └──
 ├── public                      # 静态资源
 ├── src                         # 代码主目录
