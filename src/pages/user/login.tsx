@@ -4,7 +4,6 @@ import { formatMessage, FormattedMessage } from 'umi/locale';
 import Link from 'umi/link';
 import { connect, SubscriptionAPI } from 'dva';
 import { FormComponentProps } from 'antd/lib/form';
-import UserLayout from '@/layouts/UserLayout';
 import Login from '@/components/Login';
 import styles from './login.less';
 
@@ -66,67 +65,65 @@ class LoginPage extends React.Component<LoginPageProps, any> {
   render() {
     const { type } = this.state;
     return (
-      <UserLayout>
-        <div className={styles.main}>
-          <Login
-            defaultActiveKey={type}
-            onTabChange={this.onTabChange}
-            onSubmit={this.handleSubmit}
-            ref={(form) => {
-              this.loginForm = form;
-            }}
+      <div className={styles.main}>
+        <Login
+          defaultActiveKey={type}
+          onTabChange={this.onTabChange}
+          onSubmit={this.handleSubmit}
+          ref={(form) => {
+            this.loginForm = form;
+          }}
+        >
+          <Tab
+            key="account"
+            tab={formatMessage({ id: 'app.login.tab-login-credentials' })}
           >
-            <Tab
-              key="account"
-              tab={formatMessage({ id: 'app.login.tab-login-credentials' })}
-            >
-              <UserName name="userName" placeholder="username: admin or user" />
-              <Password
-                name="password"
-                placeholder="password: ant.design"
-                onPressEnter={() =>
-                  this.loginForm.validateFields(this.handleSubmit)
-                }
-              />
-            </Tab>
-            <Tab
-              key="mobile"
-              tab={formatMessage({ id: 'app.login.tab-login-mobile' })}
-            >
-              <Mobile name="mobile" />
-              <Captcha
-                name="captcha"
-                countDown={120}
-                onGetCaptcha={this.onGetCaptcha}
-              />
-            </Tab>
-            <Submit>
-              <FormattedMessage id="app.login.login" />
-            </Submit>
-            <div className={styles.other}>
-              <FormattedMessage id="app.login.sign-in-with" />
-              <Icon
-                type="alipay-circle"
-                className={styles.icon}
-                theme="outlined"
-              />
-              <Icon
-                type="taobao-circle"
-                className={styles.icon}
-                theme="outlined"
-              />
-              <Icon
-                type="weibo-circle"
-                className={styles.icon}
-                theme="outlined"
-              />
-              <Link className={styles.register} to="/User/Register">
-                <FormattedMessage id="app.login.signup" />
-              </Link>
-            </div>
-          </Login>
-        </div>
-      </UserLayout>
+            <UserName name="userName" placeholder="username: admin or user" />
+            <Password
+              name="password"
+              placeholder="password: ant.design"
+              onPressEnter={() =>
+                this.loginForm.validateFields(this.handleSubmit)
+              }
+            />
+          </Tab>
+          <Tab
+            key="mobile"
+            tab={formatMessage({ id: 'app.login.tab-login-mobile' })}
+          >
+            <Mobile name="mobile" />
+            <Captcha
+              name="captcha"
+              countDown={120}
+              onGetCaptcha={this.onGetCaptcha}
+            />
+          </Tab>
+          <Submit>
+            <FormattedMessage id="app.login.login" />
+          </Submit>
+          <div className={styles.other}>
+            <FormattedMessage id="app.login.sign-in-with" />
+            <Icon
+              type="alipay-circle"
+              className={styles.icon}
+              theme="outlined"
+            />
+            <Icon
+              type="taobao-circle"
+              className={styles.icon}
+              theme="outlined"
+            />
+            <Icon
+              type="weibo-circle"
+              className={styles.icon}
+              theme="outlined"
+            />
+            <Link className={styles.register} to="/User/Register">
+              <FormattedMessage id="app.login.signup" />
+            </Link>
+          </div>
+        </Login>
+      </div>
     );
   }
 }
