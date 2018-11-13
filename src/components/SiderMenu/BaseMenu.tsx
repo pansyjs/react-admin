@@ -86,7 +86,7 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
       !item.hideChildrenInMenu &&
       item.children.some((child) => child.name)
     ) {
-      const { name } = item;
+      console.log(name);
       return (
         <SubMenu
           title={
@@ -145,7 +145,7 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
             : undefined
         }
       >
-        x{icon}
+        {icon}
         <span>{name}</span>
       </Link>
     );
