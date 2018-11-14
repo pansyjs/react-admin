@@ -6,7 +6,7 @@
  * @return {boolean} Return `true` is a Promise, else `false`
  * @example
  *
- * isPromise(new Promise())
+ * isPromise(new Promise((resolve, reject) => { // code }))
  * // => true
  *
  * isPromise(3)

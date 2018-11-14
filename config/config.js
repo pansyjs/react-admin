@@ -36,6 +36,9 @@ export default {
   },
   // 路由配置
   routes: pageRoutes,
+  theme: {
+    'primary-color': '#1890FF',
+  },
   history: 'hash',
   ignoreMomentLocale: true,
   urlLoaderExcludes: [
