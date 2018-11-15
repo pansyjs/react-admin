@@ -5,20 +5,16 @@ import styles from './index.less';
 interface GlobalFooterProps {
   className?: string;
   links?: Array<any>;
-  copyright: React.ReactNode;
+  copyright?: React.ReactNode;
 }
 
 class GlobalFooter extends React.Component<GlobalFooterProps, any> {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { className, links, copyright } = this.props;
-    const clsString = ClassNames(styles.globalFooter, className);
+    const cls = ClassNames(styles.globalFooter, className);
 
     return (
-      <div className={clsString}>
+      <div className={cls}>
         {links && (
           <div className={styles.links}>
             {links.map((link) => (
