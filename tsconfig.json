@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es2017",
+    "strictNullChecks": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
     "allowJs": true,
     "baseUrl": ".",
-    "moduleResolution": "node",
     "lib": [
       "dom",
       "es7"
