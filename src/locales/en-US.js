@@ -8,6 +8,7 @@ export default {
   'menu.dashboard.analysis': 'Analysis',
   'menu.dashboard.monitor': 'Monitor',
   'menu.dashboard.workplace': 'Workplace',
+  // 登录相关
   'app.login.message-invalid-credentials': 'Invalid username or password（admin/888888）',
   'app.login.message-invalid-verification-code': 'Invalid verification code',
   'app.login.tab-login-credentials': 'Credentials',
