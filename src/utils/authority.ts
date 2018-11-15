@@ -18,14 +18,19 @@ export interface IFormatter {
  * @param parentName
  * @param paths
  */
-const formatter: IFormatter = function(routes, parentAuth, parentName, paths) {
+export const formatter: IFormatter = function(
+  routes,
+  parentAuth,
+  parentName,
+  paths
+) {
   return routes
     .map((item) => {
       if (!item.name || !item.path) {
         return null;
       }
 
-      // 处理多言
+      // 处理多语言
       let locale = 'menu';
       if (parentName) {
         locale = `${parentName}.${item.name}`;
@@ -37,7 +42,7 @@ const formatter: IFormatter = function(routes, parentAuth, parentName, paths) {
         ...item,
         name: formatMessage({ id: locale, defaultMessage: item.name }),
         locale,
-        auth: item.auth || parentAuth
+        auth: item.auth || parentAuth || 'on'
       };
 
       // 处理权限
