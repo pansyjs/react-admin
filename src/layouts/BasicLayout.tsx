@@ -95,12 +95,17 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
     this.breadcrumbNameMap = this.getBreadcrumbNameMap();
   }
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/fetchCurrent'
+    });
+  }
+
   getMenuData() {
     const {
       route: { routes }
     } = this.props;
-
-    console.log(this.props);
 
     return memoizeOneFormatter(routes);
   }

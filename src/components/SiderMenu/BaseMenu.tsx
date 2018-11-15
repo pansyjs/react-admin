@@ -86,7 +86,6 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
       !item.hideChildrenInMenu &&
       item.children.some((child) => child.name)
     ) {
-      console.log(name);
       return (
         <SubMenu
           title={
