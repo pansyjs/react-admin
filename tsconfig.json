@@ -6,7 +6,6 @@
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "noImplicitAny": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "importHelpers": true,
