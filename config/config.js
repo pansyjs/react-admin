@@ -28,9 +28,6 @@ const plugins = [
 
 export default {
   plugins,
-  alias: {
-    '@': resolve(__dirname, 'src')
-  },
   targets: {
     ie: 11,
   },
