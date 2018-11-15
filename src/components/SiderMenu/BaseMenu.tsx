@@ -63,7 +63,7 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
   }
 
   // 获取菜单子节点
-  getNavMenuItems = (menusData, parent?: string) => {
+  getNavMenuItems = (menusData) => {
     if (!menusData) {
       return [];
     }
@@ -86,6 +86,7 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
       !item.hideChildrenInMenu &&
       item.children.some((child) => child.name)
     ) {
+      const { name } = item;
       return (
         <SubMenu
           title={

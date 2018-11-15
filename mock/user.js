@@ -3,7 +3,10 @@ function getCurrentUser(req, res) {
     status: 200,
     data: {
       id: 'a81n02nw43qp4wq112',
-      username: 'admin'
+      username: 'admin',
+      role: {
+
+      }
     },
     message: 'success'
   });
