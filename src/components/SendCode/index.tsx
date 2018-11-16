@@ -10,8 +10,7 @@ export interface SendCodeProps extends BaseButtonProps {
   resetText?: string;
   visible?: boolean;
   onEnd?: () => void;
-  onStart?: () => void;
-  onGetCaptcha?: () => boolean | Promise<boolean>;
+  onGetCaptcha?: () => boolean | Promise<any>;
 }
 
 interface DefaultProps {
@@ -110,7 +109,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
       initText,
       resetText,
       runText,
-      onStart,
+      onGetCaptcha,
       onEnd,
       ...rest
     } = this.props;
