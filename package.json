@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
+    "clean": "rimraf dist",
     "precommit": "npm run lint-staged",
     "dev": "cross-env PORT=8080 umi dev",
     "build": "umi build",
@@ -92,6 +93,7 @@
     "mockjs": "^1.0.1-beta3",
     "prettier": "^1.14.2",
     "react-test-renderer": "^16.6.3",
+    "rimraf": "^2.6.2",
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
