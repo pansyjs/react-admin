@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SendCode without props should match a snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SendCode
+    initText="获取短信验证码"
+    resetText="重新获取验证码"
+    runText="{%s}秒后重新获取"
+    second={60}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "block": false,
+      "children": "获取短信验证码",
+      "disabled": false,
+      "ghost": false,
+      "loading": false,
+      "onClick": [Function],
+      "prefixCls": "ant-btn",
+    },
+    "ref": null,
+    "rendered": "获取短信验证码",
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "block": false,
+        "children": "获取短信验证码",
+        "disabled": false,
+        "ghost": false,
+        "loading": false,
+        "onClick": [Function],
+        "prefixCls": "ant-btn",
+      },
+      "ref": null,
+      "rendered": "获取短信验证码",
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
