@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "strictNullChecks": true,
+    // 是否开启严格的null检查模式
+    "strictNullChecks": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "jsx": "react",
-    "noUnusedLocals": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "importHelpers": true,

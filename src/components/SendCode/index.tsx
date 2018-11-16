@@ -1,97 +1,115 @@
 import React from 'react';
-import { NativeButtonProps } from 'antd/lib/button/button';
 import { Button } from 'antd';
+import { BaseButtonProps } from 'antd/es/button/button';
 
-interface SendCodeProps {
-  className?: string;
-  initStr?: string;
+export interface SendCodeProps extends BaseButtonProps {
   second?: number;
-  runStr?: string;
-  resetStr?: string;
-  storageKey?: string;
-  start: number;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  buttonProps?: NativeButtonProps;
+  initText?: string;
+  runText?: string;
+  resetText?: string;
+  visible?: boolean;
+  onEnd?: () => void;
+  onStart?: () => void;
 }
 
-class SendCode extends React.Component<SendCodeProps, any> {
+interface DefaultProps {
+  readonly second: number;
+  readonly initText: string;
+  readonly runText: string;
+  readonly resetText: string;
+}
+
+interface State {
+  buttonText: string;
+  runSecond: number;
+  lastSecond: number;
+  start: boolean;
+}
+
+// 发送验证码倒计时组件
+class SendCode extends React.Component<SendCodeProps, State> {
   private timer: NodeJS.Timer;
-
-  static defaultProps = {
-    className: '',
-    initStr: '获取短信验证码',
+  static defaultProps: DefaultProps = {
     second: 60,
-    runStr: '{%s}秒后重新获取',
-    resetStr: '重新获取验证码',
-    storageKey: ''
+    initText: '获取短信验证码',
+    runText: '{%s}秒后重新获取',
+    resetText: '重新获取验证码'
   };
 
-  constructor(props: SendCodeProps) {
-    super(props);
-    this.state = {
-      status: 'end',
-      count: 0,
-      tmpStr: props.initStr
-    };
+  readonly state: State = {
+    buttonText: this.props.initText,
+    runSecond: this.props.second,
+    lastSecond: 0,
+    start: false
+  };
+
+  componentDidMount() {}
+
+  componentWillUnmount() {
+    this.timeout();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { second } = this.props;
+  // 按钮点击回调
+  handleStart = (e) => {
+    e.preventDefault();
+    const { onStart } = this.props;
+    this.start();
+    onStart && onStart();
+  };
+
+  // 开始倒计时函数
+  start() {
     this.setState({
-      start: nextProps.start
+      start: true
     });
-    if (nextProps.start) {
-      this.run(second);
-    }
-  }
-
-  handleClick: React.MouseEventHandler<
-    HTMLButtonElement | HTMLAnchorElement
-  > = (e) => {
-    const { onClick } = this.props;
-    if (onClick) {
-      (onClick as React.MouseEventHandler<
-        HTMLButtonElement | HTMLAnchorElement
-      >)(e);
-    }
-  };
-
-  run(second) {
-    const {} = this.props;
     this.timer = setInterval(() => {
-      second--;
+      const { lastSecond, runSecond } = this.state;
+      let second = lastSecond ? lastSecond : runSecond;
+
       this.setState({
-        count: second,
-        tmpStr: this.getStr(second)
+        buttonText: this.getButtonText(second),
+        runSecond: runSecond - 1
       });
       second <= 0 && this.timeout();
     }, 1000);
   }
 
+  // 倒计时结束处理函数
   timeout() {
-    const { resetStr } = this.props;
+    const { resetText, onEnd } = this.props;
     this.setState({
-      count: 0,
-      tmpStr: resetStr
+      buttonText: resetText,
+      start: false
     });
+    onEnd && onEnd();
+    // 清除定时器
     clearInterval(this.timer);
   }
 
-  getStr(second) {
-    const { runStr } = this.props;
-    return runStr.replace(/\{([^{]*?)%s(.*?)\}/g, second);
-  }
+  /**
+   * 获取按钮文本
+   * @param second 当前的倒计时秒数
+   */
+  getButtonText = (second: number): string => {
+    const { runText } = this.props;
+    return runText.replace(/\{([^{]*?)%s(.*?)\}/g, second.toString());
+  };
 
   render() {
-    const { buttonProps } = this.props;
-    const { status, count, tmpStr } = this.state;
+    const {
+      second,
+      initText,
+      resetText,
+      runText,
+      onStart,
+      onEnd,
+      ...rest
+    } = this.props;
+    const { buttonText, start } = this.state;
+
     return (
-      <Button
-        onClick={this.handleClick}
-        disabled={count !== 0}
-        {...buttonProps}
-      >
-        {tmpStr}
+      <Button onClick={this.handleStart} {...rest} disabled={start}>
+        {buttonText}
       </Button>
     );
   }
