@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { BaseButtonProps } from 'antd/es/button/button';
+import { isPromise } from '@/utils/base';
 
 export interface SendCodeProps extends BaseButtonProps {
   second?: number;
@@ -10,6 +11,7 @@ export interface SendCodeProps extends BaseButtonProps {
   visible?: boolean;
   onEnd?: () => void;
   onStart?: () => void;
+  onGetCaptcha?: () => boolean | Promise<boolean>;
 }
 
 interface DefaultProps {
@@ -50,11 +52,18 @@ class SendCode extends React.Component<SendCodeProps, State> {
   }
 
   // 按钮点击回调
-  handleStart = (e) => {
+  handleClick = (e) => {
     e.preventDefault();
-    const { onStart } = this.props;
-    this.start();
-    onStart && onStart();
+    const { onGetCaptcha } = this.props;
+    const result = onGetCaptcha ? onGetCaptcha() : null;
+
+    if (!result === false) return;
+
+    if (isPromise(result)) {
+      result.then(this.start);
+    } else {
+      this.start();
+    }
   };
 
   // 开始倒计时函数
@@ -108,7 +117,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
     const { buttonText, start } = this.state;
 
     return (
-      <Button onClick={this.handleStart} {...rest} disabled={start}>
+      <Button onClick={this.handleClick} {...rest} disabled={start}>
         {buttonText}
       </Button>
     );
