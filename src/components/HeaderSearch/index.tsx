@@ -5,11 +5,14 @@ import Debounce from 'lodash-decorators/debounce';
 import Bind from 'lodash-decorators/bind';
 import styles from './index.less';
 
-export interface HeaderSearchProps {
+export interface IHeaderSearchProps {
   className?: string;
+  // 占位文字
   placeholder?: string;
+  // 当前提示内容列表
   onSearch?: (value: string) => void;
-  onPressEnter?: Function;
+  // 选择某项或按下回车时的回调
+  onPressEnter?: (value: string) => void;
   defaultActiveFirstOption?: boolean;
   dataSource?: string[];
   defaultOpen?: boolean;
@@ -21,7 +24,7 @@ export interface HeaderSearchStates {
 }
 
 class HeaderSearch extends React.PureComponent<
-  HeaderSearchProps,
+  IHeaderSearchProps,
   HeaderSearchStates
 > {
   private input: any;
@@ -31,7 +34,6 @@ class HeaderSearch extends React.PureComponent<
     className: '',
     placeholder: '',
     onSearch: () => {},
-    onPressEnter: () => {},
     defaultActiveFirstOption: false,
     dataSource: [],
     defaultOpen: false
@@ -64,7 +66,7 @@ class HeaderSearch extends React.PureComponent<
       const { onPressEnter } = this.props;
       const { value } = this.state;
       this.timeout = setTimeout(() => {
-        onPressEnter(value);
+        onPressEnter && onPressEnter(value);
       }, 0);
     }
   };
@@ -93,7 +95,7 @@ class HeaderSearch extends React.PureComponent<
   debouncePressEnter() {
     const { onPressEnter } = this.props;
     const { value } = this.state;
-    onPressEnter(value);
+    onPressEnter && onPressEnter(value);
   }
 
   render() {
