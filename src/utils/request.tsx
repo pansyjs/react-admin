@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import router from 'umi/router';
-import { message, notification } from 'antd';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { AJAX_DEFAULT_CONFIG } from '@/config';
