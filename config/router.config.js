@@ -12,6 +12,7 @@ export default [
   {
     path: '/',
     component: '../layouts/BasicLayout',
+    auth: 'on',
     routes: [
       // dashboard
       { path: '/', redirect: '/dashboard/analysis' },

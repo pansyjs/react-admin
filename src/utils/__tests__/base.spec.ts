@@ -1,6 +1,6 @@
-import { isDefined, isPromise } from '../utils';
+import { isDefined, isPromise } from '../base';
 
-describe('util', () => {
+describe('util base', () => {
   let promise: Promise<any>;
 
   beforeEach(() => {

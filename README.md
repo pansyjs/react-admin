@@ -107,7 +107,12 @@ class Test from Component {
 }
 ```
 
-## 参考资料
+### 借鉴项目
+
+- [TypeScript-React-Starter](https://github.com/Microsoft/TypeScript-React-Starter)
+- [ant-design-pro](https://github.com/ant-design/ant-design-pro)
+
+### 最佳实践
 
 - [react-typescript-备忘录（英文）](https://github.com/sw-yx/react-typescript-cheatsheet)
 - [react-typescript-备忘录（中文）](https://github.com/fi3ework/blog/tree/master/react-typescript-cheatsheet-cn)

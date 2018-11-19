@@ -1,56 +1,17 @@
 import React from 'react';
 import { Layout } from 'antd';
 import { MenuTheme } from 'antd/es/menu';
-import { RouteProps } from 'react-router-dom';
 import H from 'history';
 import DocumentTitle from 'react-document-title';
-import isEqual from 'lodash/isEqual';
 import PathToRegexp from 'path-to-regexp';
-import memoizeOne from 'memoize-one';
 import { connect, SubscriptionAPI } from 'dva';
 import { formatMessage } from 'umi/locale';
-import { ContainerQuery } from 'react-container-query';
-import ClassNames from 'classnames';
 import SiderMenu from '@/components/SiderMenu';
+import { memoizeOneFormatter } from '@/utils/authority';
 import Footer from './Footer';
 import logo from '../assets/logo.svg';
 
 const { Content } = Layout;
-
-/**
- * 将路由转换为菜单
- * @param data 路由数组
- * @param parentName 父路由的名称
- */
-function formatter(data, parentName?: string) {
-  return data
-    .map((item) => {
-      if (!item.name || !item.path) {
-        return null;
-      }
-
-      let locale = 'menu';
-      if (parentName) {
-        locale = `${parentName}.${item.name}`;
-      } else {
-        locale = `menu.${item.name}`;
-      }
-
-      const result = {
-        ...item,
-        name: formatMessage({ id: locale, defaultMessage: item.name }),
-        locale
-      };
-      if (item.routes) {
-        result.children = formatter(item.routes, locale);
-      }
-      delete result.routes;
-      return result;
-    })
-    .filter((item) => item);
-}
-
-const memoizeOneFormatter = memoizeOne(formatter, isEqual);
 
 // dva setting
 export interface SettingState {
@@ -62,7 +23,7 @@ export interface SettingState {
 export interface IBasicLayoutProps extends SubscriptionAPI, SettingState {
   // 通过umi注入 https://github.com/umijs/umi/blob/master/packages/umi/src/renderRoutes.js
   route: {
-    routes: RouteProps;
+    routes: any[];
     path: string;
     component: React.ReactNode;
   };
@@ -83,7 +44,7 @@ interface State {
   ...setting
 }))
 class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
-  private readonly breadcrumbNameMap: any;
+  private readonly breadcrumbNameMap: object;
   readonly state: State = {
     isMobile: false,
     rendering: true,
@@ -95,12 +56,17 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
     this.breadcrumbNameMap = this.getBreadcrumbNameMap();
   }
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/fetchCurrent'
+    });
+  }
+
   getMenuData() {
     const {
       route: { routes }
     } = this.props;
-
-    console.log(this.props);
 
     return memoizeOneFormatter(routes);
   }

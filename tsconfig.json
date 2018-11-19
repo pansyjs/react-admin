@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es2017",
+    // 是否开启严格的null检查模式
+    "strictNullChecks": false,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
     "allowJs": true,
     "baseUrl": ".",
-    "moduleResolution": "node",
     "lib": [
       "dom",
       "es7"
