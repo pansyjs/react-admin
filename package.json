@@ -100,7 +100,6 @@
     "tslint-config-jiumao": "^0.0.3",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
-    "typescript-eslint-parser": "^18.0.0",
     "umi": "^2.2.7",
     "umi-plugin-react": "^1.2.3"
   },
