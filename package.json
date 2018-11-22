@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.10.7",
+    "antd": "^3.10.8",
     "axios": "^0.18.0",
-    "bizcharts": "^3.2.5-beta.4",
+    "bizcharts": "^3.4.0",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "classnames": "^2.2.6",
     "dva": "^2.4.0",
@@ -100,7 +100,6 @@
     "tslint-config-jiumao": "^0.0.3",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
-    "typescript-eslint-parser": "^18.0.0",
     "umi": "^2.2.7",
     "umi-plugin-react": "^1.2.3"
   },
