@@ -1,4 +1,5 @@
 import globalHeader from './en-US/globalHeader';
+import menu from './en-US/menu';
 import login from './en-US/login';
 
 export default {
@@ -6,11 +7,7 @@ export default {
   'layout.user.link.help': 'Help',
   'layout.user.link.privacy': 'Privacy',
   'layout.user.link.terms': 'Terms',
-  'menu.home': 'Home',
-  'menu.dashboard': 'Dashboard',
-  'menu.dashboard.analysis': 'Analysis',
-  'menu.dashboard.monitor': 'Monitor',
-  'menu.dashboard.workplace': 'Workplace',
+  ...menu,
   ...login,
   ...globalHeader
 };
