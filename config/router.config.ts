@@ -5,8 +5,8 @@ export default [
     component: '../layouts/UserLayout',
     routes: [
       { path: '/user', redirect: '/user/login' },
-      { path: '/user/login', component: './user/login' },
-    ],
+      { path: '/user/login', component: './user/login' }
+    ]
   },
   // app
   {
@@ -24,18 +24,18 @@ export default [
           {
             path: '/dashboard/analysis',
             name: 'analysis',
-            component: './Dashboard/Analysis',
+            component: './Dashboard/Analysis'
           },
           {
             path: '/dashboard/monitor',
             name: 'monitor',
-            component: './Dashboard/Monitor',
+            component: './Dashboard/Monitor'
           },
           {
             path: '/dashboard/workplace',
             name: 'workplace',
-            component: './Dashboard/Workplace',
-          },
+            component: './Dashboard/Workplace'
+          }
         ]
       }
     ]

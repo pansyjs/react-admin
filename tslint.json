@@ -1,5 +1,7 @@
 {
-  "extends": "tslint-config-jiumao",
+  "extends": [
+
+  ],
   "jsRules": {
     "max-line-length": {
       "options": [120]

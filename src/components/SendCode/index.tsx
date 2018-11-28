@@ -44,15 +44,13 @@ class SendCode extends React.Component<SendCodeProps, State> {
     start: false
   };
 
-  componentDidMount() {}
-
   componentWillUnmount() {
     this.timeout();
   }
 
   // 按钮点击回调
-  handleClick = (e) => {
-    e.preventDefault();
+  handleClick = (event) => {
+    event.preventDefault();
     const { onGetCaptcha } = this.props;
     const result = onGetCaptcha ? onGetCaptcha() : null;
 

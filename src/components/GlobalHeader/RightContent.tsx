@@ -1,13 +1,15 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Spin, Tag, Icon, Menu, Dropdown, Avatar, Tooltip } from 'antd';
 import groupBy from 'lodash/groupBy';
+import ClassNames from 'classnames';
+import { currentUserType } from '@/types/user';
 import { ClickParam } from './index';
 import HeaderSearch from '../HeaderSearch';
-
+import SelectLang from '../SelectLang';
 import styles from 'index.less';
 
 export interface GlobalHeaderRightProps {
-  currentUser: object;
+  currentUser: currentUserType;
   onNoticeVisibleChange: Function;
   onMenuClick: (param: ClickParam) => void;
   onNoticeClear: Function;
@@ -15,7 +17,10 @@ export interface GlobalHeaderRightProps {
   notices: any[];
 }
 
-class GlobalHeaderRight extends PureComponent<GlobalHeaderRightProps, any> {
+class GlobalHeaderRight extends React.PureComponent<
+  GlobalHeaderRightProps,
+  any
+> {
   constructor(props) {
     super(props);
   }
@@ -71,7 +76,46 @@ class GlobalHeaderRight extends PureComponent<GlobalHeaderRightProps, any> {
       className = `${styles.right}  ${styles.dark}`;
     }
 
-    return <div className={className} />;
+    return (
+      <div className={className}>
+        <HeaderSearch
+          className={ClassNames(styles.action, styles.search)}
+          placeholder={formatMessage({ id: 'component.globalHeader.search' })}
+          dataSource={[
+            formatMessage({ id: 'component.globalHeader.search.example1' }),
+            formatMessage({ id: 'component.globalHeader.search.example2' }),
+            formatMessage({ id: 'component.globalHeader.search.example3' })
+          ]}
+        />
+        {/** 使用文档入口 */}
+        <Tooltip title={formatMessage({ id: 'component.globalHeader.help' })}>
+          <a
+            target="_blank"
+            href="https://pro.ant.design/docs/getting-started"
+            rel="noopener noreferrer"
+            className={styles.action}
+          >
+            <Icon type="question-circle-o" />
+          </a>
+        </Tooltip>
+        {currentUser.name ? (
+          <Dropdown overlay={menu}>
+            <span className={`${styles.action} ${styles.account}`}>
+              <Avatar
+                size="small"
+                className={styles.avatar}
+                src={currentUser.avatar}
+                alt="avatar"
+              />
+              <span className={styles.name}>{currentUser.name}</span>
+            </span>
+          </Dropdown>
+        ) : (
+          <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
+        )}
+        <SelectLang className={styles.action} />
+      </div>
+    );
   }
 }
 

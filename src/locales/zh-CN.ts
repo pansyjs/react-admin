@@ -1,4 +1,5 @@
 import globalHeader from './zh-CN/globalHeader';
+import menu from './zh-CN/menu';
 import login from './zh-CN/login';
 
 export default {
@@ -6,11 +7,7 @@ export default {
   'layout.user.link.help': '帮助',
   'layout.user.link.privacy': '隐私',
   'layout.user.link.terms': '条款',
-  'menu.home': '首页',
-  'menu.dashboard': 'Dashboard',
-  'menu.dashboard.analysis': '分析页',
-  'menu.dashboard.monitor': '监控页',
-  'menu.dashboard.workplace': '工作台',
+  ...menu,
   ...login,
   ...globalHeader
 };
