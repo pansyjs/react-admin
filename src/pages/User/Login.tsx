@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
+import { FormattedMessage } from 'umi/locale';
 import styles from './Login.less';
 
 const FormItem = Form.Item;
@@ -49,7 +50,7 @@ class LoginPage extends React.Component<LoginPageProps> {
                 htmlType="submit"
                 className={styles.loginButton}
               >
-                Log in
+                <FormattedMessage id="app.login.login" />
               </Button>
             </FormItem>
           </Form>

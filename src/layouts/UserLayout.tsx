@@ -23,14 +23,7 @@ class UserLayout extends React.PureComponent {
         </div>
 
         <div className={styles.content}>
-          <div className={styles.top}>
-            <div className={styles.header}>
-              <Link to="/">
-                <img alt="logo" className={styles.logo} src={logo} />
-                <span className={styles.title}>后台管理系统</span>
-              </Link>
-            </div>
-          </div>
+          <img alt="logo" className={styles.logo} src={logo} />
           {children}
         </div>
         <GlobalFooter copyright={copyright} />
