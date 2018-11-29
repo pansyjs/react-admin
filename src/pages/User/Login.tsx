@@ -8,15 +8,30 @@ const FormItem = Form.Item;
 
 export interface LoginPageProps extends FormComponentProps {}
 
-class LoginPage extends React.Component<LoginPageProps> {
+interface State {
+  readonly showPassword: boolean;
+}
+
+class LoginPage extends React.Component<LoginPageProps, State> {
+  readonly state: State = {
+    showPassword: false
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
+  };
+
+  changeShowPassword = () => {
+    this.setState({
+      showPassword: !this.state.showPassword
+    });
   };
 
   render() {
     const {
       form: { getFieldDecorator }
     } = this.props;
+    const { showPassword } = this.state;
 
     return (
       <div className={styles.main}>
@@ -39,8 +54,15 @@ class LoginPage extends React.Component<LoginPageProps> {
               })(
                 <Input
                   prefix={<Icon type="lock" />}
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Password"
+                  suffix={
+                    <Icon
+                      onClick={this.changeShowPassword}
+                      type="eye"
+                      style={showPassword ? { color: '#1890FF' } : {}}
+                    />
+                  }
                 />
               )}
             </FormItem>
