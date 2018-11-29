@@ -1,32 +1,26 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { MenuTheme } from 'antd/es/menu';
 import H from 'history';
 import DocumentTitle from 'react-document-title';
 import PathToRegexp from 'path-to-regexp';
 import { connect, SubscriptionAPI } from 'dva';
 import { formatMessage } from 'umi/locale';
-import SiderMenu from '@/components/SiderMenu';
+import SideMenu from '@/components/SideMenu';
+import { settingsModelState } from '@/types/settings';
 import { memoizeOneFormatter } from '@/utils/authority';
 import Footer from './Footer';
 import logo from '../assets/logo.svg';
 
 const { Content } = Layout;
 
-// dva setting
-export interface SettingState {
-  navTheme: MenuTheme;
-  layout: 'slideMenu' | 'topMenu';
-  fixedHeader: boolean;
-}
-
-export interface IBasicLayoutProps extends SubscriptionAPI, SettingState {
+export interface BasicLayoutProps extends SubscriptionAPI {
   // 通过umi注入 https://github.com/umijs/umi/blob/master/packages/umi/src/renderRoutes.js
   route: {
     routes: any[];
     path: string;
     component: React.ReactNode;
   };
+  setting: settingsModelState;
   location: H.Location;
   collapsed: boolean;
   fixSliderBar: boolean;
@@ -38,12 +32,11 @@ interface State {
   menuData: any[];
 }
 
-@connect((global, setting) => ({
+@connect(({ global, setting }) => ({
   collapsed: global.collapsed,
-  layout: setting.layout,
-  ...setting
+  setting
 }))
-class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
+class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
   private readonly breadcrumbNameMap: object;
   readonly state: State = {
     isMobile: false,
@@ -51,7 +44,7 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
     menuData: this.getMenuData()
   };
 
-  constructor(props: IBasicLayoutProps) {
+  constructor(props: BasicLayoutProps) {
     super(props);
     this.breadcrumbNameMap = this.getBreadcrumbNameMap();
   }
@@ -122,8 +115,11 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
 
   getLayoutStyle = () => {
     const { isMobile } = this.state;
-    const { fixSliderBar, collapsed, layout } = this.props;
-    if (fixSliderBar && layout !== 'topMenu' && !isMobile) {
+    const {
+      collapsed,
+      setting: { layout, fixSideBar }
+    } = this.props;
+    if (fixSideBar && layout !== 'topMenu' && !isMobile) {
       return {
         paddingLeft: collapsed ? '80px' : '256px'
       };
@@ -132,7 +128,9 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
   };
 
   getContentStyle = () => {
-    const { fixedHeader } = this.props;
+    const {
+      setting: { fixedHeader }
+    } = this.props;
     return {
       margin: '24px 24px 0',
       paddingTop: fixedHeader ? 64 : 0
@@ -141,7 +139,7 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
 
   render() {
     const {
-      navTheme,
+      setting: { navTheme },
       children,
       location: { pathname }
     } = this.props;
@@ -150,9 +148,8 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
 
     const layout = (
       <Layout>
-        {/* 左侧菜单 **/}
         {isMobile ? null : (
-          <SiderMenu
+          <SideMenu
             logo={logo}
             theme={navTheme}
             onCollapse={this.handleMenuCollapse}

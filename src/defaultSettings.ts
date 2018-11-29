@@ -1,6 +1,6 @@
-import { settingsModelSate } from '@/types/settings';
+import { settingsModelState } from '@/types/settings';
 
-const defaultSettings: settingsModelSate = {
+const defaultSettings: settingsModelState = {
   navTheme: 'dark',
   primaryColor: '#1890FF',
   layout: 'sideMenu',
