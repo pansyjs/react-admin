@@ -1,86 +1,60 @@
 import React from 'react';
 import H from 'history';
-import { Menu, Icon } from 'antd';
-import { CollapseType } from 'antd/es/layout/Sider';
-import { MenuMode, MenuTheme } from 'antd/es/menu';
-import { Link } from 'react-router-dom';
-import isEqual from 'lodash/isEqual';
 import MemoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
+import { Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import { MenuMode } from 'antd/es/menu';
+import { CollapseType } from 'antd/es/layout/Sider';
+import { isUrl } from '@/utils/regexp';
 import { urlToList } from '@/utils/pathTools';
-import { getFlatMenuKeys, getMenuMatches } from './utils';
+import { MenuTheme } from '@/types/settings';
+import { getMenuMatches } from './utils';
 import styles from './index.less';
 
-const { SubMenu } = Menu;
-
-/**
- * 获取菜单Icon图标
- * 允许菜单icon配置为 `strong` 或者 `ReactNode`
- * @param icon
- * @example
- *   icon: 'setting',
- *   icon: 'http://demo.com/icon.png',
- *   icon: <Icon type="setting" />,
- */
-const getIcon = (icon) => {
-  if (typeof icon === 'string' && icon.indexOf('http') === 0) {
+// 获取Icon图标
+function getIcon(icon) {
+  if (typeof icon === 'string' && isUrl(icon)) {
     return <img src={icon} alt="icon" className={styles.icon} />;
   }
   if (typeof icon === 'string') {
     return <Icon type={icon} />;
   }
   return icon;
-};
+}
 
-export interface IBaseMenuProps {
-  openKeys?: string[]; // 当前打开的菜单
-  theme?: MenuTheme; // 菜单主题
-  mode?: MenuMode; // 菜单模式
-  onOpenChange?: (openKeys: string[]) => void;
-  style?: React.CSSProperties;
+const { SubMenu } = Menu;
+
+export interface BaseMenuProps {
+  openKeys?: string[];
+  theme?: MenuTheme;
+  mode?: MenuMode;
+  flatMenuKeys?: any[];
   location: H.Location;
+  style?: React.CSSProperties;
   menuData: any[];
-  Authorized?: any;
   isMobile: boolean;
-  onCollapse: (collapsed: boolean, type: CollapseType) => void;
+  onCollapse: (collapsed: boolean, type?: CollapseType) => void;
+  onOpenChange?: (openKeys: string[]) => void;
 }
 
-interface DefaultProps {
-  readonly theme: MenuTheme;
-  readonly mode: MenuMode;
-}
-
-class BaseMenu extends React.PureComponent<IBaseMenuProps> {
-  private flatMenuKeys: any[];
-  static defaultProps: DefaultProps = {
-    theme: 'dark',
-    mode: 'vertical'
-  };
-
-  constructor(props: IBaseMenuProps) {
+class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
+  constructor(props) {
     super(props);
     this.getSelectedMenuKeys = MemoizeOne(this.getSelectedMenuKeys, isEqual);
-    this.flatMenuKeys = getFlatMenuKeys(props.menuData);
   }
 
   // 获取菜单子节点
   getNavMenuItems = (menusData) => {
-    if (!menusData) {
-      return [];
-    }
-    return (
-      menusData
-        // 处理菜单数据 过滤掉需要隐藏的菜单
-        .filter((item) => item.name && !item.hideInMenu)
-        .map((item) => {
-          // make dom
-          const ItemDom = this.getSubMenuOrItem(item);
-          return this.checkPermissionItem(item.authority, ItemDom);
-        })
-    );
+    if (!menusData) return [];
+    return menusData
+      .filter((item) => item.name && !item.hideInMenu)
+      .map((item) => this.getSubMenuOrItem(item))
+      .filter((item) => item);
   };
 
+  //
   getSubMenuOrItem = (item) => {
-    // doc: add hideChildrenInMenu
     if (
       item.children &&
       !item.hideChildrenInMenu &&
@@ -108,15 +82,6 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
     return <Menu.Item key={item.path}>{this.getMenuItemPath(item)}</Menu.Item>;
   };
 
-  checkPermissionItem = (authority, ItemDom) => {
-    const { Authorized } = this.props;
-    if (Authorized && Authorized.check) {
-      const { check } = Authorized;
-      return check(authority, ItemDom);
-    }
-    return ItemDom;
-  };
-
   getMenuItemPath = (item) => {
     const { name } = item;
     const itemPath = this.conversionPath(item.path);
@@ -140,7 +105,7 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
         onClick={
           isMobile
             ? () => {
-                onCollapse(true, 'clickTrigger');
+                onCollapse(true);
               }
             : undefined
         }
@@ -158,13 +123,10 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
     return `/${path || ''}`.replace(/\/+/g, '/');
   };
 
-  /**
-   * 获取当前选定的菜单
-   * @param pathname
-   */
-  getSelectedMenuKeys = (pathname: string) => {
+  getSelectedMenuKeys = (pathname) => {
+    const { flatMenuKeys } = this.props;
     return urlToList(pathname).map((itemPath) =>
-      getMenuMatches(this.flatMenuKeys, itemPath).pop()
+      getMenuMatches(flatMenuKeys, itemPath).pop()
     );
   };
 
@@ -175,16 +137,13 @@ class BaseMenu extends React.PureComponent<IBaseMenuProps> {
       mode,
       location: { pathname },
       onOpenChange,
-      menuData,
-      style
+      style,
+      menuData
     } = this.props;
-
-    // 当前选择的菜单
     let selectedKeys = this.getSelectedMenuKeys(pathname);
     if (!selectedKeys.length && openKeys) {
       selectedKeys = [openKeys[openKeys.length - 1]];
     }
-
     let props = {};
     if (openKeys) {
       props = {

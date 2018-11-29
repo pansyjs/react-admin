@@ -9,19 +9,18 @@ export interface SelectLangProps {
 }
 
 class SelectLang extends React.PureComponent<SelectLangProps, any> {
-  changLang = ({ key }) => {
+  changeLang = ({ key }) => {
     setLocale(key);
   };
 
   render() {
     const { className } = this.props;
     const selectedLang = getLocale();
-
     const langMenu = (
       <Menu
         className={styles.menu}
         selectedKeys={[selectedLang]}
-        onClick={this.changLang}
+        onClick={this.changeLang}
       >
         <Menu.Item key="zh-CN">
           <span role="img" aria-label="简体中文">
@@ -37,7 +36,6 @@ class SelectLang extends React.PureComponent<SelectLangProps, any> {
         </Menu.Item>
       </Menu>
     );
-
     return (
       <Dropdown overlay={langMenu} placement="bottomRight">
         <Icon

@@ -1,4 +1,5 @@
 import { fetchCurrentUser } from '@/services/user';
+import { currentUserType } from '@/types/user';
 
 export default {
   name: 'user',
