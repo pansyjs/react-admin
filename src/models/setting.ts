@@ -1,8 +1,12 @@
+import defaultSettings from '@/defaultSettings';
+
 export default {
   name: 'setting',
 
-  state: {
-    navTheme: 'dark',
-    layout: 'slideMenu'
+  state: defaultSettings,
+
+  reducers: {
+    getSetting(state) {},
+    changeSetting(state, { payload }) {}
   }
 };
