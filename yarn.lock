@@ -4656,9 +4656,9 @@ dva-loading@^2.1.0-beta.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-dva@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/dva/-/dva-2.4.0.tgz#57a29288dde0163cdaf2a2a955c8ec51cfccdea5"
+dva@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/dva/-/dva-2.4.1.tgz#a3eeb07bb8bc6e2ff9ffe31799d03cb69e45f5fd"
   dependencies:
     "@babel/runtime" "7.0.0-beta.46"
     "@types/isomorphic-fetch" "^0.0.34"
@@ -4669,7 +4669,7 @@ dva@^2.4.0:
     history "^4.6.3"
     invariant "^2.2.2"
     isomorphic-fetch "^2.2.1"
-    react-redux "^5.0.5"
+    react-redux "5.0.7"
     react-router-dom "^4.1.2"
     react-router-redux "5.0.0-alpha.9"
     redux "^3.7.2"
@@ -11303,7 +11303,7 @@ react-native-swipeout@^2.2.2:
     prop-types "^15.5.10"
     react-tween-state "^0.1.5"
 
-react-redux@^5.0.5:
+react-redux@5.0.7, react-redux@^5.0.5:
   version "5.0.7"
   resolved "http://registry.npmjs.org/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
   dependencies:
