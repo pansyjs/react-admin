@@ -36,7 +36,6 @@ export default {
   theme: {
     'primary-color': defaultSettings.primaryColor
   },
-  history: 'hash',
   ignoreMomentLocale: true,
   urlLoaderExcludes: [resolve(__dirname, 'src/icons/*')],
   chainWebpack(config) {
