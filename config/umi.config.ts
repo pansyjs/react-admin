@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import pageRoutes from './router.config';
+import defaultSettings from '../src/defaultSettings';
 
 const plugins = [
   [
@@ -33,7 +34,7 @@ export default {
   // 路由配置
   routes: pageRoutes,
   theme: {
-    'primary-color': '#1890FF'
+    'primary-color': defaultSettings.primaryColor
   },
   history: 'hash',
   ignoreMomentLocale: true,
