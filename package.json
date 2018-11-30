@@ -65,6 +65,7 @@
     "@types/enzyme": "^3.1.15",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.9",
+    "@types/js-cookie": "^2.2.0",
     "@types/lodash": "^4.14.116",
     "@types/memoize-one": "^3.1.1",
     "@types/node": "^10.5.7",
