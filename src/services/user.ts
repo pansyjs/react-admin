@@ -1,5 +1,9 @@
-import { GET } from '@/utils/request';
+import { GET, POST } from '@/utils/request';
 
 export function fetchCurrentUser() {
-  return GET('/currentUser');
+  return GET('/user/currentUser');
+}
+
+export function fetchLogin(data) {
+  return POST('/user/login', data);
 }

@@ -1,17 +1,23 @@
 import React from 'react';
 import { Card, Form, Input, Icon, Button } from 'antd';
+import { connect, SubscriptionAPI } from 'dva';
 import { FormComponentProps } from 'antd/lib/form';
 import { FormattedMessage } from 'umi/locale';
 import styles from './Login.less';
 
 const FormItem = Form.Item;
 
-export interface LoginPageProps extends FormComponentProps {}
+export interface LoginPageProps extends FormComponentProps, SubscriptionAPI {
+  loading: boolean;
+}
 
 interface State {
   readonly showPassword: boolean;
 }
 
+@connect(({ loading }) => ({
+  loading: loading.effects['login/fetchLogin']
+}))
 class LoginPage extends React.Component<LoginPageProps, State> {
   readonly state: State = {
     showPassword: false
@@ -19,6 +25,14 @@ class LoginPage extends React.Component<LoginPageProps, State> {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { form, dispatch } = this.props;
+    form.validateFields((error, values) => {
+      if (error) return;
+      dispatch({
+        type: 'login/fetchLogin',
+        payload: values
+      });
+    });
   };
 
   changeShowPassword = () => {
@@ -29,7 +43,8 @@ class LoginPage extends React.Component<LoginPageProps, State> {
 
   render() {
     const {
-      form: { getFieldDecorator }
+      form: { getFieldDecorator },
+      loading
     } = this.props;
     const { showPassword } = this.state;
 
@@ -38,7 +53,7 @@ class LoginPage extends React.Component<LoginPageProps, State> {
         <Card>
           <Form onSubmit={this.handleSubmit}>
             <FormItem>
-              {getFieldDecorator('userName', {
+              {getFieldDecorator('username', {
                 rules: [
                   { required: true, message: 'Please input your username!' }
                 ]
@@ -68,6 +83,7 @@ class LoginPage extends React.Component<LoginPageProps, State> {
             </FormItem>
             <FormItem>
               <Button
+                loading={loading}
                 type="primary"
                 htmlType="submit"
                 className={styles.loginButton}
