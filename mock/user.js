@@ -13,6 +13,21 @@ function getCurrentUser(req, res) {
   res.status(200).end()
 }
 
+function login(req, res) {
+  res.json({
+    status: 200,
+    data: {
+      token: 'ui79sa2md4ka02da'
+    },
+    message: 'success'
+  });
+  res.status(200).end()
+}
+
 export default {
   'GET /api/currentUser': getCurrentUser
+};
+
+export default {
+  'POST /api/user/login': login
 };
