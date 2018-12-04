@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import pageRoutes from './router.config';
-import defaultSettings from '../src/defaultSettings';
+import themeConfig from './theme.config';
 
 const plugins = [
   [
@@ -33,9 +33,7 @@ export default {
   },
   // 路由配置
   routes: pageRoutes,
-  theme: {
-    'primary-color': defaultSettings.primaryColor
-  },
+  theme: themeConfig,
   ignoreMomentLocale: true,
   urlLoaderExcludes: [resolve(__dirname, 'src/icons/*')],
   chainWebpack(config) {
