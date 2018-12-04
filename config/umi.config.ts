@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import pageRoutes from './router.config';
 import themeConfig from './theme.config';
 
@@ -34,15 +33,5 @@ export default {
   // 路由配置
   routes: pageRoutes,
   theme: themeConfig,
-  ignoreMomentLocale: true,
-  urlLoaderExcludes: [resolve(__dirname, 'src/icons/*')],
-  chainWebpack(config) {
-    config.module
-      .rule('svg')
-      .test(/\.svg$/i)
-      .include.add(resolve(__dirname, 'src/icons'))
-      .end()
-      .use('svg-sprite-loader')
-      .loader(require.resolve('svg-sprite-loader'));
-  }
+  ignoreMomentLocale: true
 };
