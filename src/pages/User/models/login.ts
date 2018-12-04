@@ -1,6 +1,7 @@
 import { routerRedux } from 'dva/router';
 import { fetchLogin } from '@/services/user';
 import { parseQuery } from '@/utils/url';
+import { setCookie } from '@/utils/cookie';
 
 export default {
   namespace: 'login',
@@ -12,9 +13,12 @@ export default {
       const response = yield call(fetchLogin, payload);
       // login success
       if (response && response.code === 200) {
+        const { token } = response.data;
+        if (token) {
+          setCookie('', token);
+        }
         const urlParams = new URL(window.location.href);
         const params = parseQuery();
-        console.log(params);
         let { redirect } = params;
         // 处理登录重定向
         if (redirect) {

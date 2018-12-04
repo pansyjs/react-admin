@@ -1,8 +1,8 @@
+import MemoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
-import memoizeOne from 'memoize-one';
 import { formatMessage } from 'umi/locale';
 
-export interface IFormatter {
+export interface Formatter {
   (
     routes: any[],
     parentAuth?: string,
@@ -18,7 +18,7 @@ export interface IFormatter {
  * @param parentName
  * @param paths
  */
-export const formatter: IFormatter = function(
+export const formatter: Formatter = function(
   routes,
   parentAuth,
   parentName,
@@ -63,4 +63,35 @@ export const formatter: IFormatter = function(
     .filter((item) => item);
 };
 
-export const memoizeOneFormatter = memoizeOne(formatter, isEqual);
+/**
+ * 获取面包屑映射
+ * @param {Object} menuData 菜单配置
+ */
+const getBreadcrumbNameMap = (menuData) => {
+  const routerMap = {};
+
+  const flattenMenuData = (data) => {
+    data.forEach((menuItem) => {
+      if (menuItem.children) {
+        flattenMenuData(menuItem.children);
+      }
+      // Reduce memory usage
+      routerMap[menuItem.path] = menuItem;
+    });
+  };
+  flattenMenuData(menuData);
+  return routerMap;
+};
+
+// 过滤需要隐藏的菜单
+export const filterMenuData = (menuData) => {
+  if (!menuData) {
+    return [];
+  }
+  return menuData
+    .filter((item) => item.name && !item.hideInMenu)
+    .filter((item) => item);
+};
+
+export const MOGetBreadcrumbNameMap = MemoizeOne(getBreadcrumbNameMap, isEqual);
+export const MOFormatter = MemoizeOne(formatter, isEqual);

@@ -1,7 +1,7 @@
 import { GET, POST } from '@/utils/request';
 
 export function fetchCurrentUser() {
-  return GET('/user/currentUser');
+  return GET('/user/current');
 }
 
 export function fetchLogin(data) {
