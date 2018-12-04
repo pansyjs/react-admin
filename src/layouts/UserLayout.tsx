@@ -1,16 +1,9 @@
 import React from 'react';
-import Link from 'umi/link';
-import { Icon } from 'antd';
 import GlobalFooter from '@/components/GlobalFooter';
 import SelectLang from '@/components/SelectLang';
-import styles from './UserLayout.less';
 import logo from '@/assets/logo.svg';
-
-const copyright = (
-  <React.Fragment>
-    Copyright <Icon type="copyright" /> 2018 JiuMao技术部出品
-  </React.Fragment>
-);
+import { copyright } from './Footer';
+import styles from './UserLayout.less';
 
 class UserLayout extends React.PureComponent {
   render() {
