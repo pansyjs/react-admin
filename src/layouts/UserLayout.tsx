@@ -1,7 +1,6 @@
 import React from 'react';
 import GlobalFooter from '@/components/GlobalFooter';
 import SelectLang from '@/components/SelectLang';
-import logo from '@/assets/logo.svg';
 import { copyright } from './Footer';
 import styles from './UserLayout.less';
 
@@ -15,10 +14,7 @@ class UserLayout extends React.PureComponent {
           <SelectLang />
         </div>
 
-        <div className={styles.content}>
-          <img alt="logo" className={styles.logo} src={logo} />
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
         <GlobalFooter copyright={copyright} />
       </div>
     );
