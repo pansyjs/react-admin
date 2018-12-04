@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, Form, Input, Icon, Button } from 'antd';
-import { connect, SubscriptionAPI } from 'dva';
-import { FormComponentProps } from 'antd/lib/form';
+import { connect } from 'dva';
 import { FormattedMessage } from 'umi/locale';
+import BaseComponent from '@/components/BaseComponent';
 import styles from './Login.less';
 
 const FormItem = Form.Item;
 
-export interface LoginPageProps extends FormComponentProps, SubscriptionAPI {
-  loading: boolean;
+export interface LoginPageProps {
+  loading?: boolean;
 }
 
 interface State {
@@ -18,7 +18,7 @@ interface State {
 @connect(({ loading }) => ({
   loading: loading.effects['login/fetchLogin']
 }))
-class LoginPage extends React.Component<LoginPageProps, State> {
+class LoginPage extends BaseComponent<LoginPageProps, State> {
   readonly state: State = {
     showPassword: false
   };
