@@ -114,6 +114,5 @@ class Test from Component {
 
 ### 最佳实践
 
-- [react-typescript-备忘录（英文）](https://github.com/sw-yx/react-typescript-cheatsheet)
-- [react-typescript-备忘录（中文）](https://github.com/fi3ework/blog/tree/master/react-typescript-cheatsheet-cn)
-- [react-redux-typescript-指南（英文）](https://github.com/piotrwitek/react-redux-typescript-guide)
+- [react-typescript-cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet)
+- [react-redux-typescript-guide](https://github.com/piotrwitek/react-redux-typescript-guide)
