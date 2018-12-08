@@ -3,9 +3,11 @@ import { Layout } from 'antd';
 import H from 'history';
 import DocumentTitle from 'react-document-title';
 import PathToRegexp from 'path-to-regexp';
-import { connect, SubscriptionAPI } from 'dva';
+import { connect } from 'dva';
 import { formatMessage } from 'umi/locale';
+import Media from 'react-media';
 import SideMenu from '@/components/SideMenu';
+import { Dispatch } from 'redux';
 import { settingsModelState } from '@/types/settings';
 import Header from './Header';
 import Footer from './Footer';
@@ -13,36 +15,30 @@ import logo from '../assets/logo.svg';
 
 const { Content } = Layout;
 
-export interface BasicLayoutProps extends SubscriptionAPI {
+export interface BasicLayoutProps {
   // 通过umi注入 https://github.com/umijs/umi/blob/master/packages/umi/src/renderRoutes.js
   route: {
     routes: any[];
     path: string;
     component: React.ReactNode;
   };
-  setting: settingsModelState;
+  dispatch: Dispatch<any>;
   location: H.Location;
+  setting: settingsModelState;
   collapsed: boolean;
   fixSliderBar: boolean;
   menuData: any[];
   breadcrumbNameMap: any[];
+  isMobile: boolean;
 }
 
 interface State {
-  isMobile: boolean;
   rendering: boolean;
 }
 
-@connect(({ global, setting, menu }) => ({
-  collapsed: global.collapsed,
-  menuData: menu.menuData,
-  breadcrumbNameMap: menu.breadcrumbNameMap,
-  setting
-}))
 class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
   private readonly breadcrumbNameMap: object;
   readonly state: State = {
-    isMobile: false,
     rendering: true
   };
 
@@ -95,7 +91,7 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
   };
 
   getLayoutStyle = () => {
-    const { isMobile } = this.state;
+    const { isMobile } = this.props;
     const {
       collapsed,
       setting: { layout, fixSideBar }
@@ -123,9 +119,11 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
       setting: { navTheme },
       children,
       menuData,
+      isMobile,
+      setting,
+      collapsed,
       location: { pathname }
     } = this.props;
-    const { isMobile } = this.state;
     const pageTitle = this.getPageTitle(pathname);
 
     const layout = (
@@ -146,7 +144,13 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
             minHeight: '100vh'
           }}
         >
-          <Header />
+          <Header
+            logo={logo}
+            setting={setting}
+            collapsed={collapsed}
+            isMobile={isMobile}
+            handleMenuCollapse={this.handleMenuCollapse}
+          />
           <Content style={this.getContentStyle()}>{children}</Content>
           <Footer />
         </Layout>
@@ -163,4 +167,14 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
   }
 }
 
-export default BasicLayout;
+export default connect(({ global, setting, menu }) => ({
+  collapsed: global.collapsed,
+  layout: setting.layout,
+  menuData: menu.menuData,
+  breadcrumbNameMap: menu.breadcrumbNameMap,
+  setting
+}))((props) => (
+  <Media query="(max-width: 599px)">
+    {(isMobile) => <BasicLayout {...props} isMobile={isMobile} />}
+  </Media>
+));

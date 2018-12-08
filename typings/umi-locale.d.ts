@@ -21,7 +21,3 @@ declare module 'umi/locale' {
   export const getLocale;
   export const FormattedMessage;
 }
-declare module '*.css';
-declare module '*.less';
-declare module '*.svg';
-declare module '*.png';

@@ -5,12 +5,13 @@ import ClassNames from 'classnames';
 import { FormattedMessage, formatMessage } from 'umi/locale';
 import { currentUserType } from '@/types/user';
 import HeaderSearch, { HeaderSearchProps } from '../HeaderSearch';
+import NoticeIcon from '../NoticeIcon';
 import SelectLang from '../SelectLang';
 import styles from './index.less';
 
 export interface GlobalHeaderRightProps {
-  currentUser: currentUserType;
-  onMenuClick: (params: SelectParam) => void;
+  currentUser?: currentUserType;
+  onMenuClick?: (params: SelectParam) => void;
   headerSearch?: boolean | HeaderSearchProps;
 }
 
@@ -20,6 +21,8 @@ class GlobalHeaderRight extends React.PureComponent<
 > {
   render() {
     const { onMenuClick, currentUser } = this.props;
+
+    console.log(currentUser);
     const menu = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
         <Menu.Item key="userCenter">

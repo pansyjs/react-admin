@@ -1,35 +1,19 @@
 import React from 'react';
-import { Icon, Divider } from 'antd';
-import { Link } from 'dva/router';
+import { Icon } from 'antd';
+import Link from 'umi/link';
 import Debounce from 'lodash-decorators/debounce';
 import RightContent from './RightContent';
 import styles from './index.less';
 
-export interface ClickParam {
-  key: string;
-  keyPath: Array<string>;
-  item: any;
-  domEvent: any;
-}
-
 export interface GlobalHeaderProps {
+  logo: string;
+  isMobile: boolean;
   collapsed?: boolean;
-  onCollapse?: Function;
-  isMobile?: boolean;
-  logo?: string;
-  currentUser?: object;
-  onNoticeVisibleChange?: Function;
-  onMenuClick?: (param: ClickParam) => void;
-  onNoticeClear?: Function;
-  theme?: string;
-  notices?: any[];
+  currentUser?: any;
+  onCollapse?: (collapse: boolean) => void;
 }
 
-class GlobalHeader extends React.PureComponent<GlobalHeaderProps> {
-  constructor(props) {
-    super(props);
-  }
-
+class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
   @Debounce(600)
   triggerResizeEvent() {
     const event = document.createEvent('HTMLEvents');
@@ -37,28 +21,25 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps> {
     window.dispatchEvent(event);
   }
 
-  toggle() {
+  toggle = () => {
     const { collapsed, onCollapse } = this.props;
-    onCollapse(!collapsed);
+    onCollapse && onCollapse(!collapsed);
     this.triggerResizeEvent();
-  }
+  };
 
   render() {
-    const { collapsed, isMobile, logo, ...restProps } = this.props;
+    const { collapsed, isMobile, logo, currentUser } = this.props;
     return (
       <div className={styles.header}>
-        {isMobile && [
+        {isMobile && (
           <Link to="/" className={styles.logo} key="logo">
             <img src={logo} alt="logo" width="32" />
-          </Link>,
-          <Divider type="vertical" key="line" />
-        ]}
-        <Icon
-          className={styles.trigger}
-          type={collapsed ? 'menu-unfold' : 'menu-fold'}
-          onClick={this.toggle}
-        />
-        <RightContent {...restProps} />
+          </Link>
+        )}
+        <span className={styles.trigger} onClick={this.toggle}>
+          <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+        </span>
+        <RightContent currentUser={currentUser} />
       </div>
     );
   }
