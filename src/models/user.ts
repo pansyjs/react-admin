@@ -16,8 +16,8 @@ export default {
         yield put({
           type: 'saveCurrentUser',
           payload: {
-            id: userInfo.id,
-            username: userInfo.username
+            name: userInfo.name,
+            avatar: userInfo.avatar
           }
         });
       }
