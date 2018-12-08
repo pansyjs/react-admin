@@ -54,6 +54,7 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.6.3",
     "react-intl": "^2.4.0",
+    "react-media": "^1.8.0",
     "react-text-mask": "^5.4.3",
     "react-transition-group": "^2.4.0",
     "rollbar": "^2.4.4",
