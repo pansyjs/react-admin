@@ -7,6 +7,7 @@ import { connect, SubscriptionAPI } from 'dva';
 import { formatMessage } from 'umi/locale';
 import SideMenu from '@/components/SideMenu';
 import { settingsModelState } from '@/types/settings';
+import Header from './Header';
 import Footer from './Footer';
 import logo from '../assets/logo.svg';
 
@@ -145,8 +146,8 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
             minHeight: '100vh'
           }}
         >
+          <Header />
           <Content style={this.getContentStyle()}>{children}</Content>
-          {/** 页面底部 */}
           <Footer />
         </Layout>
       </Layout>
