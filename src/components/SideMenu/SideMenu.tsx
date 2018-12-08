@@ -4,6 +4,7 @@ import ClassNames from 'classnames';
 import { Link } from 'react-router-dom';
 import BaseMenu, { BaseMenuProps } from './BaseMenu';
 import PageLoading from '../PageLoading';
+import ProjectLogo from '../ProjectLogo';
 import { getDefaultCollapsedSubMenus } from './utils';
 import styles from './index.less';
 
@@ -62,12 +63,7 @@ class SideMenu extends React.PureComponent<SideMenuProps, State> {
           [styles.light]: theme === 'light'
         })}
       >
-        <div className={styles.logo} id="logo">
-          <Link to="/">
-            <img src={logo} alt="logo" />
-            <h1>Ant Design Pro</h1>
-          </Link>
-        </div>
+        <ProjectLogo logo={logo} className={styles.logo} />
         <React.Suspense fallback={<PageLoading />}>
           <BaseMenu
             {...this.props}
