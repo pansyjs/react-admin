@@ -13,6 +13,7 @@
     "lint-staged:ts": "npm run tsc",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less",
+    "docker:build": "./scripts/docker-build.sh",
     "tsc": "tsc",
     "test": "umi test",
     "test:component": "umi test ./src/components",
@@ -32,7 +33,7 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.10.9",
+    "antd": "^3.11.0",
     "axios": "^0.18.0",
     "bizcharts": "^3.4.0",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
@@ -104,8 +105,9 @@
     "tslint-config-jiumao": "^0.0.3",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
-    "umi": "^2.2.7",
-    "umi-plugin-react": "^1.2.3"
+    "umi": "^2.2.8",
+    "umi-plugin-react": "^1.2.3",
+    "yarn": "^1.12.3"
   },
   "engines": {
     "node": ">=8.0.0"

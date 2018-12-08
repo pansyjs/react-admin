@@ -13,16 +13,16 @@ export interface ClickParam {
 }
 
 export interface GlobalHeaderProps {
-  collapsed: boolean;
-  onCollapse: Function;
-  isMobile: boolean;
-  logo: string;
-  currentUser: object;
-  onNoticeVisibleChange: Function;
-  onMenuClick: (param: ClickParam) => void;
-  onNoticeClear: Function;
-  theme: string;
-  notices: any[];
+  collapsed?: boolean;
+  onCollapse?: Function;
+  isMobile?: boolean;
+  logo?: string;
+  currentUser?: object;
+  onNoticeVisibleChange?: Function;
+  onMenuClick?: (param: ClickParam) => void;
+  onNoticeClear?: Function;
+  theme?: string;
+  notices?: any[];
 }
 
 class GlobalHeader extends React.PureComponent<GlobalHeaderProps> {
