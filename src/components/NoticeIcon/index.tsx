@@ -1,60 +1,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Icon, Tabs, Badge, Spin } from 'antd';
-import { PopoverProps } from 'antd/es/popover';
 import ClassNames from 'classnames';
 import HeaderDropDown from '../HeaderDropDown';
 import { NoticeData } from './NoticeList';
 import List from './NoticeList';
+import NoticeTab from './NoticeTab';
 import styles from './index.less';
 
 const { TabPane } = Tabs;
 
 export interface NoticeIconProps {
-  count?: number;
-  bell?: React.ReactNode;
   className?: string;
+  // 消息总数
+  count?: number;
+  // 消息显示的图标
+  bell?: React.ReactNode;
+  // 弹出卡片加载状态
   loading?: boolean;
+  // 点击清空按钮的回调
   onClear?: (tabName: string) => void;
+  // 点击列表项的回调
   onItemClick?: (item: NoticeData, tabProps: NoticeIconProps) => void;
+  // 切换页签的回调
   onTabChange?: (tabTile: string) => void;
-  popupAlign?: {
-    points?: [string, string];
-    offset?: [number, number];
-    targetOffset?: [number, number];
-    overflow?: any;
-    useCssRight?: boolean;
-    useCssBottom?: boolean;
-    useCssTransform?: boolean;
-  };
-  style?: React.CSSProperties;
+  // 弹出卡片显隐的回调
   onPopupVisibleChange?: (visible: boolean) => void;
-  popupVisible?: boolean;
+  style?: React.CSSProperties;
+  // 控制下拉菜单显隐
+  dropDownVisible?: boolean;
+  // 清空是否关闭菜单
+  clearClose?: boolean;
+  // 默认文案
   locale?: { emptyText: string; clear: string };
 }
 
-interface DefaultProps {}
+interface DefaultProps {
+  bell: React.ReactNode;
+  loading: boolean;
+  clearClose: boolean;
+}
 
 interface State {
   readonly visible: boolean;
 }
 
 class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
-  static Tab = TabPane;
-  private popover: React.ReactNode;
+  static Tab = NoticeTab;
+  private dropDown: React.ReactNode;
 
-  static defaultProps = {
-    onItemClick: () => {},
-    onPopupVisibleChange: () => {},
-    onTabChange: () => {},
-    onClear: () => {},
+  static defaultProps: DefaultProps = {
+    bell: <Icon type="bell" className={styles.icon} />,
     loading: false,
-    locale: {
-      emptyText: 'No notifications',
-      clear: 'Clear'
-    },
-    emptyImage:
-      'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg'
+    clearClose: false
   };
 
   readonly state: State = {
@@ -63,37 +61,48 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
 
   onItemClick = (item, tabProps) => {
     const { onItemClick } = this.props;
-    onItemClick(item, tabProps);
+    const { clickClose } = item;
+    onItemClick && onItemClick(item, tabProps);
+    if (clickClose) {
+      this.setState({
+        visible: false
+      });
+    }
   };
 
   onTabChange = (tabType) => {
     const { onTabChange } = this.props;
-    onTabChange(tabType);
+    onTabChange && onTabChange(tabType);
   };
 
-  /**
-   *
-   */
+  onClear = (name) => {
+    const { onClear, clearClose } = this.props;
+    onClear && onClear(name);
+    if (clearClose) {
+      this.setState({
+        visible: false
+      });
+    }
+  };
+
   getNotificationBox() {
     const { children, loading, locale, onClear } = this.props;
-    if (!children) {
-      return null;
-    }
+    if (!children) return null;
     const panes = React.Children.map(
       children as React.ReactNode,
       (child: React.ReactElement<any>) => {
-        const title =
-          child.props.list && child.props.list.length > 0
-            ? `${child.props.title} (${child.props.list.length})`
-            : child.props.title;
+        const { list, title, name, count } = child.props;
+        const len = list && list.length ? list.length : 0;
+        const msgCount = count || count === 0 ? count : len;
+        const tabTitle = msgCount > 0 ? `${title} (${msgCount})` : title;
         return (
-          <TabPane tab={title} key={child.props.name}>
+          <TabPane tab={tabTitle} key={name}>
             <List
               {...child.props}
-              data={child.props.list}
+              data={list}
               onClick={(item) => this.onItemClick(item, child.props)}
-              onClear={() => onClear(child.props.name)}
-              title={child.props.title}
+              onClear={this.onClear}
+              title={title}
               locale={locale}
             />
           </TabPane>
@@ -118,10 +127,9 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
   };
 
   render() {
-    const { className, count, popupVisible, bell } = this.props;
+    const { className, count, dropDownVisible, bell } = this.props;
     const { visible } = this.state;
     const notificationBox = this.getNotificationBox();
-    const NoticeBellIcon = bell || <Icon type="bell" className={styles.icon} />;
     const trigger = (
       <span
         className={ClassNames(className, styles.noticeButton, {
@@ -133,7 +141,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
           style={{ boxShadow: 'none' }}
           className={styles.badge}
         >
-          {NoticeBellIcon}
+          {bell}
         </Badge>
       </span>
     );
@@ -142,22 +150,21 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
       return trigger;
     }
 
-    const popoverProps: PopoverProps = {};
+    const dropDownProps: { visible?: boolean } = {};
 
-    if ('popupVisible' in this.props) {
-      popoverProps.visible = popupVisible;
+    if ('dropDownVisible' in this.props) {
+      dropDownProps.visible = dropDownVisible;
     }
 
     return (
       <HeaderDropDown
-        placement="bottomRight"
+        placement={'topLeft'}
         overlay={notificationBox}
         className={styles.popover}
         trigger={['click']}
         visible={visible}
         onVisibleChange={this.handleVisibleChange}
-        {...popoverProps}
-        ref={(node) => (this.popover = ReactDOM.findDOMNode(node))}
+        ref={(node) => (this.dropDown = ReactDOM.findDOMNode(node))}
       >
         {trigger}
       </HeaderDropDown>

@@ -22,7 +22,7 @@ export type NoticeData = {
 
 export interface NoticeListProps {
   // 是否显示清空按钮
-  showClear: boolean;
+  showClear?: boolean;
   // 清空消息的回调
   onClear?: () => void;
   // 消息数据
@@ -33,7 +33,7 @@ export interface NoticeListProps {
   emptyImage?: string;
   // 针对每个 Tab 定制空数据文案
   emptyText?: React.ReactNode;
-  // 多语言设置
+  // 默认文本
   locale?: {
     emptyText: string;
     clear: string;
