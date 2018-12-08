@@ -100,7 +100,7 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, State> {
         onTransitionEnd={({ propertyName }) => {
           if (propertyName === 'width' && !searchMode) {
             const { onVisibleChange } = this.props;
-            onVisibleChange(searchMode);
+            onVisibleChange && onVisibleChange(searchMode);
           }
         }}
       >
