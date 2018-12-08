@@ -1,8 +1,10 @@
 import React from 'react';
-import { Popover, Icon, Tabs, Badge, Spin } from 'antd';
-import ClassNames from 'classnames';
+import ReactDOM from 'react-dom';
+import { Icon, Tabs, Badge, Spin } from 'antd';
 import { PopoverProps } from 'antd/es/popover';
-import { NoticeIconData } from './NoticeList';
+import ClassNames from 'classnames';
+import HeaderDropDown from '../HeaderDropDown';
+import { NoticeData } from './NoticeList';
 import List from './NoticeList';
 import styles from './index.less';
 
@@ -14,7 +16,7 @@ export interface NoticeIconProps {
   className?: string;
   loading?: boolean;
   onClear?: (tabName: string) => void;
-  onItemClick?: (item: NoticeIconData, tabProps: NoticeIconProps) => void;
+  onItemClick?: (item: NoticeData, tabProps: NoticeIconProps) => void;
   onTabChange?: (tabTile: string) => void;
   popupAlign?: {
     points?: [string, string];
@@ -31,8 +33,15 @@ export interface NoticeIconProps {
   locale?: { emptyText: string; clear: string };
 }
 
-class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
+interface DefaultProps {}
+
+interface State {
+  readonly visible: boolean;
+}
+
+class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
   static Tab = TabPane;
+  private popover: React.ReactNode;
 
   static defaultProps = {
     onItemClick: () => {},
@@ -46,6 +55,10 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
     },
     emptyImage:
       'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg'
+  };
+
+  readonly state: State = {
+    visible: false
   };
 
   onItemClick = (item, tabProps) => {
@@ -96,20 +109,25 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
     );
   }
 
+  handleVisibleChange = (visible: boolean) => {
+    const { onPopupVisibleChange } = this.props;
+    this.setState({
+      visible
+    });
+    onPopupVisibleChange(visible);
+  };
+
   render() {
-    const {
-      className,
-      count,
-      popupAlign,
-      popupVisible,
-      onPopupVisibleChange,
-      bell
-    } = this.props;
-    const noticeButtonClass = ClassNames(className, styles.noticeButton);
+    const { className, count, popupVisible, bell } = this.props;
+    const { visible } = this.state;
     const notificationBox = this.getNotificationBox();
     const NoticeBellIcon = bell || <Icon type="bell" className={styles.icon} />;
     const trigger = (
-      <span className={noticeButtonClass}>
+      <span
+        className={ClassNames(className, styles.noticeButton, {
+          opened: visible
+        })}
+      >
         <Badge
           count={count}
           style={{ boxShadow: 'none' }}
@@ -131,17 +149,18 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, any> {
     }
 
     return (
-      <Popover
+      <HeaderDropDown
         placement="bottomRight"
-        content={notificationBox}
-        overlayClassName={styles.popover}
-        trigger="click"
-        arrowPointAtCenter
-        onVisibleChange={onPopupVisibleChange}
+        overlay={notificationBox}
+        className={styles.popover}
+        trigger={['click']}
+        visible={visible}
+        onVisibleChange={this.handleVisibleChange}
         {...popoverProps}
+        ref={(node) => (this.popover = ReactDOM.findDOMNode(node))}
       >
         {trigger}
-      </Popover>
+      </HeaderDropDown>
     );
   }
 }
