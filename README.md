@@ -1,9 +1,9 @@
 # [react-admin-template](https://github.com/jiumao-fe/react-admin-template)
 
-[![GitHub license](https://img.shields.io/github/license/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/issues)
-[![GitHub forks](https://img.shields.io/github/forks/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/network)
-[![GitHub stars](https://img.shields.io/github/stars/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/stargazers)
+![](https://img.shields.io/github/stars/typescript-projects/react-admin-template.svg)
+![](https://img.shields.io/github/license/typescript-projects/react-admin-template.svg)
+![](https://img.shields.io/github/issues/typescript-projects/react-admin-template.svg)
+![](https://img.shields.io/github/forks/typescript-projects/react-admin-template.svg)
 
 > react 管理后台开发模板
 
