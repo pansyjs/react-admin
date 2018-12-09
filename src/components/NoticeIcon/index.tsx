@@ -158,9 +158,9 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
 
     return (
       <HeaderDropDown
-        placement={'topLeft'}
+        placement="bottomRight"
         overlay={notificationBox}
-        className={styles.popover}
+        overlayClassName={styles.popover}
         trigger={['click']}
         visible={visible}
         onVisibleChange={this.handleVisibleChange}

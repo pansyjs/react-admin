@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, message } from 'antd';
 import Animate from 'rc-animate';
 import { formatMessage } from 'umi/locale';
+import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/GlobalHeader';
 import { settingsModelState } from '@/types/settings';
@@ -11,6 +12,7 @@ const { Header } = Layout;
 export interface HeaderProps {
   logo: string;
   isMobile: boolean;
+  dispatch: Dispatch<any>;
   collapsed: boolean;
   handleMenuCollapse?: (collapsed: boolean) => any;
   fetchingNotices?: boolean;
@@ -29,14 +31,15 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
     visible: true
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (!props.autoHideHeader && !state.visible) {
-      return {
-        visible: true
-      };
-    }
-    return null;
-  }
+  handleNoticeVisibleChange = (visible) => {
+    console.log(visible);
+    // if (visible) {
+    //   const { dispatch } = this.props;
+    //   dispatch({
+    //     type: 'global/fetchNotices',
+    //   });
+    // }
+  };
 
   getHeadWidth = () => {
     const { isMobile, collapsed } = this.props;
@@ -61,6 +64,9 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
           onCollapse={handleMenuCollapse}
           isMobile={isMobile}
           currentUser={currentUser}
+          notice={{
+            onPopupVisibleChange: this.handleNoticeVisibleChange
+          }}
         />
       </Header>
     ) : null;

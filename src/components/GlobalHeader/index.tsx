@@ -3,6 +3,7 @@ import { Icon } from 'antd';
 import Link from 'umi/link';
 import Debounce from 'lodash-decorators/debounce';
 import RightContent from './RightContent';
+import { NoticeIconProps } from '@/components/NoticeIcon';
 import styles from './index.less';
 
 export interface GlobalHeaderProps {
@@ -11,6 +12,8 @@ export interface GlobalHeaderProps {
   collapsed?: boolean;
   currentUser?: any;
   onCollapse?: (collapse: boolean) => void;
+  notice?: false | NoticeIconProps;
+  noticeData?: any[];
 }
 
 class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
@@ -28,7 +31,14 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
   };
 
   render() {
-    const { collapsed, isMobile, logo, currentUser } = this.props;
+    const {
+      collapsed,
+      isMobile,
+      logo,
+      currentUser,
+      noticeData,
+      notice
+    } = this.props;
     return (
       <div className={styles.header}>
         {isMobile && (
@@ -39,7 +49,11 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
         <span className={styles.trigger} onClick={this.toggle}>
           <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         </span>
-        <RightContent currentUser={currentUser} />
+        <RightContent
+          currentUser={currentUser}
+          notice={notice}
+          noticeData={noticeData}
+        />
       </div>
     );
   }
