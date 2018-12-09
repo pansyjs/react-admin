@@ -17,7 +17,8 @@ export default {
           type: 'saveCurrentUser',
           payload: {
             name: userInfo.name,
-            avatar: userInfo.avatar
+            avatar: userInfo.avatar,
+            unreadCount: userInfo.unreadCount
           }
         });
       }
@@ -29,6 +30,16 @@ export default {
       return {
         ...state,
         currentUser: payload
+      };
+    },
+    changeNotifyCount(state, action) {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          notifyCount: action.payload.totalCount,
+          unreadCount: action.payload.unreadCount
+        }
       };
     }
   }

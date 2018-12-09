@@ -18,6 +18,7 @@ export interface HeaderProps {
   fetchingNotices?: boolean;
   currentUser?: any;
   setting: settingsModelState;
+  notices: any[];
 }
 
 @connect(({ global, loading, user }) => ({
@@ -32,13 +33,12 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
   };
 
   handleNoticeVisibleChange = (visible) => {
-    console.log(visible);
-    // if (visible) {
-    //   const { dispatch } = this.props;
-    //   dispatch({
-    //     type: 'global/fetchNotices',
-    //   });
-    // }
+    if (visible) {
+      const { dispatch } = this.props;
+      dispatch({
+        type: 'global/fetchQueryNotices'
+      });
+    }
   };
 
   getHeadWidth = () => {
@@ -52,7 +52,8 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
       currentUser,
       logo,
       collapsed,
-      setting
+      setting,
+      notices
     } = this.props;
     const { visible } = this.state;
 
@@ -64,9 +65,10 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
           onCollapse={handleMenuCollapse}
           isMobile={isMobile}
           currentUser={currentUser}
-          notice={{
+          noticeIcon={{
             onPopupVisibleChange: this.handleNoticeVisibleChange
           }}
+          notices={notices}
         />
       </Header>
     ) : null;

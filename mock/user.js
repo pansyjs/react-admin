@@ -4,6 +4,7 @@ function getCurrentUser(req, res) {
     data: {
       name: 'Tom',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+      unreadCount: 11
     },
     message: 'success'
   });

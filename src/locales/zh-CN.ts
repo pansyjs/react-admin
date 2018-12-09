@@ -1,4 +1,5 @@
 import globalHeader from './zh-CN/globalHeader';
+import exception from './zh-CN/exception';
 import menu from './zh-CN/menu';
 import login from './zh-CN/login';
 
@@ -9,5 +10,6 @@ export default {
   'layout.user.link.terms': '条款',
   ...menu,
   ...login,
+  ...exception,
   ...globalHeader
 };
