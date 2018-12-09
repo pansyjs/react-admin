@@ -36,7 +36,6 @@ class FooterToolbar extends React.Component<FooterToolbarProps, any> {
     }
     const width = slider.clientWidth;
     const { width: stateWidth } = this.state;
-    console.log(width);
     if (stateWidth !== width) {
       this.setState({
         width

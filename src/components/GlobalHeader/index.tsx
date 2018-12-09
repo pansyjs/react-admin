@@ -12,8 +12,9 @@ export interface GlobalHeaderProps {
   collapsed?: boolean;
   currentUser?: any;
   onCollapse?: (collapse: boolean) => void;
-  notice?: false | NoticeIconProps;
-  noticeData?: any[];
+  // notice组件相关配置
+  noticeIcon?: false | NoticeIconProps;
+  notices?: any[];
 }
 
 class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
@@ -36,8 +37,8 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
       isMobile,
       logo,
       currentUser,
-      noticeData,
-      notice
+      notices,
+      noticeIcon
     } = this.props;
     return (
       <div className={styles.header}>
@@ -51,8 +52,8 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
         </span>
         <RightContent
           currentUser={currentUser}
-          notice={notice}
-          noticeData={noticeData}
+          noticeIcon={noticeIcon}
+          notices={notices}
         />
       </div>
     );

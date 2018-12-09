@@ -91,7 +91,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
     const panes = React.Children.map(
       children as React.ReactNode,
       (child: React.ReactElement<any>) => {
-        const { list, title, name, count } = child.props;
+        const { data: list, title, name, count } = child.props;
         const len = list && list.length ? list.length : 0;
         const msgCount = count || count === 0 ? count : len;
         const tabTitle = msgCount > 0 ? `${title} (${msgCount})` : title;

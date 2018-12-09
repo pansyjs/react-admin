@@ -15,8 +15,8 @@ export interface GlobalHeaderRightProps {
   currentUser?: currentUserType;
   onMenuClick?: (params: SelectParam) => void;
   headerSearch?: boolean | HeaderSearchProps;
-  notice?: false | NoticeIconProps;
-  noticeData?: any[];
+  noticeIcon?: false | NoticeIconProps;
+  notices?: any[];
 }
 
 class GlobalHeaderRight extends React.PureComponent<
@@ -24,13 +24,13 @@ class GlobalHeaderRight extends React.PureComponent<
   any
 > {
   getNoticeData() {
-    const { noticeData = [] } = this.props;
+    const { notices = [] } = this.props;
 
-    if (noticeData.length === 0) {
+    if (notices.length === 0) {
       return {};
     }
 
-    const newNotices = noticeData.map((notice) => {
+    const newNotices = notices.map((notice) => {
       const newNotice = { ...notice };
       if (newNotice.datetime) {
         newNotice.datetime = Moment(notice.datetime).fromNow();
@@ -71,14 +71,19 @@ class GlobalHeaderRight extends React.PureComponent<
   };
 
   getNoticeDom = () => {
-    const { notice, currentUser } = this.props;
+    const { noticeIcon, currentUser } = this.props;
 
-    if (!notice || notice === false) {
+    if (!noticeIcon || noticeIcon === false) {
       return null;
     } else {
-      const { onItemClick, onClear, onPopupVisibleChange, loading } = notice;
-      const noticeData: any = this.getNoticeData();
-      const unreadMsg: any = this.getUnreadData(noticeData);
+      const {
+        onItemClick,
+        onClear,
+        onPopupVisibleChange,
+        loading
+      } = noticeIcon;
+      const notices: any = this.getNoticeData();
+      const unreadMsg: any = this.getUnreadData(notices);
 
       return (
         <NoticeIcon
@@ -96,7 +101,7 @@ class GlobalHeaderRight extends React.PureComponent<
         >
           <NoticeIcon.Tab
             count={unreadMsg.notification}
-            data={noticeData.notification}
+            data={notices.notification}
             title={formatMessage({ id: 'component.globalHeader.notification' })}
             name="notification"
             emptyText={formatMessage({
@@ -106,7 +111,7 @@ class GlobalHeaderRight extends React.PureComponent<
           />
           <NoticeIcon.Tab
             count={unreadMsg.message}
-            data={noticeData.message}
+            data={notices.message}
             title={formatMessage({ id: 'component.globalHeader.message' })}
             name="message"
             emptyText={formatMessage({
@@ -116,7 +121,7 @@ class GlobalHeaderRight extends React.PureComponent<
           />
           <NoticeIcon.Tab
             count={unreadMsg.event}
-            data={noticeData.event}
+            data={notices.event}
             title={formatMessage({ id: 'component.globalHeader.event' })}
             name="event"
             emptyText={formatMessage({
@@ -129,7 +134,7 @@ class GlobalHeaderRight extends React.PureComponent<
     }
   };
   render() {
-    const { onMenuClick, currentUser, notice } = this.props;
+    const { onMenuClick, currentUser } = this.props;
 
     const NoticeDom = this.getNoticeDom();
 

@@ -5,14 +5,28 @@ export default {
 
   state: {
     collapsed: false,
-    noticeData: []
+    notices: []
   },
 
   effects: {
     *fetchQueryNotices(_, { call, put, select }) {
       const response = yield call(fetchQueryNotices);
       if (response && response.code === 200) {
-        console.log(response);
+        const notices = response.data || [];
+        yield put({
+          type: 'saveNotices',
+          payload: notices
+        });
+        const unreadCount = yield select(
+          (state) => state.global.notices.filter((item) => !item.read).length
+        );
+        yield put({
+          type: 'user/changeNotifyCount',
+          payload: {
+            totalCount: notices.length,
+            unreadCount
+          }
+        });
       }
     }
   },
@@ -24,10 +38,10 @@ export default {
         collapsed: payload
       };
     },
-    saveNoticeData(state, { payload }) {
+    saveNotices(state, { payload }) {
       return {
         ...state,
-        noticeData: payload
+        notices: payload
       };
     }
   }
