@@ -1,4 +1,5 @@
 import globalHeader from './en-US/globalHeader';
+import exception from './en-US/exception';
 import menu from './en-US/menu';
 import login from './en-US/login';
 
@@ -9,5 +10,6 @@ export default {
   'layout.user.link.terms': 'Terms',
   ...menu,
   ...login,
+  ...exception,
   ...globalHeader
 };
