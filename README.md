@@ -1,4 +1,4 @@
-# [react-admin-template](https://github.com/jiumao-fe/react-admin-template)
+# [react-admin-template](https://github.com/typescript-projects/react-admin-template)
 
 ![](https://img.shields.io/github/stars/typescript-projects/react-admin-template.svg)
 ![](https://img.shields.io/github/license/typescript-projects/react-admin-template.svg)
