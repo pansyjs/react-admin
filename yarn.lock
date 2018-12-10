@@ -1724,9 +1724,9 @@ antd-mobile@^2.2.3:
     rmc-tabs "~1.2.0"
     rmc-tooltip "~1.0.0"
 
-antd@^3.11.1:
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-3.11.1.tgz#0fe0873b1e5c101f5bd53e9bbbb31a8fdd16ca5f"
+antd@^3.11.2:
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.11.2.tgz#150eb55c65c554961394c14418843348e1de1d3d"
   dependencies:
     "@ant-design/icons" "~1.1.15"
     "@ant-design/icons-react" "~1.1.2"
@@ -11213,8 +11213,8 @@ rc-tree-select@~2.3.1:
     warning "^4.0.1"
 
 rc-tree-select@~2.4.0:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.4.3.tgz#0e9cc8c209e32298d01166e26ad2b03e22f9a7ea"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.4.4.tgz#71d50f229548a0d13d3a915b25a7f82447b3fd10"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "^2.2.1"

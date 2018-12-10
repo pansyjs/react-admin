@@ -4,11 +4,7 @@ import { DropDownProps } from 'antd/es/dropdown';
 import ClassNames from 'classnames';
 import styles from './index.less';
 
-export interface HeaderDropDownProps extends DropDownProps {
-  overlayClassName?: string;
-}
-
-class HeaderDropDown extends React.PureComponent<HeaderDropDownProps, any> {
+class HeaderDropDown extends React.PureComponent<DropDownProps, any> {
   render() {
     const { overlayClassName, ...rest } = this.props;
     return (
