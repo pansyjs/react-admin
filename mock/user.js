@@ -34,7 +34,16 @@ function login(req, res) {
   }
 }
 
+function logout(req, res) {
+  res.json({
+    status: 200,
+    message: 'success'
+  });
+  res.status(200).end();
+}
+
 export default {
-  'GET /api/user/current': getCurrentUser,
-  'POST /api/user/login': login
+  'GET /user/current': getCurrentUser,
+  'POST /user/login': login,
+  'GET /user/logout': logout
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, message } from 'antd';
 import Animate from 'rc-animate';
 import { formatMessage } from 'umi/locale';
+import router from 'umi/router';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/GlobalHeader';
@@ -41,6 +42,27 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
     }
   };
 
+  handleMenuClick = ({ key }) => {
+    const { dispatch } = this.props;
+    if (key === 'userCenter') {
+      router.push('/account/center');
+      return;
+    }
+    if (key === 'triggerError') {
+      router.push('/exception/trigger');
+      return;
+    }
+    if (key === 'userInfo') {
+      router.push('/account/settings/base');
+      return;
+    }
+    if (key === 'logout') {
+      dispatch({
+        type: 'user/fetchLogout'
+      });
+    }
+  };
+
   getHeadWidth = () => {
     const { isMobile, collapsed } = this.props;
   };
@@ -65,6 +87,7 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
           onCollapse={handleMenuCollapse}
           isMobile={isMobile}
           currentUser={currentUser}
+          onMenuClick={this.handleMenuClick}
           noticeIcon={{
             onPopupVisibleChange: this.handleNoticeVisibleChange
           }}

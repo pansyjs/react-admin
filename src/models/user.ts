@@ -1,4 +1,6 @@
-import { fetchCurrentUser } from '@/services/user';
+import { fetchCurrentUser, fetchLogout } from '@/services/user';
+import { stringify } from 'qs';
+import { routerRedux } from 'dva/router';
 
 export default {
   name: 'user',
@@ -21,6 +23,23 @@ export default {
             unreadCount: userInfo.unreadCount
           }
         });
+      }
+    },
+    *fetchLogout(_, { call, put }) {
+      const response = yield call(fetchLogout);
+      if (response && response.code === 200) {
+        yield put({
+          type: 'saveCurrentUser',
+          payload: {}
+        });
+        yield put(
+          routerRedux.push({
+            pathname: '/user/login',
+            search: stringify({
+              redirect: window.location.href
+            })
+          })
+        );
       }
     }
   },
