@@ -1,7 +1,7 @@
 import React from 'react';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 
-class Applications extends BaseComponent {
+class Applications extends Component {
   render() {
     return <div>Applications</div>;
   }

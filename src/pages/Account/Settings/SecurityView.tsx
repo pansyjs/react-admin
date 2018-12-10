@@ -1,7 +1,7 @@
 import React from 'react';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 
-class SecurityView extends BaseComponent {
+class SecurityView extends Component {
   render() {
     return <div>SecurityView</div>;
   }

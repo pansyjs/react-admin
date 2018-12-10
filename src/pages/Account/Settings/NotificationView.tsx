@@ -1,7 +1,7 @@
 import React from 'react';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 
-class NotificationView extends BaseComponent {
+class NotificationView extends Component {
   render() {
     return <div>NotificationView</div>;
   }
