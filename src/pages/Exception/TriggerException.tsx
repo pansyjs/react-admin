@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Spin, Card } from 'antd';
 import { connect } from 'dva';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 import styles from './style.less';
 
 @connect(({ error }) => ({
   isLoading: error.isLoading
 }))
-class TriggerException extends BaseComponent {
+class TriggerException extends Component {
   state = {
     isLoading: false
   };

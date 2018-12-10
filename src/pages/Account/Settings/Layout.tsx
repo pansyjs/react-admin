@@ -1,7 +1,7 @@
 import React from 'react';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 
-class SettingsLayout extends BaseComponent {
+class SettingsLayout extends Component {
   render() {
     const { children } = this.props;
     return <div>{children}</div>;

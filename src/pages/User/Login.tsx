@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Form, Input, Icon, Button } from 'antd';
 import { connect } from 'dva';
 import { FormattedMessage } from 'umi/locale';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 import styles from './Login.less';
 
 const FormItem = Form.Item;
@@ -18,7 +18,7 @@ interface State {
 @connect(({ loading }) => ({
   loading: loading.effects['login/fetchLogin']
 }))
-class LoginPage extends BaseComponent<LoginPageProps, State> {
+class LoginPage extends Component<LoginPageProps, State> {
   readonly state: State = {
     showPassword: false
   };

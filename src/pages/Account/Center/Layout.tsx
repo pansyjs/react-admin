@@ -1,7 +1,7 @@
 import React from 'react';
-import BaseComponent from '@/components/BaseComponent';
+import { Component } from '@/components/BaseComponent';
 
-class CenterLayout extends BaseComponent {
+class CenterLayout extends Component {
   render() {
     const { children } = this.props;
     return <div>{children}</div>;
