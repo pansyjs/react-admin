@@ -18,6 +18,9 @@ export interface PageHeaderProps {
   tabDefaultActiveKey?: string;
   onTabChange?: (key: string) => void;
   tabBarExtraContent?: React.ReactNode;
+  home?: React.ReactNode;
+  linkElement?: React.ReactNode;
+  itemRender?: any;
   wide?: boolean;
   loading?: boolean;
 }
