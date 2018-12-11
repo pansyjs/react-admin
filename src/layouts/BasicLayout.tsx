@@ -2,18 +2,45 @@ import React from 'react';
 import { Layout } from 'antd';
 import H from 'history';
 import DocumentTitle from 'react-document-title';
+import { ContainerQuery } from 'react-container-query';
 import PathToRegexp from 'path-to-regexp';
 import { connect } from 'dva';
 import { formatMessage } from 'umi/locale';
 import Media from 'react-media';
-import SideMenu from '@/components/SideMenu';
 import { Dispatch } from 'redux';
+import SideMenu from '@/components/SideMenu';
 import { settingsModelState } from '@/types/settings';
+import Context from './MenuContext';
 import Header from './Header';
 import Footer from './Footer';
 import logo from '../assets/logo.svg';
 
 const { Content } = Layout;
+
+const query = {
+  'screen-xs': {
+    maxWidth: 575
+  },
+  'screen-sm': {
+    minWidth: 576,
+    maxWidth: 767
+  },
+  'screen-md': {
+    minWidth: 768,
+    maxWidth: 991
+  },
+  'screen-lg': {
+    minWidth: 992,
+    maxWidth: 1199
+  },
+  'screen-xl': {
+    minWidth: 1200,
+    maxWidth: 1599
+  },
+  'screen-xxl': {
+    minWidth: 1600
+  }
+};
 
 export interface BasicLayoutProps {
   // 通过umi注入 https://github.com/umijs/umi/blob/master/packages/umi/src/renderRoutes.js
@@ -80,6 +107,14 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
 
     return `${message} - Ant Design Pro`;
   };
+
+  getContext() {
+    const { location, breadcrumbNameMap } = this.props;
+    return {
+      location,
+      breadcrumbNameMap
+    };
+  }
 
   handleMenuCollapse = (collapsed) => {
     const { dispatch } = this.props;
@@ -160,7 +195,9 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
     return (
       <React.Fragment>
         <DocumentTitle title={pageTitle}>
-          <div>{layout}</div>
+          <Context.Provider value={this.getContext()}>
+            <div>{layout}</div>
+          </Context.Provider>
         </DocumentTitle>
       </React.Fragment>
     );

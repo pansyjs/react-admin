@@ -2,19 +2,14 @@ import React from 'react';
 import { Icon } from 'antd';
 import Link from 'umi/link';
 import Debounce from 'lodash-decorators/debounce';
-import RightContent from './RightContent';
-import { NoticeIconProps } from '@/components/NoticeIcon';
+import RightContent, { GlobalHeaderRightProps } from './RightContent';
 import styles from './index.less';
 
-export interface GlobalHeaderProps {
+export interface GlobalHeaderProps extends GlobalHeaderRightProps {
   logo: string;
   isMobile: boolean;
   collapsed?: boolean;
-  currentUser?: any;
   onCollapse?: (collapse: boolean) => void;
-  // notice组件相关配置
-  noticeIcon?: false | NoticeIconProps;
-  notices?: any[];
 }
 
 class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
@@ -38,7 +33,8 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
       logo,
       currentUser,
       notices,
-      noticeIcon
+      noticeIcon,
+      onMenuClick
     } = this.props;
     return (
       <div className={styles.header}>
@@ -54,6 +50,7 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
           currentUser={currentUser}
           noticeIcon={noticeIcon}
           notices={notices}
+          onMenuClick={onMenuClick}
         />
       </div>
     );

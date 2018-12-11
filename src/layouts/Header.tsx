@@ -2,9 +2,11 @@ import React from 'react';
 import { Layout, message } from 'antd';
 import Animate from 'rc-animate';
 import { formatMessage } from 'umi/locale';
+import router from 'umi/router';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/GlobalHeader';
+import { PureComponent } from '@/components/BaseComponent';
 import { settingsModelState } from '@/types/settings';
 
 const { Header } = Layout;
@@ -12,13 +14,12 @@ const { Header } = Layout;
 export interface HeaderProps {
   logo: string;
   isMobile: boolean;
-  dispatch: Dispatch<any>;
   collapsed: boolean;
   handleMenuCollapse?: (collapsed: boolean) => any;
   fetchingNotices?: boolean;
   currentUser?: any;
   setting: settingsModelState;
-  notices: any[];
+  notices?: any[];
 }
 
 @connect(({ global, loading, user }) => ({
@@ -27,7 +28,7 @@ export interface HeaderProps {
   notices: global.notices,
   fetchingNotices: loading.effects['global/fetchNotices']
 }))
-class HeaderView extends React.PureComponent<HeaderProps, any> {
+class HeaderView extends PureComponent<HeaderProps, any> {
   state = {
     visible: true
   };
@@ -37,6 +38,27 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
       const { dispatch } = this.props;
       dispatch({
         type: 'global/fetchQueryNotices'
+      });
+    }
+  };
+
+  handleMenuClick = ({ key }) => {
+    const { dispatch } = this.props;
+    if (key === 'userCenter') {
+      router.push('/account/center');
+      return;
+    }
+    if (key === 'triggerError') {
+      router.push('/exception/trigger');
+      return;
+    }
+    if (key === 'userInfo') {
+      router.push('/account/settings/base');
+      return;
+    }
+    if (key === 'logout') {
+      dispatch({
+        type: 'user/fetchLogout'
       });
     }
   };
@@ -65,6 +87,7 @@ class HeaderView extends React.PureComponent<HeaderProps, any> {
           onCollapse={handleMenuCollapse}
           isMobile={isMobile}
           currentUser={currentUser}
+          onMenuClick={this.handleMenuClick}
           noticeIcon={{
             onPopupVisibleChange: this.handleNoticeVisibleChange
           }}

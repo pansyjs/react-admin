@@ -2,7 +2,7 @@
 export const AXIOS_DEFAULT_CONFIG = {
   timeout: 20000,
   withCredentials: true,
-  baseURL: '/api'
+  baseURL: '/'
 };
 
 // 项目相关配置
