@@ -3,8 +3,8 @@ import { WrappedFormUtils } from 'antd/es/form/Form';
 import { Dispatch } from 'redux';
 
 export interface Props {
-  dispatch: Dispatch<any>;
-  form: WrappedFormUtils;
+  dispatch?: Dispatch<any>;
+  form?: WrappedFormUtils;
 }
 
 export class Component<P = {}, S = {}> extends React.Component<P & Props, S> {}
