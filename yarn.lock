@@ -25,9 +25,9 @@
   dependencies:
     "@antv/util" "~1.3.1"
 
-"@antv/component@~0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@antv/component/-/component-0.3.0.tgz#95f114c6e5e63cfa2444ee2101162b6eb5eb7739"
+"@antv/component@~0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@antv/component/-/component-0.3.1.tgz#25eb53e3ed3a0f413896be2f83e7e704bfb6b097"
   dependencies:
     "@antv/attr" "~0.1.2"
     "@antv/g" "~3.3.5"
@@ -66,13 +66,13 @@
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@antv/g2-plugin-slider/-/g2-plugin-slider-2.1.0.tgz#7f2f5879d33dcfb14dd2b955092ca198ad9152b9"
 
-"@antv/g2@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.4.0.tgz#ca7f7a6f0a4be639f0e79297ecc80c048afb80aa"
+"@antv/g2@3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.4.5.tgz#87b8b169f38af318b42e93c4cd5323f20d2d01fb"
   dependencies:
     "@antv/adjust" "~0.1.0"
     "@antv/attr" "~0.1.2"
-    "@antv/component" "~0.3.0"
+    "@antv/component" "~0.3.1"
     "@antv/coord" "~0.1.0"
     "@antv/g" "~3.3.5"
     "@antv/scale" "~0.1.0"
@@ -2494,11 +2494,11 @@ bizcharts-plugin-slider@^2.1.1-beta.1:
   dependencies:
     "@antv/g2-plugin-slider" "2.1.0"
 
-bizcharts@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-3.4.0.tgz#eed991bf7302c821ed0d26c623b0e78bc013a222"
+bizcharts@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/bizcharts/-/bizcharts-3.4.1.tgz#2b91b0adb0209cd947d9552377b5c58a02379403"
   dependencies:
-    "@antv/g2" "3.4.0"
+    "@antv/g2" "3.4.5"
     invariant "^2.2.2"
     prop-types "^15.6.0"
     warning "^3.0.0"
@@ -12062,7 +12062,7 @@ resolve@1.x, resolve@^1.1.6, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0, res
 
 resolve@~1.7.1:
   version "1.7.1"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.7.1.tgz#aadd656374fd298aee895bc026b8297418677fd3"
+  resolved "http://registry.npmjs.org/resolve/-/resolve-1.7.1.tgz#aadd656374fd298aee895bc026b8297418677fd3"
   dependencies:
     path-parse "^1.0.5"
 
