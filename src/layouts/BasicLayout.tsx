@@ -159,6 +159,7 @@ class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
       collapsed,
       location: { pathname }
     } = this.props;
+    console.log(this.props);
     const pageTitle = this.getPageTitle(pathname);
 
     const layout = (

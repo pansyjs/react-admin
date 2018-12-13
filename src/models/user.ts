@@ -19,8 +19,14 @@ export default {
           type: 'saveCurrentUser',
           payload: {
             name: userInfo.name,
+            email: userInfo.email,
+            phone: userInfo.phone,
             avatar: userInfo.avatar,
-            unreadCount: userInfo.unreadCount
+            title: userInfo.title,
+            group: userInfo.group,
+            unreadCount: userInfo.unreadCount,
+            signature: userInfo.signature,
+            tags: userInfo.tags
           }
         });
       }

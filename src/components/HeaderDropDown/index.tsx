@@ -7,12 +7,9 @@ import styles from './index.less';
 class HeaderDropDown extends React.PureComponent<DropDownProps, any> {
   render() {
     const { overlayClassName, ...rest } = this.props;
-    return (
-      <Dropdown
-        overlayClassName={ClassNames(overlayClassName, styles.container)}
-        {...rest}
-      />
-    );
+    const cls = ClassNames(overlayClassName, styles.container);
+
+    return <Dropdown overlayClassName={cls} {...rest} />;
   }
 }
 
