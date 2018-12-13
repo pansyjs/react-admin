@@ -1,7 +1,8 @@
 import React from 'react';
-import { formatMessage, setLocale, getLocale } from 'umi/locale';
-import { Menu, Icon, Dropdown } from 'antd';
 import ClassNames from 'classnames';
+import { Menu, Icon } from 'antd';
+import { formatMessage, setLocale, getLocale } from 'umi/locale';
+import HeaderDropDown from '../HeaderDropDown';
 import styles from './index.less';
 
 export interface SelectLangProps {
@@ -47,14 +48,15 @@ class SelectLang extends React.PureComponent<SelectLangProps, any> {
         })}
       </Menu>
     );
+
     return (
-      <Dropdown overlay={langMenu} placement="bottomRight">
+      <HeaderDropDown overlay={langMenu} placement="bottomRight">
         <Icon
           type="global"
           className={ClassNames(styles.dropDown, className)}
           title={formatMessage({ id: 'navBar.lang' })}
         />
-      </Dropdown>
+      </HeaderDropDown>
     );
   }
 }

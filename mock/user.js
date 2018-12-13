@@ -4,7 +4,19 @@ function getCurrentUser(req, res) {
     data: {
       name: 'Tom',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-      unreadCount: 11
+      unreadCount: 11,
+      email: 'antdesign@alipay.com',
+      signature: '海纳百川，有容乃大',
+      title: '交互专家',
+      group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+      tags: [
+        { key: '0', label: '很有想法的' },
+        { key: '1', label: '专注设计' },
+        { key: '2', label: '辣~' },
+        { key: '3', label: '大长腿' },
+        { key: '4', label: '川妹子' },
+        { key: '5', label: '海纳百川' },
+      ],
     },
     message: 'success'
   });
