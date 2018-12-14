@@ -1,0 +1,29 @@
+# 指定使用的 CircleCI 版本
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+  environment:
+    DATE: `date +%Y%m%d`
+    DOCKER_IMAGE_VERSION: $DATE-$CIRCLE_SHA1
+  steps:
+    # 拉取代码
+    - checkout
+    # 安装依赖
+    - run: npm install
+    # 删除dist、docker/dist目录
+    - run: rm -rf dist docker/dist
+    # 编译代码
+    - run: npm run build
+    # 移动编译好的文件到docker目录
+    - run: mv dist docker
+    # 切换到docker目录
+    - run: cd ./docker
+    # 打包docker
+    - run: docker build -t $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION .
+    # 登录阿里云Docker Registry
+    - run: docker login --username=$USERNAME --password=$PASSWORD registry.cn-beijing.aliyuncs.com
+    # 上传到阿里云
+    - run: docker push $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION
