@@ -12,10 +12,10 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: mv dist docker
-      - run: cd ./docker
       - run:
           name: 打包Docker
           command: |
+            cd ./docker
             ls
             DATE=`date +%Y%m%d`
             DOCKER_IMAGE_VERSION=$DATE-$CIRCLE_SHA1
