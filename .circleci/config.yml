@@ -16,6 +16,7 @@ jobs:
       - run:
           name: 打包Docker
           command: |
+            ls
             DATE=`date +%Y%m%d`
             DOCKER_IMAGE_VERSION=$DATE-$CIRCLE_SHA1
             docker build -t $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION .
