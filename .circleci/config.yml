@@ -20,10 +20,10 @@ jobs:
             cd ./docker
             ls
             DATE=`date +%Y%m%d`
-            DOCKER_IMAGE_VERSION=$DATE-$CIRCLE_SHA1
+            DOCKER_IMAGE_VERSION=$DATE-0.1.$CIRCLE_BUILD_NUM
             docker build -t $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION .
             docker login -u $DOCKER_USER -p $DOCKER_PASS registry.cn-beijing.aliyuncs.com
-            docker push $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION
+            docker push $DOCKER_REPOSITORY:0.1.$CIRCLE_BUILD_NUM
 
 workflows:
   version: 2
