@@ -1,25 +1,29 @@
 # 指定使用的 CircleCI 版本
-version: 2
+version: 2.1
 
 jobs:
-  one:
+  # 编译任务
+  build:
     docker:
-    - image: circleci/ruby:2.4.1
+      - image: circleci/node:latest
     steps:
-    - checkout
-    - run: echo "A first hello"
-    - run: sleep 25
-  two:
-    docker:
-    - image: circleci/ruby:2.4.1
-    steps:
-    - checkout
-    - run: echo "A more familiar hi"
-    - run: sleep 15
+      # 检出代码
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: mv dist docker
+      - run: cd ./docker
+      - run:
+          name: 打包Docker
+          command: |
+            DATE=`date +%Y%m%d`
+            DOCKER_IMAGE_VERSION=$DATE-$CIRCLE_SHA1
+            docker build -t $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS registry.cn-beijing.aliyuncs.com
+            docker push $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION
 
 workflows:
   version: 2
-  one_and_two:
+  build_docker:
     jobs:
-    - one
-    - two
+      - build
