@@ -1158,6 +1158,13 @@
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.6.tgz#dbe8a666156d556ed018e15a4c65f08937c3f628"
 
+"@types/draft-js@^0.10.26":
+  version "0.10.26"
+  resolved "https://registry.yarnpkg.com/@types/draft-js/-/draft-js-0.10.26.tgz#0b02324b7981cbab32d23cd0a1d968bbf576757b"
+  dependencies:
+    "@types/react" "*"
+    immutable "^3.8.1"
+
 "@types/enzyme-adapter-react-16@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@types/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.3.tgz#0cf7025b036694ca8d596fe38f24162e7117acf1"
@@ -1232,6 +1239,12 @@
 "@types/react-dom@^16.0.11":
   version "16.0.11"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.11.tgz#bd10ccb0d9260343f4b9a49d4f7a8330a5c1f081"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-image-crop@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-image-crop/-/react-image-crop-3.0.1.tgz#b9377c469e5586f2253de51af8c999406a9a6da0"
   dependencies:
     "@types/react" "*"
 
@@ -2594,34 +2607,34 @@ braces@^2.2.2, braces@^2.3.0, braces@^2.3.1:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
-braft-convert@^2.1.4:
+braft-convert@^2.1.10:
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/braft-convert/-/braft-convert-2.1.10.tgz#b90ee326c15af86384b122a56af4c871984576e5"
   dependencies:
     draft-convert "^2.0.0"
     draft-js "^0.10.3"
 
-braft-editor@^2.1.34:
-  version "2.1.34"
-  resolved "https://registry.yarnpkg.com/braft-editor/-/braft-editor-2.1.34.tgz#3c90cfb146b77c73897d40645f2170a7b2738f7a"
+braft-editor@^2.1.35:
+  version "2.1.35"
+  resolved "https://registry.yarnpkg.com/braft-editor/-/braft-editor-2.1.35.tgz#cef11dfbc2632fd88deac094f29723fd171a602b"
   dependencies:
     "@babel/runtime" "^7.0.0"
-    braft-convert "^2.1.4"
-    braft-finder "^0.0.14"
-    braft-utils "^3.0.6"
+    braft-convert "^2.1.10"
+    braft-finder "^0.0.16"
+    braft-utils "^3.0.8"
     draft-convert "^2.0.0"
     draft-js "^0.10.3"
     draft-js-multidecorators "^1.0.0"
     draftjs-utils "^0.9.4"
     immutable "~3.7.4"
 
-braft-finder@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/braft-finder/-/braft-finder-0.0.14.tgz#f5a65548a00dbe3193be58a90fffe5264f0a1184"
+braft-finder@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/braft-finder/-/braft-finder-0.0.16.tgz#56a31de8c8465a75a272cab195c6189cbf655eac"
 
-braft-utils@^3.0.6:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/braft-utils/-/braft-utils-3.0.8.tgz#3e19663cbafab9695f443f2392dbbee1a0a5c425"
+braft-utils@^3.0.8:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/braft-utils/-/braft-utils-3.0.9.tgz#b0e28d84741921086a85b0fb07c6df2df5ae2878"
 
 brorand@^1.0.1:
   version "1.1.0"
@@ -6827,7 +6840,7 @@ immutability-helper@^2.7.1:
   dependencies:
     invariant "^2.2.0"
 
-immutable@*, immutable@^3.7.4:
+immutable@*, immutable@^3.7.4, immutable@^3.8.1:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
@@ -11424,6 +11437,12 @@ react-dom@^16.4.2, react-dom@^16.6.3:
 react-error-overlay@^4.0.0, react-error-overlay@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
+
+react-image-crop@^6.0.9:
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.9.tgz#5e949cf6503f65819afe44fc5c7ffb3d617ba499"
+  dependencies:
+    "@types/react-image-crop" "^3.0.1"
 
 react-intl@^2.4.0:
   version "2.4.0"
