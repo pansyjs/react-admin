@@ -2,28 +2,24 @@
 version: 2
 
 jobs:
-  build:
+  one:
     docker:
-      - image: circleci/node:latest
-  environment:
-    DATE: `date +%Y%m%d`
-    DOCKER_IMAGE_VERSION: $DATE-$CIRCLE_SHA1
-  steps:
-    # 拉取代码
+    - image: circleci/ruby:2.4.1
+    steps:
     - checkout
-    # 安装依赖
-    - run: npm install
-    # 删除dist、docker/dist目录
-    - run: rm -rf dist docker/dist
-    # 编译代码
-    - run: npm run build
-    # 移动编译好的文件到docker目录
-    - run: mv dist docker
-    # 切换到docker目录
-    - run: cd ./docker
-    # 打包docker
-    - run: docker build -t $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION .
-    # 登录阿里云Docker Registry
-    - run: docker login --username=$USERNAME --password=$PASSWORD registry.cn-beijing.aliyuncs.com
-    # 上传到阿里云
-    - run: docker push $DOCKER_REPOSITORY:$DOCKER_IMAGE_VERSION
+    - run: echo "A first hello"
+    - run: sleep 25
+  two:
+    docker:
+    - image: circleci/ruby:2.4.1
+    steps:
+    - checkout
+    - run: echo "A more familiar hi"
+    - run: sleep 15
+
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+    - one
+    - two
