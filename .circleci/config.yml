@@ -9,6 +9,8 @@ jobs:
     steps:
       # 检出代码
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: npm install
       - run: npm run build
       - run: mv dist docker
