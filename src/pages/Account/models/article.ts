@@ -1,20 +1,19 @@
-import { fetchGetNotice } from '@/services/project';
+import { fetchList } from '@/services/article';
 
 export default {
-  namespace: 'project',
+  namespace: 'article',
 
   state: {
-    notice: [],
     list: []
   },
 
   effects: {
-    *fetchGetNotice(_, { call, put }) {
-      const response = yield call(fetchGetNotice);
+    *fetchList(_, { call, put }) {
+      const response = yield call(fetchList);
       if (response && response.code === 200) {
         const list = response.data;
         yield put({
-          type: 'saveNotice',
+          type: 'saveList',
           payload: Array.isArray(list) ? list : []
         });
       }
@@ -22,10 +21,10 @@ export default {
   },
 
   reducers: {
-    saveNotice(state, { payload }) {
+    saveList(state, { payload }) {
       return {
         ...state,
-        notice: payload
+        list: payload
       };
     }
   }
