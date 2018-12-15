@@ -90,6 +90,11 @@ function getNotice(req, res) {
   res.status(200).end();
 }
 
+function getList(req, res) {
+
+}
+
 export default {
   'GET /project/notice': getNotice,
+  'GET /project/list': getList,
 }
