@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY="react-admin-template"
+REPOSITORY="registry.cn-beijing.aliyuncs.com/typescript-projects/react-admin-template"
 PROJECT_VERSION="0.0.1"
 
 echo '开始...'
