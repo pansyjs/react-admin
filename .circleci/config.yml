@@ -30,3 +30,8 @@ workflows:
   build_docker:
     jobs:
       - build
+          filters:
+            branches:
+              only:
+                - master
+
