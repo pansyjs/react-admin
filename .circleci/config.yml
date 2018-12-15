@@ -4,6 +4,9 @@ version: 2.1
 jobs:
   # 编译任务
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:latest
     steps:
@@ -30,8 +33,3 @@ workflows:
   build_docker:
     jobs:
       - build
-          filters:
-            branches:
-              only:
-                - master
-
