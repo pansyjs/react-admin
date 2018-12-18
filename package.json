@@ -43,7 +43,7 @@
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
-    "memoize-one": "^4.0.3",
+    "memoize-one": "^5.0.0",
     "moment": "^2.22.2",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
