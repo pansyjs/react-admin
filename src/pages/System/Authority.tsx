@@ -1,11 +1,12 @@
 import React from 'react';
 import { Component } from '@/components/BaseComponent';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-export interface SystemRoleProps {}
+export interface AuthorityProps {}
 
-class Authority extends Component<SystemRoleProps, any> {
+class Authority extends Component<AuthorityProps, any> {
   render() {
-    return <div>Authority</div>;
+    return <PageHeaderWrapper title="权限管理">Authority</PageHeaderWrapper>;
   }
 }
 

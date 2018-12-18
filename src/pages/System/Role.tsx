@@ -1,12 +1,13 @@
 import React from 'react';
 import { Component } from '@/components/BaseComponent';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-export interface SystemRoleProps {}
+export interface RoleProps {}
 
-class SystemRole extends Component<SystemRoleProps, any> {
+class Role extends Component<RoleProps, any> {
   render() {
-    return <div>SystemRole</div>;
+    return <PageHeaderWrapper title="角色管理">Role</PageHeaderWrapper>;
   }
 }
 
-export default SystemRole;
+export default Role;
