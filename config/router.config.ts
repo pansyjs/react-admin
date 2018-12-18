@@ -68,6 +68,28 @@ export default [
         ]
       },
       {
+        name: 'system',
+        icon: 'desktop',
+        path: '/system',
+        routes: [
+          {
+            path: '/system/account',
+            name: 'account',
+            component: './System/Account'
+          },
+          {
+            path: '/system/role',
+            name: 'role',
+            component: './System/Role'
+          },
+          {
+            path: '/system/authority',
+            name: 'role',
+            component: './System/Authority'
+          }
+        ]
+      },
+      {
         name: 'account',
         icon: 'user',
         path: '/account',
