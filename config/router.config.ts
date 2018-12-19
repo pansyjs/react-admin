@@ -83,8 +83,13 @@ export default [
             component: './System/Role'
           },
           {
+            path: '/system/api',
+            name: 'api',
+            component: './System/Api'
+          },
+          {
             path: '/system/authority',
-            name: 'role',
+            name: 'authority',
             component: './System/Authority'
           }
         ]

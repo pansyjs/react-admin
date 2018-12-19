@@ -3,16 +3,16 @@ import { FormattedMessage } from 'umi/locale';
 import Link from 'umi/link';
 import { connect } from 'dva';
 import MenuContext from '@/layouts/MenuContext';
-import PageHeader from '@/components/PageHeader';
+import PageHeader, { PageHeaderProps } from '@/components/PageHeader';
 import { PureComponent } from '@/components/BaseComponent';
 import { contentWidthType } from '@/types/settings';
 import GridContent from './GridContent';
 import styles from './index.less';
 
-export interface PageHeaderWrapperProps {
-  wrapperClassName: string;
-  top: React.ReactNode;
-  contentWidth: contentWidthType;
+export interface PageHeaderWrapperProps extends PageHeaderProps {
+  wrapperClassName?: string;
+  top?: React.ReactNode;
+  contentWidth?: contentWidthType;
 }
 
 @connect(({ setting }) => ({

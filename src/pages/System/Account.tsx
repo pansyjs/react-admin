@@ -1,11 +1,12 @@
 import React from 'react';
 import { Component } from '@/components/BaseComponent';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-export interface SystemRoleProps {}
+export interface AccountProps {}
 
-class Account extends Component<SystemRoleProps, any> {
+class Account extends Component<AccountProps, any> {
   render() {
-    return <div>Account</div>;
+    return <PageHeaderWrapper title="账户管理">Account</PageHeaderWrapper>;
   }
 }
 
