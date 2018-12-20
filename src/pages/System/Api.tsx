@@ -51,18 +51,53 @@ class Api extends Component<ApiProps, any> {
     const { current, pageSize } = pagination;
   };
 
+  // 修改接口状态二次确认
+  showUpdateStatusConfirm = (record) => {
+    const { status, name } = record;
+    confirm({
+      title: '请确认？',
+      content: `确认${status ? '禁用' : '启用'}接口【${name}】`,
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk: () => {
+        this.handleUpdateStatus(record);
+      }
+    });
+  };
+
+  // 修改接口状态请求
+  handleUpdateStatus = (record) => {
+    const { dispatch } = this.props;
+    const { status } = record;
+
+    dispatch({
+      type: 'systemApi/fetchUpdateStatus',
+      payload: {
+        id: record.id
+      },
+      callback: () => {
+        message.success(`${status ? '禁用' : '启用'}成功！`);
+        this.getTableList();
+      }
+    });
+  };
+
   // 删除二次确认
   showRemoveConfirm = (record) => {
     confirm({
       title: '确认删除？',
       content: '删除后无法恢复，请谨慎操作！',
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
       onOk: () => {
         this.handleRemove(record);
       }
     });
   };
 
-  // 触发删除请求
+  // 删除接口请求
   handleRemove = (record) => {
     const { dispatch } = this.props;
 
@@ -78,30 +113,23 @@ class Api extends Component<ApiProps, any> {
     });
   };
 
-  render() {
-    const { loading, tableData } = this.props;
-    const { list = [], pagination } = tableData;
-
-    const columns = [
+  getTableColumns = () => {
+    return [
       {
         title: '接口名称',
-        dataIndex: 'name',
-        key: 'name'
+        dataIndex: 'name'
       },
       {
         title: '接口路径',
-        dataIndex: 'path',
-        key: 'path'
+        dataIndex: 'path'
       },
       {
         title: '请求方式',
-        dataIndex: 'type',
-        key: 'type'
+        dataIndex: 'type'
       },
       {
         title: '状态',
         dataIndex: 'status',
-        key: 'status',
         render: (val) => {
           const obj: any = statusMap.get(val);
           return <Badge status={obj.badge} text={obj.text} />;
@@ -109,15 +137,20 @@ class Api extends Component<ApiProps, any> {
       },
       {
         title: '操作',
-        key: 'action',
         render: (text, record) => {
+          const { status } = record;
           return (
             <div className="table-active">
-              <Button size="small" type="primary">
-                编辑
-              </Button>
-              <Button size="small" type="danger">
-                禁用
+              <Button size="small">编辑</Button>
+              {/** 切换接口状态 */}
+              <Button
+                size="small"
+                type={status ? 'danger' : 'primary'}
+                onClick={() => {
+                  this.showUpdateStatusConfirm(record);
+                }}
+              >
+                {status ? '禁用' : '启用'}
               </Button>
               <Button
                 size="small"
@@ -133,9 +166,22 @@ class Api extends Component<ApiProps, any> {
         }
       }
     ];
+  };
+
+  showCreateView = () => {};
+
+  render() {
+    const { loading, tableData } = this.props;
+    const { list = [], pagination } = tableData;
+    const columns = this.getTableColumns();
+    const action = (
+      <Button type="primary" onClick={this.showCreateView}>
+        创建接口
+      </Button>
+    );
 
     return (
-      <PageHeaderWrapper title="接口管理">
+      <PageHeaderWrapper title="接口管理" action={action}>
         <Card>
           <StandardTable
             rowKey="id"
