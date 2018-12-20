@@ -113,3 +113,17 @@ export const POST = (
     })
   );
 };
+
+export const DELETE = (
+  url: string,
+  data?: object,
+  config?: AxiosRequestConfig
+) => {
+  return request(
+    Object.assign({}, config, {
+      url: url,
+      data: data,
+      method: 'delete'
+    })
+  );
+};
