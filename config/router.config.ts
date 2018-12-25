@@ -88,9 +88,9 @@ export default [
             component: './System/Api'
           },
           {
-            path: '/system/authority',
-            name: 'authority',
-            component: './System/Authority'
+            path: '/system/permission',
+            name: 'permission',
+            component: './System/Permission'
           }
         ]
       },

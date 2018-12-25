@@ -4,10 +4,10 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 export interface AuthorityProps {}
 
-class Authority extends Component<AuthorityProps, any> {
+class Permission extends Component<AuthorityProps, any> {
   render() {
     return <PageHeaderWrapper title="权限管理">Authority</PageHeaderWrapper>;
   }
 }
 
-export default Authority;
+export default Permission;

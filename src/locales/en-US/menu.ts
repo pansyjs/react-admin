@@ -13,7 +13,7 @@ export default {
   'menu.system.api': 'Api',
   'menu.system.role': 'Role',
   'menu.system.account': 'Account',
-  'menu.system.authority': 'Authority',
+  'menu.system.permission': 'Permission',
   'menu.account': 'Account',
   'menu.account.center': 'Account Center',
   'menu.account.settings': 'Account Settings',

@@ -33,11 +33,11 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.11.2",
+    "antd": "^3.11.6",
     "axios": "^0.18.0",
     "bizcharts": "^3.4.1",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
-    "braft-editor": "^2.1.35",
+    "braft-editor": "^2.1.36",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
     "js-cookie": "^2.2.0",
@@ -49,11 +49,11 @@
     "numeral": "^2.0.6",
     "qs": "^6.6.0",
     "rc-animate": "^2.4.4",
-    "react": "^16.6.3",
+    "react": "^16.7.0",
     "react-container-query": "^0.11.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
-    "react-dom": "^16.6.3",
+    "react-dom": "^16.7.0",
     "react-image-crop": "^6.0.9",
     "react-intl": "^2.4.0",
     "react-media": "^1.8.0",
@@ -68,8 +68,6 @@
     "@jiumao/commitlint-config": "^0.0.2",
     "@types/classnames": "^2.2.6",
     "@types/draft-js": "^0.10.26",
-    "@types/enzyme": "^3.1.15",
-    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.9",
     "@types/js-cookie": "^2.2.0",
     "@types/lodash": "^4.14.116",
@@ -86,8 +84,6 @@
     "@types/react-text-mask": "^5.4.2",
     "@types/store": "^2.0.0",
     "cross-env": "^5.2.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.0",
     "identity-obj-proxy": "^3.0.0",
@@ -110,11 +106,11 @@
     "tslint-config-jiumao": "^0.0.3",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4",
-    "umi": "^2.2.8",
-    "umi-plugin-react": "^1.2.3",
+    "umi": "^2.2.9",
+    "umi-plugin-react": "^1.2.4",
     "yarn": "^1.12.3"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   }
 }

@@ -114,6 +114,20 @@ export const POST = (
   );
 };
 
+export const PUT = (
+  url: string,
+  data?: object,
+  config?: AxiosRequestConfig
+) => {
+  return request(
+    Object.assign({}, config, {
+      url: url,
+      data: data,
+      method: 'put'
+    })
+  );
+};
+
 export const DELETE = (
   url: string,
   data?: object,
