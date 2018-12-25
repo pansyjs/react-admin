@@ -47,6 +47,7 @@
     "moment": "^2.22.2",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
+    "prop-types": "^15.6.2",
     "qs": "^6.6.0",
     "rc-animate": "^2.4.4",
     "react": "^16.7.0",
