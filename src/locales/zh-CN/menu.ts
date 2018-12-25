@@ -13,7 +13,7 @@ export default {
   'menu.system.api': '接口管理',
   'menu.system.role': '角色管理',
   'menu.system.account': '账户管理',
-  'menu.system.authority': '权限管理',
+  'menu.system.permission': '权限管理',
   'menu.account': '个人页',
   'menu.account.center': '个人中心',
   'menu.account.settings': '个人设置',

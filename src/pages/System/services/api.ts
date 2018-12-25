@@ -1,4 +1,4 @@
-import { GET, POST, DELETE } from '@/utils/request';
+import { GET, DELETE } from '@/utils/request';
 
 // 接口分页查询
 export function fetchList(params) {

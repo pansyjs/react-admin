@@ -6,20 +6,8 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import StandardTable from '@/components/StandardTable';
 
 const statusMap = new Map([
-  [
-    0,
-    {
-      text: '禁用',
-      badge: 'error'
-    }
-  ],
-  [
-    1,
-    {
-      text: '正常',
-      badge: 'success'
-    }
-  ]
+  [0, { text: '禁用', badge: 'error' }],
+  [1, { text: '正常', badge: 'success' }]
 ]);
 
 const { confirm } = Modal;

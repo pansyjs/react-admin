@@ -98,4 +98,5 @@ class LoginPage extends Component<LoginPageProps, State> {
   }
 }
 
+// @ts-ignore
 export default Form.create()(LoginPage);
