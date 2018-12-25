@@ -2589,15 +2589,15 @@ braces@^2.2.2, braces@^2.3.0, braces@^2.3.1:
     to-regex "^3.0.1"
 
 braft-convert@^2.1.10:
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/braft-convert/-/braft-convert-2.1.10.tgz#b90ee326c15af86384b122a56af4c871984576e5"
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/braft-convert/-/braft-convert-2.1.11.tgz#d569c2b0f5c7ec2313f142e9198ab7b3fff5f806"
   dependencies:
     draft-convert "^2.0.0"
     draft-js "^0.10.3"
 
-braft-editor@^2.1.35:
-  version "2.1.35"
-  resolved "https://registry.yarnpkg.com/braft-editor/-/braft-editor-2.1.35.tgz#cef11dfbc2632fd88deac094f29723fd171a602b"
+braft-editor@^2.1.36:
+  version "2.1.36"
+  resolved "https://registry.yarnpkg.com/braft-editor/-/braft-editor-2.1.36.tgz#6199cbbbf9d9e0adaf44d203d4eb669100c6fb90"
   dependencies:
     "@babel/runtime" "^7.0.0"
     braft-convert "^2.1.10"

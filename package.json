@@ -37,7 +37,7 @@
     "axios": "^0.18.0",
     "bizcharts": "^3.4.1",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
-    "braft-editor": "^2.1.35",
+    "braft-editor": "^2.1.36",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
     "js-cookie": "^2.2.0",
