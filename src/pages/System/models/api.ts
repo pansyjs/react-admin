@@ -16,7 +16,7 @@ export default {
   effects: {
     *fetchList({ payload }, { call, put }) {
       const response = yield call(fetchList, payload);
-      if (response && response.data) {
+      if (response && response.code === 200) {
         const { list = [], total = 0 } = response.data;
         yield put({
           type: 'saveTableData',
