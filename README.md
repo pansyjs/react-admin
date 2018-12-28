@@ -75,7 +75,7 @@ npm run build || yarn build
 
 # Icon 解决方案
 
-## 如何在 umi 环境在添加
+## 如何在 umi 环境添加
 
 - 安装依赖
 
