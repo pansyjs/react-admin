@@ -2,9 +2,12 @@ export default {
   namespace: 'systemRole',
 
   state: {
-    table: {
+    tableData: {
       list: [],
-      pagination: {}
+      pagination: {
+        current: 1,
+        total: 0
+      }
     }
   },
 

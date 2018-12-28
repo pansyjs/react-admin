@@ -73,12 +73,72 @@ npm run build || yarn build
 
 具体配置以及説明请查看[commitlint-config-jiumao](https://github.com/jiumao-fe/commitlint-config-jiumao)
 
-### 借鉴项目
+# Icon 解决方案
+
+## 如何在 umi 环境在添加
+
+- 安装依赖
+
+```
+yarn add -D @types/webpack-env svg-sprite-loader
+```
+
+- 添加配置
+
+```
+// umi配置文件
+// 添加以下配置
+urlLoaderExcludes: [resolve(__dirname, '../src/icons/svg')],
+chainWebpack(config) {
+  config.module
+    .rule('svg')
+    .test(/\.svg$/i)
+    .include.add(resolve(__dirname, '../src/icons/svg'))
+    .end()
+    .use('svg-sprite-loader')
+    .loader(require.resolve('svg-sprite-loader'));
+```
+
+- 新增以下目录
+
+```
+// src目录下 具体代码请直接参考项目
+
+├── icons
+│   ├── svg                     # 存放icon的svg文件
+│   └── index.ts                #
+```
+
+- 新建 icon 组件
+
+具体代码请参考 [Icon](https://github.com/typescript-projects/react-admin-template/blob/master/src/common/Icon/index.tsx)
+
+## 如何使用
+
+```
+import React from 'react';
+import Icon from '@/common/Icon';
+
+class Example extends React.Component {
+  render() {
+    return (
+      <div>
+        // type为svg文件名称
+        Analysis <Icon type="upload" />
+      </div>
+    );
+  }
+}
+
+export default Example;
+```
+
+# 借鉴项目
 
 - [TypeScript-React-Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 - [ant-design-pro](https://github.com/ant-design/ant-design-pro)
 
-### 最佳实践
+# 最佳实践
 
 - [react-typescript-cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet)
 - [react-redux-typescript-guide](https://github.com/piotrwitek/react-redux-typescript-guide)

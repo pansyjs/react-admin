@@ -12,8 +12,6 @@ export interface StandardTableProps<T> extends TableProps<T> {
       total: number;
     };
   };
-  // 分页相关配置
-  paginationConfig?: PaginationProps;
 }
 
 interface DefaultProps {
@@ -34,13 +32,19 @@ class StandardTable<T> extends React.PureComponent<StandardTableProps<T>, any> {
   };
 
   render() {
-    const { rowKey, data, paginationConfig, ...rest } = this.props;
-    const { list = [], pagination } = data;
+    const { rowKey, data, pagination, ...rest } = this.props;
+    const { list = [], pagination: paginationConfig } = data;
 
-    const paginationProps = {
-      ...paginationConfig,
-      ...pagination
-    };
+    let paginationProps;
+
+    if (typeof pagination === 'boolean') {
+      paginationProps = pagination;
+    } else {
+      paginationProps = {
+        ...pagination,
+        ...paginationConfig
+      };
+    }
 
     return (
       <div className={styles.standardTable}>
