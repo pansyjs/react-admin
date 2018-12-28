@@ -1,8 +1,13 @@
 import React from 'react';
+import Icon from '@/common/Icon';
 
 class DashboardAnalysis extends React.Component {
   render() {
-    return <div>Analysis</div>;
+    return (
+      <div>
+        Analysis <Icon type="upload" />
+      </div>
+    );
   }
 }
 
