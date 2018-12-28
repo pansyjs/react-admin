@@ -1,6 +1,6 @@
+import { resolve } from 'path';
 import pageRoutes from './router.config';
 import themeConfig from './theme.config';
-import { resolve } from 'path';
 
 const plugins = [
   [
