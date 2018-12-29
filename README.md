@@ -35,7 +35,7 @@ npm run dev || yarn dev
 npm run build || yarn build
 ```
 
-# 关于后端
+# 关于 API
 
 [nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
 
