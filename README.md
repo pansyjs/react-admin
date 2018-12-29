@@ -1,13 +1,19 @@
-# [react-admin-template](https://github.com/typescript-projects/react-admin-template)
+<p align="center">
+  <a href="http://ant.design">
+    <img width="100" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
+  </a>
+</p>
+
+<h1 align="center">Ant Design Admin</h1>
+
+<div align="center">
+中后台开发模板
+</div>
 
 ![](https://img.shields.io/github/stars/typescript-projects/react-admin-template.svg)
 ![](https://img.shields.io/github/license/typescript-projects/react-admin-template.svg)
 ![](https://img.shields.io/github/issues/typescript-projects/react-admin-template.svg)
 ![](https://img.shields.io/github/forks/typescript-projects/react-admin-template.svg)
-
-> react 管理后台开发模板
-
-> 接口请移步[nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
 
 # Usage
 
@@ -29,7 +35,11 @@ npm run dev || yarn dev
 npm run build || yarn build
 ```
 
-## 项目目录
+# 关于 API
+
+[nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
+
+# 项目目录
 
 ```
 ├── config                      # 项目相关配置
