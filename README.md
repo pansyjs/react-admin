@@ -32,39 +32,15 @@ npm install --global yarn
 
 3. 安装依赖
 
-```
-npm run bootstrap
-```
-
-或
-
-```
-yarn bootstrap
-```
+`npm run bootstrap` 或者 `yarn bootstrap`
 
 4. 开发
 
-```
-npm run dev
-```
-
-或
-
-```
-yarn dev
-```
+`npm run dev` 或者 `yarn dev`
 
 5. 编译
 
-```
-npm run build
-```
-
-或
-
-```
-yarn build
-```
+`npm run build` 或者 `yarn build`
 
 # 关于 API
 
