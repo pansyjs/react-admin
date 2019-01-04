@@ -15,6 +15,11 @@
 ![](https://img.shields.io/github/issues/typescript-projects/react-admin-template.svg)
 ![](https://img.shields.io/github/forks/typescript-projects/react-admin-template.svg)
 
+# 参与开发
+
+- 🎉🎉🎉 欢迎 PR
+- 🌴🌴🌴 交流群 钉钉(23355178)、QQ 群(599863278) 推荐使用钉钉
+
 # Usage
 
 1. 安装依赖
