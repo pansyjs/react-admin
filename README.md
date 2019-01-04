@@ -20,25 +20,27 @@
 - 🎉🎉🎉 欢迎 PR
 - 🌴🌴🌴 交流群 钉钉(23355178)、QQ 群(599863278) 推荐使用钉钉
 
-# Usage
+# 使用
 
-1. 安装依赖
+1. 安装 NodeJs 推荐安装最新稳定版
 
-```
-npm run bootstrap
-```
-
-2. 开发
+2. 全局安装 yarn(可跳过)
 
 ```
-npm run dev || yarn dev
+npm install --global yarn
 ```
 
-3. 编译
+3. 安装依赖
 
-```
-npm run build || yarn build
-```
+`npm run bootstrap` 或者 `yarn bootstrap`
+
+4. 开发
+
+`npm run dev` 或者 `yarn dev`
+
+5. 编译
+
+`npm run build` 或者 `yarn build`
 
 # 关于 API
 
