@@ -22,7 +22,7 @@
 
 使用钉钉扫描下方二维码
 
-<img height="200" src="./static/dingding.jpeg"></img>
+<img height="200" src="https://typescript-projects.github.io/react-admin-template/static/dingding.jpg"></img>
 
 # 使用
 
