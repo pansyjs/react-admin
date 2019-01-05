@@ -18,7 +18,11 @@
 # 参与开发
 
 - 🎉🎉🎉 欢迎 PR
-- 🌴🌴🌴 交流群 钉钉(23355178)
+- 🌴🌴🌴 钉钉交流群(23355178)
+
+使用钉钉扫描下方二维码
+
+<img height="200" src="https://typescript-projects.github.io/react-admin-template/static/dingding.jpg"></img>
 
 # 使用
 
