@@ -1896,7 +1896,7 @@ antd-mobile@2.x:
     rmc-tabs "~1.2.0"
     rmc-tooltip "~1.0.0"
 
-antd@3.x:
+antd@3.x, antd@^3.13.2:
   version "3.13.2"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.13.2.tgz#66541c58a9009c54dfe09f5a374863c6783f30f9"
   integrity sha512-6wA0iQgyDjmDrIy59Dwbt4+vt9F3RYh8DwSF7yIxEquT6Cmzou/0wGVqLNzY11ErewnjxgB8w60cQ5VejSecIQ==
@@ -1939,62 +1939,6 @@ antd@3.x:
     rc-table "~6.4.0"
     rc-tabs "~9.6.0"
     rc-time-picker "~3.6.1"
-    rc-tooltip "~3.7.3"
-    rc-tree "~1.14.6"
-    rc-tree-select "~2.5.0"
-    rc-trigger "^2.6.2"
-    rc-upload "~2.6.0"
-    rc-util "^4.5.1"
-    react-lazy-load "^3.0.13"
-    react-lifecycles-compat "^3.0.4"
-    react-slick "~0.23.2"
-    resize-observer-polyfill "^1.5.0"
-    shallowequal "^1.1.0"
-    warning "~4.0.2"
-
-antd@^3.12.3:
-  version "3.12.3"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-3.12.3.tgz#ffb409c5317e17583bf8493a4726d77ac839c7d2"
-  integrity sha512-fKLqE5rqiAqKwi3nT8lopYZFj/Kbc3UCEkX4EsZOh8ZZHVNGirvZofRxLt4smpHmpj6NLbhR6va/kXLFe35RiQ==
-  dependencies:
-    "@ant-design/icons" "~1.1.16"
-    "@ant-design/icons-react" "~1.1.2"
-    array-tree-filter "^2.1.0"
-    babel-runtime "6.x"
-    classnames "~2.2.6"
-    create-react-class "^15.6.3"
-    create-react-context "0.2.2"
-    css-animation "^1.5.0"
-    dom-closest "^0.2.0"
-    enquire.js "^2.1.6"
-    lodash "^4.17.11"
-    moment "^2.22.2"
-    omit.js "^1.0.0"
-    prop-types "^15.6.2"
-    raf "^3.4.0"
-    rc-animate "^2.5.4"
-    rc-calendar "~9.10.3"
-    rc-cascader "~0.17.0"
-    rc-checkbox "~2.1.5"
-    rc-collapse "~1.10.2"
-    rc-dialog "~7.3.0"
-    rc-drawer "~1.7.6"
-    rc-dropdown "~2.4.1"
-    rc-editor-mention "^1.1.7"
-    rc-form "^2.4.0"
-    rc-input-number "~4.3.7"
-    rc-menu "~7.4.12"
-    rc-notification "~3.3.0"
-    rc-pagination "~1.17.7"
-    rc-progress "~2.2.6"
-    rc-rate "~2.5.0"
-    rc-select "^8.6.7"
-    rc-slider "~8.6.3"
-    rc-steps "~3.3.0"
-    rc-switch "~1.8.0"
-    rc-table "~6.4.0"
-    rc-tabs "~9.5.2"
-    rc-time-picker "~3.5.0"
     rc-tooltip "~3.7.3"
     rc-tree "~1.14.6"
     rc-tree-select "~2.5.0"
@@ -12593,13 +12537,6 @@ rc-pagination@~1.17.7:
     prop-types "^15.5.7"
     react-lifecycles-compat "^3.0.4"
 
-rc-progress@~2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/rc-progress/-/rc-progress-2.2.6.tgz#d5d07c07333b352a9ef13230c5940e13336c1e62"
-  dependencies:
-    babel-runtime "6.x"
-    prop-types "^15.5.8"
-
 rc-progress@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/rc-progress/-/rc-progress-2.3.0.tgz#cfbd07ff9026c450100980de209a92650e24f313"
@@ -12648,18 +12585,6 @@ rc-slider@~8.2.0:
     shallowequal "^1.0.1"
     warning "^3.0.0"
 
-rc-slider@~8.6.3:
-  version "8.6.3"
-  resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.6.3.tgz#1ca0e0bd2863252741de75e7bf8c9f2cfcffccb7"
-  dependencies:
-    babel-runtime "6.x"
-    classnames "^2.2.5"
-    prop-types "^15.5.4"
-    rc-tooltip "^3.7.0"
-    rc-util "^4.0.4"
-    shallowequal "^1.0.1"
-    warning "^3.0.0"
-
 rc-slider@~8.6.5:
   version "8.6.5"
   resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.6.5.tgz#4bc90b8adfa6d46430a887f63cf70b88b43070a8"
@@ -12692,14 +12617,6 @@ rc-swipeout@~2.0.0:
     rc-gesture "~0.0.22"
     react-native-swipeout "^2.2.2"
 
-rc-switch@~1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/rc-switch/-/rc-switch-1.8.0.tgz#cff32fd04c406d8c0c0397e69bc36350a333e236"
-  dependencies:
-    babel-runtime "^6.23.0"
-    classnames "^2.2.1"
-    prop-types "^15.5.6"
-
 rc-switch@~1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/rc-switch/-/rc-switch-1.9.0.tgz#ab2b878f2713c681358a453391976c9b95b290f7"
@@ -12724,20 +12641,6 @@ rc-table@~6.4.0:
     shallowequal "^1.0.2"
     warning "^3.0.0"
 
-rc-tabs@~9.5.2:
-  version "9.5.7"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.5.7.tgz#bb4fd7d50e8f1c861c09220a551b258a96429e35"
-  dependencies:
-    babel-runtime "6.x"
-    classnames "2.x"
-    create-react-context "0.2.2"
-    lodash "^4.17.5"
-    prop-types "15.x"
-    raf "^3.4.1"
-    rc-hammerjs "~0.6.0"
-    rc-util "^4.0.4"
-    warning "^3.0.0"
-
 rc-tabs@~9.6.0:
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.6.0.tgz#b212a85f58384897b09f52dd3ee6701fff7fccd5"
@@ -12752,16 +12655,6 @@ rc-tabs@~9.6.0:
     rc-hammerjs "~0.6.0"
     rc-util "^4.0.4"
     warning "^3.0.0"
-
-rc-time-picker@~3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/rc-time-picker/-/rc-time-picker-3.5.0.tgz#bbe8d50a677eff1cd65cb645cb0fc29f83b91c35"
-  integrity sha512-swJyFZgR3P4UgFix5DP0fQQPKHP7WYEKlzbAWXd72TmFV80VCxmR+l0OWyCOjZgXfo9VJ/mEDzUnMSjP8/xyrg==
-  dependencies:
-    classnames "2.x"
-    moment "2.x"
-    prop-types "^15.5.8"
-    rc-trigger "^2.2.0"
 
 rc-time-picker@~3.6.1:
   version "3.6.2"
