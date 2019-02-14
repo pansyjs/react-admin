@@ -46,6 +46,14 @@ npm install --global yarn
 
 `npm run build` 或者 `yarn build`
 
+# 技术栈
+
+- 框架：React、Umi
+- 组件库：ant-design
+- 开发语言：TypeScript
+- Ajax 库：Axios
+- 样式：Less
+
 # 关于 API
 
 [nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
