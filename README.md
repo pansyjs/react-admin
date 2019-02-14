@@ -10,10 +10,10 @@
 中后台开发模板
 </div>
 
-![](https://img.shields.io/github/stars/typescript-projects/react-admin-template.svg)
-![](https://img.shields.io/github/license/typescript-projects/react-admin-template.svg)
-![](https://img.shields.io/github/issues/typescript-projects/react-admin-template.svg)
-![](https://img.shields.io/github/forks/typescript-projects/react-admin-template.svg)
+![](https://img.shields.io/github/stars/ts-react/react-admin-template.svg)
+![](https://img.shields.io/github/license/ts-reacts/react-admin-template.svg)
+![](https://img.shields.io/github/issues/ts-react/react-admin-template.svg)
+![](https://img.shields.io/github/forks/ts-react/react-admin-template.svg)
 
 # 参与开发
 
