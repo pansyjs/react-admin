@@ -1,4 +1,4 @@
-const rules = require('@jiumao/commitlint-config');
+const { rules } = require('@jiumao/commitlint-config');
 
 module.exports = {
   rules
