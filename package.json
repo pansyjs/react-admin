@@ -6,7 +6,7 @@
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
     "precommit": "npm run lint-staged",
-    "dev": "cross-env PORT=8080 umi dev",
+    "start": "cross-env PORT=8080 umi dev",
     "build": "umi build",
     "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
     "lint-staged": "lint-staged",

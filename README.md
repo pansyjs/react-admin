@@ -40,7 +40,7 @@ npm install --global yarn
 
 4. 开发
 
-`npm run dev` 或者 `yarn dev`
+`npm run start` 或者 `yarn start`
 
 5. 编译
 
