@@ -1,10 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
 import ClassNames from 'classnames';
-import { Link } from 'react-router-dom';
 import BaseMenu, { BaseMenuProps } from './BaseMenu';
 import PageLoading from '../PageLoading';
-import ProjectLogo from '../ProjectLogo';
 import { getDefaultCollapsedSubMenus } from './utils';
 import styles from './index.less';
 
@@ -46,7 +44,7 @@ class SideMenu extends React.PureComponent<SideMenuProps, State> {
   };
 
   render() {
-    const { logo, theme, collapsed, onCollapse, fixSideBar } = this.props;
+    const { theme, collapsed, onCollapse, fixSideBar } = this.props;
     const { openKeys } = this.state;
     const defaultProps = collapsed ? {} : { openKeys };
 
@@ -63,7 +61,6 @@ class SideMenu extends React.PureComponent<SideMenuProps, State> {
           [styles.light]: theme === 'light'
         })}
       >
-        <ProjectLogo logo={logo} className={styles.logo} />
         <React.Suspense fallback={<PageLoading />}>
           <BaseMenu
             {...this.props}

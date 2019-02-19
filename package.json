@@ -6,7 +6,7 @@
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
     "precommit": "npm run lint-staged",
-    "dev": "cross-env PORT=8080 umi dev",
+    "start": "cross-env PORT=8080 umi dev",
     "build": "umi build",
     "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
     "lint-staged": "lint-staged",
@@ -108,10 +108,9 @@
     "tslint-config-jiumao": "^0.0.3",
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.3",
-    "umi": "^2.4.4",
-    "umi-plugin-react": "^1.4.2",
-    "webpack": "^4.28.2",
-    "yarn": "^1.12.3"
+    "umi": "^2.5.3",
+    "umi-plugin-react": "^1.5.1",
+    "webpack": "^4.28.2"
   },
   "engines": {
     "node": ">=10.0.0"
