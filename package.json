@@ -5,7 +5,6 @@
   "scripts": {
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
-    "precommit": "npm run lint-staged",
     "start": "cross-env PORT=8080 umi dev",
     "build": "umi build",
     "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
@@ -17,7 +16,6 @@
     "tsc": "tsc",
     "test": "umi test",
     "test:component": "umi test ./src/components",
-    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
     "build:view": "npm run build && cd ./dist && anywhere -p 8080",
     "prettier": "prettier --write ./src/**/**/**/*"
@@ -25,12 +23,6 @@
   "repository": "https://github.com/jiumao-fe/react-admin-template.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit",
-      "commit-msg": "npm run commitmsg"
-    }
-  },
   "dependencies": {
     "@antv/data-set": "^0.10.1",
     "antd": "^3.13.2",
