@@ -1,9 +1,9 @@
-import { fetchCurrentUser, fetchLogout } from '@/services/user';
+import { fetchCurrentUser, fetchLogout } from '@/services/user.service';
 import { stringify } from 'qs';
 import { routerRedux } from 'dva/router';
 
 export default {
-  name: 'user',
+  namespace: 'user',
 
   state: {
     currentUser: {},

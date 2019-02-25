@@ -67,30 +67,45 @@ export default [
           }
         ]
       },
+      // 系统管理模块
       {
         name: 'system',
         icon: 'desktop',
         path: '/system',
         routes: [
           {
-            path: '/system/account',
-            name: 'account',
-            component: './System/Account'
-          },
-          {
-            path: '/system/role',
-            name: 'role',
-            component: './System/Role'
-          },
-          {
-            path: '/system/api',
-            name: 'api',
-            component: './System/Api'
+            path: '/system/user',
+            name: 'user',
+            component: '../layouts/BlankLayout',
+            routes: [
+              {
+                path: '/system/user/groups',
+                name: 'groups',
+                component: './system/user/groups'
+              },
+              {
+                path: '/system/user/users',
+                name: 'users',
+                component: './system/user/users'
+              },
+            ]
           },
           {
             path: '/system/permission',
             name: 'permission',
-            component: './System/Permission'
+            component: '../layouts/BlankLayout',
+            routes: [
+              {
+                path: '/system/permission/permissions',
+                name: 'permissions',
+                component: './system/permission/permissions'
+              },
+              {
+                path: '/system/permission/policies',
+                name: 'policies',
+                component: './system/permission/policies',
+              },
+            ]
           }
         ]
       },

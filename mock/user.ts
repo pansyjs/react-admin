@@ -23,9 +23,10 @@ function getCurrentUser(req, res) {
   res.status(200).end();
 }
 
+// 用户登录
 function login(req, res) {
-  const { username } = req.body;
-  if (username === 'admin' || username === 'user') {
+  const { username, password } = req.body;
+  if (username === 'admin' || password === '123456') {
     res.json({
       status: 200,
       data: {

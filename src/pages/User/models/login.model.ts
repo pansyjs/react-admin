@@ -1,5 +1,5 @@
 import { routerRedux } from 'dva/router';
-import { fetchLogin } from '@/services/user';
+import { fetchLogin } from '@/services/user.service';
 import { parseQuery } from '@/utils/url';
 import { setCookie } from '@/utils/cookie';
 
