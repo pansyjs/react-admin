@@ -21,8 +21,8 @@
     }
   },
   "include": [
-    "src/**/*",
-    "typings/*"
+    "types/*",
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"
