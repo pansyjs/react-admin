@@ -96,6 +96,12 @@ npm install --global yarn
 └── yarn.lock                   # yarn生成文件
 ```
 
+# 关于打包
+
+> 提供`build:test`、`build:prod`两个编译命令、可结合CI使用
+
+请在 `config/server.config.ts`中配置各个环境的API地址
+
 # commit-message
 
 > git 提交信息使用[commitlint](https://github.com/marionebl/commitlint) 进行规范
