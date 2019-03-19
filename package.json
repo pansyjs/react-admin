@@ -100,8 +100,8 @@
     "tsconfig-paths": "^3.7.0",
     "tslib": "^1.9.3",
     "typescript": "^3.3.3",
-    "umi": "^2.5.5",
-    "umi-plugin-react": "^1.5.2",
+    "umi": "^2.6.2",
+    "umi-plugin-react": "^1.7.0",
     "webpack": "^4.28.2"
   },
   "engines": {
