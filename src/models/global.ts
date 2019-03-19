@@ -1,13 +1,30 @@
+import { Effect } from 'dva';
+import { Reducer } from 'redux';
 import { fetchQueryNotices } from '@/services/global';
 
-export default {
-  name: 'global',
+export interface IGlobalModelState {
+  collapsed: boolean;
+  notices: []
+}
 
+export interface IGlobalModel {
+  name: 'global',
+  state: IGlobalModelState,
+  effects: {
+    fetchQueryNotices: Effect;
+  },
+  reducers: {
+    changeLayoutCollapsed: Reducer<any>;
+    saveNotices: Reducer<any>;
+  }
+}
+
+const Global: IGlobalModel = {
+  name: 'global',
   state: {
     collapsed: false,
     notices: []
   },
-
   effects: {
     *fetchQueryNotices(_, { call, put, select }) {
       const response = yield call(fetchQueryNotices);
@@ -30,7 +47,6 @@ export default {
       }
     }
   },
-
   reducers: {
     changeLayoutCollapsed(state, { payload }) {
       return {
@@ -46,3 +62,5 @@ export default {
     }
   }
 };
+
+export default Global;

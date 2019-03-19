@@ -1,13 +1,21 @@
+import { Effect } from 'dva';
+import { Reducer } from 'redux';
 import { routerRedux } from 'dva/router';
 import { fetchLogin } from '@/services/user.service';
 import { parseQuery } from '@/utils/url';
 import { setCookie } from '@/utils/cookie';
 
-export default {
+export interface ILoginModel {
   namespace: 'login',
-
   state: {},
+  effects: {
+    fetchLogin: Effect;
+  }
+}
 
+const Login: ILoginModel = {
+  namespace: 'login',
+  state: {},
   effects: {
     *fetchLogin({ payload }, { call, put }) {
       const response = yield call(fetchLogin, payload);
@@ -38,3 +46,5 @@ export default {
     }
   }
 };
+
+export default Login;
