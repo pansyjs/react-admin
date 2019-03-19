@@ -2,7 +2,10 @@
 export const AXIOS_DEFAULT_CONFIG = {
   timeout: 20000,
   withCredentials: true,
-  baseURL: '/'
+  // 使用webpack DefinePlugin 插件
+  // 具体配置请查看 /config/server.config.ts
+  // @ts-ignore
+  baseURL: `${BASE_URL}/api/`,
 };
 
 // 项目相关配置

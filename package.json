@@ -5,8 +5,10 @@
   "scripts": {
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
-    "start": "cross-env PORT=8080 umi dev",
+    "start": "cross-env NODE_ENV=development umi dev",
     "build": "umi build",
+    "build:test": "cross-env NODE_ENV=production umi build",
+    "build:prod": "cross-env NODE_ENV=test umi build",
     "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc",
@@ -98,6 +100,7 @@
     "typescript": "^3.3.3",
     "umi": "^2.6.2",
     "umi-plugin-react": "^1.7.0",
+    "umi-types": "^0.3.0",
     "webpack": "^4.28.2"
   },
   "engines": {
