@@ -1,38 +1,21 @@
 import { resolve } from 'path';
-import pageRoutes from './router.config';
+import routes from './router.config';
+import plugins from './plugin.config';
 import themeConfig from './theme.config';
+import serverConfig from './server.config';
 
-const plugins = [
-  [
-    'umi-plugin-react',
-    {
-      antd: true,
-      dva: {
-        immer: true
-      },
-      locale: {
-        enable: true,
-        default: 'zh-CN',
-        baseNavigator: true
-      },
-      dynamicImport: {
-        loadingComponent: './components/PageLoading/index'
-      },
-      dll: {
-        exclude: [],
-        include: ['dva', 'dva/router', 'dva/saga']
-      }
-    }
-  ]
-];
+const { NODE_ENV } = process.env;
 
 export default {
   plugins,
   targets: {
     ie: 11
   },
+  define: {
+    BASE_URL: serverConfig[NODE_ENV] || serverConfig.development
+  },
   // 路由配置
-  routes: pageRoutes,
+  routes,
   theme: themeConfig,
   ignoreMomentLocale: true,
   urlLoaderExcludes: [resolve(__dirname, '../src/icons/svg')],

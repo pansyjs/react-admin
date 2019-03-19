@@ -1,15 +1,33 @@
-import { fetchCurrentUser, fetchLogout } from '@/services/user.service';
+import { Effect } from 'dva';
+import { Reducer } from 'redux';
 import { stringify } from 'qs';
 import { routerRedux } from 'dva/router';
+import { fetchCurrentUser, fetchLogout } from '@/services/user.service';
 
-export default {
+export interface IUserModelState {
+  currentUser: {};
+  isSuperAdmin: boolean;
+}
+
+export interface IUserModel {
+  namespace: 'user';
+  state: IUserModelState;
+  effects: {
+    fetchCurrent: Effect;
+    fetchLogout: Effect;
+  },
+  reducers: {
+    saveCurrentUser: Reducer<any>;
+    changeNotifyCount: Reducer<any>;
+  }
+}
+
+const User: IUserModel = {
   namespace: 'user',
-
   state: {
     currentUser: {},
     isSuperAdmin: false
   },
-
   effects: {
     *fetchCurrent(_, { call, put }) {
       const response = yield call(fetchCurrentUser);
@@ -49,7 +67,6 @@ export default {
       }
     }
   },
-
   reducers: {
     saveCurrentUser(state, { payload }) {
       return {
@@ -69,3 +86,5 @@ export default {
     }
   }
 };
+
+export default User;
