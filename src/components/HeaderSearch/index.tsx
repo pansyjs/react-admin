@@ -8,55 +8,48 @@ import styles from './index.less';
 export interface HeaderSearchProps {
   className?: string;
   placeholder?: string;
-  onSearch?: (value: string) => void;
-  onPressEnter?: Function;
-  defaultActiveFirstOption?: boolean;
   dataSource?: string[];
   defaultOpen?: boolean;
+  open?: boolean;
+  onSearch?: (value: string) => void;
+  onChange?: (value: string) => void;
+  onVisibleChange?: (visible: boolean) => void;
+  onPressEnter?: (value: string) => void;
+  style?: React.CSSProperties;
 }
 
-export interface HeaderSearchStates {
-  searchMode: boolean;
-  value: string;
+interface DefaultProps {
+  readonly defaultOpen: boolean;
+  readonly open: boolean;
 }
 
-class HeaderSearch extends React.PureComponent<
-  HeaderSearchProps,
-  HeaderSearchStates
-> {
+interface State {
+  readonly searchMode: boolean;
+  readonly value: string;
+}
+
+class HeaderSearch extends React.PureComponent<HeaderSearchProps, State> {
   private input: any;
   private timeout: NodeJS.Timer;
 
-  static defaultProps = {
-    className: '',
-    placeholder: '',
-    onSearch: () => {},
-    onPressEnter: () => {},
-    defaultActiveFirstOption: false,
-    dataSource: [],
-    defaultOpen: false
+  static defaultProps: DefaultProps = {
+    defaultOpen: false,
+    open: false
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchMode: props.defaultOpen,
-      value: ''
-    };
-  }
+  readonly state: State = {
+    searchMode: this.props.defaultOpen,
+    value: ''
+  };
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
-  onChange = (value) => {
-    // @ts-ignore
+  handleChange = (value) => {
     const { onChange } = this.props;
     this.setState({ value });
-    if (onChange) {
-      onChange();
-    }
+    onChange && onChange(value);
   };
 
   onKeyDown = (e) => {
@@ -64,7 +57,7 @@ class HeaderSearch extends React.PureComponent<
       const { onPressEnter } = this.props;
       const { value } = this.state;
       this.timeout = setTimeout(() => {
-        onPressEnter(value);
+        onPressEnter && onPressEnter(value);
       }, 0);
     }
   };
@@ -93,27 +86,33 @@ class HeaderSearch extends React.PureComponent<
   debouncePressEnter() {
     const { onPressEnter } = this.props;
     const { value } = this.state;
-    onPressEnter(value);
+    onPressEnter && onPressEnter(value);
   }
 
   render() {
-    console.log(this.props);
     const { className, placeholder, ...restProps } = this.props;
     const { searchMode, value } = this.state;
     delete restProps.defaultOpen;
-    const clsString = ClassNames(className, styles.headerSearch);
-    const inputClass = ClassNames(styles.input, {
-      [styles.show]: searchMode
-    });
     return (
-      <span className={clsString} onClick={this.enterSearchMode}>
+      <span
+        className={ClassNames(className, styles.headerSearch)}
+        onClick={this.enterSearchMode}
+        onTransitionEnd={({ propertyName }) => {
+          if (propertyName === 'width' && !searchMode) {
+            const { onVisibleChange } = this.props;
+            onVisibleChange && onVisibleChange(searchMode);
+          }
+        }}
+      >
         <Icon type="search" key="Icon" />
         <AutoComplete
           key="AutoComplete"
           {...restProps}
-          className={inputClass}
+          className={ClassNames(styles.input, {
+            [styles.show]: searchMode
+          })}
           value={value}
-          onChange={this.onChange}
+          onChange={this.handleChange}
         >
           <Input
             ref={(node) => {

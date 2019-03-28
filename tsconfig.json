@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    // 是否开启严格的null检查模式
-    "strictNullChecks": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "jsx": "react",
@@ -14,12 +12,18 @@
     "baseUrl": ".",
     "lib": [
       "dom",
-      "es7"
+      "es6",
+      "es7",
+      "es2017"
     ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
+  "include": [
+    "types/*",
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules"
   ]

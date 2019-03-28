@@ -1,7 +1,8 @@
 import React from 'react';
-import { formatMessage, setLocale, getLocale } from 'umi/locale';
-import { Menu, Icon, Dropdown } from 'antd';
 import ClassNames from 'classnames';
+import { Menu, Icon } from 'antd';
+import { formatMessage, setLocale, getLocale } from 'umi/locale';
+import HeaderDropDown from '../HeaderDropDown';
 import styles from './index.less';
 
 export interface SelectLangProps {
@@ -9,7 +10,7 @@ export interface SelectLangProps {
 }
 
 class SelectLang extends React.PureComponent<SelectLangProps, any> {
-  changLang = ({ key }) => {
+  changeLang = ({ key }) => {
     setLocale(key);
   };
 
@@ -17,35 +18,45 @@ class SelectLang extends React.PureComponent<SelectLangProps, any> {
     const { className } = this.props;
     const selectedLang = getLocale();
 
+    const locales = {
+      'zh-CN': {
+        label: '简体中文',
+        icon: '🇨🇳'
+      },
+      'en-US': {
+        label: 'English',
+        icon: '🇬🇧'
+      }
+    };
+
     const langMenu = (
       <Menu
         className={styles.menu}
         selectedKeys={[selectedLang]}
-        onClick={this.changLang}
+        onClick={this.changeLang}
       >
-        <Menu.Item key="zh-CN">
-          <span role="img" aria-label="简体中文">
-            🇨🇳
-          </span>{' '}
-          简体中文
-        </Menu.Item>
-        <Menu.Item key="en-US">
-          <span role="img" aria-label="English">
-            🇬🇧
-          </span>{' '}
-          English
-        </Menu.Item>
+        {Object.keys(locales).map((locale) => {
+          const data = locales[locale];
+          return (
+            <Menu.Item key={locale}>
+              <span role="img" aria-label={data.label}>
+                {data.icon}
+              </span>{' '}
+              {data.label}
+            </Menu.Item>
+          );
+        })}
       </Menu>
     );
 
     return (
-      <Dropdown overlay={langMenu} placement="bottomRight">
+      <HeaderDropDown overlay={langMenu} placement="bottomRight">
         <Icon
           type="global"
           className={ClassNames(styles.dropDown, className)}
           title={formatMessage({ id: 'navBar.lang' })}
         />
-      </Dropdown>
+      </HeaderDropDown>
     );
   }
 }

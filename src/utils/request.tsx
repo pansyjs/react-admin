@@ -2,15 +2,20 @@ import axios, { AxiosRequestConfig } from 'axios';
 import router from 'umi/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { AJAX_DEFAULT_CONFIG } from '@/config';
+import { AXIOS_DEFAULT_CONFIG } from '@/config';
+import { getCookie } from '@/utils/cookie';
 
-axios.defaults.timeout = AJAX_DEFAULT_CONFIG.timeout;
-axios.defaults.baseURL = AJAX_DEFAULT_CONFIG.baseURL;
-axios.defaults.withCredentials = AJAX_DEFAULT_CONFIG.withCredentials;
+axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
+axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
+axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
 
 function requestSuccess(config) {
   // 请求开始，开启进度条
   NProgress.start();
+  const cookie = getCookie();
+  if (cookie) {
+    config.headers['Token'] = cookie;
+  }
   return config;
 }
 
@@ -105,6 +110,34 @@ export const POST = (
       url: url,
       data: data,
       method: 'post'
+    })
+  );
+};
+
+export const PUT = (
+  url: string,
+  data?: object,
+  config?: AxiosRequestConfig
+) => {
+  return request(
+    Object.assign({}, config, {
+      url: url,
+      data: data,
+      method: 'put'
+    })
+  );
+};
+
+export const DELETE = (
+  url: string,
+  data?: object,
+  config?: AxiosRequestConfig
+) => {
+  return request(
+    Object.assign({}, config, {
+      url: url,
+      data: data,
+      method: 'delete'
     })
   );
 };

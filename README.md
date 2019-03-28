@@ -1,33 +1,64 @@
-# [react-admin-template](https://github.com/jiumao-fe/react-admin-template)
+<p align="center">
+  <a href="http://ant.design">
+    <img width="100" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
+  </a>
+</p>
 
-[![GitHub license](https://img.shields.io/github/license/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/issues)
-[![GitHub forks](https://img.shields.io/github/forks/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/network)
-[![GitHub stars](https://img.shields.io/github/stars/jiumao-fe/react-admin-template.svg)](https://github.com/jiumao-fe/react-admin-template/stargazers)
+<h1 align="center">Ant Design Admin</h1>
 
-> react 管理后台开发模板
+<div align="center">
+中后台开发模板
+</div>
 
-# Usage
+![](https://img.shields.io/github/stars/ts-react/react-admin-template.svg)
+![](https://img.shields.io/github/license/ts-reacts/react-admin-template.svg)
+![](https://img.shields.io/github/issues/ts-react/react-admin-template.svg)
+![](https://img.shields.io/github/forks/ts-react/react-admin-template.svg)
 
-1. 安装依赖
+# 参与开发
+
+- 🎉🎉🎉 欢迎 PR
+- 🌴🌴🌴 钉钉交流群(23355178)
+
+使用钉钉扫描下方二维码
+
+<img height="200" src="https://ts-react.github.io/react-admin-template/static/dingding.jpg"></img>
+
+# 使用
+
+1. 安装 NodeJs 推荐安装最新稳定版
+
+2. 全局安装 yarn(可跳过)
 
 ```
-npm run bootstrap
+npm install --global yarn
 ```
 
-2. 开发
+3. 安装依赖
 
-```
-npm run dev || yarn dev
-```
+`npm run bootstrap` 或者 `yarn bootstrap`
 
-3. 编译
+4. 开发
 
-```
-npm run build || yarn build
-```
+`npm run start` 或者 `yarn start`
 
-## 项目目录
+5. 编译
+
+`npm run build` 或者 `yarn build`
+
+# 技术栈
+
+- 框架：React、Umi
+- 组件库：ant-design
+- 开发语言：TypeScript
+- Ajax 库：Axios
+- 样式：Less
+
+# 关于 API
+
+[nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
+
+# 项目目录
 
 ```
 ├── config                      # 项目相关配置
@@ -65,55 +96,84 @@ npm run build || yarn build
 └── yarn.lock                   # yarn生成文件
 ```
 
+# 关于打包
+
+> 提供`build:test`、`build:prod`两个编译命令、可结合CI使用
+
+请在 `config/server.config.ts`中配置各个环境的API地址
+
 # commit-message
 
 > git 提交信息使用[commitlint](https://github.com/marionebl/commitlint) 进行规范
 
 具体配置以及説明请查看[commitlint-config-jiumao](https://github.com/jiumao-fe/commitlint-config-jiumao)
 
-## 优雅的使用 icon
+# Icon 解决方案
 
-> 主要参考 [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
+## 如何在 umi 环境添加
 
-### 使用
-
-- 在阿里爸爸的开源图库[iconfont](http://iconfont.cn)找到需要的图标，下载 svg
-- 拷贝至[src/icons/svg](./src/icons/svg)目录下
-- 在项目中引用[SvgIcon](./src/components/SvgIcon)组件，指定属性`icon`
-
-### 图标命名规范
-
-语义化命名，规则如下
-
-- 实心和描线图标保持同名，用`-o`来区分，比如`question-circle`（实心）和`question-circle-o`（描线）；
-- 命名顺序：`[图标名-[形状?]-[描线?]-[方向?]]`
-
-> `?`可选
-
-### 示例
+- 安装依赖
 
 ```
-import React, { Component } from 'react';
-import SvgIcon from '@components/SvgIcon';
+yarn add -D @types/webpack-env svg-sprite-loader
+```
 
-class Test from Component {
+- 添加配置
+
+```
+// umi配置文件
+// 添加以下配置
+urlLoaderExcludes: [resolve(__dirname, '../src/icons/svg')],
+chainWebpack(config) {
+  config.module
+    .rule('svg')
+    .test(/\.svg$/i)
+    .include.add(resolve(__dirname, '../src/icons/svg'))
+    .end()
+    .use('svg-sprite-loader')
+    .loader(require.resolve('svg-sprite-loader'));
+```
+
+- 新增以下目录
+
+```
+// src目录下 具体代码请直接参考项目
+
+├── icons
+│   ├── svg                     # 存放icon的svg文件
+│   └── index.ts                #
+```
+
+- 新建 icon 组件
+
+具体代码请参考 [Icon](https://github.com/typescript-projects/react-admin-template/blob/master/src/common/Icon/index.tsx)
+
+## 如何使用
+
+```
+import React from 'react';
+import Icon from '@/common/Icon';
+
+class Example extends React.Component {
   render() {
     return (
       <div>
-        <SvgIcon icon="lock"></SvgIcon>
+        // type为svg文件名称
+        Analysis <Icon type="upload" />
       </div>
-    )
+    );
   }
 }
+
+export default Example;
 ```
 
-### 借鉴项目
+# 借鉴项目
 
 - [TypeScript-React-Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 - [ant-design-pro](https://github.com/ant-design/ant-design-pro)
 
-### 最佳实践
+# 最佳实践
 
-- [react-typescript-备忘录（英文）](https://github.com/sw-yx/react-typescript-cheatsheet)
-- [react-typescript-备忘录（中文）](https://github.com/fi3ework/blog/tree/master/react-typescript-cheatsheet-cn)
-- [react-redux-typescript-指南（英文）](https://github.com/piotrwitek/react-redux-typescript-guide)
+- [react-typescript-cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet)
+- [react-redux-typescript-guide](https://github.com/piotrwitek/react-redux-typescript-guide)

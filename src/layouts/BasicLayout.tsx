@@ -1,81 +1,96 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { MenuTheme } from 'antd/es/menu';
 import H from 'history';
 import DocumentTitle from 'react-document-title';
+import { ContainerQuery } from 'react-container-query';
 import PathToRegexp from 'path-to-regexp';
-import { connect, SubscriptionAPI } from 'dva';
+import { connect } from 'dva';
 import { formatMessage } from 'umi/locale';
-import SiderMenu from '@/components/SiderMenu';
-import { memoizeOneFormatter } from '@/utils/authority';
+import Media from 'react-media';
+import { Dispatch } from 'redux';
+import SideMenu from '@/components/SideMenu';
+import { settingsModelState } from '@/types/settings';
+import Context from './MenuContext';
+import Header from './Header';
 import Footer from './Footer';
 import logo from '../assets/logo.svg';
 
 const { Content } = Layout;
 
-// dva setting
-export interface SettingState {
-  navTheme: MenuTheme;
-  layout: 'slideMenu' | 'topMenu';
-  fixedHeader: boolean;
-}
+const query = {
+  'screen-xs': {
+    maxWidth: 575
+  },
+  'screen-sm': {
+    minWidth: 576,
+    maxWidth: 767
+  },
+  'screen-md': {
+    minWidth: 768,
+    maxWidth: 991
+  },
+  'screen-lg': {
+    minWidth: 992,
+    maxWidth: 1199
+  },
+  'screen-xl': {
+    minWidth: 1200,
+    maxWidth: 1599
+  },
+  'screen-xxl': {
+    minWidth: 1600
+  }
+};
 
-export interface IBasicLayoutProps extends SubscriptionAPI, SettingState {
+export interface BasicLayoutProps {
   // 通过umi注入 https://github.com/umijs/umi/blob/master/packages/umi/src/renderRoutes.js
   route: {
     routes: any[];
     path: string;
     component: React.ReactNode;
   };
+  dispatch: Dispatch<any>;
   location: H.Location;
+  setting: settingsModelState;
   collapsed: boolean;
   fixSliderBar: boolean;
+  menuData: any[];
+  breadcrumbNameMap: any[];
+  isMobile: boolean;
 }
 
 interface State {
-  isMobile: boolean;
   rendering: boolean;
-  menuData: any[];
 }
 
-@connect((global, setting) => ({
-  collapsed: global.collapsed,
-  layout: setting.layout,
-  ...setting
-}))
-class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
+class BasicLayout extends React.PureComponent<BasicLayoutProps, State> {
   private readonly breadcrumbNameMap: object;
   readonly state: State = {
-    isMobile: false,
-    rendering: true,
-    menuData: this.getMenuData()
+    rendering: true
   };
 
-  constructor(props: IBasicLayoutProps) {
-    super(props);
-    this.breadcrumbNameMap = this.getBreadcrumbNameMap();
-  }
-
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {
+      dispatch,
+      route: { routes }
+    } = this.props;
+    // 获取当前用户信息
     dispatch({
       type: 'user/fetchCurrent'
     });
-  }
-
-  getMenuData() {
-    const {
-      route: { routes }
-    } = this.props;
-
-    return memoizeOneFormatter(routes);
+    // 获取菜单数据
+    dispatch({
+      type: 'menu/getMenuData',
+      payload: { routes }
+    });
   }
 
   matchParamsPath = (pathname: string) => {
-    const pathKey = Object.keys(this.breadcrumbNameMap).find((key) =>
+    const { breadcrumbNameMap } = this.props;
+    const pathKey = Object.keys(breadcrumbNameMap).find((key) =>
       PathToRegexp(key).test(pathname)
     );
-    return this.breadcrumbNameMap[pathKey];
+    return breadcrumbNameMap[pathKey];
   };
 
   getPageTitle = (pathname: string) => {
@@ -93,22 +108,12 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
     return `${message} - Ant Design Pro`;
   };
 
-  /**
-   * 获取面包屑映射
-   */
-  getBreadcrumbNameMap() {
-    const routerMap = {};
-    const mergeMenuAndRouter = (data) => {
-      data.forEach((menuItem) => {
-        if (menuItem.children) {
-          mergeMenuAndRouter(menuItem.children);
-        }
-        // Reduce memory usage
-        routerMap[menuItem.path] = menuItem;
-      });
+  getContext() {
+    const { location, breadcrumbNameMap } = this.props;
+    return {
+      location,
+      breadcrumbNameMap
     };
-    mergeMenuAndRouter(this.getMenuData());
-    return routerMap;
   }
 
   handleMenuCollapse = (collapsed) => {
@@ -121,9 +126,12 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
   };
 
   getLayoutStyle = () => {
-    const { isMobile } = this.state;
-    const { fixSliderBar, collapsed, layout } = this.props;
-    if (fixSliderBar && layout !== 'topMenu' && !isMobile) {
+    const { isMobile } = this.props;
+    const {
+      collapsed,
+      setting: { layout, fixSideBar }
+    } = this.props;
+    if (fixSideBar && layout !== 'topMenu' && !isMobile) {
       return {
         paddingLeft: collapsed ? '80px' : '256px'
       };
@@ -132,7 +140,9 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
   };
 
   getContentStyle = () => {
-    const { fixedHeader } = this.props;
+    const {
+      setting: { fixedHeader }
+    } = this.props;
     return {
       margin: '24px 24px 0',
       paddingTop: fixedHeader ? 64 : 0
@@ -141,18 +151,20 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
 
   render() {
     const {
-      navTheme,
+      setting: { navTheme },
       children,
+      menuData,
+      isMobile,
+      setting,
+      collapsed,
       location: { pathname }
     } = this.props;
-    const { isMobile, menuData } = this.state;
     const pageTitle = this.getPageTitle(pathname);
 
     const layout = (
       <Layout>
-        {/* 左侧菜单 **/}
         {isMobile ? null : (
-          <SiderMenu
+          <SideMenu
             logo={logo}
             theme={navTheme}
             onCollapse={this.handleMenuCollapse}
@@ -167,8 +179,14 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
             minHeight: '100vh'
           }}
         >
+          <Header
+            logo={logo}
+            setting={setting}
+            collapsed={collapsed}
+            isMobile={isMobile}
+            handleMenuCollapse={this.handleMenuCollapse}
+          />
           <Content style={this.getContentStyle()}>{children}</Content>
-          {/** 页面底部 */}
           <Footer />
         </Layout>
       </Layout>
@@ -177,11 +195,23 @@ class BasicLayout extends React.PureComponent<IBasicLayoutProps, State> {
     return (
       <React.Fragment>
         <DocumentTitle title={pageTitle}>
-          <div>{layout}</div>
+          <Context.Provider value={this.getContext()}>
+            <div>{layout}</div>
+          </Context.Provider>
         </DocumentTitle>
       </React.Fragment>
     );
   }
 }
 
-export default BasicLayout;
+export default connect(({ global, setting, menu }) => ({
+  collapsed: global.collapsed,
+  layout: setting.layout,
+  menuData: menu.menuData,
+  breadcrumbNameMap: menu.breadcrumbNameMap,
+  setting
+}))((props) => (
+  <Media query="(max-width: 599px)">
+    {(isMobile) => <BasicLayout {...props} isMobile={isMobile} />}
+  </Media>
+));

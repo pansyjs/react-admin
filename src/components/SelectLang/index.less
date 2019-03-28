@@ -4,19 +4,24 @@
   :global(.anticon) {
     margin-right: 8px;
   }
+
   :global(.ant-dropdown-menu-item) {
-    width: 160px;
+    min-width: 160px;
   }
 }
 
 .dropDown {
   cursor: pointer;
-  font-size: 14px;
   vertical-align: top;
-  line-height: 64px;
+  line-height: @layout-header-height;
 
-  > svg {
-    position: relative;
-    top: 2px;
+  > i {
+    font-size: 14px !important;
+    transform: none !important;
+
+    svg {
+      position: relative;
+      top: -1px;
+    }
   }
 }
