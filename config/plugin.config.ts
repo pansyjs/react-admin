@@ -13,7 +13,7 @@ const plugins: IPlugin[] = [
         baseNavigator: true
       },
       dynamicImport: {
-        loadingComponent: './components/PageLoading/index'
+        loadingComponent: './components/page-loading/index'
       },
       dll: {
         exclude: [],

@@ -8,7 +8,7 @@ import { FormattedMessage, formatMessage } from 'umi/locale';
 import { currentUserType } from '@/types/user';
 import HeaderSearch, { HeaderSearchProps } from '../HeaderSearch';
 import NoticeIcon, { NoticeIconProps } from '../NoticeIcon';
-import SelectLang from '../SelectLang';
+import { SelectLang } from '@/components/select-lang';
 import styles from './index.less';
 
 export interface GlobalHeaderRightProps {

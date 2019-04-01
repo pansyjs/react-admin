@@ -1,5 +1,8 @@
 export default {
   'menu.home': 'Home',
+  'menu.login': 'Login',
+  'menu.password-reset': 'Retrieve password',
+  'menu.register': 'Register',
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',
   'menu.dashboard.monitor': 'Monitor',
