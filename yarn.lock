@@ -2126,7 +2126,7 @@ antd-mobile@2.x:
     rmc-tabs "~1.2.0"
     rmc-tooltip "~1.0.0"
 
-antd@3.x, antd@^3.15.2:
+antd@3.x:
   version "3.15.2"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.15.2.tgz#5692ed9f7db878b1ec9f0cafcb4027b9cb36c32e"
   integrity sha512-yKN6v5j3znt/JFUJ8LFny179medv1ZlyKmQdtVvbOKuQN/VEnIo79fKVzmduacU+QMS/SJDuJ+oXD9zIuodPQQ==
@@ -2173,6 +2173,64 @@ antd@3.x, antd@^3.15.2:
     rc-time-picker "~3.6.1"
     rc-tooltip "~3.7.3"
     rc-tree "~1.14.6"
+    rc-tree-select "~2.6.0"
+    rc-trigger "^2.6.2"
+    rc-upload "~2.6.0"
+    rc-util "^4.5.1"
+    react-lazy-load "^3.0.13"
+    react-lifecycles-compat "^3.0.4"
+    react-slick "~0.23.2"
+    resize-observer-polyfill "^1.5.0"
+    shallowequal "^1.1.0"
+    warning "~4.0.2"
+
+antd@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.16.1.tgz#1d253931fc33e960f22025bef2d5c1548116ec6c"
+  integrity sha512-dtWLOvBm04/0Rkk8t/83DG8i3l+QRIxqDdPJyelrZV4dOiczNMJ/wEjdAq/DhTGVx3fUI5JolpmSUZLNJCNsWg==
+  dependencies:
+    "@ant-design/icons" "~1.2.0"
+    "@ant-design/icons-react" "~1.1.2"
+    "@types/react-slick" "^0.23.3"
+    array-tree-filter "^2.1.0"
+    babel-runtime "6.x"
+    classnames "~2.2.6"
+    copy-to-clipboard "^3.0.8"
+    create-react-class "^15.6.3"
+    create-react-context "0.2.2"
+    css-animation "^1.5.0"
+    dom-closest "^0.2.0"
+    enquire.js "^2.1.6"
+    lodash "^4.17.11"
+    moment "^2.24.0"
+    omit.js "^1.0.0"
+    prop-types "^15.6.2"
+    raf "^3.4.0"
+    rc-animate "^2.5.4"
+    rc-calendar "~9.12.1"
+    rc-cascader "~0.17.0"
+    rc-checkbox "~2.1.5"
+    rc-collapse "~1.11.1"
+    rc-dialog "~7.3.0"
+    rc-drawer "~1.7.6"
+    rc-dropdown "~2.4.1"
+    rc-editor-mention "^1.1.7"
+    rc-form "^2.4.0"
+    rc-input-number "~4.4.0"
+    rc-menu "~7.4.12"
+    rc-notification "~3.3.0"
+    rc-pagination "~1.17.7"
+    rc-progress "~2.3.0"
+    rc-rate "~2.5.0"
+    rc-select "~9.0.0"
+    rc-slider "~8.6.5"
+    rc-steps "~3.3.0"
+    rc-switch "~1.9.0"
+    rc-table "~6.4.0"
+    rc-tabs "~9.6.0"
+    rc-time-picker "~3.6.1"
+    rc-tooltip "~3.7.3"
+    rc-tree "~1.15.2"
     rc-tree-select "~2.6.0"
     rc-trigger "^2.6.2"
     rc-upload "~2.6.0"
@@ -11326,6 +11384,19 @@ rc-calendar@~9.10.3:
     rc-util "^4.1.1"
     react-lifecycles-compat "^3.0.4"
 
+rc-calendar@~9.12.1:
+  version "9.12.3"
+  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-9.12.3.tgz#4a49bdadde5db7475d39a48587aec5d9ca95c5cb"
+  integrity sha512-ML9g720wT2a6dmTuLrzRW3nMUbN+Df3x4ESUCICdVXSaPOk6wK+PGAbLxl9qm28uythgLAS/kN4epQLHCxDF2g==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    moment "2.x"
+    prop-types "^15.5.8"
+    rc-trigger "^2.2.0"
+    rc-util "^4.1.1"
+    react-lifecycles-compat "^3.0.4"
+
 rc-cascader@~0.17.0:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/rc-cascader/-/rc-cascader-0.17.1.tgz#914481c3370b5fd8f82e4f9df9b6596dfeda14d5"
@@ -11697,7 +11768,7 @@ rc-tree@~1.14.6:
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-rc-tree@~1.15.0:
+rc-tree@~1.15.0, rc-tree@~1.15.2:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-1.15.2.tgz#a0d6f20fa2bdbe51d829d5ceea74a407b04bfea9"
   integrity sha512-VPXLA/GdV6U9N8evpl4rmjRsBkw5BoweqWjcVBVwYGzBtonNIFpdc+bnb7TDmd6S3mKOM7mXPbiSr2GKYdj4hA==
@@ -12138,9 +12209,9 @@ readable-stream@1.1.x:
     string_decoder "~0.10.x"
 
 readable-stream@^3.0.6, readable-stream@^3.1.1:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.2.0.tgz#de17f229864c120a9f56945756e4f32c4045245d"
-  integrity sha512-RV20kLjdmpZuTF1INEb9IA3L68Nmi+Ri7ppZqo78wj//Pn62fCoJyV9zalccNzDD/OuJpMG4f+pfMl8+L6QdGw==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
+  integrity sha512-EsI+s3k3XsW+fU8fQACLN59ky34AZ14LoeVZpYwmZvldCFo0r0gnelwF2TcMjLor/BTL5aDJVBMkss0dthToPw==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -14485,10 +14556,10 @@ umi-utils@1.4.0:
     is-url "1.2.4"
     slash2 "2.0.0"
 
-umi@^2.6.10:
-  version "2.6.10"
-  resolved "https://registry.yarnpkg.com/umi/-/umi-2.6.10.tgz#501b00507f2daa7c1b3208aa9f0370f2f67cc483"
-  integrity sha512-IKa9etems8HLH1/L9PT3KpjfBO0DJbjk3G71gegW9ejCqma8SUzENQka+r+hmM+ZN7LrzUhMO0a8ejkgHIM+TQ==
+umi@^2.6.11:
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/umi/-/umi-2.6.11.tgz#5335f313242e1af96932cd56badd2cad0db6c256"
+  integrity sha512-3u2Xde2pTF7lb1fNLovKNZbZvFcEg3Q4RDIrO+OJevF7M2KHtzbsxGbQXbLL7jdluSQ77BE/SiY+p48CQ/wOpA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/runtime" "7.3.0"
