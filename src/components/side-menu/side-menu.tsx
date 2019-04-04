@@ -14,7 +14,6 @@ interface IProps {
   menuData: IMenu[];
   flatMenuKeys?: any[];
   location?: Location;
-  isMobile: boolean;
   collapsed: boolean;
   theme?: MenuTheme;
   fixedSide?: boolean;
@@ -62,7 +61,6 @@ class SideMenu extends React.Component<IProps, IState> {
   render() {
     const {
       collapsed,
-      isMobile,
       onCollapse,
       theme,
       fixedSide,
@@ -78,7 +76,7 @@ class SideMenu extends React.Component<IProps, IState> {
         collapsed={collapsed}
         breakpoint="lg"
         onCollapse={collapse => {
-          if (firstMount || !isMobile) {
+          if (firstMount) {
             onCollapse(collapse);
           }
         }}
