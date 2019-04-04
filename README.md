@@ -14,6 +14,7 @@
 ![](https://img.shields.io/github/license/ts-reacts/react-admin-template.svg)
 ![](https://img.shields.io/github/issues/ts-react/react-admin-template.svg)
 ![](https://img.shields.io/github/forks/ts-react/react-admin-template.svg)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 # 参与开发
 
