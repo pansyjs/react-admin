@@ -29,13 +29,14 @@ class UserLayout extends React.Component<IProps> {
   componentDidMount() {
     const {
       dispatch,
-      route: { routes }
+      route: { routes, authority }
     } = this.props;
 
     dispatch({
       type: 'menu/getMenuData',
       payload: {
-        routes
+        routes,
+        authority
       }
     });
   }
