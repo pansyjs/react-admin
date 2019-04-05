@@ -3,8 +3,8 @@ import { MenuTheme } from 'antd/es/menu';
 interface ISetting {
   menu: {
     disableLocal: boolean;
-    theme: MenuTheme;
   },
+  theme: MenuTheme;
   fixedHeader: boolean;
   autoHideHeader: boolean;
   fixedSide: boolean;
@@ -27,14 +27,20 @@ export const APP_DEFAULT_CONFIG = {
   title: 'React Admin Template',
 };
 
+// 本地存储Key
+export const STORAGE_KEY_DEFAULT_CONFIG = {
+  loginType: 'login-type'
+};
+
 // 项目默认设置
 export const SETTING_DEFAULT_CONFIG: ISetting = {
   menu: {
-    theme: 'dark',
     disableLocal: false,
   },
+  theme: 'dark',
   fixedHeader: false,
   autoHideHeader: false,
   fixedSide: false,
+  // 自定义图标链接
   iconFontUrl: ''
 };

@@ -28,13 +28,11 @@ export interface ILoginModel {
 
 const { loginType } = STORAGE_KEY_DEFAULT_CONFIG;
 
-console.log(loginType);
-
 const Login: ILoginModel = {
   namespace: 'login',
   state: {
     status: false,
-    type: store.get('login-type', 'password')
+    type: store.get(loginType, 'password')
   },
   effects: {
     *fetchLogin({ payload }, { call, put }) {

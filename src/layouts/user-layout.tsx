@@ -18,8 +18,7 @@ interface IProps {
 }
 
 @connect(({ menu }) => ({
-  menuData: menu.menuData,
-  breadcrumbNameMap: menu.breadcrumbNameMap,
+  breadcrumbNameMap: menu.breadcrumbNameMap
 }))
 class UserLayout extends React.Component<IProps> {
   static defaultProps  = {
@@ -68,7 +67,9 @@ class UserLayout extends React.Component<IProps> {
               </div>
             </div>
           </div>
-          <GlobalFooter copyright={<Copyright />} />
+          <GlobalFooter
+            copyright={<Copyright />}
+          />
         </div>
       </DocumentTitle>
     );

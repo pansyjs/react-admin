@@ -1,6 +1,5 @@
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
-import { IRoute } from 'umi-types';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
@@ -9,12 +8,19 @@ import { SETTING_DEFAULT_CONFIG } from '@/config';
 const { menu } = SETTING_DEFAULT_CONFIG;
 
 export interface IMenu {
-  path?: string;
-  component?: string;
+  authority?: string[] | string;
   children?: IMenu[];
-  Routes?: string[];
-  redirect?: string;
+  hideChildrenInMenu?: boolean;
+  hideInMenu?: boolean;
+  icon?: string;
+  locale?: string;
+  name?: string;
+  path: string;
   [key: string]: any;
+}
+
+export interface IRoute extends IMenu {
+  routes?: IMenu[];
 }
 
 interface IMenuModelState {
@@ -35,50 +41,38 @@ interface IMenuModel {
 }
 
 // 将路由数据转换为菜单数据
-function formatter(routes: IRoute[], parentAuthority: string[], parentName: string): IMenu[] {
-  if (!routes) {
-    return undefined;
-  }
-  return routes
+function formatter(
+  data: IRoute[],
+  parentAuthority?: string[] | string,
+  parentName?: string,
+): IMenu[] {
+  return data
+    .filter(item => item.name && item.path)
     .map(item => {
-      if (!item.name || !item.path) {
-        return null;
-      }
-
-      let locale = 'menu';
-      if (parentName && parentName !== '/') {
-        locale = `${parentName}.${item.name}`;
-      } else {
-        locale = `menu.${item.name}`;
-      }
+      const locale = `${parentName || 'menu'}.${item.name!}`;
       // if enableMenuLocale use item.name,
       // close menu international
       const name = menu.disableLocal
-        ? item.name
-        : formatMessage({ id: locale, defaultMessage: item.name });
-      const result = {
+        ? item.name!
+        : formatMessage({ id: locale, defaultMessage: item.name! });
+      const result: IMenu = {
         ...item,
         name,
         locale,
+        routes: void 0,
         authority: item.authority || parentAuthority,
       };
       if (item.routes) {
         // Reduce memory usage
-        result['children'] = formatter(item.routes, item.authority, locale);
+        result.children = formatter(item.routes, item.authority, locale);
       }
-      delete result.routes;
       return result;
-    })
-    .filter(item => item);
+    });
 }
 
 // 获取面包屑映射
-const getBreadcrumbNameMap: (menuData: IMenu[]) => object = menuData => {
-  if (!menuData) {
-    return {};
-  }
-  const routerMap = {};
-
+const getBreadcrumbNameMap = (menuData: IMenu[]) => {
+  const routerMap: { [key: string]: IMenu } = {};
   const flattenMenuData: (data: IMenu[]) => void = data => {
     data.forEach(menuItem => {
       if (menuItem.children) {
@@ -95,14 +89,13 @@ const getBreadcrumbNameMap: (menuData: IMenu[]) => object = menuData => {
 const memoizeOneFormatter = memoizeOne(formatter, isEqual);
 const memoizeOneGetBreadcrumbNameMap = memoizeOne(getBreadcrumbNameMap, isEqual);
 
-const filterMenuData: (menuData: IMenu[]) => IMenu[] = menuData => {
-  if (!menuData) {
-    return [];
-  }
+// 过滤菜单数据
+const filterMenuData = (menuData: IMenu[] = []): IMenu[] => {
   return menuData
     .filter(item => item.name && !item.hideInMenu)
     .filter(item => item);
 };
+
 
 const MenuModel: IMenuModel = {
   namespace: 'menu',
@@ -113,14 +106,18 @@ const MenuModel: IMenuModel = {
   },
   effects: {
     *getMenuData({ payload }, { put }) {
-      const { routes, authority, path } = payload;
-      const originalMenuData = memoizeOneFormatter(routes, authority, path);
+      const { routes, authority } = payload;
+      const originalMenuData = memoizeOneFormatter(routes, authority);
       const menuData = filterMenuData(originalMenuData);
       const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(originalMenuData);
 
       yield put({
-        type: 'save',
-        payload: { menuData, breadcrumbNameMap }
+        type: 'saveState',
+        payload: {
+          menuData,
+          breadcrumbNameMap,
+          routerData: routes
+        }
       });
     }
   },
