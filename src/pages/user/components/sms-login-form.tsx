@@ -68,6 +68,7 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
         })(
           <Input
             size="large"
+            autoComplete="off"
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
           />
         )}

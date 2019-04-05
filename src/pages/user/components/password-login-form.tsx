@@ -70,6 +70,7 @@ const PasswordLoginForm: React.FC<IProps> = (props) => {
           <Input
             size="large"
             prefix={<Icon type="lock" />}
+            autoComplete="off"
             placeholder={`${formatMessage({ id: 'app.login.password' })}`}
             suffix={
               <span className="forgot-link">
