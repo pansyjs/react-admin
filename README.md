@@ -108,65 +108,11 @@ npm install --global yarn
 
 具体配置以及説明请查看[commitlint-config-jiumao](https://github.com/jiumao-fe/commitlint-config-jiumao)
 
-# Icon 解决方案
+# 自定义图标
 
-## 如何在 umi 环境添加
+> 采用ant-design提供的解决方案，具体请查看[自定义图标](https://ant.design/components/icon-cn/#components-icon-demo-custom)
 
-- 安装依赖
-
-```
-yarn add -D @types/webpack-env svg-sprite-loader
-```
-
-- 添加配置
-
-```
-// umi配置文件
-// 添加以下配置
-urlLoaderExcludes: [resolve(__dirname, '../src/icons/svg')],
-chainWebpack(config) {
-  config.module
-    .rule('svg')
-    .test(/\.svg$/i)
-    .include.add(resolve(__dirname, '../src/icons/svg'))
-    .end()
-    .use('svg-sprite-loader')
-    .loader(require.resolve('svg-sprite-loader'));
-```
-
-- 新增以下目录
-
-```
-// src目录下 具体代码请直接参考项目
-
-├── icons
-│   ├── svg                     # 存放icon的svg文件
-│   └── index.ts                #
-```
-
-- 新建 icon 组件
-
-具体代码请参考 [Icon](https://github.com/typescript-projects/react-admin-template/blob/master/src/common/Icon/index.tsx)
-
-## 如何使用
-
-```
-import React from 'react';
-import Icon from '@/common/Icon';
-
-class Example extends React.Component {
-  render() {
-    return (
-      <div>
-        // type为svg文件名称
-        Analysis <Icon type="upload" />
-      </div>
-    );
-  }
-}
-
-export default Example;
-```
+在 `/src/config/index.ts` 中配置 `SETTING_DEFAULT_CONFIG.iconFontUrl`
 
 # 借鉴项目
 
