@@ -10,21 +10,22 @@ type TLink = {
 };
 
 interface IProps {
+  className?: string;
   prefixCls?: string;
+  style?: React.CSSProperties;
   links?: TLink[];
   copyright?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 export const GlobalFooter: React.FC<IProps> = (props) => {
-  const { prefixCls, className, links, copyright } = props;
+  const { prefixCls, className, style, links, copyright } = props;
 
   return (
     <div
       className={classNames(className, {
         [`${prefixCls}`]: true
       })}
+      style={style}
     >
       {links && (
         <div className={`${prefixCls}__links`}>
