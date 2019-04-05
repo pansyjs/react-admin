@@ -1,31 +1,44 @@
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
+import store from 'store';
 import { routerRedux } from 'dva/router';
-import { fetchLogin, fetchLogout } from '@/services/user.service';
+import { fetchLogin, fetchLogout } from '@/services/user';
 import { parseQuery } from '@/utils/url';
 import { setCookie } from '@/utils/cookie';
+import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
+
+export type TLoginType = 'password' | 'sms';
 
 export interface ILoginModel {
   namespace: 'login',
   state: {
-    status: string;
+    status: boolean;
+    type: TLoginType;
   },
   effects: {
+    // 用户登录
     fetchLogin: Effect;
     fetchLogout: Effect;
   },
   reducers: {
     changeStatus: Reducer<any>;
+    changeLoginType: Reducer<any>;
   }
 }
+
+const { loginType } = STORAGE_KEY_DEFAULT_CONFIG;
+
+console.log(loginType);
 
 const Login: ILoginModel = {
   namespace: 'login',
   state: {
-    status: ''
+    status: false,
+    type: store.get('login-type', 'password')
   },
   effects: {
     *fetchLogin({ payload }, { call, put }) {
+      console.log(payload);
       const response = yield call(fetchLogin, payload);
       // login success
       if (response && response.code === 200) {
@@ -53,7 +66,7 @@ const Login: ILoginModel = {
       }
     },
     *fetchLogout({ payload }, { call, put }) {
-      const response = yield call(fetchLogin, payload);
+      const response = yield call(fetchLogout, payload);
 
     }
   },
@@ -62,6 +75,12 @@ const Login: ILoginModel = {
       return {
         ...state,
         status: payload.status
+      };
+    },
+    changeLoginType(state, { payload }) {
+      return {
+        ...state,
+        type: payload
       };
     }
   }

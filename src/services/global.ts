@@ -1,5 +1,5 @@
-import { GET } from '@/utils/request';
+import { Get } from '@/utils/request';
 
 export function fetchQueryNotices() {
-  return GET('/notices');
+  return Get('/notices');
 }
