@@ -1,5 +1,23 @@
+import React from 'react';
+import { Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
+import IconFont from '@/components/icon-font';
 import { urlToList } from '@/utils/path-tools';
+import { isUrl } from '@/utils/utils';
+
+// 获取Icon图标
+export const getIcon = (icon?: string | React.ReactNode) => {
+  if (typeof icon === 'string') {
+    if (isUrl(icon)) {
+      return <Icon component={() => <img src={icon} alt="icon" className="side-menu__icon" />} />;
+    }
+    if (icon.startsWith('icon-')) {
+      return <IconFont type={icon} />;
+    }
+    return <Icon type={icon} />;
+  }
+  return icon;
+};
 
 // 递归展平数据
 export const getFlatMenuKeys = (menuData) => {

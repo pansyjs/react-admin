@@ -1,16 +1,24 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Dropdown } from 'antd';
-import { DropDownProps } from 'antd/lib/dropdown';
-import styles from './header-dropdown.less';
+import { DropDownProps } from 'antd/es/dropdown';
+import classNames from 'classnames';
+import './header-dropdown.less';
 
-export const HeaderDropdown: React.FC<DropDownProps> = (props) => {
-  const { overlayClassName, ...restProps } = props;
+interface IProps extends DropDownProps {
+  prefixCls?: string;
+}
+
+export const HeaderDropdown: React.FC<IProps> = (props) => {
+  const { prefixCls, overlayClassName, ...restProps } = props;
 
   return (
     <Dropdown
-      overlayClassName={classNames(styles.container, overlayClassName)}
+      overlayClassName={classNames(prefixCls, overlayClassName)}
       {...restProps}
     />
   )
+};
+
+HeaderDropdown.defaultProps = {
+  prefixCls: 'header-dropdown'
 };

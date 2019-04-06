@@ -1,44 +1,34 @@
-import React from 'react';
-import { Drawer } from 'antd';
-import { MenuTheme } from 'antd/es/menu';
-import { IMenu } from '@/models/menu';
-import SideMenu from './side-menu';
+import React, { useState } from 'react';
+import SideMenu, { ISideMenuProps } from './side-menu';
 import { getFlatMenuKeys } from './utils';
 
-interface IProp {
-  isMobile: boolean;
-  menuData: IMenu[];
-  collapsed: boolean;
-  theme?: MenuTheme;
-  onCollapse: (payload: boolean) => void;
-}
-
-const SideMenuWrapper: React.FC<IProp> = (props) => {
-  const { isMobile, menuData, collapsed, onCollapse } = props;
+const SideMenuWrapper: React.FC<ISideMenuProps> = (props) => {
+  const { menuData } = props;
   const flatMenuKeys = getFlatMenuKeys(menuData);
+  const [collapsed, setCollapsed] = useState<boolean>(true);
 
-  return isMobile ? (
-    <Drawer
-      visible={!collapsed}
-      placement="left"
-      onClose={() => onCollapse(true)}
-      style={{
-        padding: 0,
-        height: '100vh',
+  const handleSetCollapsed = (value) => {
+    setCollapsed(value);
+  };
+
+  return  (
+    <div
+      onMouseEnter={() => {
+        handleSetCollapsed(false);
+      }}
+      onMouseLeave={() => {
+        handleSetCollapsed(true);
       }}
     >
       <SideMenu
         {...props}
         flatMenuKeys={flatMenuKeys}
-        collapsed={isMobile ? false : collapsed}
+        collapsed={collapsed}
       />
-    </Drawer>
-  ) : (
-    <SideMenu
-      {...props}
-      flatMenuKeys={flatMenuKeys}
-    />
+    </div>
   );
 };
 
+export { ISideMenuProps };
+export { IMenu } from './base-menu';
 export default React.memo(SideMenuWrapper);

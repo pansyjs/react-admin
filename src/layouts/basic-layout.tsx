@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import classNames from 'classnames';
-import { IRoute } from 'umi-types';
+import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
-import SideMenu from '@/components/side-Menu';
+import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-Menu';
 import getPageTitle from '@/utils/getPageTitle';
-import { IMenu } from '@/models/menu';
 import { SETTING_DEFAULT_CONFIG } from '@/config';
-import Context, { IBasicLayoutContext } from './menu-context';
-import { FooterView } from './footer';
+import { ConnectProps } from '@/models/connect';
+import logo from '@/assets/logo.svg';
+import Context from './menu-context';
+import Header from './header';
+import Footer from './footer';
+import './basic-layout.less';
 
-interface IProps {
-  route: IRoute;
-  dispatch: (args: any) => void;
-  location: Location;
-  menuData: IMenu[];
-  breadcrumbNameMap: object;
-  collapsed: boolean;
+interface IProps
+  extends Required<ConnectProps>, ISideMenuProps {
+    breadcrumbNameMap?: { [path: string]: IMenu
+  }
 }
 
 const query = {
@@ -46,104 +46,82 @@ const query = {
   },
 };
 const { Content } = Layout;
-const {
-  menu: { theme }
-} = SETTING_DEFAULT_CONFIG;
+const { theme, fixedSide } = SETTING_DEFAULT_CONFIG;
 
-@connect(({ global, menu }) => ({
-  collapsed: global.collapsed,
-  menuData: menu.menuData,
-  breadcrumbNameMap: menu.breadcrumbNameMap,
-}))
-class BasicLayout extends React.Component<IProps> {
-  componentDidMount() {
-    const {
-      dispatch,
-      route: {
-        routes,
-        authority
-      }
-    } = this.props;
+const BasicLayout: React.FC<IProps> = (props) => {
+  const {
+    dispatch,
+    location,
+    route,
+    menuData,
+    breadcrumbNameMap,
+    children
+  } = props;
+  const { routes, authority } = route!;
 
-    // 获取当前用户信息
-    dispatch({
+  // constructor
+  useState(() => {
+    // 获取当前登录用户信息
+    dispatch!({
       type: 'user/fetchCurrent'
     });
     // 获取菜单数据
-    dispatch({
+    dispatch!({
       type: 'menu/getMenuData',
       payload: {
         routes,
         authority
       }
     });
-  }
+  });
 
-  getContext = (): IBasicLayoutContext => {
-    const { location, breadcrumbNameMap } = this.props;
+  const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
-    return {
-      location,
-      breadcrumbNameMap
-    }
-  };
+  const layout = (
+    <Layout>
+      {/** 左侧菜单 */}
+      <SideMenu
+        logo={logo}
+        theme={theme}
+        menuData={menuData}
+        fixedSide={fixedSide}
+        {...props}
+      />
 
-  handleMenuCollapse= (payload: boolean) => {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'global/changeCollapsed',
-      payload
-    });
-  };
-
-  render() {
-    const {
-      breadcrumbNameMap,
-      location,
-      menuData,
-      collapsed,
-      children
-    } = this.props;
-
-    const layout = (
-      <Layout>
-        <SideMenu
-          theme={theme}
-          onCollapse={this.handleMenuCollapse}
-          menuData={menuData}
-          isMobile={false}
-          {...this.props}
+      <Layout
+        style={{
+          paddingLeft: 80,
+          minHeight: '100vh',
+        }}
+      >
+        <Header
+          isMobile={isMobile}
+          {...props}
         />
-        <Layout
-          style={{
-            paddingLeft: collapsed ? 80 : 256,
-            minHeight: '100vh',
-          }}
-        >
-          <Content className="">
-            {children}
-          </Content>
-          <FooterView />
-        </Layout>
+        <Content className="basic-layout__content">
+          {children}
+        </Content>
+        <Footer />
       </Layout>
-    );
+    </Layout>
+  );
 
-    return (
-      <DocumentTitle title={getPageTitle(location.pathname, breadcrumbNameMap)}>
-        <ContainerQuery query={query}>
-          {params => (
-            <Context.Provider value={this.getContext()}>
-              <div
-                className={classNames(params)}
-              >
-                {layout}
-              </div>
-            </Context.Provider>
-          )}
-        </ContainerQuery>
-      </DocumentTitle>
-    )
-  }
-}
+  return (
+    <DocumentTitle title={getPageTitle(location!.pathname, breadcrumbNameMap)}>
+      <ContainerQuery query={query}>
+        {params => (
+          <Context.Provider value={{ location, breadcrumbNameMap }}>
+            <div className={classNames(params)}>
+              {layout}
+            </div>
+          </Context.Provider>
+        )}
+      </ContainerQuery>
+    </DocumentTitle>
+  )
+};
 
-export default BasicLayout;
+export default connect(({ menu }) => ({
+  menuData: menu.menuData,
+  breadcrumbNameMap: menu.breadcrumbNameMap,
+}))(BasicLayout);

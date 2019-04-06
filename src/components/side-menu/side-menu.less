@@ -1,12 +1,38 @@
 @import '~antd/lib/style/themes/default.less';
 
-@nav-header-height: 55;
+@nav-header-height: @layout-header-height;
 
 .side-menu {
-  position: relative;
+  position: fixed;
   z-index: 10;
   min-height: 100vh;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.side-menu__logo {
+  position: relative;
+  height: @nav-header-height;
+  padding-left: (@menu-collapsed-width - 32px) / 2;
+  overflow: hidden;
+  line-height: @nav-header-height;
+  background: #002140;
+  transition: all 0.3s;
+
+  img {
+    display: inline-block;
+    height: 32px;
+    vertical-align: middle;
+  }
+
+  h1 {
+    display: inline-block;
+    margin: 0 0 0 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+  }
 }
 
 .side-menu__fixed {

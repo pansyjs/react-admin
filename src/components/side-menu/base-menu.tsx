@@ -1,82 +1,81 @@
 import React from 'react';
 import Link from 'umi/link';
-import { Icon, Menu } from 'antd';
+import { Menu } from 'antd';
 import { MenuMode, MenuTheme } from 'antd/es/menu';
-import { IconFont } from '@/components/icon-font';
 import { urlToList } from '@/utils/path-tools';
-import { isUrl } from '@/utils/utils';
-import { IMenu } from '@/models/menu';
-import { getMenuMatches } from './utils';
+import { ConnectProps } from '@/models/connect';
+import { getIcon, getMenuMatches } from './utils';
 
-export declare type TCollapse = 'clickTrigger' | 'responsive';
-interface IProps {
+export interface IMenu {
+  authority?: string[] | string;
+  children?: IMenu[];
+  hideChildrenInMenu?: boolean;
+  hideInMenu?: boolean;
+  icon?: string;
+  locale?: string;
+  name?: string;
+  path: string;
+  [key: string]: any;
+}
+
+export interface IBaseMenuProps extends Required<ConnectProps> {
   className?: string;
   style?: React.CSSProperties;
-  location?: Location;
-  // 菜单类型
-  mode?: MenuMode;
-  flatMenuKeys?: string[];
-  openKeys?: string[];
-  // 主题颜色
-  theme?: MenuTheme;
-  // 是否是手机
+  // 是否折叠
+  collapsed?: boolean;
+  flatMenuKeys?: any[];
   isMobile?: boolean;
   // 菜单数据
   menuData?: IMenu[];
-  // 菜单是否收起
-  collapsed?: boolean;
-  // SubMenu 展开/关闭的回调
+  // 菜单类型
+  mode?: MenuMode;
+  // 菜单主题
+  theme?: MenuTheme;
+  // 打开的菜单Key
+  openKeys?: string[];
+  // 菜单 展开/关闭 的回调
   onOpenChange?: (openKeys: string[]) => void;
-  onCollapse?: (collapsed: boolean, type?: TCollapse) => void;
+  onCollapse?: (collapsed: boolean) => void;
 }
 
 const { SubMenu } = Menu;
-// 获取Icon图标
-const getIcon = icon => {
-  if (typeof icon === 'string') {
-    if (isUrl(icon)) {
-      return (
-        <Icon
-          component={() => (
-            <img src={icon} alt="icon" className="side-menu__icon" />
-          )}
-        />
-      );
-    }
-    if (icon.startsWith('icon-')) {
-      return <IconFont type={icon} />;
-    }
-    return <Icon type={icon} />;
-  }
-  return icon;
-};
 
-export class BaseMenu extends React.Component<IProps, any> {
+class BaseMenu extends React.Component<IBaseMenuProps, any> {
+  static defaultProps: Partial<IBaseMenuProps> = {
+    flatMenuKeys: [],
+    onCollapse: () => void 0,
+    isMobile: false,
+    openKeys: [],
+    collapsed: false,
+    menuData: [],
+    onOpenChange: () => void 0
+  };
 
   // 获得菜单子节点
-  getNavMenuItems = menus => {
-    if (!menus) {
-      return [];
-    }
-    return menus
+  getNavMenuItems = (menusData: IMenu[] = []): React.ReactNode[] => {
+    return menusData
       .filter(item => item.name && !item.hideInMenu)
       .map(item => this.getSubMenuOrItem(item))
       .filter(item => item);
   };
 
-  getSubMenuOrItem = (item) => {
-    if (item.children && !item.hideChildrenInMenu && item.children.some(child => child.name)) {
-      const { name } = item;
+  // get SubMenu or Item
+  getSubMenuOrItem = (item: IMenu): React.ReactNode => {
+    if (
+      Array.isArray(item.children) &&
+      !item.hideChildrenInMenu &&
+      item.children.some(child => !!child.name)
+    ) {
       return (
         <SubMenu
           title={
             item.icon ? (
               <span>
                 {getIcon(item.icon)}
-                <span>{name}</span>
+                <span>{item.name}</span>
               </span>
             ) : (
-              name
+              item.name
             )
           }
           key={item.path}
@@ -85,6 +84,7 @@ export class BaseMenu extends React.Component<IProps, any> {
         </SubMenu>
       );
     }
+
     return (
       <Menu.Item
         key={item.path}
@@ -95,7 +95,7 @@ export class BaseMenu extends React.Component<IProps, any> {
   };
 
   // 判断是否是http链接.返回 Link 或 a
-  getMenuItemPath = (item) => {
+  getMenuItemPath = (item: IMenu) => {
     const { location, isMobile, onCollapse } = this.props;
     const { name } = item;
     const itemPath = this.conversionPath(item.path);
@@ -110,19 +110,12 @@ export class BaseMenu extends React.Component<IProps, any> {
         </a>
       );
     }
-
     return (
       <Link
         to={itemPath}
         target={target}
-        replace={itemPath === location.pathname}
-        onClick={
-          isMobile
-            ? () => {
-              onCollapse(true);
-            }
-            : undefined
-        }
+        replace={itemPath === location!.pathname}
+        onClick={isMobile ? () => onCollapse!(true) : void 0}
       >
         {icon}
         <span>{name}</span>
@@ -139,12 +132,11 @@ export class BaseMenu extends React.Component<IProps, any> {
   };
 
   // 获取当前选择的菜单
-  getSelectedMenuKeys = (pathname) => {
+  getSelectedMenuKeys = (pathname: string): string[] => {
     const { flatMenuKeys } = this.props;
-
-    return urlToList(pathname).map((item) => {
-      return getMenuMatches(flatMenuKeys, item).pop();
-    })
+    return urlToList(pathname)
+      .map(itemPath => getMenuMatches(flatMenuKeys, itemPath).pop())
+      .filter(item => item) as string[];
   };
 
   render() {
@@ -157,10 +149,10 @@ export class BaseMenu extends React.Component<IProps, any> {
       menuData,
       collapsed,
       onOpenChange,
-      location: { pathname }
+      location
     } = this.props;
 
-    let selectedKeys = this.getSelectedMenuKeys(pathname);
+    let selectedKeys = this.getSelectedMenuKeys(location!.pathname);
     if (!selectedKeys.length && openKeys) {
       selectedKeys = [openKeys[openKeys.length - 1]];
     }
@@ -168,9 +160,7 @@ export class BaseMenu extends React.Component<IProps, any> {
     let props = {};
     if (openKeys && !collapsed) {
       props = {
-        openKeys: openKeys.length === 0
-          ? [...selectedKeys]
-          : openKeys,
+        openKeys: openKeys.length === 0 ? [...selectedKeys] : openKeys
       };
     }
 
@@ -181,6 +171,7 @@ export class BaseMenu extends React.Component<IProps, any> {
         theme={theme}
         className={className}
         onOpenChange={onOpenChange}
+        selectedKeys={selectedKeys}
         {...props}
       >
         {this.getNavMenuItems(menuData)}
@@ -189,3 +180,5 @@ export class BaseMenu extends React.Component<IProps, any> {
 
   }
 }
+
+export default BaseMenu;

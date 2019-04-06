@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import store from 'store';
 import { routerRedux } from 'dva/router';
 import { fetchLogin, fetchLogout } from '@/services/user';
-import { parseQuery } from '@/utils/url';
+import { parseQuery } from '@/utils/path-tools';
 import { setCookie } from '@/utils/cookie';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 

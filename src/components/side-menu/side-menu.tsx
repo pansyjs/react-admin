@@ -1,23 +1,17 @@
 import React from 'react';
+import Link from 'umi/link';
 import { Layout } from 'antd';
-import { MenuTheme } from 'antd/es/menu';
 import classNames from 'classnames';
 import PageLoading from '@/components/page-loading';
-import { IMenu } from '@/models/menu';
-import { BaseMenu, TCollapse } from './base-menu';
+import BaseMenu, { IBaseMenuProps } from './base-menu';
 import { getDefaultCollapsedSubMenus } from './utils';
 import { APP_DEFAULT_CONFIG } from '@/config';
+import './side-menu.less';
 
-interface IProps {
+export interface ISideMenuProps extends IBaseMenuProps {
   prefixCls?: string;
-  // 菜单数据
-  menuData: IMenu[];
-  flatMenuKeys?: any[];
-  location?: Location;
-  collapsed: boolean;
-  theme?: MenuTheme;
+  logo?: string;
   fixedSide?: boolean;
-  onCollapse?: (collapsed: boolean, type?: TCollapse) => void;
 }
 
 interface IState {
@@ -29,9 +23,16 @@ const { Sider } = Layout;
 const { title } = APP_DEFAULT_CONFIG;
 let firstMount: boolean = true;
 
-class SideMenu extends React.Component<IProps, IState> {
-  static defaultProps = {
-    prefixCls: 'side-menu'
+class SideMenu extends React.Component<ISideMenuProps, IState> {
+  static defaultProps: Partial<ISideMenuProps> = {
+    prefixCls: 'side-menu',
+    flatMenuKeys: [],
+    onCollapse: () => void 0,
+    isMobile: false,
+    openKeys: [],
+    collapsed: false,
+    menuData: [],
+    onOpenChange: () => void 0,
   };
   readonly state: IState = {
     openKeys: getDefaultCollapsedSubMenus(this.props)
@@ -59,34 +60,34 @@ class SideMenu extends React.Component<IProps, IState> {
   };
 
   render() {
-    const {
-      collapsed,
-      onCollapse,
-      theme,
-      fixedSide,
-      prefixCls
-    } = this.props;
+    const { prefixCls, collapsed, onCollapse, theme, fixedSide, logo, isMobile } = this.props;
     const { openKeys } = this.state;
     const defaultProps = collapsed ? {} : { openKeys };
 
     return (
       <Sider
+        collapsible
         trigger={null}
-        collapsible={true}
         collapsed={collapsed}
         breakpoint="lg"
-        onCollapse={collapse => {
+        onCollapse={(collapse) => {
           if (firstMount) {
-            onCollapse(collapse);
+            onCollapse!(collapse);
           }
         }}
-        width={256}
+        width={275}
         theme={theme}
         className={classNames(prefixCls, {
           [`${prefixCls}__fixed`]: fixedSide,
           [`${prefixCls}__light`]: theme === 'light',
         })}
       >
+        <div className={`${prefixCls}__logo`}>
+          <Link to="/">
+            <img src={logo} alt="logo" />
+            <h1>{title}</h1>
+          </Link>
+        </div>
         <React.Suspense fallback={<PageLoading />}>
           <BaseMenu
             {...this.props}

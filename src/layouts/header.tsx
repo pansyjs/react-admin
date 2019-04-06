@@ -1,14 +1,15 @@
 import React from 'react';
+import router from 'umi/router';
 import { Layout, message } from 'antd';
 import { connect } from 'dva';
 import { formatMessage } from 'umi-plugin-react/locale';
+import GlobalHeader from '@/components/global-header';
+import { ConnectProps } from '@/models/connect';
+import './header.less';
 
-interface IProps {
-  isMobile: boolean;
-  collapsed: boolean;
-  dispatch: (args: any) => void;
-  autoHideHeader: boolean;
-  handleMenuCollapse: (args: boolean) => void;
+export interface IHeaderViewProps extends Required<ConnectProps>{
+  isMobile?: boolean;
+  autoHideHeader?: boolean;
 }
 
 interface IState {
@@ -17,15 +18,29 @@ interface IState {
 
 const { Header } = Layout;
 
-@connect(({  }) => ({
-
+@connect(({ user }) => ({
+  currentUser: user.currentUser,
 }))
-class HeaderView extends React.Component<IProps, IState> {
+class HeaderView extends React.Component<IHeaderViewProps, IState> {
+  handleMenuClick = (key) => {
+    const { dispatch } = this.props;
+
+    // 跳转到个人中心
+    if (key === 'account-center') {
+      router.push('/account/center');
+      return;
+    }
+
+  };
+
   render() {
     return (
-      <div>
-        123
-      </div>
+      <Header style={{ padding: 0 }}>
+        <GlobalHeader
+          onMenuClick={this.handleMenuClick}
+          {...this.props}
+        />
+      </Header>
     )
   }
 }
