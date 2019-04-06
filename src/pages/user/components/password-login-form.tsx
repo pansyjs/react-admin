@@ -27,7 +27,7 @@ const PasswordLoginForm: React.FC<IProps> = (props) => {
     e.preventDefault();
 
     validateFields((error, values) => {
-      if (!error) return;
+      if (error) return;
       onLogin && onLogin({
         ...values,
         type: 'password'

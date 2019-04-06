@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
+import { SendCode } from '@/components/send-code';
 
 interface IProps extends FormComponentProps {
   prefixCls: string;
@@ -69,6 +70,9 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
             size="large"
             autoComplete="off"
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
+            suffix={
+              <SendCode className="verification-code-button" />
+            }
           />
         )}
       </FormItem>

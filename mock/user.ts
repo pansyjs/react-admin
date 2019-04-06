@@ -1,6 +1,6 @@
 function getCurrent(req, res) {
   res.json({
-    status: 200,
+    code: 200,
     data: {
       name: 'Tom',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',

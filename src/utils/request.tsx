@@ -35,15 +35,7 @@ function requestFail(error) {
 function responseSuccess(response) {
   // 请求结束，关闭进度条
   NProgress.done();
-  const { data, status, message } = response.data;
-
-  response.data = {
-    data,
-    code: status,
-    message
-  };
-
-  return response.data;
+  return response;
 }
 
 function responseFail(error) {
@@ -63,16 +55,22 @@ Axios.interceptors.response.use(responseSuccess, responseFail);
 export const request = (config: AxiosRequestConfig) => {
   return Axios(config)
     .then((response) => {
-      return response;
+      const { data, code, message } = response.data;
+
+      return {
+        data: data || {},
+        code,
+        message
+      };
     })
     .catch((error) => {
       if (!error.response) {
         return console.log('Error', error.message);
       }
 
-      const status = error.response.status;
+      const code = error.response.code;
 
-      if (status === 401) {
+      if (code === 401) {
         router.push('/user/login');
       }
 
@@ -82,7 +80,7 @@ export const request = (config: AxiosRequestConfig) => {
         error.response
       );
 
-      return { code: status, message: '' };
+      return { code, message: '' };
     });
 };
 
