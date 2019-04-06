@@ -12,11 +12,6 @@ export default [
         component: './user/login'
       },
       {
-        path: '/user/register',
-        name: 'register',
-        component: './user/register'
-      },
-      {
         path: '/user/password-reset',
         name: 'password-reset',
         component: './user/password-reset'

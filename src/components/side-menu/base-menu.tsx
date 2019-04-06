@@ -3,7 +3,7 @@ import Link from 'umi/link';
 import { Icon, Menu } from 'antd';
 import { MenuMode, MenuTheme } from 'antd/es/menu';
 import { IconFont } from '@/components/icon-font';
-import { urlToList } from '@/utils/pathTools';
+import { urlToList } from '@/utils/path-tools';
 import { isUrl } from '@/utils/utils';
 import { IMenu } from '@/models/menu';
 import { getMenuMatches } from './utils';
@@ -54,7 +54,7 @@ const getIcon = icon => {
 export class BaseMenu extends React.Component<IProps, any> {
 
   // 获得菜单子节点
-  getNavMenuItems: (menusData: IMenu[]) => IMenu[] = menus => {
+  getNavMenuItems = menus => {
     if (!menus) {
       return [];
     }

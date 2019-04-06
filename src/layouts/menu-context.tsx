@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
-export interface IBasicLayoutContext {
+export interface IProviderStore {
   location: Location;
-  breadcrumbNameMap: {};
+  breadcrumbNameMap: object;
 }
 
-export default createContext({} as IBasicLayoutContext);
+export default createContext({} as IProviderStore);

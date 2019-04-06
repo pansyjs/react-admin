@@ -1,13 +1,13 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import Axios, { AxiosRequestConfig } from 'axios';
 import router from 'umi/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { AXIOS_DEFAULT_CONFIG } from '@/config';
 import { getCookie } from '@/utils/cookie';
 
-axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
-axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
-axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
+Axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
+Axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
+Axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
 
 function requestSuccess(config) {
   // 请求开始，开启进度条
@@ -53,15 +53,15 @@ function responseFail(error) {
 }
 
 // 添加拦截器
-axios.interceptors.request.use(requestSuccess, requestFail);
-axios.interceptors.response.use(responseSuccess, responseFail);
+Axios.interceptors.request.use(requestSuccess, requestFail);
+Axios.interceptors.response.use(responseSuccess, responseFail);
 
 /**
  *
  * @param config
  */
 export const request = (config: AxiosRequestConfig) => {
-  return axios(config)
+  return Axios(config)
     .then((response) => {
       return response;
     })
@@ -86,7 +86,7 @@ export const request = (config: AxiosRequestConfig) => {
     });
 };
 
-export const GET = (
+export const Get = (
   url: string,
   params?: object,
   config?: AxiosRequestConfig
@@ -100,7 +100,7 @@ export const GET = (
   );
 };
 
-export const POST = (
+export const Post = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
@@ -114,7 +114,7 @@ export const POST = (
   );
 };
 
-export const PUT = (
+export const Put = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
@@ -128,7 +128,7 @@ export const PUT = (
   );
 };
 
-export const DELETE = (
+export const Delete = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig

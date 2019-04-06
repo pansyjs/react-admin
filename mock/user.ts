@@ -1,4 +1,4 @@
-function getCurrentUser(req, res) {
+function getCurrent(req, res) {
   res.json({
     status: 200,
     data: {
@@ -24,39 +24,46 @@ function getCurrentUser(req, res) {
 }
 
 // 用户登录
-function login(req, res) {
+function fetchLogin(req, res) {
   const { username, password } = req.body;
-  if (username === 'admin' || password === '123456') {
-    res.json({
-      status: 200,
+  if (username === 'admin' && password === '123456') {
+    res.send({
+      code: 200,
+      message: 'success',
       data: {
-        token: `${username}_token`
-      },
-      message: 'success'
+        token: 'admin_token'
+      }
     });
-    res.status(200).end();
-  } else {
-    res.json({
-      status: 10401,
-      data: {
-        token: ''
-      },
-      message: '用户不存在'
-    });
-    res.status(401).end();
+    return;
   }
+  if ( username === 'user'  && password === '123456') {
+    res.send({
+      code: 200,
+      message: 'success',
+      data: {
+        token: 'user_token'
+      }
+    });
+    return;
+  }
+  // 用户名或者密码错误
+  res.send({
+    code: 10001,
+    message: '账号或密码错误',
+    data: {}
+  });
 }
 
 function logout(req, res) {
   res.json({
-    status: 200,
+    code: 200,
     message: 'success'
   });
   res.status(200).end();
 }
 
 export default {
-  'GET /user/current': getCurrentUser,
-  'POST /user/login': login,
-  'GET /user/logout': logout
+  'POST /api/users/login': fetchLogin,
+  'GET /api/users/current': getCurrent,
+  'GET /api/users/logout': logout
 };

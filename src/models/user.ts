@@ -1,8 +1,6 @@
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
-import { stringify } from 'qs';
-import { routerRedux } from 'dva/router';
-import { fetchCurrentUser, fetchLogout } from '@/services/user.service';
+import { fetchCurrent } from '@/services/user';
 
 export interface IUserModelState {
   currentUser: {};
@@ -13,8 +11,8 @@ export interface IUserModel {
   namespace: 'user';
   state: IUserModelState;
   effects: {
+    // 获取当前用户信息
     fetchCurrent: Effect;
-    fetchLogout: Effect;
   },
   reducers: {
     saveCurrentUser: Reducer<any>;
@@ -30,7 +28,7 @@ const User: IUserModel = {
   },
   effects: {
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(fetchCurrentUser);
+      const response = yield call(fetchCurrent);
       if (response && response.code === 200) {
         const userInfo = response.data;
         yield put({
@@ -49,23 +47,6 @@ const User: IUserModel = {
         });
       }
     },
-    *fetchLogout(_, { call, put }) {
-      const response = yield call(fetchLogout);
-      if (response && response.code === 200) {
-        yield put({
-          type: 'saveCurrentUser',
-          payload: {}
-        });
-        yield put(
-          routerRedux.push({
-            pathname: '/user/login',
-            search: stringify({
-              redirect: window.location.href
-            })
-          })
-        );
-      }
-    }
   },
   reducers: {
     saveCurrentUser(state, { payload }) {

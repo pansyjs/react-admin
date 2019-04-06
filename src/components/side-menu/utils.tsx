@@ -1,5 +1,5 @@
 import pathToRegexp from 'path-to-regexp';
-import { urlToList } from '@/utils/pathTools';
+import { urlToList } from '@/utils/path-tools';
 
 // 递归展平数据
 export const getFlatMenuKeys = (menuData) => {
