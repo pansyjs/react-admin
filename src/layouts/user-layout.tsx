@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title';
 import { GlobalFooter } from '@/components/global-footer';
 import { SelectLang } from '@/components/select-lang';
 import getPageTitle from '@/utils/getPageTitle';
-import { Copyright } from './copyright';
+import Copyright from './copyright';
 import logo from '@/assets/logo.svg';
 import './user-layout.less';
 
