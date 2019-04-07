@@ -1,36 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'dva';
-import { IRoute } from 'umi-types';
 import DocumentTitle from 'react-document-title';
-import { GlobalFooter } from '@/components/global-footer';
-import { SelectLang } from '@/components/select-lang';
-import getPageTitle from '@/utils/getPageTitle';
-import Copyright from './copyright';
+import GlobalFooter from '@/components/global-footer';
+import SelectLang from '@/components/select-lang';
+import { IMenu } from '@/components/side-menu';
+import { moGetPageTitle, moGetTitle } from '@/utils/getPageTitle';
+import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
+import Copyright from './copyright';
 import './user-layout.less';
 
-interface IProps {
-  prefixCls?: string;
-  dispatch: (args: any) => void;
-  route: IRoute;
-  breadcrumbNameMap: object;
-  location: Location;
-}
+export interface IProps
+  extends Required<ConnectProps> {
+    prefixCls?: string;
+    breadcrumbNameMap: { [path: string]: IMenu };
+  }
 
-@connect(({ menu }) => ({
-  breadcrumbNameMap: menu.breadcrumbNameMap
-}))
-class UserLayout extends React.Component<IProps> {
-  static defaultProps  = {
-    prefixCls: 'user-layout'
-  };
+const UserLayout: React.FC<IProps> = (props) => {
+  const {
+    prefixCls,
+    location,
+    dispatch,
+    breadcrumbNameMap,
+    route: { routes, authority },
+    children
+  } = props;
 
-  componentDidMount() {
-    const {
-      dispatch,
-      route: { routes, authority }
-    } = this.props;
-
+  useState(() => {
     dispatch({
       type: 'menu/getMenuData',
       payload: {
@@ -38,42 +34,43 @@ class UserLayout extends React.Component<IProps> {
         authority
       }
     });
-  }
+  });
 
-  render() {
-    const {
-      prefixCls,
-      location: { pathname },
-      breadcrumbNameMap,
-      children
-    } = this.props;
+  const title = moGetTitle(location!.pathname, breadcrumbNameMap);
 
-    return (
-      <DocumentTitle title={getPageTitle(pathname, breadcrumbNameMap)}>
-        <div className={prefixCls}>
-          <div className="layout-container">
-            <div className={`${prefixCls}__wrapper`}>
-              <div className={`${prefixCls}__container`}>
-                <div className={`${prefixCls}__lang`}>
-                  <SelectLang />
-                </div>
-                <div className={`${prefixCls}__header`}>
-                  <img src={logo} alt="logo"/>
-                  <h2>React Admin Template</h2>
-                </div>
-                <div className={`${prefixCls}__children`}>
-                  {children}
-                </div>
+  return (
+    <DocumentTitle title={moGetPageTitle(location!.pathname, breadcrumbNameMap)}>
+      <div className={prefixCls}>
+        <div className="layout-container">
+          <div className={`${prefixCls}__wrapper`}>
+            <div className={`${prefixCls}__container`}>
+              <div className={`${prefixCls}__lang`}>
+                <SelectLang />
+              </div>
+              <div className={`${prefixCls}__header`}>
+                <img src={logo} alt="logo"/>
+                <h2>React Admin Template</h2>
+              </div>
+              <div className={`${prefixCls}__title`}>
+                <h2>{title}</h2>
+              </div>
+              <div className={`${prefixCls}__children`}>
+                {children}
               </div>
             </div>
           </div>
-          <GlobalFooter
-            copyright={<Copyright />}
-          />
         </div>
-      </DocumentTitle>
-    );
-  }
-}
+        <GlobalFooter copyright={<Copyright />} />
+      </div>
+    </DocumentTitle>
+  );
+};
 
-export default UserLayout;
+UserLayout.defaultProps = {
+  prefixCls: 'user-layout'
+};
+
+// @ts-ignore
+export default connect(({ menu }) => ({
+  breadcrumbNameMap: menu.breadcrumbNameMap
+}))(UserLayout);

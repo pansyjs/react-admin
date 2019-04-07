@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import store from 'store';
-import { FormattedMessage } from 'umi-plugin-react/locale';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 import { TLoginType } from '@/models/login';
 import PasswordLoginForm from './components/password-login-form';
@@ -50,10 +49,6 @@ class LoginPage extends React.Component<IProps, any> {
 
     return (
       <div className={prefixCls}>
-        <h2>
-          <FormattedMessage id="menu.login" />
-        </h2>
-
         {/** 账户密码登录 */}
         {loginType === 'password' && (
           <PasswordLoginForm

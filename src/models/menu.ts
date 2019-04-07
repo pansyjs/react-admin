@@ -1,44 +1,12 @@
-import { Effect } from 'dva';
 import { Reducer } from 'redux';
+import { Effect } from '@/models/connect';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
+import { IMenu } from '@/components/side-menu';
 import { SETTING_DEFAULT_CONFIG } from '@/config';
 
 const { menu } = SETTING_DEFAULT_CONFIG;
-
-export interface IMenu {
-  authority?: string[] | string;
-  children?: IMenu[];
-  hideChildrenInMenu?: boolean;
-  hideInMenu?: boolean;
-  icon?: string;
-  locale?: string;
-  name?: string;
-  path: string;
-  [key: string]: any;
-}
-
-export interface IRoute extends IMenu {
-  routes?: IMenu[];
-}
-
-interface IMenuModelState {
-  menuData: IMenu[];
-  routerData: IRoute[];
-  breadcrumbNameMap: object;
-}
-
-interface IMenuModel {
-  namespace: 'menu',
-  state: IMenuModelState,
-  effects: {
-    getMenuData: Effect;
-  },
-  reducers: {
-    saveState: Reducer<any>;
-  };
-}
 
 // 将路由数据转换为菜单数据
 function formatter(
@@ -96,6 +64,29 @@ const filterMenuData = (menuData: IMenu[] = []): IMenu[] => {
     .filter(item => item);
 };
 
+export interface IRoute extends IMenu {
+  routes?: IMenu[];
+  component?: string;
+  Routes?: string[];
+  redirect?: string;
+}
+
+export interface IMenuModelState {
+  menuData: IMenu[];
+  routerData: IRoute[];
+  breadcrumbNameMap: object;
+}
+
+export interface IMenuModel {
+  namespace: 'menu',
+  state: IMenuModelState,
+  effects: {
+    getMenuData: Effect;
+  },
+  reducers: {
+    saveState: Reducer<any>;
+  };
+}
 
 const MenuModel: IMenuModel = {
   namespace: 'menu',

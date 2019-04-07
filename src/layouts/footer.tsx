@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { GlobalFooter } from '@/components/global-footer';
+import GlobalFooter from '@/components/global-footer';
 import Copyright from './copyright';
 
 const { Footer } = Layout;

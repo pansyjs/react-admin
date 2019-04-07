@@ -6,7 +6,7 @@ import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-Menu';
-import getPageTitle from '@/utils/getPageTitle';
+import { moGetPageTitle } from '@/utils/getPageTitle';
 import { SETTING_DEFAULT_CONFIG } from '@/config';
 import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
@@ -107,7 +107,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
   );
 
   return (
-    <DocumentTitle title={getPageTitle(location!.pathname, breadcrumbNameMap)}>
+    <DocumentTitle title={moGetPageTitle(location!.pathname, breadcrumbNameMap)}>
       <ContainerQuery query={query}>
         {params => (
           <Context.Provider value={{ location, breadcrumbNameMap }}>

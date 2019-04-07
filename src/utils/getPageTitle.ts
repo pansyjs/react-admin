@@ -35,4 +35,23 @@ const getPageTitle = (pathname: string, breadcrumbNameMap: object): string => {
   return `${pageName} · ${title}`;
 };
 
+const getTitle = (pathname: string, breadcrumbNameMap: object): string => {
+  const currentRouterData = matchParamsPath(pathname, breadcrumbNameMap);
+  if (!currentRouterData) return title;
+
+  const pageName = menu.disableLocal
+    ? currentRouterData.name
+    : formatMessage({
+      id: currentRouterData.locale || currentRouterData.name,
+      defaultMessage: currentRouterData.name,
+    });
+
+  return `${pageName}`;
+};
+
+export const moGetTitle = memoizeOne(getTitle, isEqual);
+export const moGetPageTitle = memoizeOne(getPageTitle, isEqual);
+
+
+
 export default memoizeOne(getPageTitle, isEqual);
