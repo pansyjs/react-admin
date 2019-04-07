@@ -13,6 +13,7 @@
 .global-header__right {
   float: right;
   height: 100%;
+  margin-right: 15px;
   overflow: hidden;
 }
 
@@ -33,10 +34,30 @@
   }
 }
 
+.global-header__menu {
+  .anticon {
+    margin-right: 8px;
+  }
+
+  .ant-dropdown-menu-item {
+    min-width: 160px;
+  }
+}
+
+.city-global-header__account {
+  color: #626262;
+
+  > i {
+    padding: 0 10px;
+    color: #b6b6b6;
+  }
+}
+
+
 .global-header__account {
-  margin-right: 8px;
-  .avatar {
+  .ant-avatar {
     margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
+    margin-right: 8px;
     color: @primary-color;
     vertical-align: top;
     background: rgba(255, 255, 255, 0.85);

@@ -52,22 +52,24 @@ class GlobalHeaderRight extends React.Component<IProps> {
 
     return (
       <div className={`${prefixCls}__right`}>
+
+        <SelectLang className={`${prefixCls}__action`} />
+
         {currentUser.name ? (
           <HeaderDropdown overlay={menu}>
-          <span
-            className={classNames({
-              [`${prefixCls}__action`]: true,
-              [`${prefixCls}__account`]: true
-            })}
-          >
-            <Avatar
-              size="small"
-              className={`${prefixCls}__avatar`}
-              src={currentUser.avatar}
-              alt="avatar"
-            />
-            <span>{currentUser.name}</span>
-          </span>
+            <span
+              className={classNames({
+                [`${prefixCls}__action`]: true,
+                [`${prefixCls}__account`]: true
+              })}
+            >
+              <Avatar
+                size="small"
+                src={currentUser.avatar}
+                alt="avatar"
+              />
+              <span>{currentUser.name}</span>
+            </span>
           </HeaderDropdown>
         ) : (
           <Spin
@@ -75,10 +77,8 @@ class GlobalHeaderRight extends React.Component<IProps> {
             style={{ marginLeft: 8, marginRight: 8 }}
           />
         )}
-        <SelectLang className={`${prefixCls}__action`} />
       </div>
     )
-
   }
 }
 
