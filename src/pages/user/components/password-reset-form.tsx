@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import { SendCode } from '@/components/send-code';
 
 interface IProps extends FormComponentProps {
   prefixCls?: string;
@@ -68,11 +67,26 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
         })(
           <Input
             size="large"
+            type="password"
             autoComplete="off"
-            placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
-            suffix={
-              <SendCode />
+            placeholder={`${formatMessage({ id: 'app.password-reset.new-password' })}`}
+          />
+        )}
+      </FormItem>
+      <FormItem>
+        {getFieldDecorator('confirmPassword', {
+          rules: [
+            {
+              required: true,
+              message: formatMessage({ id: 'validation.verification-code.required' })
             }
+          ]
+        })(
+          <Input
+            size="large"
+            type="password"
+            autoComplete="off"
+            placeholder={`${formatMessage({ id: 'app.password-reset.confirm-password' })}`}
           />
         )}
       </FormItem>
@@ -84,7 +98,7 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
           size="large"
           block
         >
-          <FormattedMessage id="app.login.login" />
+          <FormattedMessage id="app.password-reset.button" />
         </Button>
       </FormItem>
     </Form>
