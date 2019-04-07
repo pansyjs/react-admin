@@ -70,7 +70,6 @@ UserLayout.defaultProps = {
   prefixCls: 'user-layout'
 };
 
-// @ts-ignore
 export default connect(({ menu }) => ({
   breadcrumbNameMap: menu.breadcrumbNameMap
 }))(UserLayout);

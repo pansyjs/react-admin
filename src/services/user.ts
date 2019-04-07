@@ -15,4 +15,9 @@ export async function fetchCurrent() {
   return Get('/users/current');
 }
 
+// 重置登录密码 - 无需登录
+export function fetchResetPassword(data) {
+  return Post('/users/reset-password', data);
+}
+
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { FormattedMessage } from 'umi-plugin-react/locale';
 import PasswordResetForm from './components/password-reset-form';
 import './password-reset.less';
 
@@ -15,10 +14,6 @@ const PasswordReset: React.FC<IProps> = (props) => {
 
   return (
     <div className={prefixCls}>
-      <h2>
-        <FormattedMessage id="menu.password-reset" />
-      </h2>
-
       <PasswordResetForm prefixCls={prefixCls} />
     </div>
   )

@@ -51,7 +51,3 @@ const getTitle = (pathname: string, breadcrumbNameMap: object): string => {
 
 export const moGetTitle = memoizeOne(getTitle, isEqual);
 export const moGetPageTitle = memoizeOne(getPageTitle, isEqual);
-
-
-
-export default memoizeOne(getPageTitle, isEqual);
