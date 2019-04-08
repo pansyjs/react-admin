@@ -1,5 +1,6 @@
 function fetchCurrent(req, res) {
-  console.log(req.headers);
+  const { token } = req.headers;
+  console.log(token);
   res.send({
     code: 200,
     data: {
