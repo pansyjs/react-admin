@@ -1,11 +1,15 @@
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
-import { stringify } from 'qs';
-import { routerRedux } from 'dva/router';
-import { fetchCurrentUser, fetchLogout } from '@/services/user.service';
+import { fetchCurrent } from '@/services/user';
+
+export interface ICurrentUser {
+  name?: string;
+  avatar?: string;
+  email?: string;
+}
 
 export interface IUserModelState {
-  currentUser: {};
+  currentUser: ICurrentUser;
   isSuperAdmin: boolean;
 }
 
@@ -13,8 +17,8 @@ export interface IUserModel {
   namespace: 'user';
   state: IUserModelState;
   effects: {
+    // 获取当前用户信息
     fetchCurrent: Effect;
-    fetchLogout: Effect;
   },
   reducers: {
     saveCurrentUser: Reducer<any>;
@@ -22,7 +26,7 @@ export interface IUserModel {
   }
 }
 
-const User: IUserModel = {
+const UserModel: IUserModel = {
   namespace: 'user',
   state: {
     currentUser: {},
@@ -30,42 +34,17 @@ const User: IUserModel = {
   },
   effects: {
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(fetchCurrentUser);
+      const response = yield call(fetchCurrent);
       if (response && response.code === 200) {
-        const userInfo = response.data;
+        const info = response.data || {};
         yield put({
           type: 'saveCurrentUser',
           payload: {
-            name: userInfo.name,
-            email: userInfo.email,
-            phone: userInfo.phone,
-            avatar: userInfo.avatar,
-            title: userInfo.title,
-            group: userInfo.group,
-            unreadCount: userInfo.unreadCount,
-            signature: userInfo.signature,
-            tags: userInfo.tags
+            ...info
           }
         });
       }
     },
-    *fetchLogout(_, { call, put }) {
-      const response = yield call(fetchLogout);
-      if (response && response.code === 200) {
-        yield put({
-          type: 'saveCurrentUser',
-          payload: {}
-        });
-        yield put(
-          routerRedux.push({
-            pathname: '/user/login',
-            search: stringify({
-              redirect: window.location.href
-            })
-          })
-        );
-      }
-    }
   },
   reducers: {
     saveCurrentUser(state, { payload }) {
@@ -74,17 +53,17 @@ const User: IUserModel = {
         currentUser: payload
       };
     },
-    changeNotifyCount(state, action) {
+    changeNotifyCount(state, { payload }) {
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
-          notifyCount: action.payload.totalCount,
-          unreadCount: action.payload.unreadCount
+          notifyCount: payload.totalCount,
+          unreadCount: payload.unreadCount
         }
       };
     }
   }
 };
 
-export default User;
+export default UserModel;
