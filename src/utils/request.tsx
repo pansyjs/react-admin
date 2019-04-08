@@ -1,13 +1,13 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import Axios, { AxiosRequestConfig } from 'axios';
 import router from 'umi/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { AXIOS_DEFAULT_CONFIG } from '@/config';
 import { getCookie } from '@/utils/cookie';
 
-axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
-axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
-axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
+Axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
+Axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
+Axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
 
 function requestSuccess(config) {
   // 请求开始，开启进度条
@@ -35,15 +35,7 @@ function requestFail(error) {
 function responseSuccess(response) {
   // 请求结束，关闭进度条
   NProgress.done();
-  const { data, status, message } = response.data;
-
-  response.data = {
-    data,
-    code: status,
-    message
-  };
-
-  return response.data;
+  return response;
 }
 
 function responseFail(error) {
@@ -53,26 +45,32 @@ function responseFail(error) {
 }
 
 // 添加拦截器
-axios.interceptors.request.use(requestSuccess, requestFail);
-axios.interceptors.response.use(responseSuccess, responseFail);
+Axios.interceptors.request.use(requestSuccess, requestFail);
+Axios.interceptors.response.use(responseSuccess, responseFail);
 
 /**
  *
  * @param config
  */
 export const request = (config: AxiosRequestConfig) => {
-  return axios(config)
+  return Axios(config)
     .then((response) => {
-      return response;
+      const { data, code, message } = response.data;
+
+      return {
+        data: data || {},
+        code,
+        message
+      };
     })
     .catch((error) => {
       if (!error.response) {
         return console.log('Error', error.message);
       }
 
-      const status = error.response.status;
+      const code = error.response.code;
 
-      if (status === 401) {
+      if (code === 401) {
         router.push('/user/login');
       }
 
@@ -82,11 +80,11 @@ export const request = (config: AxiosRequestConfig) => {
         error.response
       );
 
-      return { code: status, message: '' };
+      return { code, message: '' };
     });
 };
 
-export const GET = (
+export const Get = (
   url: string,
   params?: object,
   config?: AxiosRequestConfig
@@ -100,7 +98,7 @@ export const GET = (
   );
 };
 
-export const POST = (
+export const Post = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
@@ -114,7 +112,7 @@ export const POST = (
   );
 };
 
-export const PUT = (
+export const Put = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
@@ -128,7 +126,7 @@ export const PUT = (
   );
 };
 
-export const DELETE = (
+export const Delete = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig

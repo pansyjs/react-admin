@@ -18,14 +18,5 @@ export default {
   routes,
   theme: themeConfig,
   ignoreMomentLocale: true,
-  urlLoaderExcludes: [resolve(__dirname, '../src/icons/svg')],
-  chainWebpack(config) {
-    config.module
-      .rule('svg')
-      .test(/\.svg$/i)
-      .include.add(resolve(__dirname, '../src/icons/svg'))
-      .end()
-      .use('svg-sprite-loader')
-      .loader(require.resolve('svg-sprite-loader'));
-  }
+  disableCSSModules: true
 };

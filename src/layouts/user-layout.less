@@ -1,0 +1,74 @@
+@import '~antd/lib/style/themes/default.less';
+
+.user-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  background: @layout-body-background;
+}
+
+.user-layout__wrapper {
+  padding-top: 96px;
+  width: 430px;
+  margin: auto;
+}
+
+.user-layout__container {
+  position: relative;
+  background-color: #fff;
+  padding: 56px 8px;
+  margin-bottom: 64px;
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+}
+
+.user-layout__lang {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 40px;
+  line-height: 44px;
+}
+
+.user-layout__header {
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: center;
+
+  img {
+    margin-top: -5px;
+    width: 35px;
+    height: 35px;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 24px;
+    padding-left: 10px;
+    color: @primary-color;
+  }
+}
+
+.user-layout__title {
+  margin-bottom: 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 20px;
+    color: #262626;
+  }
+}
+
+.user-layout__children {
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: 4px;
+  font-size: 14px;
+
+  .ant-input-affix-wrapper .ant-input-prefix {
+    font-size: 16px;
+    color: #8c8c8c;
+  }
+}
+

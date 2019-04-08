@@ -1,3 +1,16 @@
+import { MenuTheme } from 'antd/es/menu';
+
+interface ISetting {
+  menu: {
+    disableLocal: boolean;
+  },
+  theme: MenuTheme;
+  fixedHeader: boolean;
+  autoHideHeader: boolean;
+  fixedSide: boolean;
+  iconFontUrl: string;
+}
+
 // axios 相关配置
 export const AXIOS_DEFAULT_CONFIG = {
   timeout: 20000,
@@ -9,16 +22,25 @@ export const AXIOS_DEFAULT_CONFIG = {
 };
 
 // 项目相关配置
-export const PROJECT_DEFAULT_CONFIG = {
-  companyName: 'JiuMao'
+export const APP_DEFAULT_CONFIG = {
+  companyName: '九毛科技',
+  title: 'React Admin Template',
+};
+
+// 本地存储Key
+export const STORAGE_KEY_DEFAULT_CONFIG = {
+  loginType: 'login-type'
 };
 
 // 项目默认设置
-export const SETTING_DEFAULT_CONFIG = {
-  navTheme: 'dark',
-  layout: 'sideMenu',
-  contentWidth: 'Fluid',
+export const SETTING_DEFAULT_CONFIG: ISetting = {
+  menu: {
+    disableLocal: false,
+  },
+  theme: 'dark',
   fixedHeader: false,
   autoHideHeader: false,
-  fixSideBar: false
+  fixedSide: false,
+  // 自定义图标链接
+  iconFontUrl: ''
 };

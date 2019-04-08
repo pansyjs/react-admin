@@ -7,14 +7,13 @@
     "esModuleInterop": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
     "allowJs": true,
     "baseUrl": ".",
+    "module": "esnext",
+    "target": "esnext",
     "lib": [
-      "dom",
-      "es6",
-      "es7",
-      "es2017"
+      "esnext",
+      "dom"
     ],
     "paths": {
       "@/*": ["./src/*"]
