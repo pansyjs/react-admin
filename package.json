@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.16.1",
+    "antd": "^3.16.2",
     "axios": "^0.18.0",
     "bizcharts": "^3.4.1",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
@@ -90,7 +90,7 @@
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
-    "typescript": "^3.3.3",
+    "typescript": "^3.4.2",
     "umi": "^2.6.11",
     "umi-plugin-react": "^1.7.2",
     "umi-types": "^0.3.2"
