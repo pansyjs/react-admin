@@ -14,7 +14,7 @@ export function onRouteChange({ location, routes, action }) {
   let isLogin = true;
 
   whiteList.forEach(item => {
-    if (pathToRegexp(whiteList[0]).test(location.pathname)) {
+    if (pathToRegexp(item).test(location.pathname)) {
       isLogin = false;
     }
   });

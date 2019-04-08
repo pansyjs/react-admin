@@ -8,6 +8,124 @@
   padding: 0;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .ant-tabs.ant-tabs-card {
+    display: inline-block;
+    width: calc(100% - 800px);
+    height: 100%;
+    margin-left: 400px;
+    margin-bottom: 0;
+
+    .ant-tabs-bar {
+      border: none;
+      margin-bottom: 0;
+    }
+
+    .ant-tabs-nav-wrap {
+      padding: 0;
+      margin-top: 28px;
+    }
+
+    .ant-tabs-tab-prev,
+    .ant-tabs-tab-next  {
+      height: 32px;
+      margin-top: 28px;
+    }
+
+    .ant-tabs-nav-container {
+      height: 100%;
+      font-size: 12px;
+      margin-bottom: 0;
+      transition: all .3s;
+      user-select: none;
+    }
+
+    .ant-tabs-top-content {
+      display: none;
+    }
+
+    .ant-tabs-tab {
+      width: 140px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      line-height: 28px;
+      text-align: left;
+      position: relative;
+      border-radius: 3px 3px 0 0;
+      padding: 0 16px 0 4px;
+      transition: color .3s;
+      margin: 0 20px;
+      color: @white;
+    }
+
+    .ant-tabs-tab:first-child {
+      margin-left: 30px;
+    }
+
+    .ant-tabs-tab:before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 0;
+      transform: skewX(-20deg);
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 4px;
+    }
+
+    .ant-tabs-tab:after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      top: 0;
+      transform: skewX(20deg);
+      width: 100%;
+      height: 100%;
+      border-top-right-radius: 4px;
+    }
+
+    .ant-tabs-tab:after,
+    .ant-tabs-tab:before {
+      background: @card-background;
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active:after,
+    .ant-tabs-tab.ant-tabs-tab-active:before {
+      z-index: 2;
+      background: @primary-color;
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active > div {
+      color: @white;
+    }
+
+    .ant-tabs-tab > div {
+      position: relative;
+      z-index: 3;
+      height: 32px;
+      line-height: 32px;
+      color: #fff;
+    }
+
+    .ant-tabs-tab > div span {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .ant-tabs-tab .anticon-close {
+      font-size: 12px;
+      width: 24px;
+      position: absolute;
+      margin: 0;
+      right: -30px;
+      height: 32px;
+      padding-top: 9px;
+    }
+  }
 }
 
 .global-header__right {
