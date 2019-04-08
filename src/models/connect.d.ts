@@ -4,10 +4,13 @@ import { IRoute } from 'umi-types';
 import { EffectsCommandMap } from 'dva';
 import { match } from 'react-router-dom';
 import { IMenuModelState } from './menu';
+import { IGlobalModelState } from './global';
 
-export {
-  IMenuModelState
-};
+export interface ConnectState {
+  loading: Loading;
+  menu: IMenuModelState;
+  global: IGlobalModelState;
+}
 
 export type Effect = (
   action: AnyAction,
@@ -27,11 +30,6 @@ export interface Loading {
   models: {
     menu?: boolean;
   };
-}
-
-export interface ConnectState {
-  loading: Loading;
-  menu: IMenuModelState;
 }
 
 export interface ConnectProps<P extends { [K in keyof P]?: string } = {}>

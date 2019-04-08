@@ -4,7 +4,7 @@ import { Layout, message } from 'antd';
 import { connect } from 'dva';
 import { formatMessage } from 'umi-plugin-react/locale';
 import GlobalHeader from '@/components/global-header';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import './header.less';
 
 export interface IHeaderViewProps extends Required<ConnectProps>{
@@ -30,7 +30,20 @@ class HeaderView extends React.Component<IHeaderViewProps, IState> {
       router.push('/account/center');
       return;
     }
+  };
 
+  handleTabClick = (tabData) => {
+    const { location } = tabData;
+    router.push(location.pathname);
+  };
+
+  handleTabRemove = (id) => {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'global/fetchRemoveTab',
+      payload: id
+    })
   };
 
   render() {
@@ -38,6 +51,8 @@ class HeaderView extends React.Component<IHeaderViewProps, IState> {
       <Header style={{ padding: 0 }}>
         <GlobalHeader
           onMenuClick={this.handleMenuClick}
+          onTabClick={this.handleTabClick}
+          onTabRemove={this.handleTabRemove}
           {...this.props}
         />
       </Header>
@@ -45,4 +60,6 @@ class HeaderView extends React.Component<IHeaderViewProps, IState> {
   }
 }
 
-export default HeaderView;
+export default connect(({ global }: ConnectState) => ({
+  tabList: global.tabList,
+}))(HeaderView);
