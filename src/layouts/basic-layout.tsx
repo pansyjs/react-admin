@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
+import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-Menu';
 import { moGetPageTitle } from '@/utils/getPageTitle';
-import { SETTING_DEFAULT_CONFIG } from '@/config';
+import storage from '@/utils/session-storage';
+import { SETTING_DEFAULT_CONFIG, STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Context from './menu-context';
@@ -47,6 +49,7 @@ const query = {
 };
 const { Content } = Layout;
 const { theme, fixedSide } = SETTING_DEFAULT_CONFIG;
+const { tabListKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
@@ -61,6 +64,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
   // constructor
   useState(() => {
+    const tabList = storage.get(tabListKey) || [];
     // 获取当前登录用户信息
     dispatch!({
       type: 'user/fetchCurrent'
@@ -73,7 +77,35 @@ const BasicLayout: React.FC<IProps> = (props) => {
         authority
       }
     });
+    // 保存Tab数据到全局状态
+    dispatch!({
+      type: 'global/saveTabList',
+      payload: tabList
+    });
   });
+
+  useEffect(() => {
+    setTabListData();
+  }, [props.location]);
+
+  const setTabListData = () => {
+    const pathname = location!.pathname;
+    if (!pathname) return;
+
+    const menuData = breadcrumbNameMap[pathname];
+    if (!menuData) return;
+
+    const tabData = {
+      location,
+      menuData,
+      id: uniqueId('tab_')
+    };
+
+    dispatch!({
+      type: 'global/fetchAddTab',
+      payload: tabData
+    });
+  };
 
   const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
@@ -121,7 +153,8 @@ const BasicLayout: React.FC<IProps> = (props) => {
   )
 };
 
-export default connect(({ menu }) => ({
+export default connect(({ menu, global }) => ({
+  tabList: global.tabList,
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
 }))(BasicLayout);

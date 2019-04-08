@@ -4,10 +4,10 @@
   </a>
 </p>
 
-<h1 align="center">Ant Design Admin</h1>
+<h1 align="center">React Admin Template</h1>
 
 <div align="center">
-中后台开发模板
+管理后台开发模板
 </div>
 
 ![](https://img.shields.io/github/stars/ts-react/react-admin-template.svg)

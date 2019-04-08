@@ -96,7 +96,7 @@ const MenuModel: IMenuModel = {
     breadcrumbNameMap: {}
   },
   effects: {
-    *getMenuData({ payload }, { put }) {
+    *getMenuData({ payload, callback }, { put }) {
       const { routes, authority } = payload;
       const originalMenuData = memoizeOneFormatter(routes, authority);
       const menuData = filterMenuData(originalMenuData);
@@ -110,6 +110,8 @@ const MenuModel: IMenuModel = {
           routerData: routes
         }
       });
+
+      callback && callback();
     }
   },
   reducers: {
