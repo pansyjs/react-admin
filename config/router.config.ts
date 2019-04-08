@@ -22,6 +22,7 @@ export default [
   {
     path: '/',
     component: '../layouts/basic-layout',
+    Routes: ['src/pages/authorized'],
     auth: 'on',
     routes: [
       // dashboard
@@ -42,7 +43,30 @@ export default [
             component: './dashboard/workplace'
           }
         ]
-      }
+      },
+      {
+        name: 'exception',
+        icon: 'warning',
+        path: '/exception',
+        routes: [
+          // exception
+          {
+            path: '/exception/403',
+            name: 'not-permission',
+            component: './exception/403',
+          },
+          {
+            path: '/exception/404',
+            name: 'not-find',
+            component: './exception/404',
+          },
+          {
+            path: '/exception/500',
+            name: 'server-error',
+            component: './exception/500',
+          }
+        ],
+      },
     ]
   }
 ];

@@ -25,6 +25,8 @@ export const AXIOS_DEFAULT_CONFIG = {
 export const APP_DEFAULT_CONFIG = {
   companyName: '九毛科技',
   title: 'React Admin Template',
+  // 免登陆白名单
+  whiteList: ['/user/*']
 };
 
 // 本地存储Key

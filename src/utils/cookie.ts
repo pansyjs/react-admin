@@ -1,6 +1,6 @@
 import { get, remove, set } from 'js-cookie';
 
-const cookieKey = 'jiu-mao-admin';
+const cookieKey = 'admin-token';
 
 export function getCookie(name?: string) {
   return get(name || cookieKey);
