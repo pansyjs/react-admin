@@ -100,6 +100,7 @@
       color: @white;
     }
 
+    .ant-tabs-tab > span,
     .ant-tabs-tab > div {
       position: relative;
       z-index: 3;
@@ -108,14 +109,15 @@
       color: #fff;
     }
 
-    .ant-tabs-tab > div span {
+    .ant-tabs-tab > span > span,
+    .ant-tabs-tab > div > span {
       display: inline-block;
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
+    
     .ant-tabs-tab .anticon-close {
       font-size: 12px;
       width: 24px;

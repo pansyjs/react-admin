@@ -55,7 +55,7 @@ export class GlobalHeader extends React.Component<IProps, any> {
           <Tabs
             defaultActiveKey="1"
             tabPosition="top"
-            type="editable-card"
+            type={tabList.length === 1 ? 'card' : 'editable-card'}
             hideAdd
             onTabClick={this.handleTabClick}
             onEdit={this.handleTabEdit}
