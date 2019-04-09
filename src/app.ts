@@ -27,10 +27,10 @@ export function onRouteChange({ location }) {
   }
 
   // 无需登录页面 登录状态不可访问
-  if (token && !isLogin) {
-    // 请根据需求开启
-    // router.push('/dashboard');
-  }
+  // if (token && !isLogin) {
+  //   // 请根据需求开启
+  //   router.push('/dashboard');
+  // }
 }
 
 // 用于改写把整个应用 render 到 dom 树里的方法。
