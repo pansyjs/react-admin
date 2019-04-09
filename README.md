@@ -6,15 +6,20 @@
 
 <h1 align="center">React Admin Template</h1>
 
-<div align="center">
-管理后台开发模板
-</div>
-
-![](https://img.shields.io/github/stars/ts-react/react-admin-template.svg)
-![](https://img.shields.io/github/issues/ts-react/react-admin-template.svg)
-![](https://img.shields.io/github/forks/ts-react/react-admin-template.svg)
-[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/ts-react/react-admin-template/blob/master/LICENSE)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+<p align="center">
+  <a href="https://github.com/facebook/react">
+    <img src="https://img.shields.io/badge/react-16.8.1-brightgreen.svg" alt="react">
+  </a>
+  <a href="https://github.com/ant-design/ant-design">
+    <img src="https://img.shields.io/badge/ant--design-3.16.2-brightgreen.svg" alt="antd">
+  </a>
+  <a href="https://github.com/ts-react/react-admin-template/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-Anti%20996-blue.svg" alt="996">
+  </a>
+  <a href="https://996.icu">
+    <img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996">
+  </a>
+</p>
 
 # 参与开发
 
