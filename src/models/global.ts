@@ -116,7 +116,6 @@ const Global: IGlobalModel = {
       };
     },
     saveTabList(state, { payload }) {
-      console.log(payload);
       return {
         ...state,
         tabList: payload

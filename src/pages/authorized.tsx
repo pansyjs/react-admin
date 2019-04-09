@@ -8,7 +8,6 @@ interface IProps {
 
 const AuthComponent: React.FC<IProps> = (props) => {
   const { children } = props;
-  console.log(props);
   return (
     <div>
       {children}
