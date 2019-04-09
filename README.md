@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://ant.design">
-    <img width="100" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
+    <img width="100" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/logo.svg">
   </a>
 </p>
 
