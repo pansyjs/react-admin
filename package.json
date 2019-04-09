@@ -10,6 +10,7 @@
     "build:test": "cross-env NODE_ENV=test umi build",
     "build:prod": "cross-env NODE_ENV=production umi build",
     "build:web": "umi build && cd ./dist && anywhere -h localhost -p 8080",
+    "gh-pages": "yarn build:prod && gh-pages -d dist",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",

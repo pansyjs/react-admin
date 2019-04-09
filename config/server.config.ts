@@ -1,6 +1,6 @@
 // 后端接口配置
 export default {
-  production: '//production.***.com',
+  production: '',
   development: '',
-  test: '//test.***.com'
+  test: ''
 }
