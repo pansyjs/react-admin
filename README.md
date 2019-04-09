@@ -13,6 +13,9 @@
   <a href="https://github.com/ant-design/ant-design">
     <img src="https://img.shields.io/badge/ant--design-3.16.2-brightgreen.svg" alt="antd">
   </a>
+  <a href="https://github.com/umijs/umi">
+    <img src="https://img.shields.io/badge/umi-2.6.11-brightgreen.svg" alt="umi">
+  </a>
   <a href="https://github.com/ts-react/react-admin-template/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-Anti%20996-blue.svg" alt="996">
   </a>
@@ -28,7 +31,7 @@
 
 使用钉钉扫描下方二维码
 
-<img height="200" src="https://ts-react.github.io/react-admin-template/static/dingding.jpg"></img>
+<img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/dingding.jpeg"></img>
 
 # 使用
 
