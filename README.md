@@ -31,7 +31,7 @@
 
 使用钉钉扫描下方二维码
 
-<img height="200" src="https://ts-react.github.io/react-admin-template/static/dingding.jpg"></img>
+<img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/dingding.jpeg"></img>
 
 # 使用
 
