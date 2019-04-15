@@ -28,10 +28,9 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.16.2",
+    "antd": "^3.16.3",
     "axios": "^0.18.0",
     "bizcharts": "^3.4.1",
-    "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
@@ -95,8 +94,8 @@
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
     "typescript": "^3.4.2",
-    "umi": "^2.6.11",
-    "umi-plugin-react": "^1.7.2",
+    "umi": "^2.6.13",
+    "umi-plugin-react": "^1.7.4",
     "umi-types": "^0.3.2"
   },
   "engines": {
