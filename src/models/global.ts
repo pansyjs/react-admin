@@ -58,26 +58,37 @@ const GlobalModel: IGlobalModel = {
       }
     },
     *fetchAddTab({ payload }, { call, put, select }) {
+      const { tabList, location } = payload;
+      let tabData = payload.tabData;
+      const pathname = location!.pathname;
+      if (!pathname) return;
       // 获取当前TabList数据
       const currentTabList = yield select((state) => state.global.tabList);
       let breadcrumbNameMap = yield select((state) => state.menu.breadcrumbNameMap);
 
-      if (isArray(payload)) {
-        const list = payload.map((item) => {
-          const key = item.menuData.path;
-          item.menuData = breadcrumbNameMap[key];
-          return item;
-        });
+      // Tab数据初始化 从localStorage中获取数据
+      if (tabList && isArray(tabList)) {
+        if (tabList.length) {
+          const list = tabList.map((item) => {
+            const key = item.menuData.path;
+            item.menuData = breadcrumbNameMap[key];
+            return item;
+          });
+          yield put({
+            type: 'saveTabList',
+            payload: list
+          });
+          return;
+        }
         yield put({
-          type: 'saveTabList',
-          payload: list
+          type: 'saveTabActiveKey',
+          payload: pathname
         });
-        return;
+        tabData = {
+          id: pathname,
+          menuData: breadcrumbNameMap[pathname]
+        };
       }
-
-      const { location } = payload;
-      const pathname = location!.pathname;
-      if (!pathname) return;
 
       // 页面已存在则返回
       let result = false;
@@ -91,9 +102,9 @@ const GlobalModel: IGlobalModel = {
       let nextTabList = [];
 
       if (isArray(currentTabList)) {
-        nextTabList = [...currentTabList, payload]
+        nextTabList = [...currentTabList, { ...tabData, location }]
       } else {
-        nextTabList.push(payload);
+        nextTabList.push({ ...tabData, location });
       }
 
       yield put({
