@@ -81,8 +81,6 @@ const GlobalModel: IGlobalModel = {
         nextTabList.push(payload);
       }
 
-      store.set(tabListKey, nextTabList);
-
       yield put({
         type: 'saveTabList',
         payload: nextTabList
@@ -90,13 +88,22 @@ const GlobalModel: IGlobalModel = {
     },
     *fetchRemoveTab({ payload }, { call, put, select }) {
       let tabList = yield select((state) => state.global.tabList);
+      let tabActiveKey = yield select((state) => state.global.tabActiveKey);
 
       const tabId = payload;
       if (!tabId) return;
 
       tabList = tabList.filter(item => item.id !== tabId);
 
-      store.set(tabListKey, tabList);
+      if (tabId === tabActiveKey) {
+        if (tabList.length === 0) return;
+        const newKey = tabList[tabList.length - 1].menuData.path;
+
+        yield put({
+          type: 'saveTabActiveKey',
+          payload: newKey
+        });
+      }
 
       yield put({
         type: 'saveTabList',
@@ -112,6 +119,7 @@ const GlobalModel: IGlobalModel = {
       };
     },
     saveTabList(state, { payload }) {
+      store.set(tabListKey, payload);
       return {
         ...state,
         tabList: payload
@@ -121,7 +129,7 @@ const GlobalModel: IGlobalModel = {
       store.set(storageTabActiveKey, payload);
       return {
         ...state,
-        activeKey: payload
+        tabActiveKey: payload
       };
     },
   }

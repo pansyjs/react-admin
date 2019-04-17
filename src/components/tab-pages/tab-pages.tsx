@@ -50,6 +50,8 @@ const TabPages: React.FC<IProps> = (props) => {
     onRemove && onRemove(targetKey);
   };
 
+  console.log(tabList);
+
   return (
     <div
       className={classNames(className, {
@@ -59,29 +61,28 @@ const TabPages: React.FC<IProps> = (props) => {
     >
       {tabList && (
         <Tabs
-          defaultActiveKey="1"
           activeKey={activeKey}
           tabPosition="top"
           type={tabList.length === 1 ? 'card' : 'editable-card'}
           hideAdd
-          onTabClick={handleTabClick}
+          onChange={handleTabClick}
           onEdit={handleTabEdit}
         >
           {tabList.map((item) => (
             <TabPane
               tab={
                 <span>
-                {item.menuData!.icon && (
-                  <IconFont type={item.menuData!.icon} />
-                )}
-                  <FormattedMessage id={item.menuData!.locale} />
-              </span>
+                  {item.menuData!.icon && (
+                    <IconFont type={item.menuData!.icon} />
+                  )}
+                    <FormattedMessage id={item.menuData!.locale} />
+                </span>
               }
               key={item.id}
             >
               <Route
                 key={item.id}
-                path={item.location.pathname}
+                path={item.menuData.path}
                 component={item.menuData.component}
                 exact={item.menuData.exact}
               />

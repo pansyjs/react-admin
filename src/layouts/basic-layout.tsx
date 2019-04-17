@@ -61,17 +61,16 @@ const BasicLayout: React.FC<IProps> = (props) => {
     route,
     menuData,
     tabList,
+    tabActiveKey,
     breadcrumbNameMap,
     children
   } = props;
   const { prefixCls, ...restProps } = props;
   const { routes, authority } = route!;
-  const [activeKey, setActiveKey] = useState<string>('');
 
   // constructor
   useState(() => {
     const tabList = store.get(tabListKey) || [];
-    const tabActiveKey = store.get(storageTabActiveKey) || '';
     // 获取当前登录用户信息
     dispatch!({
       type: 'user/fetchCurrent'
@@ -92,7 +91,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     // 保存当前活跃Tab Key
     dispatch!({
       type: 'global/saveTabActiveKey',
-      payload: tabActiveKey
+      payload: store.get(storageTabActiveKey) || ''
     });
   });
 
@@ -106,6 +105,11 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
     const menuData = breadcrumbNameMap[pathname];
     if (!menuData) return;
+
+    dispatch!({
+      type: 'global/saveTabActiveKey',
+      payload: menuData.path
+    });
 
     const tabData = {
       location,
@@ -121,7 +125,6 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
   const handleTabClick = (tabData: ITab) => {
     const { menuData } = tabData;
-    setActiveKey(menuData.path);
     dispatch!({
       type: 'global/saveTabActiveKey',
       payload: menuData.path
@@ -157,7 +160,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
         <TabPages
           onClick={handleTabClick}
           onRemove={handleTabRemove}
-          activeKey={activeKey}
+          activeKey={tabActiveKey}
           tabList={tabList}
         />
       </Content>
