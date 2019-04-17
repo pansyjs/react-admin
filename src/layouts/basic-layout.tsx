@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
+import router from 'umi/router';
 import store from 'store';
 import classNames from 'classnames';
 import useMedia from 'react-media-hook2';
@@ -15,7 +16,6 @@ import logo from '@/assets/logo.svg';
 import Context from './menu-context';
 import Header from './header';
 import './basic-layout.less';
-import router from "umi/router";
 
 interface IProps
   extends Required<ConnectProps>, ISideMenuProps {
@@ -81,7 +81,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
       payload: {
         routes,
         authority
-      }
+      },
     });
     // 保存Tab数据到全局状态
     dispatch!({
@@ -98,6 +98,12 @@ const BasicLayout: React.FC<IProps> = (props) => {
   useEffect(() => {
     setTabListData();
   }, [props.location]);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    if (!tabActiveKey || tabActiveKey === pathname) return;
+    router.push(tabActiveKey);
+  }, [props.tabActiveKey]);
 
   const setTabListData = () => {
     const pathname = location!.pathname;
@@ -129,7 +135,6 @@ const BasicLayout: React.FC<IProps> = (props) => {
       type: 'global/saveTabActiveKey',
       payload: menuData.path
     });
-    router.push(menuData.path);
   };
 
   const handleTabRemove = (id) => {
