@@ -60,6 +60,21 @@ const GlobalModel: IGlobalModel = {
     *fetchAddTab({ payload }, { call, put, select }) {
       // 获取当前TabList数据
       const currentTabList = yield select((state) => state.global.tabList);
+      let breadcrumbNameMap = yield select((state) => state.menu.breadcrumbNameMap);
+
+      if (isArray(payload)) {
+        const list = payload.map((item) => {
+          const key = item.menuData.path;
+          item.menuData = breadcrumbNameMap[key];
+          return item;
+        });
+        yield put({
+          type: 'saveTabList',
+          payload: list
+        });
+        return;
+      }
+
       const { location } = payload;
       const pathname = location!.pathname;
       if (!pathname) return;

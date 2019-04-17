@@ -85,7 +85,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     });
     // 保存Tab数据到全局状态
     dispatch!({
-      type: 'global/saveTabList',
+      type: 'global/fetchAddTab',
       payload: tabList
     });
     // 保存当前活跃Tab Key

@@ -50,8 +50,6 @@ const TabPages: React.FC<IProps> = (props) => {
     onRemove && onRemove(targetKey);
   };
 
-  console.log(tabList);
-
   return (
     <div
       className={classNames(className, {
