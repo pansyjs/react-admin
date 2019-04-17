@@ -86,7 +86,10 @@ const BasicLayout: React.FC<IProps> = (props) => {
     // 保存Tab数据到全局状态
     dispatch!({
       type: 'global/fetchAddTab',
-      payload: tabList
+      payload: {
+        tabList,
+        location
+      }
     });
     // 保存当前活跃Tab Key
     dispatch!({
@@ -118,14 +121,16 @@ const BasicLayout: React.FC<IProps> = (props) => {
     });
 
     const tabData = {
-      location,
       menuData,
       id: pathname
     };
 
     dispatch!({
       type: 'global/fetchAddTab',
-      payload: tabData
+      payload: {
+        tabData,
+        location
+      }
     });
   };
 
