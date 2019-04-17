@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
-import uniqueId from 'lodash/uniqueId';
+import store from 'store';
 import classNames from 'classnames';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
-import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-Menu';
+import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-menu';
+import TabPages, { ITab } from '@/components/tab-pages';
 import { moGetPageTitle } from '@/utils/getPageTitle';
-import storage from '@/utils/session-storage';
 import { SETTING_DEFAULT_CONFIG, STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Context from './menu-context';
 import Header from './header';
-import Footer from './footer';
 import './basic-layout.less';
+import router from "umi/router";
 
 interface IProps
   extends Required<ConnectProps>, ISideMenuProps {
-    breadcrumbNameMap?: { [path: string]: IMenu
+    prefixCls?: string;
+    tabList?: ITab[];
+    tabActiveKey?: string;
+    breadcrumbNameMap?: { [path: string]: IMenu;
   }
 }
 
@@ -49,7 +52,7 @@ const query = {
 };
 const { Content } = Layout;
 const { theme, fixedSide } = SETTING_DEFAULT_CONFIG;
-const { tabListKey } = STORAGE_KEY_DEFAULT_CONFIG;
+const { tabListKey, storageTabActiveKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
@@ -57,14 +60,18 @@ const BasicLayout: React.FC<IProps> = (props) => {
     location,
     route,
     menuData,
+    tabList,
     breadcrumbNameMap,
     children
   } = props;
+  const { prefixCls, ...restProps } = props;
   const { routes, authority } = route!;
+  const [activeKey, setActiveKey] = useState<string>('');
 
   // constructor
   useState(() => {
-    const tabList = storage.get(tabListKey) || [];
+    const tabList = store.get(tabListKey) || [];
+    const tabActiveKey = store.get(storageTabActiveKey) || '';
     // 获取当前登录用户信息
     dispatch!({
       type: 'user/fetchCurrent'
@@ -82,6 +89,11 @@ const BasicLayout: React.FC<IProps> = (props) => {
       type: 'global/saveTabList',
       payload: tabList
     });
+    // 保存当前活跃Tab Key
+    dispatch!({
+      type: 'global/saveTabActiveKey',
+      payload: tabActiveKey
+    });
   });
 
   useEffect(() => {
@@ -98,7 +110,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     const tabData = {
       location,
       menuData,
-      id: uniqueId('tab_')
+      id: pathname
     };
 
     dispatch!({
@@ -107,34 +119,48 @@ const BasicLayout: React.FC<IProps> = (props) => {
     });
   };
 
+  const handleTabClick = (tabData: ITab) => {
+    const { menuData } = tabData;
+    setActiveKey(menuData.path);
+    dispatch!({
+      type: 'global/saveTabActiveKey',
+      payload: menuData.path
+    });
+    router.push(menuData.path);
+  };
+
+  const handleTabRemove = (id) => {
+    dispatch({
+      type: 'global/fetchRemoveTab',
+      payload: id
+    })
+  };
+
   const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
   const layout = (
-    <Layout>
+    <Layout className={prefixCls}>
       {/** 左侧菜单 */}
       <SideMenu
         logo={logo}
         theme={theme}
         menuData={menuData}
         fixedSide={fixedSide}
-        {...props}
+        {...restProps}
       />
 
-      <Layout
-        style={{
-          paddingLeft: 80,
-          minHeight: '100vh',
-        }}
-      >
+      <Content className={`${prefixCls}__wrapper`}>
         <Header
           isMobile={isMobile}
-          {...props}
+          {...restProps}
         />
-        <Content className="basic-layout__content">
-          {children}
-        </Content>
-        <Footer />
-      </Layout>
+        <TabPages
+          onClick={handleTabClick}
+          onRemove={handleTabRemove}
+          activeKey={activeKey}
+          tabList={tabList}
+        />
+      </Content>
     </Layout>
   );
 
@@ -153,7 +179,12 @@ const BasicLayout: React.FC<IProps> = (props) => {
   )
 };
 
+BasicLayout.defaultProps = {
+  prefixCls: 'lotus-basic-layout'
+};
+
 export default connect(({ menu, global }) => ({
+  tabActiveKey: global.tabActiveKey,
   tabList: global.tabList,
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,

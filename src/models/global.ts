@@ -1,21 +1,15 @@
 import { Effect } from 'dva';
-import storage from '@/utils/session-storage';
+import store from 'store';
 import isArray from 'lodash/isArray';
 import { Reducer } from 'redux';
-import H from 'history';
-import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
-import { IMenu } from '@/components/side-menu';
 import { fetchNotices } from '@/services/global';
-
-export interface ITabData {
-  id: string;
-  location: H.Location,
-  menuData: IMenu
-}
+import { ITab } from '@/components/tab-pages';
+import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
 export interface IGlobalModelState {
   notices: [];
-  tabList: ITabData[];
+  tabList: ITab[];
+  tabActiveKey: string;
 }
 
 export interface IGlobalModel {
@@ -29,16 +23,18 @@ export interface IGlobalModel {
   reducers: {
     saveNotices: Reducer<any>;
     saveTabList: Reducer<any>;
+    saveTabActiveKey: Reducer<any>;
   }
 }
 
-const { tabListKey } = STORAGE_KEY_DEFAULT_CONFIG;
+const { tabListKey, storageTabActiveKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
-const Global: IGlobalModel = {
+const GlobalModel: IGlobalModel = {
   name: 'global',
   state: {
     notices: [],
-    tabList: []
+    tabList: [],
+    tabActiveKey: ''
   },
   effects: {
     *fetchQueryNotices(_, { call, put, select }) {
@@ -85,7 +81,7 @@ const Global: IGlobalModel = {
         nextTabList.push(payload);
       }
 
-      storage.set(tabListKey, nextTabList);
+      store.set(tabListKey, nextTabList);
 
       yield put({
         type: 'saveTabList',
@@ -100,7 +96,7 @@ const Global: IGlobalModel = {
 
       tabList = tabList.filter(item => item.id !== tabId);
 
-      storage.set(tabListKey, tabList);
+      store.set(tabListKey, tabList);
 
       yield put({
         type: 'saveTabList',
@@ -121,7 +117,14 @@ const Global: IGlobalModel = {
         tabList: payload
       };
     },
+    saveTabActiveKey(state, { payload }) {
+      store.set(storageTabActiveKey, payload);
+      return {
+        ...state,
+        activeKey: payload
+      };
+    },
   }
 };
 
-export default Global;
+export default GlobalModel;
