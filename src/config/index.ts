@@ -32,7 +32,8 @@ export const APP_DEFAULT_CONFIG = {
 // 本地存储Key
 export const STORAGE_KEY_DEFAULT_CONFIG = {
   loginType: 'login-type',
-  tabListKey: 'tab-list'
+  tabListKey: 'tab-list',
+  storageTabActiveKey: 'tab-active-key'
 };
 
 // 项目默认设置

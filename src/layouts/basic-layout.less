@@ -1,5 +1,26 @@
 @import '~antd/lib/style/themes/default.less';
 
-.basic-layout__content {
-  margin: 24px;
+.lotus-basic-layout {
+  .ant-layout-header {
+    position: absolute;
+    width: 100vw;
+    height: @layout-header-height;
+    line-height: @layout-header-height;
+    left: 0;
+    top: 0;
+  }
+
+  .global-header__right {
+    z-index: 2;
+  }
+
+  .tab-pages {
+    height: 100%;
+  }
+}
+
+.lotus-basic-layout__wrapper {
+  position: relative;
+  padding-left: 80px;
+  height: 100%;
 }

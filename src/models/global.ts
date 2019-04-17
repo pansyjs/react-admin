@@ -1,21 +1,15 @@
 import { Effect } from 'dva';
-import storage from '@/utils/session-storage';
+import store from 'store';
 import isArray from 'lodash/isArray';
 import { Reducer } from 'redux';
-import H from 'history';
-import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
-import { IMenu } from '@/components/side-menu';
 import { fetchNotices } from '@/services/global';
-
-export interface ITabData {
-  id: string;
-  location: H.Location,
-  menuData: IMenu
-}
+import { ITab } from '@/components/tab-pages';
+import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
 export interface IGlobalModelState {
   notices: [];
-  tabList: ITabData[];
+  tabList: ITab[];
+  tabActiveKey: string;
 }
 
 export interface IGlobalModel {
@@ -29,16 +23,18 @@ export interface IGlobalModel {
   reducers: {
     saveNotices: Reducer<any>;
     saveTabList: Reducer<any>;
+    saveTabActiveKey: Reducer<any>;
   }
 }
 
-const { tabListKey } = STORAGE_KEY_DEFAULT_CONFIG;
+const { tabListKey, storageTabActiveKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
-const Global: IGlobalModel = {
+const GlobalModel: IGlobalModel = {
   name: 'global',
   state: {
     notices: [],
-    tabList: []
+    tabList: [],
+    tabActiveKey: ''
   },
   effects: {
     *fetchQueryNotices(_, { call, put, select }) {
@@ -64,6 +60,21 @@ const Global: IGlobalModel = {
     *fetchAddTab({ payload }, { call, put, select }) {
       // 获取当前TabList数据
       const currentTabList = yield select((state) => state.global.tabList);
+      let breadcrumbNameMap = yield select((state) => state.menu.breadcrumbNameMap);
+
+      if (isArray(payload)) {
+        const list = payload.map((item) => {
+          const key = item.menuData.path;
+          item.menuData = breadcrumbNameMap[key];
+          return item;
+        });
+        yield put({
+          type: 'saveTabList',
+          payload: list
+        });
+        return;
+      }
+
       const { location } = payload;
       const pathname = location!.pathname;
       if (!pathname) return;
@@ -85,8 +96,6 @@ const Global: IGlobalModel = {
         nextTabList.push(payload);
       }
 
-      storage.set(tabListKey, nextTabList);
-
       yield put({
         type: 'saveTabList',
         payload: nextTabList
@@ -94,13 +103,22 @@ const Global: IGlobalModel = {
     },
     *fetchRemoveTab({ payload }, { call, put, select }) {
       let tabList = yield select((state) => state.global.tabList);
+      let tabActiveKey = yield select((state) => state.global.tabActiveKey);
 
       const tabId = payload;
       if (!tabId) return;
 
       tabList = tabList.filter(item => item.id !== tabId);
 
-      storage.set(tabListKey, tabList);
+      if (tabId === tabActiveKey) {
+        if (tabList.length === 0) return;
+        const newKey = tabList[tabList.length - 1].menuData.path;
+
+        yield put({
+          type: 'saveTabActiveKey',
+          payload: newKey
+        });
+      }
 
       yield put({
         type: 'saveTabList',
@@ -116,12 +134,20 @@ const Global: IGlobalModel = {
       };
     },
     saveTabList(state, { payload }) {
+      store.set(tabListKey, payload);
       return {
         ...state,
         tabList: payload
       };
     },
+    saveTabActiveKey(state, { payload }) {
+      store.set(storageTabActiveKey, payload);
+      return {
+        ...state,
+        tabActiveKey: payload
+      };
+    },
   }
 };
 
-export default Global;
+export default GlobalModel;
