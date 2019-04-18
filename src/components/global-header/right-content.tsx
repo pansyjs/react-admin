@@ -1,11 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import groupBy from 'lodash/groupBy';
-import { Spin, Tag, Menu, Icon, Avatar, Tooltip, message } from 'antd';
-import { ClickParam } from 'antd/es/menu';
-import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
+import { Spin, Menu, Icon, Avatar } from 'antd';
+import { FormattedMessage } from 'umi-plugin-react/locale';
 import HeaderDropdown from '@/components/header-dropdown';
 import SelectLang from '@/components/select-lang';
+import ScreenFull from '@/components/screen-full';
 import { ICurrentUser } from '@/models/user';
 
 interface IProps {
@@ -52,6 +51,8 @@ class GlobalHeaderRight extends React.Component<IProps> {
 
     return (
       <div className={`${prefixCls}__right`}>
+
+        <ScreenFull className={`${prefixCls}__action`} />
 
         <SelectLang className={`${prefixCls}__action`} />
 

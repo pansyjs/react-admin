@@ -57,6 +57,7 @@
     "react-transition-group": "^2.4.0",
     "react-virtualized": "^9.21.0",
     "rollbar": "^2.4.4",
+    "screenfull": "^4.2.0",
     "store": "^2.0.12",
     "uuid": "^3.3.2",
     "xlsx": "^0.13.5"
