@@ -1,58 +1,62 @@
 @import '~antd/lib/style/themes/default.less';
 
-.lotus-drawer-wrapper {
-  background: transparent;
+@prefix-cls: ~'lotus-drawer-wrapper';
 
+.@{prefix-cls} {
   .ant-drawer-body {
     height: 100%;
     padding: 0;
   }
-}
 
-.lotus-drawer-wrapper__title {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: 500;
-  font-size: 16px;
-  height: @layout-header-height;
-  line-height: @layout-header-height;
-}
-
-.lotus-drawer-wrapper__header {
-  position: relative;
-  padding: 0 24px;
-  height: @layout-header-height;
-  line-height: @layout-header-height;
-  color: rgba(0,0,0,0.65);
-  background: @white;
-  border-bottom: 1px solid #e8e8e8;
-  border-radius: 4px 4px 0 0;
-
-  .buttons {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    z-index: 10;
+  .@{prefix-cls}__title {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    font-size: 16px;
+    height: @layout-header-height;
+    line-height: @layout-header-height;
   }
 
-  button {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    color: rgba(0, 0, 0, 0.45);
-    font-weight: 700;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 56px;
-    text-align: center;
-    text-transform: none;
-    text-decoration: none;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: color 0.3s;
-    text-rendering: auto;
+  .@{prefix-cls}__header {
+    position: relative;
+    padding: 0 24px;
+    height: @layout-header-height;
+    line-height: @layout-header-height;
+    color: rgba(0,0,0,0.65);
+    background: @white;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 4px 4px 0 0;
+
+    .buttons {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      z-index: 10;
+    }
+
+    button {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      color: rgba(0, 0, 0, 0.45);
+      font-weight: 700;
+      font-size: 16px;
+      font-style: normal;
+      line-height: 56px;
+      text-align: center;
+      text-transform: none;
+      text-decoration: none;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      transition: color 0.3s;
+      text-rendering: auto;
+    }
+  }
+
+  .@{prefix-cls}__body {
+    padding: 16px 24px;
   }
 }
