@@ -10,6 +10,8 @@ export default {
   'menu.exception.not-permission': '403',
   'menu.exception.not-find': '404',
   'menu.exception.server-error': '500',
+  'menu.permission': '权限管理',
+  'menu.permission.policies': '策略管理',
   'menu.account.center': '个人中心',
   'menu.account.settings': '个人设置',
   'menu.account.logout': '退出登录',

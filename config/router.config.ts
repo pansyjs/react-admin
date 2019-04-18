@@ -66,6 +66,18 @@ export default [
           }
         ],
       },
+      {
+        name: 'permission',
+        icon: 'lock',
+        path: '/permission',
+        routes: [
+          {
+            path: '/permission/policies',
+            name: 'policies',
+            component: './permission/policies',
+          }
+        ],
+      },
     ]
   }
 ];

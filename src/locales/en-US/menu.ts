@@ -10,6 +10,8 @@ export default {
   'menu.exception.not-permission': '403',
   'menu.exception.not-find': '404',
   'menu.exception.server-error': '500',
+  'menu.permission': 'Permission',
+  'menu.permission.policies': 'Policies',
   'menu.account.center': 'Account Center',
   'menu.account.settings': 'Account Settings',
   'menu.account.logout': 'Logout',
