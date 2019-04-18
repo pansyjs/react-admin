@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Button } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
+import DrawerWrapper from '@/components/drawer-wrapper';
 import { ConnectProps } from '@/models/connect';
 import './policies.less';
 
 interface IProps extends ConnectProps {
   prefixCls?: string;
-
 }
 
 const { Paragraph } = Typography;
 
 const PoliciesPage: React.FC<IProps> = (props) => {
   const { prefixCls } = props;
+  const [visible, setVisible] = useState<boolean>(false);
 
   const showCreateView = () => {
-    console.log('123');
+    setVisible(true);
+  };
+
+  const closeCreateView = () => {
+    setVisible(false);
   };
 
   return (
@@ -40,6 +45,15 @@ const PoliciesPage: React.FC<IProps> = (props) => {
       <div className={prefixCls}>
         123
       </div>
+
+      <DrawerWrapper
+        visible={visible}
+        width={500}
+        title="新建权限策略"
+        onClose={closeCreateView}
+      >
+        124
+      </DrawerWrapper>
     </React.Fragment>
   )
 };
