@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Typography, Button } from 'antd';
+import { Typography, Button, Card } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import DrawerWrapper from '@/components/drawer-wrapper';
+import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 import './policies.less';
 
@@ -23,6 +24,59 @@ const PoliciesPage: React.FC<IProps> = (props) => {
     setVisible(false);
   };
 
+  // 删除权限策略
+  const handleRemove = (record) => {
+    console.log(record);
+  };
+
+  const list = [
+    {
+      id: '1',
+      name: '胡彦斌',
+      attachmentCount: 32,
+      remark: '西湖区湖底公园1号'
+    },
+    {
+      id: '2',
+      name: '胡彦祖',
+      attachmentCount: 42,
+      remark: '西湖区湖底公园1号'
+    }
+  ];
+
+  const columns = [
+    {
+      title: '权限策略名称',
+      dataIndex: 'name'
+    },
+    {
+      title: '策略类型',
+      dataIndex: 'type'
+    },
+    {
+      title: '引用次数',
+      dataIndex: 'attachmentCount'
+    },
+    {
+      title: '备注',
+      dataIndex: 'remark'
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <Button
+          type="danger"
+          size="small"
+          icon="delete"
+          onClick={() => {
+            handleRemove(record);
+          }}
+        />
+      )
+    }
+  ];
+
   return (
     <React.Fragment>
       <PageHeaderWrapper
@@ -43,16 +97,21 @@ const PoliciesPage: React.FC<IProps> = (props) => {
         </div>
       </PageHeaderWrapper>
       <div className={prefixCls}>
-        123
+        <Card bordered={false}>
+          <StandardTable
+            list={list}
+            columns={columns}
+          />
+        </Card>
       </div>
 
       <DrawerWrapper
         visible={visible}
-        width={500}
+        width={600}
         title="新建权限策略"
         onClose={closeCreateView}
       >
-        124
+        13
       </DrawerWrapper>
     </React.Fragment>
   )
