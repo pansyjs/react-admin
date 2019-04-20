@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Typography, Button, Card } from 'antd';
+import React from 'react';
+import router from 'umi/router';
+import { Typography, Button, Card, Tooltip, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import DrawerWrapper from '@/components/drawer-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 import './policies.less';
@@ -11,22 +11,31 @@ interface IProps extends ConnectProps {
 }
 
 const { Paragraph } = Typography;
+const confirm = Modal.confirm;
 
 const PoliciesPage: React.FC<IProps> = (props) => {
   const { prefixCls } = props;
-  const [visible, setVisible] = useState<boolean>(false);
 
   const showCreateView = () => {
-    setVisible(true);
-  };
-
-  const closeCreateView = () => {
-    setVisible(false);
+    router.push('/permission/policies/create');
   };
 
   // 删除权限策略
+  const handleConfirmRemove = (record) => {
+    confirm({
+      title: `确定删除${record.name}策略?`,
+      content: '删除不可恢复',
+      okText: '确认',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        handleRemove(record);
+      }
+    });
+  };
+
   const handleRemove = (record) => {
-    console.log(record);
+
   };
 
   const list = [
@@ -62,17 +71,19 @@ const PoliciesPage: React.FC<IProps> = (props) => {
       dataIndex: 'remark'
     },
     {
-      title: 'Action',
+      title: '操作',
       key: 'action',
       render: (text, record) => (
-        <Button
-          type="danger"
-          size="small"
-          icon="delete"
-          onClick={() => {
-            handleRemove(record);
-          }}
-        />
+        <Tooltip placement="top" title="删除">
+          <Button
+            type="danger"
+            size="small"
+            icon="delete"
+            onClick={() => {
+              handleConfirmRemove(record);
+            }}
+          />
+        </Tooltip>
       )
     }
   ];
@@ -104,15 +115,6 @@ const PoliciesPage: React.FC<IProps> = (props) => {
           />
         </Card>
       </div>
-
-      <DrawerWrapper
-        visible={visible}
-        width={600}
-        title="新建权限策略"
-        onClose={closeCreateView}
-      >
-        13
-      </DrawerWrapper>
     </React.Fragment>
   )
 };

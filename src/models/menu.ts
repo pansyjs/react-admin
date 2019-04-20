@@ -1,8 +1,8 @@
 import { Reducer } from 'redux';
-import { Effect } from '@/models/connect';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
+import { Effect } from '@/models/connect';
 import { IMenu } from '@/components/side-menu';
 import { SETTING_DEFAULT_CONFIG } from '@/config';
 

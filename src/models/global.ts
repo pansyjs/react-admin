@@ -1,13 +1,13 @@
-import { Effect } from 'dva';
 import store from 'store';
 import isArray from 'lodash/isArray';
 import { Reducer } from 'redux';
 import { fetchNotices } from '@/services/global';
+import { Effect } from '@/models/connect';
 import { ITab } from '@/components/tab-pages';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
 export interface IGlobalModelState {
-  notices: [];
+  notices: any[];
   tabList: ITab[];
   tabActiveKey: string;
 }

@@ -74,7 +74,15 @@ export default [
           {
             path: '/permission/policies',
             name: 'policies',
-            component: './permission/policies',
+            component: './permission/policies/policies',
+            hideChildrenInMenu: true,
+            routes: [
+              {
+                path: '/permission/policies/create',
+                name: 'create',
+                component: './permission/policies/create',
+              },
+            ]
           }
         ],
       },
