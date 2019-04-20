@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'umi/link';
 import classNames from 'classnames';
 import { PageHeader } from 'antd';
 import { PageHeaderProps } from 'antd/es/page-header';
@@ -17,7 +18,7 @@ const PageHeaderWrapper: React.FC<IProps> = (props) => {
     const pathSnippets = urlToList(pathname);
     const routes = [];
 
-    pathSnippets.forEach((url, index) => {
+    pathSnippets.forEach((url) => {
       const menuData = breadcrumbNameMap[url];
       routes.push({
         path: menuData.path,
@@ -26,6 +27,13 @@ const PageHeaderWrapper: React.FC<IProps> = (props) => {
     });
 
     return routes;
+  };
+
+  const itemRender = (route, params, routes) => {
+    const last = routes.indexOf(route) === routes.length - 1;
+    return last
+      ? <span>{route.breadcrumbName}</span>
+      : <Link to={route.path}>{route.breadcrumbName}</Link>;
   };
 
   return (
@@ -41,7 +49,10 @@ const PageHeaderWrapper: React.FC<IProps> = (props) => {
           const routes = getRoutes(pathname, breadcrumbNameMap);
           return (
             <PageHeader
-              breadcrumb={{ routes }}
+              breadcrumb={{
+                itemRender,
+                routes
+              }}
               {...restProps}
             />
           )

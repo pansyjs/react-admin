@@ -1,7 +1,16 @@
-import { SETTING_DEFAULT_CONFIG } from '@/config';
 
-export default {
+export interface ISettingModelState {
+
+}
+
+export interface ISettingModel {
   name: 'setting',
+  state: ISettingModelState
+}
 
-  state: SETTING_DEFAULT_CONFIG
+const SettingModel: ISettingModel = {
+  name: 'setting',
+  state: {}
 };
+
+export default SettingModel;

@@ -1,5 +1,5 @@
-import { Effect } from 'dva';
 import { Reducer } from 'redux';
+import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
 
 export interface ICurrentUser {
