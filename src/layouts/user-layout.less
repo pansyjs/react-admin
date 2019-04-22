@@ -1,6 +1,8 @@
 @import '~antd/lib/style/themes/default.less';
 
-.user-layout {
+@prefix-cls: ~'lotus-user-layout';
+
+.@{prefix-cls} {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -8,13 +10,13 @@
   background: @layout-body-background;
 }
 
-.user-layout__wrapper {
+.@{prefix-cls}__wrapper {
   padding-top: 96px;
   width: 430px;
   margin: auto;
 }
 
-.user-layout__container {
+.@{prefix-cls}__container {
   position: relative;
   background-color: #fff;
   padding: 56px 8px;
@@ -23,7 +25,7 @@
   border-radius: 4px;
 }
 
-.user-layout__lang {
+.@{prefix-cls}__lang {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -31,7 +33,7 @@
   line-height: 44px;
 }
 
-.user-layout__header {
+.@{prefix-cls}__header {
   max-width: 320px;
   margin: 0 auto;
   text-align: center;
@@ -50,7 +52,7 @@
   }
 }
 
-.user-layout__title {
+.@{prefix-cls}__title {
   margin-bottom: 20px;
   text-align: center;
 
@@ -60,7 +62,7 @@
   }
 }
 
-.user-layout__children {
+.@{prefix-cls}__children {
   max-width: 320px;
   margin: 0 auto;
   border-radius: 4px;

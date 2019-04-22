@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@ant-design/create-react-context@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@ant-design/create-react-context/-/create-react-context-0.2.4.tgz#0fe9adad030350c0c9bb296dd6dcf5a8a36bd425"
+  integrity sha512-8sw+/w6r+aEbd+OJ62ojoSE4zDt/3yfQydmbWFznoftjr8v/opOswGjM+/MU0rSaREbluqzOmZ6xdecHpSaS2w==
+  dependencies:
+    gud "^1.0.0"
+    warning "^4.0.3"
+
 "@ant-design/icons-react@~1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@ant-design/icons-react/-/icons-react-1.1.5.tgz#1b03da8dcced2a4bb982ef7b25c1d24014c35a68"
@@ -1499,6 +1507,14 @@
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/isomorphic-fetch@^0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
@@ -2185,7 +2201,7 @@ antd-mobile@2.x:
     rmc-tabs "~1.2.0"
     rmc-tooltip "~1.0.0"
 
-antd@3.x, antd@^3.16.3:
+antd@3.x:
   version "3.16.3"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.16.3.tgz#66ecdbd96a31e2a4d239106a106b17629beaa141"
   integrity sha512-Kg/6n6IRzwslMrSOosczpxcuXiWh7mkUmmcPRmfI/E3P6oa8jR3dXtPiZViH64HxvBCIFL7FjizuVjA21MmPnQ==
@@ -2228,6 +2244,65 @@ antd@3.x, antd@^3.16.3:
     rc-steps "~3.3.0"
     rc-switch "~1.9.0"
     rc-table "~6.4.0"
+    rc-tabs "~9.6.0"
+    rc-time-picker "~3.6.1"
+    rc-tooltip "~3.7.3"
+    rc-tree "~1.15.2"
+    rc-tree-select "~2.6.0"
+    rc-trigger "^2.6.2"
+    rc-upload "~2.6.0"
+    rc-util "^4.5.1"
+    react-lazy-load "^3.0.13"
+    react-lifecycles-compat "^3.0.4"
+    react-slick "~0.23.2"
+    resize-observer-polyfill "^1.5.0"
+    shallowequal "^1.1.0"
+    warning "~4.0.2"
+
+antd@^3.16.4:
+  version "3.16.4"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.16.4.tgz#07f2fa14c3f112d17dd1935321bb1235f8753faf"
+  integrity sha512-n+BbeN5ojCORN5EMt/vXTTSNqXMaOogK52JTYlWWQr+x+SyEkXDh41Hi95lPiKKoM8BNLHSPS3SQdaqy5Cx1Gw==
+  dependencies:
+    "@ant-design/create-react-context" "^0.2.4"
+    "@ant-design/icons" "~1.2.0"
+    "@ant-design/icons-react" "~1.1.5"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    "@types/react-slick" "^0.23.3"
+    array-tree-filter "^2.1.0"
+    babel-runtime "6.x"
+    classnames "~2.2.6"
+    copy-to-clipboard "^3.0.8"
+    create-react-class "^15.6.3"
+    css-animation "^1.5.0"
+    dom-closest "^0.2.0"
+    enquire.js "^2.1.6"
+    lodash "^4.17.11"
+    moment "^2.24.0"
+    omit.js "^1.0.0"
+    prop-types "^15.6.2"
+    raf "^3.4.0"
+    rc-animate "^2.5.4"
+    rc-calendar "~9.12.1"
+    rc-cascader "~0.17.0"
+    rc-checkbox "~2.1.5"
+    rc-collapse "~1.11.1"
+    rc-dialog "~7.3.0"
+    rc-drawer "~1.7.6"
+    rc-dropdown "~2.4.1"
+    rc-editor-mention "^1.1.7"
+    rc-form "^2.4.0"
+    rc-input-number "~4.4.0"
+    rc-menu "~7.4.12"
+    rc-notification "~3.3.0"
+    rc-pagination "~1.17.7"
+    rc-progress "~2.3.0"
+    rc-rate "~2.5.0"
+    rc-select "~9.0.0"
+    rc-slider "~8.6.5"
+    rc-steps "~3.3.0"
+    rc-switch "~1.9.0"
+    rc-table "~6.5.0"
     rc-tabs "~9.6.0"
     rc-time-picker "~3.6.1"
     rc-tooltip "~3.7.3"
@@ -7158,7 +7233,7 @@ hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0, hoist-non-react-
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
-hoist-non-react-statics@^3.1.0:
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
@@ -11839,6 +11914,22 @@ rc-table@~6.4.0:
     shallowequal "^1.0.2"
     warning "^3.0.0"
 
+rc-table@~6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-6.5.0.tgz#0887240342f8f3a764c954638cc46dea45921a14"
+  integrity sha512-UXsoTcJIr5Ehyf1GXAKLcc5x0/+cOSgBaKL7wt6vmVEIW5CF6bVJj4iOr7P8LGdoez/omoHmr5GXcW6/AZxR7A==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "^2.2.5"
+    component-classes "^1.2.6"
+    lodash "^4.17.5"
+    mini-store "^2.0.0"
+    prop-types "^15.5.8"
+    rc-util "^4.0.4"
+    react-lifecycles-compat "^3.0.2"
+    shallowequal "^1.0.2"
+    warning "^3.0.0"
+
 rc-tabs@~9.6.0:
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.6.0.tgz#b212a85f58384897b09f52dd3ee6701fff7fccd5"
@@ -15169,6 +15260,13 @@ warning@^3.0.0:
 warning@^4.0.1, warning@^4.0.2, warning@~4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.2.tgz#aa6876480872116fa3e11d434b0d0d8d91e44607"
+  dependencies:
+    loose-envify "^1.0.0"
+
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"
 

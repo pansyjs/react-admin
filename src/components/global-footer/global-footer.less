@@ -1,12 +1,14 @@
 @import '~antd/lib/style/themes/default.less';
 
-.global-footer {
+@prefix-cls: ~'lotus-global-footer';
+
+.@{prefix-cls} {
   margin: 48px 0 24px 0;
   padding: 0 16px;
   text-align: center;
 }
 
-.global-footer__links {
+.@{prefix-cls}__links {
   margin-bottom: 8px;
 
   a {
@@ -23,7 +25,7 @@
   }
 }
 
-.global-footer__copyright {
+.@{prefix-cls}__copyright {
   color: @text-color-secondary;
   font-size: @font-size-base;
 }
