@@ -2,14 +2,16 @@
 
 @nav-header-height: @layout-header-height;
 
-.side-menu {
+@prefix-cls: ~'lotus-side-menu';
+
+.@{prefix-cls} {
   position: fixed;
   z-index: 10;
   min-height: 100vh;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
 }
 
-.side-menu__logo {
+.@{prefix-cls}__logo {
   position: relative;
   height: @nav-header-height;
   padding-left: (@menu-collapsed-width - 32px) / 2;
@@ -35,7 +37,7 @@
   }
 }
 
-.side-menu__fixed {
+.@{prefix-cls}__fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -56,7 +58,7 @@
   }
 }
 
-.side-menu__light {
+.@{prefix-cls}__light {
   background-color: white;
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
 
@@ -65,7 +67,7 @@
   }
 }
 
-.side-menu__icon {
+.@{prefix-cls}__icon {
   width: 14px;
   vertical-align: baseline;
 }

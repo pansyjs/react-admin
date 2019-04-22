@@ -25,7 +25,7 @@ let firstMount: boolean = true;
 
 class SideMenu extends React.Component<ISideMenuProps, IState> {
   static defaultProps: Partial<ISideMenuProps> = {
-    prefixCls: 'side-menu',
+    prefixCls: 'lotus-side-menu',
     flatMenuKeys: [],
     onCollapse: () => void 0,
     isMobile: false,

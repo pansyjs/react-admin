@@ -65,5 +65,5 @@ export const SelectLang: React.FC<IProps> = (props) => {
 };
 
 SelectLang.defaultProps = {
-  prefixCls: 'select-lang'
+  prefixCls: 'lotus-select-lang'
 };
