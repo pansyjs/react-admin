@@ -67,7 +67,7 @@ const UserLayout: React.FC<IProps> = (props) => {
 };
 
 UserLayout.defaultProps = {
-  prefixCls: 'user-layout'
+  prefixCls: 'lotus-user-layout'
 };
 
 export default connect(({ menu }) => ({

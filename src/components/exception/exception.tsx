@@ -67,7 +67,7 @@ const Exception: React.FC<IProps> = (props) => {
 };
 
 Exception.defaultProps = {
-  prefixCls: 'exception',
+  prefixCls: 'lotus-exception',
   backText: 'back to home',
   linkElement: 'a',
   type: '404',

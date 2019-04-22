@@ -51,5 +51,5 @@ export const GlobalFooter: React.FC<IProps> = (props) => {
 };
 
 GlobalFooter.defaultProps = {
-  prefixCls: 'global-footer'
+  prefixCls: 'lotus-global-footer'
 };

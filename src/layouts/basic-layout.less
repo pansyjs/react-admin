@@ -1,6 +1,8 @@
 @import '~antd/lib/style/themes/default.less';
 
-.lotus-basic-layout {
+@prefix-cls: ~'lotus-basic-layout';
+
+.@{prefix-cls} {
   .ant-layout-header {
     position: absolute;
     width: 100vw;
@@ -19,7 +21,7 @@
   }
 }
 
-.lotus-basic-layout__wrapper {
+.@{prefix-cls}__wrapper {
   position: relative;
   padding-left: 80px;
   height: 100%;
