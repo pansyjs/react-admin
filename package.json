@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.10.1",
-    "antd": "^3.16.3",
+    "antd": "^3.16.4",
     "axios": "^0.18.0",
     "bizcharts": "^3.4.1",
     "braft-editor": "^2.2.9",
