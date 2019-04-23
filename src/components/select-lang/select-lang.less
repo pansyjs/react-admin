@@ -1,6 +1,8 @@
 @import '~antd/lib/style/themes/default.less';
 
-.select-lang__menu {
+@prefix-cls: ~'lotus-select-lang';
+
+.@{prefix-cls}__menu {
   .anticon {
     margin-right: 8px;
   }
@@ -10,7 +12,7 @@
   }
 }
 
-.select-lang__dropdown {
+.@{prefix-cls}__dropdown {
   line-height: @layout-header-height;
   vertical-align: top;
   cursor: pointer;

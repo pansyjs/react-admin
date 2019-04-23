@@ -20,5 +20,5 @@ export const HeaderDropdown: React.FC<IProps> = (props) => {
 };
 
 HeaderDropdown.defaultProps = {
-  prefixCls: 'header-dropdown'
+  prefixCls: 'lotus-header-dropdown'
 };

@@ -72,6 +72,11 @@ export default [
         path: '/permission',
         routes: [
           {
+            path: '/permission/actions',
+            name: 'actions',
+            component: './permission/actions/actions'
+          },
+          {
             path: '/permission/policies',
             name: 'policies',
             component: './permission/policies/policies',

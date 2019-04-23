@@ -93,7 +93,7 @@ const TabPages: React.FC<IProps> = (props) => {
 };
 
 TabPages.defaultProps = {
-  prefixCls: 'tab-pages',
+  prefixCls: 'lotus-tab-pages',
   tabList: []
 };
 
