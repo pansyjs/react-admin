@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Button, Typography } from 'antd';
+import {Button, Card, Tooltip, Typography} from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
+import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 
 interface IProps extends ConnectProps {
@@ -12,6 +13,38 @@ const { Paragraph } = Typography;
 
 const ActionPage: React.FC<IProps> = (props) => {
   const { dispatch } = props;
+
+  const columns = [
+    {
+      title: '所属模块',
+      dataIndex: 'mould'
+    },
+    {
+      title: '操作名称',
+      dataIndex: 'type'
+    },
+    {
+      title: '类型',
+      dataIndex: 'type'
+    },
+    {
+      title: '备注',
+      dataIndex: 'remark'
+    },
+    {
+      title: '操作',
+      key: 'action',
+      render: (text, record) => (
+        <Tooltip placement="top" title="删除">
+          <Button
+            type="danger"
+            size="small"
+            icon="delete"
+          />
+        </Tooltip>
+      )
+    }
+  ];
 
   return (
     <React.Fragment>
@@ -29,6 +62,14 @@ const ActionPage: React.FC<IProps> = (props) => {
           </Paragraph>
         </div>
       </PageHeaderWrapper>
+      <div>
+        <Card bordered={false}>
+          <StandardTable
+            list={[]}
+            columns={columns}
+          />
+        </Card>
+      </div>
     </React.Fragment>
   )
 };

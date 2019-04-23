@@ -9,4 +9,3 @@ export function fetchList(params) {
 export function fetchRemove(ids) {
   return Post('/permissions/remove', ids);
 }
-
