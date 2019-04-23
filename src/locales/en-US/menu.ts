@@ -11,6 +11,7 @@ export default {
   'menu.exception.not-find': '404',
   'menu.exception.server-error': '500',
   'menu.permission': 'Permission',
+  'menu.permission.actions': 'Actions',
   'menu.permission.policies': 'Policies',
   'menu.permission.policies.create': 'Create Policies',
   'menu.account.center': 'Account Center',
