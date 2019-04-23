@@ -70,38 +70,69 @@ npm install --global yarn
 # 项目目录
 
 ```
-├── config                      # 项目相关配置
-│   ├── config.js               # umi相关配置
-│   └── router.config.js        #
+├── config                      # UMI配置相关
+│   ├── config.ts               # umi配置文件
+│   ├── plugin.config.ts        # umi插件配置
+│   ├── router.config.ts        # 路由相关配置
+│   ├── server.config.ts        # 后端服务地址配置
+│   └── theme.config.ts         # 定制化ant-design
+├── docker                      # docker相关配置
+│   ├── Dockerfile              # docker配置文件
+│   └── nginx.conf              # nginx相关配置
 ├── mock                        # 后端接口模拟
-│   ├── login.js                # 登录相关
-│   └──
+│   ├── notices.ts              # 通知相关
+│   └── users.ts                # 用户相关
 ├── public                      # 静态资源
-├── src                         # 代码主目录
+│   ├── favicon.png             # favicon
+│   └── 
+├── src                         # 主目录
 │   ├── assets                  # 静态资源
 │   ├── components              # 全局公共组件
-│   │   ├── Breadcrumb          # 面包屑组件
-│   │   ├── CountDown           # 倒计时组件
-│   │   ├── Exception           # 异常组件
-│   │   ├── GlobalFooter        # 全局Footer组件
-│   │   ├── GlobalHeader        # 全局Header组件
+│   │   ├── authorized          # 面包屑组件
+│   │   ├── drawer-wrapper      # 对drawer二次封装
+│   │   ├── exception           # 异常组件
+│   │   ├── global-footer       # 全局Footer组件
+│   │   ├── global-header       # 全局Header组件
+│   │   ├── header-dropdown     # 
+│   │   ├── header-search       # header搜索组件
+│   │   ├── icon-font           # icon组件 具体请参考ant-design自定义图标方案
+│   │   ├── notice-icon         # 消息通知组件
+│   │   ├── page-header-wrapper # 对page-header二次封装
+│   │   ├── page-loading        # loading组件
+│   │   ├── screen-full         # 全屏组件
+│   │   ├── select-lang         # 选择语言组件
+│   │   ├── notice-icon         # 消息通知组件
+│   │   ├── send-code           # 发送验证码组件
+│   │   ├── side-menu           # 左侧菜单组件
+│   │   ├── standard-table      # 对table的二次封装
+│   │   ├── tab-pages           # 页面Tab组件
 │   │   └──                     #
 │   ├── config                  # 项目配置
-│   │   ├── interceptors        #
-│   │   ├── index.ts            # 项目配置主文件
-│   │   └── menu.ts             # 项目左侧菜单配置
-│   ├── icons                   # 字体图标
-│   │   ├── svg                 # 存放svg
-│   │   └── index.js            # 统一处理svg引入
-│   ├── layouts                 # 布局
+│   │   ├── index.ts            # 项目主要变量配置
+│   │   └── 
+│   ├── layouts                 # 项目常用布局
+│   ├── locales                 # 多语言目录
+│   ├── models                  # 全局model
+│   ├── pages                   # 所有页面
+│   ├── services                # 后端接口相关
 │   ├── styles                  # 样式目录
 │   ├── utils                   # 全局工具方法目录
-│   │   └──                     #
-│   ├── global.js               # 全局JS umi会直接引入
+│   ├── global.ts               # 全局TS umi会直接引入
 │   └── global.less             # 全局样式 umi会直接引入
 ├── .editorconfig               # IDE设置文件
-├── .stylelintrc                # stylelint配置文件
-├── .umirc.js                   # umi配置文件
+├── .gitignore                  # Git忽略文件
+├── .huskyrc.js                 # husky配置文件
+├── .nvmrc                      # 
+├── .prettierignore             # 
+├── .prettierrc.js              # 
+├── .stylelintrc                # 
+├── commitlint.config.js        # 
+├── jest.config.js              # 
+├── LICENSE                     # 
+├── lint-staged.config.js       # 
+├── package.json                # package.json
+├── README.md                   # 项目描述文件
+├── tsconfig.json               # typescript配置文件
 └── yarn.lock                   # yarn生成文件
 ```
 
