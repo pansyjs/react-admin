@@ -23,7 +23,7 @@
     "build:view": "npm run build && cd ./dist && anywhere -p 8080",
     "prettier": "prettier --write ./src/**/**/**/*"
   },
-  "repository": "https://github.com/jiumao-fe/react-admin-template.git",
+  "repository": "https://github.com/ts-react/react-admin-template.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
