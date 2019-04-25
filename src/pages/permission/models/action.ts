@@ -1,16 +1,25 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList } from '@/services/action';
+import {
+  fetchList,
+  fetchModuleList
+} from '@/services/action';
 
 export interface IAction {
-  id?: string;
+  id?: string | number;
   name?: string;
   type?: number;
   remark?: string;
 }
 
+export interface IModule {
+  id?: string | number;
+  name?: string;
+}
+
 export interface IActionModelState {
   list: IAction[];
+  modules: IModule[];
 }
 
 export interface IActionModel {
@@ -18,21 +27,35 @@ export interface IActionModel {
   state: IActionModelState,
   effects: {
     fetchList: Effect;
+    fetchModuleList: Effect;
   },
   reducers: {
     saveList: Reducer<any>;
+    saveModules: Reducer<any>;
   }
 }
 
 const ActionModel: IActionModel = {
   namespace: 'action',
   state: {
-    list: []
+    list: [],
+    modules: []
   },
   effects: {
     *fetchList({ payload }, { call, put, select }) {
       const response = yield call(fetchList, payload);
 
+    },
+    *fetchModuleList(_, { call, put }) {
+      const response = yield call(fetchModuleList);
+      if (response && response.code === 200) {
+        const data = response.data;
+
+        yield put({
+          type: 'saveModules',
+          payload: data
+        })
+      }
     }
   },
   reducers: {
@@ -40,6 +63,12 @@ const ActionModel: IActionModel = {
       return {
         ...state,
         list: payload
+      };
+    },
+    saveModules(state, { payload }) {
+      return {
+        ...state,
+        modules: payload
       };
     }
   }
