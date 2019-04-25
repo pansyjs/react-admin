@@ -12,7 +12,7 @@ interface IProps {
 
 export class GlobalHeader extends React.Component<IProps, any> {
   static defaultProps = {
-    prefixCls: 'global-header'
+    prefixCls: 'lotus-global-header'
   };
 
   render() {

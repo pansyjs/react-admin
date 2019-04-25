@@ -22,10 +22,18 @@ const { Header } = Layout;
 }))
 class HeaderView extends React.Component<IHeaderViewProps, IState> {
   handleMenuClick = (key) => {
+    const { dispatch } = this.props;
     // 跳转到个人中心
     if (key === 'account-center') {
       router.push('/account/center');
       return;
+    }
+
+    // 退出登录
+    if (key === 'logout') {
+      dispatch({
+        type: 'login/fetchLogout'
+      })
     }
   };
 
