@@ -11,7 +11,10 @@ import './standard-table.less';
 
 interface IProps<T> extends TableProps<T> {
   onSelectRow?: (rows: T[]) => void;
-  list: T[];
+  data: {
+    list: T[];
+    pagination?: PaginationConfig
+  };
   selectedRows?: T[];
   onChange?: (
     pagination: PaginationConfig,
@@ -27,11 +30,11 @@ const StandardTable: React.FC<IProps<any>> = (props) => {
     prefixCls,
     style,
     rowKey,
-    list,
-    pagination,
+    data,
     onChange,
     ...restProps
   } = props;
+  const { list = [], pagination } = data;
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[] | number[]>([]);
 
   const handleTableChange = (
@@ -54,7 +57,7 @@ const StandardTable: React.FC<IProps<any>> = (props) => {
         [`${prefixCls}`]: true
       })}
       style={style}
-      rowKey={rowKey}
+      rowKey={rowKey || 'key'}
       dataSource={list}
       pagination={paginationProps}
       onChange={handleTableChange}

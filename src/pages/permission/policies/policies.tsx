@@ -110,7 +110,9 @@ const PoliciesPage: React.FC<IProps> = (props) => {
       <div className={prefixCls}>
         <Card bordered={false}>
           <StandardTable
-            list={list}
+            data={{
+              list
+            }}
             columns={columns}
           />
         </Card>

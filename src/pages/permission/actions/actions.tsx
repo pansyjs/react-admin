@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { connect } from 'dva';
 import {Button, Card, Tooltip, Typography} from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
+import DrawerWrapper from '@/components/drawer-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
+import { IModule, IAction } from '../models/action';
 
 interface IProps extends ConnectProps {
-
+  modules: IModule[];
+  actions: IAction[];
 }
 
 const { Paragraph } = Typography;
 
 const ActionPage: React.FC<IProps> = (props) => {
-  const { dispatch } = props;
+  const { dispatch, modules, actions } = props;
+  const [visible, setVisible] = useState<boolean>(false);
+  useState(() => {
+    dispatch({
+      type: 'action/fetchModuleList'
+    })
+  });
+
+  const showCreateView = () => {
+    setVisible(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setVisible(false);
+  };
 
   const columns = [
     {
@@ -46,12 +63,27 @@ const ActionPage: React.FC<IProps> = (props) => {
     }
   ];
 
+  const table = useMemo(() => {
+    return (
+      <StandardTable
+        data={{
+          list: actions
+        }}
+        columns={columns}
+      />
+    )
+  }, [props.actions]);
+
   return (
     <React.Fragment>
       <PageHeaderWrapper
         title="操作管理"
         extra={[
-          <Button key="1" type="primary" >
+          <Button
+            key="1"
+            type="primary"
+            onClick={showCreateView}
+          >
             新建操作
           </Button>
         ]}
@@ -62,18 +94,24 @@ const ActionPage: React.FC<IProps> = (props) => {
           </Paragraph>
         </div>
       </PageHeaderWrapper>
-      <div>
-        <Card bordered={false}>
-          <StandardTable
-            list={[]}
-            columns={columns}
-          />
-        </Card>
-      </div>
+
+      <Card bordered={false}>
+        {table}
+      </Card>
+
+      <DrawerWrapper
+        visible={visible}
+        onClose={handleCloseDrawer}
+        width={600}
+        title="添加操作"
+      >
+        124
+      </DrawerWrapper>
     </React.Fragment>
   )
 };
 
-export default connect(({  }) => ({
-
+export default connect(({ action }) => ({
+  modules: action.modules,
+  actions: action.list
 }))(ActionPage);
