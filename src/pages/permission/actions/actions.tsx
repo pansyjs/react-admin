@@ -38,7 +38,7 @@ const ActionPage: React.FC<IProps> = (props) => {
     },
     {
       title: '操作名称',
-      dataIndex: 'type'
+      dataIndex: 'name'
     },
     {
       title: '类型',

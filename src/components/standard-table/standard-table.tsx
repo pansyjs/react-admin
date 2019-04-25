@@ -57,7 +57,7 @@ const StandardTable: React.FC<IProps<any>> = (props) => {
         [`${prefixCls}`]: true
       })}
       style={style}
-      rowKey={rowKey || 'key'}
+      rowKey={rowKey}
       dataSource={list}
       pagination={paginationProps}
       onChange={handleTableChange}
