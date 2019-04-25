@@ -92,7 +92,7 @@ export const Get = (
   return request(
     Object.assign({}, config, {
       url: url,
-      params: params,
+      params: {...params, _t: (new Date()).getTime()},
       method: 'get'
     })
   );
