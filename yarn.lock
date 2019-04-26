@@ -2987,9 +2987,9 @@ braft-finder@^0.0.18:
   integrity sha512-XtEyVywEfHDzRjAV5HOiqKFva6vEm0Rez+QHgq+EbqXpAqxuHQTci2s3LX2u7G3UicNYpDsVY/UV3nleF2VYyw==
 
 braft-utils@^3.0.8:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/braft-utils/-/braft-utils-3.0.10.tgz#42c73654a0217dfc58fdbeba31eb8a0a089339a4"
-  integrity sha512-KQogVvB26fqc8/vb9lmXbKYXrj00iFXbWdssFYpHv+BADRkhRAEF2x1v3un5zu0wi6RujEFPahwKTpabZl/Z9w==
+  version "3.0.12"
+  resolved "https://registry.yarnpkg.com/braft-utils/-/braft-utils-3.0.12.tgz#2b755ce1d8397d96b627b6767f74d07f25729d85"
+  integrity sha512-O2cKysURNC4HSEMKgNmQ2RluwcrxvYrztlEmyPN5SzktiNX3vaLFQoo0Ez3PlIhvjaGrIBSIT2Oyh2N6mn6TFg==
 
 brorand@^1.0.1:
   version "1.1.0"
