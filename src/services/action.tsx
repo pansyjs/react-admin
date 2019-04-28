@@ -11,8 +11,8 @@ export async function fetchCreate(data) {
 }
 
 // 删除操作
-export async function fetchRemove(ids) {
-  return Delete('actions/remove', ids);
+export async function fetchRemove(data) {
+  return Delete('actions/remove', data);
 }
 
 // 更新操作
