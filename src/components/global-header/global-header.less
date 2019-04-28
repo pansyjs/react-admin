@@ -1,6 +1,6 @@
 @import '~antd/lib/style/themes/default.less';
 
-@prefix-cls: ~'lotus-global-footer';
+@prefix-cls: ~'lotus-global-header';
 @header-hover-bg: rgba(0, 0, 0, 0.025);
 
 .@{prefix-cls} {
@@ -11,15 +11,7 @@
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 
-.global-header {
-  position: relative;
-  height: @layout-header-height;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-}
-
-.global-header__right {
+.@{prefix-cls}__right {
   z-index: 9;
   max-width: 410px;
   position: absolute;
@@ -31,7 +23,7 @@
   justify-content: flex-end;
 }
 
-.global-header__action {
+.@{prefix-cls}__action {
   display: inline-block;
   height: 100%;
   padding: 0 12px;
@@ -48,7 +40,7 @@
   }
 }
 
-.global-header__menu {
+.@{prefix-cls}__menu {
   .anticon {
     margin-right: 8px;
   }
@@ -58,7 +50,7 @@
   }
 }
 
-.city-global-header__account {
+.@{prefix-cls}__account {
   color: #626262;
 
   > i {
@@ -67,7 +59,7 @@
   }
 }
 
-.global-header__account {
+.@{prefix-cls}__account {
   .ant-avatar {
     margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
     margin-right: 8px;

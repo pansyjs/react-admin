@@ -15,13 +15,18 @@
       "esnext",
       "dom"
     ],
+    "rootDirs": [
+      "/src",
+      "/test",
+      "/mock",
+      "./typings"
+    ],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "include": [
-    "types/*",
-    "src/**/*"
+    "./src"
   ],
   "exclude": [
     "node_modules"

@@ -1,11 +1,12 @@
 import { Reducer } from 'redux';
 import store from 'store';
+import { stringify } from 'qs';
 import { routerRedux } from 'dva/router';
 import { Effect } from '@/models/connect';
 import { fetchCaptcha } from '@/services/global';
 import { fetchLogin, fetchLogout, fetchResetPassword } from '@/services/user';
 import { parseQuery } from '@/utils/path-tools';
-import { setCookie } from '@/utils/cookie';
+import { setCookie, removeCookie } from '@/utils/cookie';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
 export type TLoginType = 'password' | 'sms';
@@ -71,8 +72,29 @@ const Login: ILoginModel = {
 
     },
     *fetchLogout({ payload }, { call, put }) {
-      const response = yield call(fetchLogout, payload);
+      // 发送退出登录请求
+      yield call(fetchLogout, payload);
 
+      yield put({
+        type: 'changeStatus',
+        payload: {
+          status: false
+        },
+      });
+
+      removeCookie();
+
+      // redirect
+      if (window.location.pathname !== '/user/login') {
+        yield put(
+          routerRedux.replace({
+            pathname: '/user/login',
+            search: stringify({
+              redirect: window.location.href,
+            }),
+          }),
+        );
+      }
     },
     *fetchResetPassword({ payload }, { call, put }) {
       const response = yield call(fetchResetPassword, payload);

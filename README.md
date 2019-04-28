@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/badge/ant--design-3.16.5-brightgreen.svg" alt="antd">
   </a>
   <a href="https://github.com/umijs/umi">
-    <img src="https://img.shields.io/badge/umi-2.6.14-brightgreen.svg" alt="umi">
+    <img src="https://img.shields.io/badge/umi-2.6.16-brightgreen.svg" alt="umi">
   </a>
   <a href="https://github.com/Microsoft/TypeScript">
     <img src="https://img.shields.io/badge/typescript-3.4.2-brightgreen.svg" alt="typescript">
@@ -124,7 +124,6 @@ npm install --global yarn
 │   └── global.less             # 全局样式 umi会直接引入
 ├── .editorconfig               # IDE设置文件
 ├── .gitignore                  # Git忽略文件
-├── .huskyrc.js                 # husky配置文件
 ├── .nvmrc                      # 
 ├── .prettierignore             # 
 ├── .prettierrc.js              # 
