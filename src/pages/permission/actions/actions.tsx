@@ -2,10 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { connect } from 'dva';
 import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import DrawerWrapper from '@/components/drawer-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 import { IModule, IAction } from '../models/action';
+import ActionForm from '../components/action-form';
 
 interface IProps extends ConnectProps {
   modules: IModule[];
@@ -131,14 +131,11 @@ const ActionPage: React.FC<IProps> = (props) => {
         {table}
       </Card>
 
-      <DrawerWrapper
+      <ActionForm
         visible={visible}
+        modules={modules}
         onClose={handleCloseDrawer}
-        width={600}
-        title="添加操作"
-      >
-        124
-      </DrawerWrapper>
+      />
     </React.Fragment>
   )
 };
