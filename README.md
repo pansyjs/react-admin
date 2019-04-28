@@ -124,7 +124,6 @@ npm install --global yarn
 │   └── global.less             # 全局样式 umi会直接引入
 ├── .editorconfig               # IDE设置文件
 ├── .gitignore                  # Git忽略文件
-├── .huskyrc.js                 # husky配置文件
 ├── .nvmrc                      # 
 ├── .prettierignore             # 
 ├── .prettierrc.js              # 
