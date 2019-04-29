@@ -24,7 +24,7 @@
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/ts-react/react-admin-template.git",
-  "author": "wangxingkang <wang_xingkang@qq.com>",
+  "author": "JiuMao FE Team",
   "license": "MIT",
   "dependencies": {
     "@antv/data-set": "^0.10.1",
