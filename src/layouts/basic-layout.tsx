@@ -85,7 +85,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     });
     // 保存Tab数据到全局状态
     dispatch!({
-      type: 'global/fetchAddTab',
+      type: 'tabs/fetchAddTab',
       payload: {
         tabList,
         location
@@ -93,7 +93,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     });
     // 保存当前活跃Tab Key
     dispatch!({
-      type: 'global/saveTabActiveKey',
+      type: 'tabs/saveTabActiveKey',
       payload: store.get(storageTabActiveKey) || ''
     });
   });
@@ -116,7 +116,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     if (!menuData) return;
 
     dispatch!({
-      type: 'global/saveTabActiveKey',
+      type: 'tabs/saveTabActiveKey',
       payload: menuData.path
     });
 
@@ -126,7 +126,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     };
 
     dispatch!({
-      type: 'global/fetchAddTab',
+      type: 'tabs/fetchAddTab',
       payload: {
         tabData,
         location
@@ -137,14 +137,14 @@ const BasicLayout: React.FC<IProps> = (props) => {
   const handleTabClick = (tabData: ITab) => {
     const { menuData } = tabData;
     dispatch!({
-      type: 'global/saveTabActiveKey',
+      type: 'tabs/saveTabActiveKey',
       payload: menuData.path
     });
   };
 
   const handleTabRemove = (id) => {
     dispatch({
-      type: 'global/fetchRemoveTab',
+      type: 'tabs/fetchRemoveTab',
       payload: id
     })
   };
@@ -196,9 +196,9 @@ BasicLayout.defaultProps = {
   prefixCls: 'lotus-basic-layout'
 };
 
-export default connect(({ menu, global }) => ({
-  tabActiveKey: global.tabActiveKey,
-  tabList: global.tabList,
+export default connect(({ menu, tabs }) => ({
+  tabActiveKey: tabs.tabActiveKey,
+  tabList: tabs.tabList,
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
 }))(BasicLayout);

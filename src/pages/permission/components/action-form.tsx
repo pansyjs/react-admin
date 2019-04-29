@@ -42,7 +42,7 @@ const ActionForm: React.FC<IProps> = (props) => {
   const moduleOptions = useMemo(() => {
     return (
       modules.map(item => (
-        <Option value={item.id}>
+        <Option key={item.id} value={item.id}>
           {item.name}
         </Option>
       ))
