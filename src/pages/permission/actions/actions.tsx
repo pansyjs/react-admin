@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { connect } from 'dva';
-import {Button, Card, Tooltip, Typography} from 'antd';
+import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import DrawerWrapper from '@/components/drawer-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 import { IModule, IAction } from '../models/action';
+import ActionForm from '../components/action-form';
 
 interface IProps extends ConnectProps {
   modules: IModule[];
@@ -13,14 +13,19 @@ interface IProps extends ConnectProps {
 }
 
 const { Paragraph } = Typography;
+const { confirm } = Modal;
 
 const ActionPage: React.FC<IProps> = (props) => {
   const { dispatch, modules, actions } = props;
   const [visible, setVisible] = useState<boolean>(false);
+
   useState(() => {
     dispatch({
       type: 'action/fetchModuleList'
-    })
+    });
+    dispatch({
+      type: 'action/fetchList'
+    });
   });
 
   const showCreateView = () => {
@@ -31,10 +36,36 @@ const ActionPage: React.FC<IProps> = (props) => {
     setVisible(false);
   };
 
+  const handleConfirmRemove = (value) => {
+    confirm({
+      title: `确定删除${value.name}操作?`,
+      content: '删除不可恢复',
+      okText: '确认',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        handleRemove(value);
+      }
+    });
+  };
+
+  const handleRemove = (value) => {
+    dispatch({
+      type: 'action/fetchRemove',
+      payload: {
+        id: value.id
+      }
+    }).then(() => {
+      dispatch({
+        type: 'action/fetchList'
+      });
+    });
+  };
+
   const columns = [
     {
       title: '所属模块',
-      dataIndex: 'mould'
+      dataIndex: 'module'
     },
     {
       title: '操作名称',
@@ -57,6 +88,7 @@ const ActionPage: React.FC<IProps> = (props) => {
             type="danger"
             size="small"
             icon="delete"
+            onClick={() => { handleConfirmRemove(record) }}
           />
         </Tooltip>
       )
@@ -99,14 +131,11 @@ const ActionPage: React.FC<IProps> = (props) => {
         {table}
       </Card>
 
-      <DrawerWrapper
+      <ActionForm
         visible={visible}
+        modules={modules}
         onClose={handleCloseDrawer}
-        width={600}
-        title="添加操作"
-      >
-        124
-      </DrawerWrapper>
+      />
     </React.Fragment>
   )
 };
