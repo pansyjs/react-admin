@@ -36,6 +36,10 @@
 
 <img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/dingding.jpeg"></img>
 
+# 广告
+
+[awesome-frontend](https://github.com/wangxingkang/awesome-frontend) 整理前端相关的博客、教程、库... 欢迎查阅
+
 # 使用
 
 1. 安装 NodeJs 推荐安装最新稳定版
