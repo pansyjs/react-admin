@@ -3,13 +3,15 @@ import { AnyAction } from 'redux';
 import { IRoute } from 'umi-types';
 import { EffectsCommandMap } from 'dva';
 import { match } from 'react-router-dom';
-import { IMenuModelState } from './menu';
-import { IGlobalModelState } from './global';
+import { IMenuModelState } from '@/models/menu';
+import { IGlobalModelState } from '@/models/global';
+import { ITabsModelState } from '@/models/tabs';
 
 export interface ConnectState {
   loading: Loading;
   menu: IMenuModelState;
   global: IGlobalModelState;
+  tabs: ITabsModelState
 }
 
 export type Effect = (
