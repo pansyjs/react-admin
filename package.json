@@ -30,7 +30,7 @@
     "@antv/data-set": "^0.10.1",
     "antd": "^3.16.5",
     "axios": "^0.18.0",
-    "bizcharts": "^3.4.1",
+    "bizcharts": "^3.5.2",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
