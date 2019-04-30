@@ -11,18 +11,12 @@ export interface IHeaderViewProps extends Required<ConnectProps>{
   autoHideHeader?: boolean;
 }
 
-interface IState {
-  visible: boolean;
-}
-
 const { Header } = Layout;
 
-@connect(({ user }) => ({
-  currentUser: user.currentUser,
-}))
-class HeaderView extends React.Component<IHeaderViewProps, IState> {
-  handleMenuClick = (key) => {
-    const { dispatch } = this.props;
+const HeaderView: React.FC<IHeaderViewProps> = (props) => {
+  const { dispatch } = props;
+
+  const handleMenuClick = (key) => {
     // 跳转到个人中心
     if (key === 'account-center') {
       router.push('/account/center');
@@ -37,18 +31,16 @@ class HeaderView extends React.Component<IHeaderViewProps, IState> {
     }
   };
 
-  render() {
-    return (
-      <Header style={{ padding: 0 }}>
-        <GlobalHeader
-          onMenuClick={this.handleMenuClick}
-          {...this.props}
-        />
-      </Header>
-    )
-  }
-}
+  return (
+    <Header style={{ padding: 0 }}>
+      <GlobalHeader
+        onMenuClick={handleMenuClick}
+        {...props}
+      />
+    </Header>
+  )
+};
 
-export default connect(({  }: ConnectState) => ({
-
+export default connect(({ user }: ConnectState) => ({
+  currentUser: user.currentUser,
 }))(HeaderView);
