@@ -6,12 +6,16 @@ import { match } from 'react-router-dom';
 import { IMenuModelState } from '@/models/menu';
 import { IGlobalModelState } from '@/models/global';
 import { ITabsModelState } from '@/models/tabs';
+import { IUserModelState } from '@/models/user';
+import { IActionModelState } from '@/models/action';
 
 export interface ConnectState {
   loading: Loading;
   menu: IMenuModelState;
   global: IGlobalModelState;
-  tabs: ITabsModelState
+  tabs: ITabsModelState,
+  user: IUserModelState,
+  action: IActionModelState
 }
 
 export type Effect = (

@@ -1,6 +1,7 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
+import { IPolicyData } from '@/components/authorized/policy';
 
 export interface ICurrentUser {
   name?: string;
@@ -10,7 +11,7 @@ export interface ICurrentUser {
 
 export interface IUserModelState {
   currentUser: ICurrentUser;
-  isSuperAdmin: boolean;
+  policies: IPolicyData[];
 }
 
 export interface IUserModel {
@@ -21,6 +22,7 @@ export interface IUserModel {
     fetchCurrent: Effect;
   },
   reducers: {
+    savePolicies: Reducer<any>;
     saveCurrentUser: Reducer<any>;
     changeNotifyCount: Reducer<any>;
   }
@@ -30,19 +32,26 @@ const UserModel: IUserModel = {
   namespace: 'user',
   state: {
     currentUser: {},
-    isSuperAdmin: false
+    policies: []
   },
   effects: {
     *fetchCurrent(_, { call, put }) {
       const response = yield call(fetchCurrent);
       if (response && response.code === 200) {
         const info = response.data || {};
+        const { policies } = info;
+
         yield put({
           type: 'saveCurrentUser',
           payload: {
             ...info
           }
         });
+
+        yield put({
+          type: 'savePolicies',
+          payload: policies
+        })
       }
     },
   },
@@ -51,6 +60,12 @@ const UserModel: IUserModel = {
       return {
         ...state,
         currentUser: payload
+      };
+    },
+    savePolicies(state, { payload }) {
+      return {
+        ...state,
+        policies: payload
       };
     },
     changeNotifyCount(state, { payload }) {

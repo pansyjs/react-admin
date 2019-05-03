@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import H from 'history';
+import { Location } from 'history';
 import { IMenu } from '@/components/side-menu';
 
 export type IProviderStore =  {
-  location?: H.Location;
+  location?: Location;
   breadcrumbNameMap: { [path: string]: IMenu };
 };
 

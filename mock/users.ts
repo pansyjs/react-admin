@@ -6,7 +6,21 @@ function fetchCurrent(req, res) {
       name: '系统管理员',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
       unreadCount: 11,
-      email: 'wang_xingkang@qq.com'
+      email: 'wang_xingkang@qq.com',
+      policies: [
+        {
+          version: 1,
+          statement: [
+            {
+              effect: 'allow',
+              action: [
+                'permission/*',
+                'dashboard/analysis'
+              ]
+            }
+          ]
+        }
+      ]
     },
     message: 'success'
   });

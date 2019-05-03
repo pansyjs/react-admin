@@ -34,11 +34,17 @@ export default [
           {
             path: '/dashboard/analysis',
             name: 'analysis',
+            authority: [
+              'dashboard/analysis'
+            ],
             component: './dashboard/analysis'
           },
           {
             path: '/dashboard/workplace',
             name: 'workplace',
+            authority: [
+              'dashboard/workplace'
+            ],
             component: './dashboard/workplace'
           }
         ]
@@ -47,6 +53,7 @@ export default [
         name: 'exception',
         icon: 'warning',
         path: '/exception',
+        authority: '*',
         routes: [
           // exception
           {
@@ -74,12 +81,14 @@ export default [
           {
             path: '/permission/actions',
             name: 'actions',
+            authority: ['permission/actionList'],
             component: './permission/actions/actions'
           },
           {
             path: '/permission/policies',
             name: 'policies',
             component: './permission/policies/policies',
+            authority: ['permission/policyList'],
             hideChildrenInMenu: true,
             routes: [
               {
