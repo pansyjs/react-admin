@@ -1,10 +1,11 @@
 import { Reducer } from 'redux';
 import { fetchNotices } from '@/services/global';
 import { fetchList } from '@/services/action';
-import { IAction } from '@/components/authorized/policy';
+import Policy, { IAction } from '@/components/authorized/policy';
 import { Effect } from '@/models/connect';
 
 export interface IGlobalModelState {
+  policy: Policy;
   actions: IAction[];
   notices: any[];
 }
@@ -17,6 +18,7 @@ export interface IGlobalModel {
     fetchActions: Effect;
   },
   reducers: {
+    savePolicy: Reducer<any>;
     saveNotices: Reducer<any>;
     saveActions: Reducer<any>;
   }
@@ -25,6 +27,7 @@ export interface IGlobalModel {
 const GlobalModel: IGlobalModel = {
   name: 'global',
   state: {
+    policy: null,
     actions: [],
     notices: []
   },
@@ -67,6 +70,12 @@ const GlobalModel: IGlobalModel = {
     },
   },
   reducers: {
+    savePolicy(state, { payload }) {
+      return {
+        ...state,
+        policy: payload
+      };
+    },
     saveNotices(state, { payload }) {
       return {
         ...state,
