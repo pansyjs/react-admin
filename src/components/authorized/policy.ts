@@ -23,7 +23,7 @@ export interface IPolicyData {
 }
 
 class Policy {
-  private readonly moduleMap: IModuleAction = {};
+  public moduleMap: IModuleAction = {};
   public allowActions: string[];
   public denyActions: string[];
 
@@ -57,7 +57,7 @@ class Policy {
   };
 
   // 验证Action
-  verifyAction = (actions: string | string[]) => {
+  verifyAction = (actions: string | string[]): boolean => {
     if (isString(actions)) {
       return this.oneActionVerify(actions);
     }
@@ -133,7 +133,6 @@ class Policy {
     if (action === '*') {
       result = actions;
     } else {
-      if (!actions.includes(action)) return result;
       const list = action.split('/');
       if (list.length === 2 && actions.length) {
         const moduleName = list[0];

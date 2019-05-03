@@ -72,9 +72,9 @@ const BasicLayout: React.FC<IProps> = (props) => {
   useState(() => {
     const tabList = store.get(tabListKey) || [];
     // 获取当前登录用户信息
-    dispatch!({
-      type: 'user/fetchCurrent'
-    });
+    // dispatch!({
+    //   type: 'user/fetchCurrent'
+    // });
     // 获取菜单数据
     dispatch!({
       type: 'menu/getMenuData',

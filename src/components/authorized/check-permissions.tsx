@@ -1,4 +1,7 @@
 import React from 'react';
+import isUndefined from 'lodash/isUndefined';
+import isNull from 'lodash/isNull';
+import isBoolean from 'lodash/isBoolean';
 import PromiseRender from './promise-render';
 import { CURRENT } from './render-authorize';
 
@@ -8,6 +11,7 @@ export type Authority =
   | Promise<any>
   | null
   | undefined
+  | boolean
   | ((current?: string | string[]) => Promise<any> | boolean);
 
 /**
@@ -25,8 +29,13 @@ const checkPermissions = (
   Exception?: React.ReactNode,
 ): React.ReactNode => {
   // 没有判定权限.默认查看所有
-  if (!authority) {
+  if (isUndefined(authority) || isNull(authority)) {
     return target;
+  }
+
+  // Boolean处理
+  if (isBoolean(authority)) {
+    return authority ? target : Exception;
   }
 
   // 数组处理
