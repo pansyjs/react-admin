@@ -8,12 +8,11 @@ import Exception403 from '@/pages/exception/403';
 import { ConnectProps } from '@/models/connect';
 
 interface IProps extends ConnectProps {
+  policy: Policy;
   actions: IAction[];
   routerData: any[];
   policies: IPolicyData[];
 }
-
-let policy: Policy = null;
 
 const AuthComponent: React.FC<IProps> = (props) => {
   const {
@@ -24,6 +23,7 @@ const AuthComponent: React.FC<IProps> = (props) => {
     routerData,
     dispatch
   } = props;
+  let policy = props.policy;
   const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useState(() => {
@@ -46,6 +46,10 @@ const AuthComponent: React.FC<IProps> = (props) => {
       policies.forEach(item => {
         policy.addPolicy(item);
       });
+      dispatch({
+        type: 'global/savePolicy',
+        payload: policy
+      })
     }
   }, [props.actions, props.policies]);
 
@@ -65,28 +69,27 @@ const AuthComponent: React.FC<IProps> = (props) => {
     return authorities;
   };
 
-  if (loading) {
+  if (loading || !policy) {
     return (
       <PageLoading />
     )
-  } else {
-    const Authorized = RenderAuthorized(policy.getAllAction());
-    const authority = getRouteAuthority(location.pathname, routerData);
-
-    return policy ? (
-      <Authorized
-        authority={policy.verifyAction(authority)}
-        noMatch={<Exception403 />}
-      >
-        {children}
-      </Authorized>
-    ) : (
-      <PageLoading />
-    );
   }
+
+  const Authorized = RenderAuthorized(policy.getAllAction());
+  const authority = getRouteAuthority(location.pathname, routerData);
+
+  return (
+    <Authorized
+      authority={policy.verifyAction(authority)}
+      noMatch={<Exception403 />}
+    >
+      {children}
+    </Authorized>
+  )
 };
 
 export default connect(({ menu, user, global }) => ({
+  policy: global.policy,
   actions: global.actions,
   policies: user.policies,
   routerData: menu.routerData
