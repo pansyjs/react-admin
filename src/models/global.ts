@@ -37,8 +37,8 @@ const GlobalModel: IGlobalModel = {
       if (response && response.code === 200) {
         const list = response.data;
 
-        const actions: IAction[] = list.map(item => ({
-          module: item.module,
+        const actions = list.map(item => ({
+          module: item.module.name,
           name: item.name
         }));
 

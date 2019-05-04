@@ -1,11 +1,14 @@
-import React, { useMemo } from 'react';
-import { Form, Input, Select } from 'antd';
+import React from 'react';
+import { Form, Input, Select, Radio } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage } from 'umi-plugin-react/locale';
 import DrawerWrapper from '@/components/drawer-wrapper';
-import { IModule } from '../models/action';
+import { IModule } from '@/models/action';
+
+export type TFormType = 'create' | 'update';
 
 interface IProps extends FormComponentProps {
+  formType: TFormType;
   visible: boolean;
   modules: IModule[];
   onClose: () => void;
@@ -20,8 +23,16 @@ const ActionForm: React.FC<IProps> = (props) => {
     visible,
     modules,
     onClose,
+    formType,
     form: { getFieldDecorator }
   } = props;
+  const [title, setTitle] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (formType) {
+      setTitle(formType === 'create' ? '创建操作' : '更新操作');
+    }
+  }, [props.formType]);
 
   const handleClose = () => {
     onClose && onClose();
@@ -39,7 +50,7 @@ const ActionForm: React.FC<IProps> = (props) => {
     },
   };
 
-  const moduleOptions = useMemo(() => {
+  const moduleOptions = React.useMemo(() => {
     return (
       modules.map(item => (
         <Option key={item.id} value={item.id}>
@@ -54,7 +65,7 @@ const ActionForm: React.FC<IProps> = (props) => {
       visible={visible}
       onClose={handleClose}
       width={600}
-      title="添加操作"
+      title={title}
     >
       <Form>
         <FormItem {...formItemLayout} label="操作名称">
@@ -83,6 +94,26 @@ const ActionForm: React.FC<IProps> = (props) => {
             >
               {moduleOptions}
             </Select>
+          )}
+        </FormItem>
+        <FormItem {...formItemLayout} label="操作类型">
+          {getFieldDecorator('type', {
+            initialValue: 1,
+            rules: [
+              {
+                required: true,
+                message: '请选择操作类型'
+              },
+            ],
+          })(
+            <Radio.Group>
+              <Radio value={0}>
+                非API
+              </Radio>
+              <Radio value={1}>
+                API
+              </Radio>
+            </Radio.Group>
           )}
         </FormItem>
         <FormItem {...formItemLayout} label="备注">

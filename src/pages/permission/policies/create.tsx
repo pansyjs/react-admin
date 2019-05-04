@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import router from 'umi/router';
-import { Button, Card, Tooltip, Form } from 'antd';
+import { Button, Card, Tooltip, Form, Input, Row, Col } from 'antd';
+import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import DrawerWrapper from '@/components/drawer-wrapper';
+import FooterToolbar from '@/components/footer-toolbar';
 import StandardTable from '@/components/standard-table';
+import StatementForm from '../components/statement-form';
 
-const CreatePolicies: React.FC = () => {
+interface IProps extends FormComponentProps {
+
+}
+
+const CreatePolicies: React.FC<IProps> = (props) => {
+  const { form } = props;
+  const { getFieldDecorator } = form;
   const [visible, setVisible] = useState<boolean>(false);
 
   const showCreateView = () => {
@@ -19,19 +27,15 @@ const CreatePolicies: React.FC = () => {
   const columns = [
     {
       title: '权限效力',
-      dataIndex: 'name'
+      dataIndex: 'effect'
     },
     {
       title: '模块',
-      dataIndex: 'type'
+      dataIndex: 'module'
     },
     {
       title: '操作名称',
-      dataIndex: 'attachmentCount'
-    },
-    {
-      title: '资源',
-      dataIndex: 'remark'
+      dataIndex: 'actionName'
     },
     {
       title: '操作',
@@ -48,7 +52,6 @@ const CreatePolicies: React.FC = () => {
     }
   ];
 
-
   return (
     <React.Fragment>
       <PageHeaderWrapper
@@ -58,25 +61,46 @@ const CreatePolicies: React.FC = () => {
             添加授权语句
           </Button>
         ]}
-      />
-
-      <DrawerWrapper
-        visible={visible}
-        width={600}
-        title="添加授权语句"
-        onClose={closeCreateView}
       >
-        13
-      </DrawerWrapper>
+        <Form layout="inline">
+          <Form.Item label="策略名称">
+            {getFieldDecorator('name', {
+              rules: [
+                {
+                  required: true,
+                  message: '策略名称不能为空'
+                },
+              ],
+            })(<Input placeholder="请输入策略名称" />)}
+          </Form.Item>
+          <Form.Item label="策略备注">
+            {getFieldDecorator('remark', {
+
+            })(<Input placeholder="请输入策略备注" />)}
+          </Form.Item>
+        </Form>
+      </PageHeaderWrapper>
+
+      <StatementForm
+        visible={visible}
+        onClose={closeCreateView}
+      />
 
       <Card bordered={false}>
         <StandardTable
-          list={[]}
+          data={{
+            list: []
+          }}
           columns={columns}
         />
       </Card>
+
+      <FooterToolbar>
+        <Button type="primary">确定</Button>
+        <Button>返回</Button>
+      </FooterToolbar>
     </React.Fragment>
   )
 };
 
-export default CreatePolicies;
+export default Form.create()(CreatePolicies);

@@ -48,11 +48,17 @@ const ActionModel: IActionModel = {
     *fetchList({ payload }, { call, put }) {
       const response = yield call(fetchList, payload);
       if (response && response.code === 200) {
-        const data = response.data;
+        const list = response.data;
+
+        const actions = list.map(item => {
+          const action = { ...item };
+          action.module = action.module.name;
+          return action;
+        });
 
         yield put({
           type: 'saveList',
-          payload: data
+          payload: actions
         })
       }
     },

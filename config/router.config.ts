@@ -54,6 +54,7 @@ export default [
         icon: 'warning',
         path: '/exception',
         authority: '*',
+        hideInMenu: true,
         routes: [
           // exception
           {
