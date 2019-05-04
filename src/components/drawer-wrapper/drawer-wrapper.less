@@ -6,6 +6,7 @@
   .ant-drawer-body {
     height: 100%;
     padding: 0;
+    min-height: 300px;
   }
 
   .@{prefix-cls}__title {
@@ -58,5 +59,21 @@
 
   .@{prefix-cls}__body {
     padding: 16px 24px;
+  }
+
+  .@{prefix-cls}__footer {
+    background: #fff;
+    width: 100%;
+    border-top: 1px solid #efefef;
+    overflow: hidden;
+    padding: 0 24px;
+    height: @layout-header-height;;
+    line-height: @layout-header-height;;
+    position: absolute;
+    bottom: 0;
+
+    button + button {
+      margin-left: 10px;
+    }
   }
 }

@@ -4,8 +4,8 @@ import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
-import { IModule, IAction } from '../models/action';
-import ActionForm from '../components/action-form';
+import { IModule, IAction } from '@/models/action';
+import ActionForm, { TFormType } from '../components/action-form';
 
 interface IProps extends ConnectProps {
   modules: IModule[];
@@ -18,10 +18,12 @@ const { confirm } = Modal;
 const ActionPage: React.FC<IProps> = (props) => {
   const { dispatch, modules, actions } = props;
   const [visible, setVisible] = useState<boolean>(false);
+  const [formType, setFormType] = useState<TFormType>('create');
+  const [currentAction, setCurrentAction] = useState<IAction>({});
 
   useState(() => {
     dispatch({
-      type: 'action/fetchModuleList'
+      type: 'action/fetchModules'
     });
     dispatch({
       type: 'action/fetchList'
@@ -30,6 +32,13 @@ const ActionPage: React.FC<IProps> = (props) => {
 
   const showCreateView = () => {
     setVisible(true);
+    setFormType('create');
+  };
+
+  const showUpdateView = (record) => {
+    console.log(record);
+    setVisible(true);
+    setFormType('update');
   };
 
   const handleCloseDrawer = () => {
@@ -73,7 +82,10 @@ const ActionPage: React.FC<IProps> = (props) => {
     },
     {
       title: '类型',
-      dataIndex: 'type'
+      dataIndex: 'type',
+      render: (text) => {
+        return text ? 'API' : '非API';
+      }
     },
     {
       title: '备注',
@@ -83,14 +95,23 @@ const ActionPage: React.FC<IProps> = (props) => {
       title: '操作',
       key: 'action',
       render: (text, record) => (
-        <Tooltip placement="top" title="删除">
-          <Button
-            type="danger"
-            size="small"
-            icon="delete"
-            onClick={() => { handleConfirmRemove(record) }}
-          />
-        </Tooltip>
+        <div className="table-action">
+          <Tooltip placement="top" title="更新">
+            <Button
+              size="small"
+              icon="edit"
+              onClick={() => { showUpdateView(record) }}
+            />
+          </Tooltip>
+          <Tooltip placement="top" title="删除">
+            <Button
+              type="danger"
+              size="small"
+              icon="delete"
+              onClick={() => { handleConfirmRemove(record) }}
+            />
+          </Tooltip>
+        </div>
       )
     }
   ];
@@ -134,6 +155,7 @@ const ActionPage: React.FC<IProps> = (props) => {
       <ActionForm
         visible={visible}
         modules={modules}
+        formType={formType}
         onClose={handleCloseDrawer}
       />
     </React.Fragment>
