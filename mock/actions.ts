@@ -19,7 +19,7 @@ let actions = [
 function getActions() {
   return actions.map((item) => {
     const action = { ...item };
-    action['module'] = getModuleName(action.moduleId);
+    action['module'] = getModule(action.moduleId);
 
     delete action.moduleId;
 
@@ -27,7 +27,7 @@ function getActions() {
   });
 }
 
-function getModuleName (moduleId) {
+function getModule(moduleId) {
   let module;
 
   for (let i = 0, len = modules.length; i < len; i++) {
@@ -48,7 +48,13 @@ function fetchGetModules(req, res) {
 }
 
 function fetchGetActions(req, res) {
-  const list = getActions();
+  const { moduleId } = req.query;
+
+  let list = getActions();
+
+  if (moduleId) {
+    list = list.filter((item) => item['module'].id === Number(moduleId))
+  }
 
   res.send({
     code: 200,
@@ -58,8 +64,6 @@ function fetchGetActions(req, res) {
 }
 
 function fetchUpdateAction(req, res) {
-  console.log(req);
-
   res.send({
     code: 200,
     data: {},

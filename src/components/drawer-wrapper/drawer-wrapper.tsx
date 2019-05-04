@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Drawer, Icon } from 'antd';
+import { Drawer, Icon, Button } from 'antd';
+import { ButtonProps } from 'antd/es/button';
 import { DrawerProps } from 'antd/es/drawer';
 import './drawer-wrapper.less';
 
 interface IProps extends DrawerProps {
   prefixCls?: string;
+  onConfirm?: (e) => void;
+  confirmButton?: ButtonProps;
+  onCancel?: (e) => void;
+  showFooter?: boolean;
 }
 
 const DrawerWrapper: React.FC<IProps> = (props) => {
@@ -18,6 +23,10 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
     height,
     placement,
     onClose,
+    onCancel,
+    onConfirm,
+    showFooter,
+    confirmButton,
     ...restProps
   } = props;
   // 是否全屏
@@ -48,6 +57,14 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
         setDrawerHeight(props.height);
       }
     }
+  };
+
+  const handleConfirm = (e) => {
+    onConfirm && onConfirm(e);
+  };
+
+  const handleCancel = (e) => {
+    onCancel && onCancel(e);
   };
 
   const handleClose = (e) => {
@@ -87,6 +104,16 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
       <div className={`${prefixCls}__body`}>
         {children}
       </div>
+      {showFooter && (
+        <div className={`${prefixCls}__footer`}>
+          <Button
+            type="primary"
+            {...confirmButton}
+            onClick={handleConfirm}
+          >确定</Button>
+          <Button onClick={handleCancel}>取消</Button>
+        </div>
+      )}
     </Drawer>
   )
 };
@@ -95,7 +122,8 @@ DrawerWrapper.defaultProps = {
   prefixCls: 'lotus-drawer-wrapper',
   placement: 'right',
   height: 300,
-  width: 300
+  width: 300,
+  showFooter: true
 };
 
 export default DrawerWrapper;

@@ -23,7 +23,7 @@ const ActionPage: React.FC<IProps> = (props) => {
 
   useState(() => {
     dispatch({
-      type: 'action/fetchModuleList'
+      type: 'action/fetchModules'
     });
     dispatch({
       type: 'action/fetchList'

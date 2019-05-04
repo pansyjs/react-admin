@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'dva';
 import router from 'umi/router';
-import { Button, Card, Tooltip, Form, Input, Row, Col } from 'antd';
+import { Button, Card, Tooltip, Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import FooterToolbar from '@/components/footer-toolbar';
 import StandardTable from '@/components/standard-table';
+import { IModule, IAction } from '@/models/action';
+import { ConnectProps } from '@/models/connect';
 import StatementForm from '../components/statement-form';
 
-interface IProps extends FormComponentProps {
-
+interface IProps extends ConnectProps, FormComponentProps {
+  modules: IModule[];
+  actions: IAction[];
 }
 
-const CreatePolicies: React.FC<IProps> = (props) => {
-  const { form } = props;
+const CreatePolicy: React.FC<IProps> = (props) => {
+  const { dispatch, form, modules, actions } = props;
   const { getFieldDecorator } = form;
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(false);
+
+  React.useState(() => {
+    dispatch({
+      type: 'action/fetchModules'
+    })
+  });
 
   const showCreateView = () => {
     setVisible(true);
@@ -22,6 +32,18 @@ const CreatePolicies: React.FC<IProps> = (props) => {
 
   const closeCreateView = () => {
     setVisible(false);
+  };
+
+  const handleCreate = () => {
+    form.validateFields((error, values) => {
+      if (!error) {
+        console.log(values);
+      }
+    });
+  };
+
+  const handelCancel = () => {
+    router.push('/permission/policies');
   };
 
   const columns = [
@@ -83,6 +105,10 @@ const CreatePolicies: React.FC<IProps> = (props) => {
 
       <StatementForm
         visible={visible}
+        formType="create"
+        modules={modules}
+        actions={actions}
+        dispatch={dispatch}
         onClose={closeCreateView}
       />
 
@@ -96,11 +122,18 @@ const CreatePolicies: React.FC<IProps> = (props) => {
       </Card>
 
       <FooterToolbar>
-        <Button type="primary">确定</Button>
-        <Button>返回</Button>
+        <Button type="primary" onClick={handleCreate}>确定</Button>
+        <Button onClick={handelCancel}>返回</Button>
       </FooterToolbar>
     </React.Fragment>
   )
 };
 
-export default Form.create()(CreatePolicies);
+CreatePolicy.defaultProps = {
+  modules: []
+};
+
+export default connect(({ action }) => ({
+  modules: action.modules,
+  actions: action.list
+}))(Form.create()(CreatePolicy));

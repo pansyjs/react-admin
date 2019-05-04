@@ -30,7 +30,7 @@ export interface IActionModel {
   effects: {
     fetchList: Effect;
     fetchRemove: Effect;
-    fetchModuleList: Effect;
+    fetchModules: Effect;
   },
   reducers: {
     saveList: Reducer<any>;
@@ -56,6 +56,8 @@ const ActionModel: IActionModel = {
           return action;
         });
 
+        console.log(actions);
+
         yield put({
           type: 'saveList',
           payload: actions
@@ -68,7 +70,7 @@ const ActionModel: IActionModel = {
         message.success('删除成功！');
       }
     },
-    *fetchModuleList(_, { call, put }) {
+    *fetchModules(_, { call, put }) {
       const response = yield call(fetchModuleList);
       if (response && response.code === 200) {
         const data = response.data;
