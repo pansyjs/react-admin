@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'lodash/isEqual';
 import { connect } from 'dva';
 import router from 'umi/router';
 import { Button, Card, Tooltip, Form, Input } from 'antd';
@@ -49,6 +50,10 @@ const CreatePolicy: React.FC<IProps> = (props) => {
     setVisible(false);
   };
 
+  const handleStatementRemove = (value) => {
+    setStatement(statements.filter(item => !isEqual(item, value)));
+  };
+
   const handelCancel = () => {
     router.push('/permission/policies');
   };
@@ -85,6 +90,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
             type="danger"
             size="small"
             icon="delete"
+            onClick={() => handleStatementRemove(record)}
           />
         </Tooltip>
       )
