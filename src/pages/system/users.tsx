@@ -6,6 +6,8 @@ import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
 import { IUserTable, IUser } from '@/models/user';
 import UserDrawer, { TType } from './components/user-drawer';
+import UserPermission from './components/user-permission';
+import UserToGroup from './components/user-to-group';
 
 interface IProps extends ConnectProps {
   loading: boolean;
@@ -24,6 +26,8 @@ const UsersPage: React.FC<IProps> = (props) => {
   const { userTable, loading, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
+  const [permissionVisible, setPermissionVisible] = React.useState<boolean>(false);
+  const [groupVisible, setGroupVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
   const [currentUser, setCurrentUser] = React.useState<IUser>({});
   const [queryData, setQueryData] = React.useState<IQueryData>({
@@ -54,8 +58,26 @@ const UsersPage: React.FC<IProps> = (props) => {
     setVisible(true);
   };
 
+  const showPermissionView = (record) => {
+    setCurrentUser(record);
+    setPermissionVisible(true);
+  };
+
+  const showGroupView = (record) => {
+    setCurrentUser(record);
+    setGroupVisible(true);
+  };
+
   const handleClose = () => {
     setVisible(false);
+  };
+
+  const handlePermissionClose = () => {
+    setPermissionVisible(false);
+  };
+
+  const handleGroupClose = () => {
+    setGroupVisible(false);
   };
 
   const handleSubmit = (values) => {
@@ -139,6 +161,20 @@ const UsersPage: React.FC<IProps> = (props) => {
       key: 'action',
       render: (text, record) => (
         <div className="table-action">
+          <Tooltip placement="top" title="添加到用户组">
+            <Button
+              size="small"
+              icon="team"
+              onClick={() => { showGroupView(record) }}
+            />
+          </Tooltip>
+          <Tooltip placement="top" title="赋权">
+            <Button
+              size="small"
+              icon="api"
+              onClick={() => { showPermissionView(record) }}
+            />
+          </Tooltip>
           <Tooltip placement="top" title="更新">
             <Button
               size="small"
@@ -195,6 +231,16 @@ const UsersPage: React.FC<IProps> = (props) => {
         currentUser={currentUser}
         onSubmit={handleSubmit}
         onClose={handleClose}
+      />
+
+      <UserPermission
+        visible={permissionVisible}
+        onClose={handlePermissionClose}
+      />
+
+      <UserToGroup
+        visible={groupVisible}
+        onClose={handleGroupClose}
       />
     </React.Fragment>
   )
