@@ -8,14 +8,16 @@ import { IGlobalModelState } from '@/models/global';
 import { ITabsModelState } from '@/models/tabs';
 import { IUserModelState } from '@/models/user';
 import { IActionModelState } from '@/models/action';
+import { IPolicyModelState } from '@/pages/permission/models/policy';
 
 export interface ConnectState {
   loading: Loading;
   menu: IMenuModelState;
   global: IGlobalModelState;
-  tabs: ITabsModelState,
-  user: IUserModelState,
-  action: IActionModelState
+  tabs: ITabsModelState;
+  user: IUserModelState;
+  action: IActionModelState;
+  policy: IPolicyModelState;
 }
 
 export type Effect = (

@@ -41,7 +41,13 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const handleCreate = () => {
     form.validateFields((error, values) => {
       if (!error) {
-        console.log(values);
+        dispatch({
+          type: 'policy/fetchCreate',
+          payload: {
+            ...values,
+            document: statements
+          }
+        })
       }
     });
   };

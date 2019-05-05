@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchList } from '@/services/permission';
 
-export interface IPermission {
+export interface IPolicy {
   id?: string;
   // 权限策略名称
   name?: string;
@@ -12,32 +12,39 @@ export interface IPermission {
   attachmentCount?: number;
   // 备注
   remark?: string;
+  createDate?: string;
+  updateDate?: string;
+  document?: string;
 }
 
-export interface IPermissionModelState {
-  list: IPermission[];
+export interface IPolicyModelState {
+  list: IPolicy[];
 }
 
-export interface IPermissionModel {
-  namespace: 'permission',
-  state: IPermissionModelState,
+export interface IPolicyModel {
+  namespace: 'policy',
+  state: IPolicyModelState,
   effects: {
     fetchList: Effect;
+    fetchCreate: Effect;
   },
   reducers: {
     saveList: Reducer<any>;
   }
 }
 
-const PermissionModel: IPermissionModel = {
-  namespace: 'permission',
+const PolicyModel: IPolicyModel = {
+  namespace: 'policy',
   state: {
     list: []
   },
   effects: {
-    *fetchList({ payload }, { call, put, select }) {
+    *fetchList({ payload }, { call, put }) {
       const response = yield call(fetchList, payload);
 
+    },
+    *fetchCreate({ payload }, { call, put }) {
+      console.log(payload);
     }
   },
   reducers: {
@@ -50,4 +57,4 @@ const PermissionModel: IPermissionModel = {
   }
 };
 
-export default PermissionModel;
+export default PolicyModel;
