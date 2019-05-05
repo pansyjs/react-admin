@@ -1,11 +1,14 @@
 import React from 'react';
+import isEqual from 'lodash/isEqual';
+import uniqueId from 'lodash/uniqueId';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Button, Card, Tooltip, Form, Input } from 'antd';
+import { Button, Card, Tooltip, Form, Input, Tag } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import FooterToolbar from '@/components/footer-toolbar';
 import StandardTable from '@/components/standard-table';
+import { IStatement } from '@/components/authorized/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps } from '@/models/connect';
 import StatementForm from '../components/statement-form';
@@ -19,6 +22,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const { dispatch, form, modules, actions } = props;
   const { getFieldDecorator } = form;
   const [visible, setVisible] = React.useState<boolean>(false);
+  const [statements, setStatement] = React.useState<IStatement[]>([]);
 
   React.useState(() => {
     dispatch({
@@ -37,9 +41,24 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const handleCreate = () => {
     form.validateFields((error, values) => {
       if (!error) {
-        console.log(values);
+        dispatch({
+          type: 'policy/fetchCreate',
+          payload: {
+            ...values,
+            document: statements
+          }
+        })
       }
     });
+  };
+
+  const handleStatementCreate = (value) => {
+    setStatement([...statements, value]);
+    setVisible(false);
+  };
+
+  const handleStatementRemove = (value) => {
+    setStatement(statements.filter(item => !isEqual(item, value)));
   };
 
   const handelCancel = () => {
@@ -49,25 +68,40 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const columns = [
     {
       title: '权限效力',
-      dataIndex: 'effect'
+      dataIndex: 'effect',
+      render: (text) => {
+        return text === 'allow' ? '允许' : '禁止';
+      }
     },
     {
       title: '模块',
-      dataIndex: 'module'
+      dataIndex: 'module',
+      render: (text, record) => {
+        const action = record.action[0];
+        return action.split('/')[0];
+      }
     },
     {
       title: '操作名称',
-      dataIndex: 'actionName'
+      dataIndex: 'action',
+      render: (text) => {
+        return (
+          text.map((item, index) => (
+            <Tag key={index} color="#2db7f5">{item}</Tag>
+          ))
+        );
+      }
     },
     {
       title: '操作',
-      key: 'action',
+      key: 'buttons',
       render: (text, record) => (
         <Tooltip placement="top" title="删除">
           <Button
             type="danger"
             size="small"
             icon="delete"
+            onClick={() => handleStatementRemove(record)}
           />
         </Tooltip>
       )
@@ -109,15 +143,17 @@ const CreatePolicy: React.FC<IProps> = (props) => {
         modules={modules}
         actions={actions}
         dispatch={dispatch}
+        onConfirm={handleStatementCreate}
         onClose={closeCreateView}
       />
 
       <Card bordered={false}>
         <StandardTable
           data={{
-            list: []
+            list: statements
           }}
           columns={columns}
+          rowKey={() => uniqueId()}
         />
       </Card>
 

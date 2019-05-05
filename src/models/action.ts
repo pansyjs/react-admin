@@ -56,8 +56,6 @@ const ActionModel: IActionModel = {
           return action;
         });
 
-        console.log(actions);
-
         yield put({
           type: 'saveList',
           payload: actions

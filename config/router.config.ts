@@ -101,6 +101,23 @@ export default [
           }
         ],
       },
+      {
+        name: 'system',
+        icon: 'desktop',
+        path: '/system',
+        routes: [
+          {
+            path: '/system/user',
+            name: 'user',
+            component: './system/users'
+          },
+          {
+            path: '/system/group',
+            name: 'group',
+            component: './system/groups'
+          }
+        ],
+      },
     ]
   }
 ];
