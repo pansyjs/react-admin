@@ -1,5 +1,6 @@
+import { mock } from 'mockjs';
+
 function fetchCurrent(req, res) {
-  const { token } = req.headers;
   res.send({
     code: 200,
     data: {
@@ -23,6 +24,18 @@ function fetchCurrent(req, res) {
       ]
     },
     message: 'success'
+  });
+}
+
+function fetchList(req, res) {
+
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {
+      list: [],
+      total: 30
+    }
   });
 }
 
@@ -67,6 +80,7 @@ function fetchLogout(req, res) {
 
 export default {
   'POST /api/users/login': fetchLogin,
+  'GET /api/users/list': fetchList,
   'GET /api/users/current': fetchCurrent,
   'GET /api/users/logout': fetchLogout
 };

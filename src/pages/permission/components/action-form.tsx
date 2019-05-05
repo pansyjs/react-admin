@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Input, Select, Radio } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
-import { formatMessage } from 'umi-plugin-react/locale';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import { IModule } from '@/models/action';
 

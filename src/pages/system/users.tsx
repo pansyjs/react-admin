@@ -4,6 +4,7 @@ import { Button, Card, Tooltip, Typography } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { IUserTable } from '@/models/user';
+import UserDrawer, { TType } from './components/user-drawer';
 
 interface IProps {
   userTable: IUserTable
@@ -13,6 +14,18 @@ const { Paragraph } = Typography;
 
 const UsersPage: React.FC<IProps> = (props) => {
   const { userTable } = props;
+
+  const [visible, setVisible] = React.useState<boolean>(false);
+  const [type, setType] = React.useState<TType>('create');
+
+  const showCreateView = () => {
+    setType('create');
+    setVisible(true);
+  };
+
+  const handleClose = () => {
+    setVisible(false);
+  };
 
   const columns = [
     {
@@ -71,6 +84,11 @@ const UsersPage: React.FC<IProps> = (props) => {
     <React.Fragment>
       <PageHeaderWrapper
         title="用户管理"
+        extra={[
+          <Button key="1" type="primary" onClick={showCreateView}>
+            新建用户
+          </Button>
+        ]}
       >
         <Paragraph>
           用户可以单独授权，单独授权的用户将不继承已添加的用户组的权限
@@ -81,6 +99,11 @@ const UsersPage: React.FC<IProps> = (props) => {
         {table}
       </Card>
 
+      <UserDrawer
+        type={type}
+        visible={visible}
+        onClose={handleClose}
+      />
     </React.Fragment>
   )
 };
