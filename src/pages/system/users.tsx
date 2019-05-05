@@ -3,20 +3,43 @@ import { connect } from 'dva';
 import { Button, Card, Tooltip, Typography } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
+import { ConnectProps } from '@/models/connect';
 import { IUserTable } from '@/models/user';
 import UserDrawer, { TType } from './components/user-drawer';
 
-interface IProps {
+interface IProps extends ConnectProps {
+  loading: boolean;
   userTable: IUserTable
+}
+
+interface IQueryData {
+  page: number;
+  limit: number
 }
 
 const { Paragraph } = Typography;
 
 const UsersPage: React.FC<IProps> = (props) => {
-  const { userTable } = props;
+  const { userTable, loading, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
+  const [queryData, setQueryData] = React.useState<IQueryData>({
+    page: 1,
+    limit: 10
+  });
+
+  React.useEffect(() => {
+    getList();
+  }, [queryData]);
+
+  const getList = () => {
+    console.log(queryData);
+    dispatch({
+      type: 'user/fetchList',
+      payload: queryData
+    })
+  };
 
   const showCreateView = () => {
     setType('create');
@@ -25,6 +48,14 @@ const UsersPage: React.FC<IProps> = (props) => {
 
   const handleClose = () => {
     setVisible(false);
+  };
+
+  const handleTableChange = (pagination) => {
+    const { current, pageSize } = pagination;
+    setQueryData({
+      page: current,
+      limit: pageSize
+    });
   };
 
   const columns = [
@@ -74,11 +105,13 @@ const UsersPage: React.FC<IProps> = (props) => {
   const table = React.useMemo(() => {
     return (
       <StandardTable
+        loading={loading}
         data={userTable}
         columns={columns}
+        onChange={handleTableChange}
       />
     )
-  }, [props.userTable]);
+  }, [props.userTable, props.loading]);
 
   return (
     <React.Fragment>
@@ -109,9 +142,10 @@ const UsersPage: React.FC<IProps> = (props) => {
 };
 
 UsersPage.defaultProps = {
-
+  loading: false
 };
 
-export default connect(({ user }) => ({
-  userTable: user.table
+export default connect(({ user, loading }) => ({
+  userTable: user.table,
+  loading: loading.effects['user/fetchList'],
 }))(UsersPage);

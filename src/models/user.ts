@@ -3,6 +3,7 @@ import { Effect } from '@/models/connect';
 import { fetchList, fetchCurrent } from '@/services/user';
 import { IPolicyData } from '@/components/authorized/policy';
 import { IPagination } from '@/pages/global';
+import { formatTime } from '@/utils/utils';
 
 export interface ICurrentUser {
   name?: string;
@@ -38,7 +39,7 @@ export interface IUserModel {
     fetchCurrent: Effect;
   },
   reducers: {
-    saveList: Reducer<any>;
+    saveTable: Reducer<any>;
     savePolicies: Reducer<any>;
     saveCurrentUser: Reducer<any>;
     changeNotifyCount: Reducer<any>;
@@ -64,6 +65,26 @@ const UserModel: IUserModel = {
       const response = yield call(fetchList, payload);
       if (response && response.code === 200) {
         const data = response.data || {};
+        const { list = [], total = 0 } = data;
+
+        const users = list.map(item => {
+          return {
+            ...item,
+            createTime: formatTime(item.createTime)
+          }
+        });
+
+        yield put({
+          type: 'saveTable',
+          payload: {
+            list: users,
+            pagination: {
+              total,
+              current: payload.page,
+              pageSize: payload.limit
+            }
+          }
+        })
       }
     },
     *fetchCurrent(_, { call, put }) {
@@ -87,10 +108,10 @@ const UserModel: IUserModel = {
     },
   },
   reducers: {
-    saveList(state, { payload }) {
+    saveTable(state, { payload }) {
       return {
         ...state,
-        list: payload
+        table: payload
       };
     },
     saveCurrentUser(state, { payload }) {
