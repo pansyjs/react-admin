@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList, fetchCurrent } from '@/services/user';
+import { fetchList, fetchCreate, fetchRemove, fetchUpdate, fetchCurrent } from '@/services/user';
 import { IPolicyData } from '@/components/authorized/policy';
 import { IPagination } from '@/pages/global';
 import { formatTime } from '@/utils/utils';
@@ -13,9 +13,11 @@ export interface ICurrentUser {
 
 export interface IUser {
   id?: string | number;
-  name?: string;
+  username?: string;
   avatar?: string;
   email?: string;
+  mobile?: string;
+  remark?: string;
 }
 
 export interface IUserTable {
@@ -35,6 +37,9 @@ export interface IUserModel {
   effects: {
     // 获取用户列表
     fetchList: Effect;
+    fetchCreate: Effect;
+    fetchRemove: Effect;
+    fetchUpdate: Effect;
     // 获取当前用户信息
     fetchCurrent: Effect;
   },
@@ -85,6 +90,24 @@ const UserModel: IUserModel = {
             }
           }
         })
+      }
+    },
+    *fetchCreate({ payload, callback }, { call }) {
+      const response = yield call(fetchCreate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchRemove({ payload, callback }, { call }) {
+      const response = yield call(fetchRemove, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchUpdate({ payload, callback }, { call }) {
+      const response = yield call(fetchUpdate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
       }
     },
     *fetchCurrent(_, { call, put }) {

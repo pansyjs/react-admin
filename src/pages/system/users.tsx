@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Button, Card, Tooltip, Typography } from 'antd';
+import { Button, Card, Tooltip, Typography, Modal, message } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
-import { IUserTable } from '@/models/user';
+import { IUserTable, IUser } from '@/models/user';
 import UserDrawer, { TType } from './components/user-drawer';
 
 interface IProps extends ConnectProps {
@@ -18,12 +18,14 @@ interface IQueryData {
 }
 
 const { Paragraph } = Typography;
+const confirm = Modal.confirm;
 
 const UsersPage: React.FC<IProps> = (props) => {
   const { userTable, loading, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
+  const [currentUser, setCurrentUser] = React.useState<IUser>({});
   const [queryData, setQueryData] = React.useState<IQueryData>({
     page: 1,
     limit: 10
@@ -34,7 +36,6 @@ const UsersPage: React.FC<IProps> = (props) => {
   }, [queryData]);
 
   const getList = () => {
-    console.log(queryData);
     dispatch({
       type: 'user/fetchList',
       payload: queryData
@@ -43,11 +44,65 @@ const UsersPage: React.FC<IProps> = (props) => {
 
   const showCreateView = () => {
     setType('create');
+    setCurrentUser({});
+    setVisible(true);
+  };
+
+  const showUpdateView = (record) => {
+    setType('update');
+    setCurrentUser(record);
     setVisible(true);
   };
 
   const handleClose = () => {
     setVisible(false);
+  };
+
+  const handleSubmit = (values) => {
+    if (type === 'create') {
+      dispatch({
+        type: 'user/fetchCreate',
+        payload: values,
+        callback: () => {
+          setVisible(false);
+          message.success('创建成功');
+          getList();
+        }
+      });
+      return;
+    }
+    if (type === 'update') {
+      dispatch({
+        type: 'user/fetchUpdate',
+        payload: values,
+        callback: () => {
+          setVisible(false);
+          message.success('修改成功');
+          getList();
+        }
+      });
+    }
+  };
+
+  const handleConfirmRemove = (data) => {
+    confirm({
+      title: '确定删除?',
+      content: '操作不可逆，请确定是否删除',
+      onOk() {
+        handleRemove(data.id);
+      }
+    });
+  };
+
+  const handleRemove = (userId) => {
+    dispatch({
+      type: 'user/fetchRemove',
+      payload: userId,
+      callback: () => {
+        message.success('删除成功');
+        getList();
+      }
+    })
   };
 
   const handleTableChange = (pagination) => {
@@ -88,6 +143,7 @@ const UsersPage: React.FC<IProps> = (props) => {
             <Button
               size="small"
               icon="edit"
+              onClick={() => { showUpdateView(record) }}
             />
           </Tooltip>
           <Tooltip placement="top" title="删除">
@@ -95,6 +151,7 @@ const UsersPage: React.FC<IProps> = (props) => {
               type="danger"
               size="small"
               icon="delete"
+              onClick={() => { handleConfirmRemove(record) }}
             />
           </Tooltip>
         </div>
@@ -135,6 +192,8 @@ const UsersPage: React.FC<IProps> = (props) => {
       <UserDrawer
         type={type}
         visible={visible}
+        currentUser={currentUser}
+        onSubmit={handleSubmit}
         onClose={handleClose}
       />
     </React.Fragment>
