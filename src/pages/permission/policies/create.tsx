@@ -1,8 +1,9 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
+import uniqueId from 'lodash/uniqueId';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Button, Card, Tooltip, Form, Input } from 'antd';
+import { Button, Card, Tooltip, Form, Input, Tag } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import FooterToolbar from '@/components/footer-toolbar';
@@ -78,7 +79,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
       title: '操作名称',
       dataIndex: 'action',
       render: (text) => {
-        return text.toString();
+        return (
+          text.map((item, index) => (
+            <Tag key={index} color="#2db7f5">{item}</Tag>
+          ))
+        );
       }
     },
     {
@@ -142,7 +147,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
             list: statements
           }}
           columns={columns}
-          rowKey="key"
+          rowKey={() => uniqueId()}
         />
       </Card>
 
