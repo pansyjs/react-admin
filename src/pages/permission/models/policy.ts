@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList } from '@/services/permission';
+import { fetchList, fetchCreate, fetchRemove } from '@/services/policies';
 
 export interface IPolicy {
   id?: string;
@@ -44,6 +44,7 @@ const PolicyModel: IPolicyModel = {
 
     },
     *fetchCreate({ payload }, { call, put }) {
+      const response = yield call(fetchCreate, payload);
       console.log(payload);
     }
   },
