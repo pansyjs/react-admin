@@ -10,7 +10,12 @@ export async function fetchLogout() {
   return Get('users/logout');
 }
 
-// 获取当前用户信息
+// 获取用户列表
+export async function fetchList(params) {
+  return Get('users/list', params);
+}
+
+// 获取当前登录用户信息
 export async function fetchCurrent() {
   return Get('users/current');
 }
