@@ -33,6 +33,7 @@ const StatementForm: React.FC<IProps> = (props) => {
   const { getFieldDecorator } = form;
   const [title, setTitle] = React.useState<string>('');
   const [type, setType] = React.useState<string>('all');
+  const [currentModule, setCurrentModule] = React.useState<IModule>(null);
 
   React.useEffect(() => {
     if (formType) {
@@ -49,15 +50,15 @@ const StatementForm: React.FC<IProps> = (props) => {
     setType(value);
   };
 
-  const getModuleName = (moduleId) => {
-
-  };
-
-  const handleModuleSelect = (value) => {
+  const handleModuleSelect = (data) => {
+    setCurrentModule({
+      id: data.key,
+      name: data.label
+    });
     dispatch({
       type: 'action/fetchList',
       payload: {
-        moduleId: value
+        moduleId: data.key
       }
     });
   };
@@ -65,15 +66,16 @@ const StatementForm: React.FC<IProps> = (props) => {
   const handleConfirm = () => {
     form.validateFields((error, values) => {
       if (!error) {
-        const { effect, module, type } = values;
+        if (!currentModule) return;
+        const { effect, type, actions } = values;
+        const moduleName = currentModule.name;
         const actionData = type === 'all'
-          ? [`${module}/*`]
-          : [];
-        const data = {
+          ? [`${moduleName}/*`]
+          : actions.map(item => `${moduleName}/${item.label}`);
+        onConfirm && onConfirm({
           effect,
           action: actionData
-        };
-        onConfirm && onConfirm(data);
+        });
       }
     });
   };
@@ -137,6 +139,7 @@ const StatementForm: React.FC<IProps> = (props) => {
           })(
             <Select
               showSearch
+              labelInValue
               placeholder="请选择所属模块"
               optionFilterProp="children"
               onSelect={handleModuleSelect}
@@ -173,6 +176,7 @@ const StatementForm: React.FC<IProps> = (props) => {
             })(
               <Select
                 showSearch
+                labelInValue
                 placeholder="请选择操作"
                 mode="multiple"
                 optionFilterProp="children"

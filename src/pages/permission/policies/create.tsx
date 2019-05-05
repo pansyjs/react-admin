@@ -6,6 +6,7 @@ import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import FooterToolbar from '@/components/footer-toolbar';
 import StandardTable from '@/components/standard-table';
+import { IStatement } from '@/components/authorized/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps } from '@/models/connect';
 import StatementForm from '../components/statement-form';
@@ -19,6 +20,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const { dispatch, form, modules, actions } = props;
   const { getFieldDecorator } = form;
   const [visible, setVisible] = React.useState<boolean>(false);
+  const [statements, setStatement] = React.useState<IStatement[]>([]);
 
   React.useState(() => {
     dispatch({
@@ -42,6 +44,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
     });
   };
 
+  const handleStatementCreate = (value) => {
+    setStatement([...statements, value]);
+    setVisible(false);
+  };
+
   const handelCancel = () => {
     router.push('/permission/policies');
   };
@@ -49,19 +56,29 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   const columns = [
     {
       title: '权限效力',
-      dataIndex: 'effect'
+      dataIndex: 'effect',
+      render: (text) => {
+        return text === 'allow' ? '允许' : '禁止';
+      }
     },
     {
       title: '模块',
-      dataIndex: 'module'
+      dataIndex: 'module',
+      render: (text, record) => {
+        const action = record.action[0];
+        return action.split('/')[0];
+      }
     },
     {
       title: '操作名称',
-      dataIndex: 'actionName'
+      dataIndex: 'action',
+      render: (text) => {
+        return text.toString();
+      }
     },
     {
       title: '操作',
-      key: 'action',
+      key: 'buttons',
       render: (text, record) => (
         <Tooltip placement="top" title="删除">
           <Button
@@ -109,15 +126,17 @@ const CreatePolicy: React.FC<IProps> = (props) => {
         modules={modules}
         actions={actions}
         dispatch={dispatch}
+        onConfirm={handleStatementCreate}
         onClose={closeCreateView}
       />
 
       <Card bordered={false}>
         <StandardTable
           data={{
-            list: []
+            list: statements
           }}
           columns={columns}
+          rowKey="key"
         />
       </Card>
 

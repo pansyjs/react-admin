@@ -1,4 +1,4 @@
-import Authorized from './Authorized';
+import Authorized from './authorized';
 import renderAuthorize, { CurrentAuthority } from './render-authorize';
 
 export { CurrentAuthority };
