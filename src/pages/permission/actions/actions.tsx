@@ -141,11 +141,9 @@ const ActionPage: React.FC<IProps> = (props) => {
           </Button>
         ]}
       >
-        <div className="content">
-          <Paragraph>
-            操作是指对具体资源的操作，多数情况下 Action 与系统的 API 一一对应，但也有例外。
-          </Paragraph>
-        </div>
+        <Paragraph>
+          操作是指对具体资源的操作，多数情况下 Action 与系统的 API 一一对应，但也有例外。
+        </Paragraph>
       </PageHeaderWrapper>
 
       <Card bordered={false}>

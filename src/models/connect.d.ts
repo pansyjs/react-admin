@@ -8,6 +8,7 @@ import { IGlobalModelState } from '@/models/global';
 import { ITabsModelState } from '@/models/tabs';
 import { IUserModelState } from '@/models/user';
 import { IActionModelState } from '@/models/action';
+import { IUserGroupModelState } from '@/models/user-group';
 import { IPolicyModelState } from '@/pages/permission/models/policy';
 
 export interface ConnectState {
@@ -16,6 +17,7 @@ export interface ConnectState {
   global: IGlobalModelState;
   tabs: ITabsModelState;
   user: IUserModelState;
+  userGroup: IUserGroupModelState;
   action: IActionModelState;
   policy: IPolicyModelState;
 }
