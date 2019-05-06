@@ -1,16 +1,21 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList } from '@/services/user';
+import { fetchList, fetchCreate, fetchRemove, fetchUpdate } from '@/services/group';
 import { IPagination } from '@/pages/global';
+import { formatTime } from '@/utils/utils';
 
 export interface IGroup {
   id?: string | number;
   name?: string;
+  displayName?: string;
+  userNumber?: number;
+  remark?: string;
+  createTime?: string;
 }
 
 export interface IGroupTable {
   list: IGroup[];
-  pagination: IPagination;
+  pagination?: IPagination;
 }
 
 export interface IUserGroupModelState {
@@ -23,9 +28,12 @@ export interface IUserGroupModel {
   effects: {
     // 获取用户列表
     fetchList: Effect;
+    fetchCreate: Effect;
+    fetchRemove: Effect;
+    fetchUpdate: Effect;
   },
   reducers: {
-    saveList: Reducer<any>;
+    saveTable: Reducer<any>;
   }
 }
 
@@ -33,12 +41,7 @@ const UserGroupModel: IUserGroupModel = {
   namespace: 'userGroup',
   state: {
     table: {
-      list: [],
-      pagination: {
-        total: 0,
-        current: 1,
-        pageSize: 10
-      }
+      list: []
     }
   },
   effects: {
@@ -46,16 +49,54 @@ const UserGroupModel: IUserGroupModel = {
       const response = yield call(fetchList, payload);
       if (response && response.code === 200) {
         const data = response.data || {};
+        const { list = [], total = 0 } = data;
+
+        const groups = list.map(item => {
+          return {
+            ...item,
+            createTime: formatTime(item.createTime)
+          }
+        });
+
+        yield put({
+          type: 'saveTable',
+          payload: {
+            list: groups,
+            pagination: {
+              total,
+              current: payload.page,
+              pageSize: payload.limit
+            }
+          }
+        })
       }
-    }
+    },
+    *fetchCreate({ payload, callback }, { call }) {
+      const response = yield call(fetchCreate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchRemove({ payload, callback }, { call }) {
+      const response = yield call(fetchRemove, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchUpdate({ payload, callback }, { call }) {
+      const response = yield call(fetchUpdate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
   },
   reducers: {
-    saveList(state, { payload }) {
+    saveTable(state, { payload }) {
       return {
         ...state,
-        list: payload
+        table: payload
       };
-    }
+    },
   }
 };
 
