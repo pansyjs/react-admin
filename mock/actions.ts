@@ -73,6 +73,18 @@ function fetchGetActions(req, res) {
 }
 
 function fetchUpdateAction(req, res) {
+  const data = req.body;
+
+  const id = data.id;
+
+  actions = actions.map(item => {
+    if (item['id'] === id) {
+      return data;
+    } else {
+      return item;
+    }
+  });
+
   res.send({
     code: 200,
     data: {},

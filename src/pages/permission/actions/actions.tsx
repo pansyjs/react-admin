@@ -35,11 +35,13 @@ const ActionPage: React.FC<IProps> = (props) => {
   };
 
   const showCreateView = () => {
+    setCurrentAction({});
     setVisible(true);
     setFormType('create');
   };
 
   const showUpdateView = (record) => {
+    setCurrentAction(record);
     setVisible(true);
     setFormType('update');
   };
@@ -49,14 +51,25 @@ const ActionPage: React.FC<IProps> = (props) => {
   };
 
   const handleSubmit = (data) => {
-    dispatch({
-      type: 'action/fetchCreate',
-      payload: data,
-      callback: () => {
-        setVisible(false);
-        getActions();
-      }
-    })
+    if (formType === 'create') {
+      dispatch({
+        type: 'action/fetchCreate',
+        payload: data,
+        callback: () => {
+          setVisible(false);
+          getActions();
+        }
+      })
+    } else {
+      dispatch({
+        type: 'action/fetchUpdate',
+        payload: data,
+        callback: () => {
+          setVisible(false);
+          getActions();
+        }
+      })
+    }
   };
 
   const handleConfirmRemove = (value) => {
@@ -88,7 +101,10 @@ const ActionPage: React.FC<IProps> = (props) => {
   const columns = [
     {
       title: '所属模块',
-      dataIndex: 'module'
+      dataIndex: 'module',
+      render: (text) => {
+        return text.name || '--';
+      }
     },
     {
       title: '操作名称',
@@ -178,6 +194,7 @@ const ActionPage: React.FC<IProps> = (props) => {
         visible={visible}
         modules={modules}
         formType={formType}
+        currentAction={currentAction}
         onSubmit={handleSubmit}
         onClose={handleCloseDrawer}
       />

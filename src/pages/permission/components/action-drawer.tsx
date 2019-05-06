@@ -1,8 +1,8 @@
 import React from 'react';
-import { Form, Input, Select, Radio } from 'antd';
+import { Form, Input, Select } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
-import { IModule } from '@/models/action';
+import { IModule, IAction } from '@/models/action';
 
 export type TFormType = 'create' | 'update';
 
@@ -10,6 +10,7 @@ interface IProps extends FormComponentProps {
   formType: TFormType;
   visible: boolean;
   modules: IModule[];
+  currentAction: IAction;
   onClose: () => void;
   onSubmit: (values) => void;
 }
@@ -25,7 +26,8 @@ const ActionDrawer: React.FC<IProps> = (props) => {
     onClose,
     onSubmit,
     formType,
-    form
+    form,
+    currentAction
   } = props;
   const { getFieldDecorator } = form;
   const [title, setTitle] = React.useState<string>('');
@@ -36,9 +38,20 @@ const ActionDrawer: React.FC<IProps> = (props) => {
     }
   }, [props.formType]);
 
+  React.useEffect(() => {
+    if (!visible) {
+      form.resetFields();
+    }
+  }, [props.visible]);
+
   const handleConfirm = () => {
     form.validateFields((error, values) => {
       const data = { ...values };
+
+      if (formType === 'update') {
+        data.id = currentAction.id;
+      }
+
       onSubmit && onSubmit(data);
     })
   };
@@ -77,6 +90,7 @@ const ActionDrawer: React.FC<IProps> = (props) => {
       <Form>
         <FormItem {...formItemLayout} label="操作名称">
           {getFieldDecorator('name', {
+            initialValue: currentAction.name,
             rules: [
               {
                 required: true,
@@ -87,6 +101,7 @@ const ActionDrawer: React.FC<IProps> = (props) => {
         </FormItem>
         <FormItem {...formItemLayout} label="显示名称">
           {getFieldDecorator('displayName', {
+            initialValue: currentAction.displayName,
             rules: [
               {
                 required: true,
@@ -97,6 +112,7 @@ const ActionDrawer: React.FC<IProps> = (props) => {
         </FormItem>
         <FormItem {...formItemLayout} label="所属模块">
           {getFieldDecorator('moduleId', {
+            initialValue: (currentAction.module || {}).id,
             rules: [
               {
                 required: true,
@@ -115,6 +131,7 @@ const ActionDrawer: React.FC<IProps> = (props) => {
         </FormItem>
         <FormItem {...formItemLayout} label="备注">
           {getFieldDecorator('remark', {
+            initialValue: currentAction.remark,
             rules: []
           })(
             <TextArea rows={3} />
