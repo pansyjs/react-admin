@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
+import { IGroup } from '@/models/user-group';
 import DrawerWrapper from '@/components/drawer-wrapper';
 
 export type TType = 'create' | 'update';
@@ -8,6 +9,7 @@ export type TType = 'create' | 'update';
 interface IProps extends FormComponentProps {
   type?: TType;
   visible?: boolean;
+  currentGroup?: IGroup;
   onClose?: () => void;
   onSubmit?: (values) => void;
 }
@@ -15,7 +17,7 @@ interface IProps extends FormComponentProps {
 const { TextArea } = Input;
 
 const GroupDrawer: React.FC<IProps> = (props) => {
-  const { visible, onClose, onSubmit, form, type } = props;
+  const { visible, onClose, onSubmit, currentGroup, form, type } = props;
   const { getFieldDecorator } = form;
 
   const [title, setTitle] = React.useState<string>('');
@@ -28,6 +30,10 @@ const GroupDrawer: React.FC<IProps> = (props) => {
     form.validateFields((error, values) => {
       if (!error) {
         const data = { ...values };
+
+        if (type === 'update') {
+          data.id = currentGroup.id;
+        }
 
         onSubmit && onSubmit(data);
       }
@@ -63,6 +69,7 @@ const GroupDrawer: React.FC<IProps> = (props) => {
           help="不超过64个字符，允许英文字母、数字，或'-'"
         >
           {getFieldDecorator('name', {
+            initialValue: currentGroup.name,
             rules: [
               {
                 required: true,
@@ -79,6 +86,7 @@ const GroupDrawer: React.FC<IProps> = (props) => {
           help="最大长度24个字符或汉字"
         >
           {getFieldDecorator('displayName', {
+            initialValue: currentGroup.displayName,
             rules: [
               {
                 required: true,
@@ -91,6 +99,7 @@ const GroupDrawer: React.FC<IProps> = (props) => {
         </Form.Item>
         <Form.Item {...formItemLayout} label="备注">
           {getFieldDecorator('remark', {
+            initialValue: currentGroup.remark,
             rules: []
           })(
             <TextArea rows={3} />
@@ -102,7 +111,8 @@ const GroupDrawer: React.FC<IProps> = (props) => {
 };
 
 GroupDrawer.defaultProps = {
-  visible: false
+  visible: false,
+  currentGroup: {}
 };
 
 export default Form.create()(GroupDrawer);

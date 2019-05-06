@@ -57,11 +57,31 @@ function fetchRemove(req, res) {
     message: 'success',
     data: {}
   });
+}
 
+function fetchUpdate(req, res) {
+  const data = req.body;
+
+  const groupId = data.id;
+
+  Groups = Groups.map(item => {
+    if (item.id === groupId) {
+      return data;
+    } else {
+      return item;
+    }
+  });
+
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {}
+  });
 }
 
 export default {
   'GET /api/groups/list': fetchList,
   'Post /api/groups/create': fetchCreate,
   'DELETE /api/groups/remove/:groupId': fetchRemove,
+  'PUT /api/groups/update': fetchUpdate,
 };

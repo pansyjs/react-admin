@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList, fetchCreate, fetchRemove } from '@/services/group';
+import { fetchList, fetchCreate, fetchRemove, fetchUpdate } from '@/services/group';
 import { IPagination } from '@/pages/global';
 import { formatTime } from '@/utils/utils';
 
@@ -30,6 +30,7 @@ export interface IUserGroupModel {
     fetchList: Effect;
     fetchCreate: Effect;
     fetchRemove: Effect;
+    fetchUpdate: Effect;
   },
   reducers: {
     saveTable: Reducer<any>;
@@ -78,6 +79,12 @@ const UserGroupModel: IUserGroupModel = {
     },
     *fetchRemove({ payload, callback }, { call }) {
       const response = yield call(fetchRemove, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchUpdate({ payload, callback }, { call }) {
+      const response = yield call(fetchUpdate, payload);
       if (response && response.code === 200) {
         callback && callback();
       }

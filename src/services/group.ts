@@ -14,3 +14,8 @@ export async function fetchCreate(data) {
 export async function fetchRemove(id) {
   return Delete(`groups/remove/${id}`);
 }
+
+// 更新用户组
+export async function fetchUpdate(data) {
+  return Put('groups/update', data);
+}

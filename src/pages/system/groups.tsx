@@ -4,7 +4,7 @@ import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
-import { IGroupTable } from '@/models/user-group';
+import { IGroupTable, IGroup } from '@/models/user-group';
 import GroupDrawer, { TType } from './components/group-drawer';
 
 interface IProps extends ConnectProps {
@@ -24,6 +24,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
+  const [currentGroup, setCurrentGroup] = React.useState<IGroup>({});
 
   const [queryData, setQueryData] = React.useState<IQueryData>({
     page: 1,
@@ -42,15 +43,29 @@ const GroupsPage: React.FC<IProps> = (props) => {
   };
 
   const handleSubmit = (values) => {
-    dispatch({
-      type: 'userGroup/fetchCreate',
-      payload: values,
-      callback: () => {
-        setVisible(false);
-        message.success('创建成功');
-        getList();
-      }
-    });
+    if (type === 'create') {
+      dispatch({
+        type: 'userGroup/fetchCreate',
+        payload: values,
+        callback: () => {
+          setVisible(false);
+          message.success('创建成功');
+          getList();
+        }
+      });
+      return;
+    }
+    if (type === 'update') {
+      dispatch({
+        type: 'userGroup/fetchUpdate',
+        payload: values,
+        callback: () => {
+          setVisible(false);
+          message.success('修改成功');
+          getList();
+        }
+      });
+    }
   };
 
   const handleConfirmRemove = (data) => {
@@ -77,6 +92,12 @@ const GroupsPage: React.FC<IProps> = (props) => {
   const showCreateView = () => {
     setVisible(true);
     setType('create');
+  };
+
+  const showUpdateView = (data) => {
+    setCurrentGroup(data);
+    setVisible(true);
+    setType('update');
   };
 
   const handleClose = () => {
@@ -133,6 +154,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
             <Button
               size="small"
               icon="edit"
+              onClick={() => { showUpdateView(record) }}
             />
           </Tooltip>
           <Tooltip placement="top" title="删除">
@@ -183,6 +205,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
       <GroupDrawer
         visible={visible}
         type={type}
+        currentGroup={currentGroup}
         onClose={handleClose}
         onSubmit={handleSubmit}
       />
