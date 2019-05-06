@@ -3,19 +3,41 @@ import { connect } from 'dva';
 import { Button, Card, Tooltip, Alert } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
+import { ConnectProps } from '@/models/connect';
 import { IGroupTable } from '@/models/user-group';
 import GroupDrawer, { TType } from './components/group-drawer';
 
-
-interface IProps {
+interface IProps extends ConnectProps {
+  loading: boolean;
   groupTable: IGroupTable
 }
 
+interface IQueryData {
+  page: number;
+  limit: number
+}
+
 const GroupsPage: React.FC<IProps> = (props) => {
-  const { groupTable } = props;
+  const { groupTable, loading, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
+
+  const [queryData, setQueryData] = React.useState<IQueryData>({
+    page: 1,
+    limit: 10
+  });
+
+  React.useEffect(() => {
+    getList();
+  }, [queryData]);
+
+  const getList = () => {
+    dispatch({
+      type: 'userGroup/fetchList',
+      payload: queryData
+    })
+  };
 
   const showCreateView = () => {
     setVisible(true);
@@ -24,6 +46,14 @@ const GroupsPage: React.FC<IProps> = (props) => {
 
   const handleClose = () => {
     setVisible(false);
+  };
+
+  const handleTableChange = (pagination) => {
+    const { current, pageSize } = pagination;
+    setQueryData({
+      page: current,
+      limit: pageSize
+    });
   };
 
   const columns = [
@@ -48,6 +78,18 @@ const GroupsPage: React.FC<IProps> = (props) => {
       key: 'action',
       render: (text, record) => (
         <div className="table-action">
+          <Tooltip placement="top" title="添加组成员">
+            <Button
+              size="small"
+              icon="user-add"
+            />
+          </Tooltip>
+          <Tooltip placement="top" title="赋权">
+            <Button
+              size="small"
+              icon="api"
+            />
+          </Tooltip>
           <Tooltip placement="top" title="更新">
             <Button
               size="small"
@@ -69,11 +111,13 @@ const GroupsPage: React.FC<IProps> = (props) => {
   const table = React.useMemo(() => {
     return (
       <StandardTable
+        loading={loading}
         data={groupTable}
         columns={columns}
+        onChange={handleTableChange}
       />
     )
-  }, [props.groupTable]);
+  }, [props.groupTable, props.loading]);
 
   return (
     <React.Fragment>
@@ -105,6 +149,11 @@ const GroupsPage: React.FC<IProps> = (props) => {
   )
 };
 
-export default connect(({ userGroup }) => ({
-  groupTable: userGroup.table
+GroupsPage.defaultProps = {
+  loading: false
+};
+
+export default connect(({ userGroup, loading }) => ({
+  groupTable: userGroup.table,
+  loading: loading.effects['userGroup/fetchList'],
 }))(GroupsPage);
