@@ -9,3 +9,8 @@ export async function fetchList(params) {
 export async function fetchCreate(data) {
   return Post('groups/create', data);
 }
+
+// 删除用户组
+export async function fetchRemove(id) {
+  return Delete(`groups/remove/${id}`);
+}

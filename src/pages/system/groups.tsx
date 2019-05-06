@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import {Button, Card, Tooltip, Alert, message} from 'antd';
+import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
@@ -16,6 +16,8 @@ interface IQueryData {
   page: number;
   limit: number
 }
+
+const confirm = Modal.confirm;
 
 const GroupsPage: React.FC<IProps> = (props) => {
   const { groupTable, loading, dispatch } = props;
@@ -49,6 +51,27 @@ const GroupsPage: React.FC<IProps> = (props) => {
         getList();
       }
     });
+  };
+
+  const handleConfirmRemove = (data) => {
+    confirm({
+      title: '确定删除?',
+      content: '操作不可逆，请确定是否删除',
+      onOk() {
+        handleRemove(data.id);
+      }
+    });
+  };
+
+  const handleRemove = (id) => {
+    dispatch({
+      type: 'userGroup/fetchRemove',
+      payload: id,
+      callback: () => {
+        message.success('删除成功');
+        getList();
+      }
+    })
   };
 
   const showCreateView = () => {
@@ -117,6 +140,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
               type="danger"
               size="small"
               icon="delete"
+              onClick={() => { handleConfirmRemove(record) }}
             />
           </Tooltip>
         </div>

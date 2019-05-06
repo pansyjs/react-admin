@@ -47,7 +47,21 @@ function fetchCreate(req, res) {
   });
 }
 
+function fetchRemove(req, res) {
+  const { groupId } = req.params;
+
+  Groups = Groups.filter(item => item.id !== groupId);
+
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {}
+  });
+
+}
+
 export default {
   'GET /api/groups/list': fetchList,
   'Post /api/groups/create': fetchCreate,
+  'DELETE /api/groups/remove/:groupId': fetchRemove,
 };
