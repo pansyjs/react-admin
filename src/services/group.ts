@@ -4,3 +4,8 @@ import { Get, Post, Put, Delete } from '@/utils/request';
 export async function fetchList(params) {
   return Get('groups/list', params);
 }
+
+// 创建用户组
+export async function fetchCreate(data) {
+  return Post('groups/create', data);
+}

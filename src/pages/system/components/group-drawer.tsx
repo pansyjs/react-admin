@@ -9,12 +9,13 @@ interface IProps extends FormComponentProps {
   type?: TType;
   visible?: boolean;
   onClose?: () => void;
+  onSubmit?: (values) => void;
 }
 
 const { TextArea } = Input;
 
 const GroupDrawer: React.FC<IProps> = (props) => {
-  const { visible, onClose, form, type } = props;
+  const { visible, onClose, onSubmit, form, type } = props;
   const { getFieldDecorator } = form;
 
   const [title, setTitle] = React.useState<string>('');
@@ -22,6 +23,17 @@ const GroupDrawer: React.FC<IProps> = (props) => {
   React.useEffect(() => {
     setTitle(type === 'create' ? '添加用户组' : '更新用户组');
   }, [props.type]);
+
+  const handleConfirm = () => {
+    form.validateFields((error, values) => {
+      if (!error) {
+        const data = { ...values };
+
+        onSubmit && onSubmit(data);
+      }
+    });
+  };
+
 
   const formItemLayout = {
     labelCol: {
@@ -40,6 +52,7 @@ const GroupDrawer: React.FC<IProps> = (props) => {
       visible={visible}
       onClose={onClose}
       onCancel={onClose}
+      onConfirm={handleConfirm}
       width={600}
       title={title}
     >
@@ -63,6 +76,7 @@ const GroupDrawer: React.FC<IProps> = (props) => {
         <Form.Item
           {...formItemLayout}
           label="显示名称"
+          help="最大长度24个字符或汉字"
         >
           {getFieldDecorator('displayName', {
             rules: [
@@ -91,5 +105,4 @@ GroupDrawer.defaultProps = {
   visible: false
 };
 
-var UserDrawer;
 export default Form.create()(GroupDrawer);

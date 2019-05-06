@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Button, Card, Tooltip, Alert } from 'antd';
+import {Button, Card, Tooltip, Alert, message} from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
@@ -39,6 +39,18 @@ const GroupsPage: React.FC<IProps> = (props) => {
     })
   };
 
+  const handleSubmit = (values) => {
+    dispatch({
+      type: 'userGroup/fetchCreate',
+      payload: values,
+      callback: () => {
+        setVisible(false);
+        message.success('创建成功');
+        getList();
+      }
+    });
+  };
+
   const showCreateView = () => {
     setVisible(true);
     setType('create');
@@ -60,6 +72,10 @@ const GroupsPage: React.FC<IProps> = (props) => {
     {
       title: '用户组名称',
       dataIndex: 'name'
+    },
+    {
+      title: '显示名称',
+      dataIndex: 'displayName'
     },
     {
       title: '用户数',
@@ -144,6 +160,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
         visible={visible}
         type={type}
         onClose={handleClose}
+        onSubmit={handleSubmit}
       />
     </React.Fragment>
   )

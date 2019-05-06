@@ -7,6 +7,7 @@ for (let i = 0; i < count; i++) {
   Groups.push(mock({
     id: '@guid',
     name: '@first',
+    displayName: '@cword(3)',
     userNumber: 10,
     remark: '@cparagraph(1)',
     createTime: +Random.date('T'),
@@ -30,6 +31,23 @@ function fetchList(req, res) {
   });
 }
 
+function fetchCreate(req, res) {
+  const data = req.body;
+
+  Groups.push({
+    ...data,
+    id: Random.guid(),
+    createTime: new Date().getTime()
+  });
+
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {}
+  });
+}
+
 export default {
   'GET /api/groups/list': fetchList,
+  'Post /api/groups/create': fetchCreate,
 };

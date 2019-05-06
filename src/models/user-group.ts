@@ -1,12 +1,13 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList } from '@/services/group';
+import { fetchList, fetchCreate } from '@/services/group';
 import { IPagination } from '@/pages/global';
-import {formatTime} from "@/utils/utils";
+import { formatTime } from '@/utils/utils';
 
 export interface IGroup {
   id?: string | number;
   name?: string;
+  displayName?: string;
   userNumber?: number;
   remark?: string;
   createTime?: string;
@@ -27,6 +28,7 @@ export interface IUserGroupModel {
   effects: {
     // 获取用户列表
     fetchList: Effect;
+    fetchCreate: Effect;
   },
   reducers: {
     saveTable: Reducer<any>;
@@ -66,7 +68,13 @@ const UserGroupModel: IUserGroupModel = {
           }
         })
       }
-    }
+    },
+    *fetchCreate({ payload, callback }, { call }) {
+      const response = yield call(fetchCreate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
   },
   reducers: {
     saveTable(state, { payload }) {
