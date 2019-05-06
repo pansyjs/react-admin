@@ -5,7 +5,7 @@ import PageHeaderWrapper from '@/components/page-header-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
 import { IModule, IAction } from '@/models/action';
-import ActionForm, { TFormType } from '../components/action-form';
+import ActionDrawer, { TFormType } from '../components/action-drawer';
 
 interface IProps extends ConnectProps {
   modules: IModule[];
@@ -21,28 +21,55 @@ const ActionPage: React.FC<IProps> = (props) => {
   const [formType, setFormType] = useState<TFormType>('create');
   const [currentAction, setCurrentAction] = useState<IAction>({});
 
-  useState(() => {
+  React.useEffect(() => {
     dispatch({
       type: 'action/fetchModules'
     });
+    getActions();
+  }, []);
+
+  const getActions = () => {
     dispatch({
       type: 'action/fetchList'
     });
-  });
+  };
 
   const showCreateView = () => {
+    setCurrentAction({});
     setVisible(true);
     setFormType('create');
   };
 
   const showUpdateView = (record) => {
-    console.log(record);
+    setCurrentAction(record);
     setVisible(true);
     setFormType('update');
   };
 
   const handleCloseDrawer = () => {
     setVisible(false);
+  };
+
+  const handleSubmit = (data) => {
+    if (formType === 'create') {
+      dispatch({
+        type: 'action/fetchCreate',
+        payload: data,
+        callback: () => {
+          setVisible(false);
+          getActions();
+        }
+      })
+    } else {
+      dispatch({
+        type: 'action/fetchUpdate',
+        payload: data,
+        callback: () => {
+          setVisible(false);
+          getActions();
+        }
+      })
+    }
   };
 
   const handleConfirmRemove = (value) => {
@@ -74,17 +101,24 @@ const ActionPage: React.FC<IProps> = (props) => {
   const columns = [
     {
       title: '所属模块',
-      dataIndex: 'module'
+      dataIndex: 'module',
+      render: (text) => {
+        return text.name || '--';
+      }
     },
     {
       title: '操作名称',
       dataIndex: 'name'
     },
     {
-      title: '类型',
+      title: '显示名称',
+      dataIndex: 'displayName'
+    },
+    {
+      title: '操作类型',
       dataIndex: 'type',
       render: (text) => {
-        return text ? 'API' : '非API';
+        return text === 1 ? '系统操作' : '其他操作';
       }
     },
     {
@@ -94,25 +128,31 @@ const ActionPage: React.FC<IProps> = (props) => {
     {
       title: '操作',
       key: 'action',
-      render: (text, record) => (
-        <div className="table-action">
-          <Tooltip placement="top" title="更新">
-            <Button
-              size="small"
-              icon="edit"
-              onClick={() => { showUpdateView(record) }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="删除">
-            <Button
-              type="danger"
-              size="small"
-              icon="delete"
-              onClick={() => { handleConfirmRemove(record) }}
-            />
-          </Tooltip>
-        </div>
-      )
+      render: (text, record) => {
+        if (record.type === 1) {
+          return '--'
+        } else {
+          return (
+            <div className="table-action">
+              <Tooltip placement="top" title="更新">
+                <Button
+                  size="small"
+                  icon="edit"
+                  onClick={() => { showUpdateView(record) }}
+                />
+              </Tooltip>
+              <Tooltip placement="top" title="删除">
+                <Button
+                  type="danger"
+                  size="small"
+                  icon="delete"
+                  onClick={() => { handleConfirmRemove(record) }}
+                />
+              </Tooltip>
+            </div>
+          )
+        }
+      }
     }
   ];
 
@@ -150,10 +190,12 @@ const ActionPage: React.FC<IProps> = (props) => {
         {table}
       </Card>
 
-      <ActionForm
+      <ActionDrawer
         visible={visible}
         modules={modules}
         formType={formType}
+        currentAction={currentAction}
+        onSubmit={handleSubmit}
         onClose={handleCloseDrawer}
       />
     </React.Fragment>

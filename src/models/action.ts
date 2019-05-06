@@ -4,12 +4,17 @@ import { Effect } from '@/models/connect';
 import {
   fetchList,
   fetchRemove,
+  fetchCreate,
+  fetchUpdate,
   fetchModuleList
 } from '@/services/action';
 
 export interface IAction {
   id?: string | number;
   name?: string;
+  displayName?: string;
+  moduleId?: string;
+  module?: IModule;
   type?: number;
   remark?: string;
 }
@@ -29,7 +34,9 @@ export interface IActionModel {
   state: IActionModelState,
   effects: {
     fetchList: Effect;
+    fetchCreate: Effect;
     fetchRemove: Effect;
+    fetchUpdate: Effect;
     fetchModules: Effect;
   },
   reducers: {
@@ -50,16 +57,22 @@ const ActionModel: IActionModel = {
       if (response && response.code === 200) {
         const list = response.data;
 
-        const actions = list.map(item => {
-          const action = { ...item };
-          action.module = action.module.name;
-          return action;
-        });
-
         yield put({
           type: 'saveList',
-          payload: actions
+          payload: list
         })
+      }
+    },
+    *fetchCreate({ payload, callback }, { call }) {
+      const response = yield call(fetchCreate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
+    },
+    *fetchUpdate({ payload, callback }, { call }) {
+      const response = yield call(fetchUpdate, payload);
+      if (response && response.code === 200) {
+        callback && callback();
       }
     },
     *fetchRemove({ payload }, { call }) {

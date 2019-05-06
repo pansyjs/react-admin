@@ -1,8 +1,8 @@
 import React from 'react';
-import { Form, Input, Select, Radio } from 'antd';
+import { Form, Input, Select } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
-import { IModule } from '@/models/action';
+import { IModule, IAction } from '@/models/action';
 
 export type TFormType = 'create' | 'update';
 
@@ -10,21 +10,26 @@ interface IProps extends FormComponentProps {
   formType: TFormType;
   visible: boolean;
   modules: IModule[];
+  currentAction: IAction;
   onClose: () => void;
+  onSubmit: (values) => void;
 }
 
 const FormItem  = Form.Item;
 const { Option } = Select;
 const { TextArea } = Input;
 
-const ActionForm: React.FC<IProps> = (props) => {
+const ActionDrawer: React.FC<IProps> = (props) => {
   const {
     visible,
     modules,
     onClose,
+    onSubmit,
     formType,
-    form: { getFieldDecorator }
+    form,
+    currentAction
   } = props;
+  const { getFieldDecorator } = form;
   const [title, setTitle] = React.useState<string>('');
 
   React.useEffect(() => {
@@ -33,19 +38,33 @@ const ActionForm: React.FC<IProps> = (props) => {
     }
   }, [props.formType]);
 
-  const handleClose = () => {
-    onClose && onClose();
+  React.useEffect(() => {
+    if (!visible) {
+      form.resetFields();
+    }
+  }, [props.visible]);
+
+  const handleConfirm = () => {
+    form.validateFields((error, values) => {
+      const data = { ...values };
+
+      if (formType === 'update') {
+        data.id = currentAction.id;
+      }
+
+      onSubmit && onSubmit(data);
+    })
   };
 
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 7 },
+      sm: { span: 5 },
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 12 },
-      md: { span: 10 },
+      md: { span: 15 },
     },
   };
 
@@ -62,13 +81,16 @@ const ActionForm: React.FC<IProps> = (props) => {
   return (
     <DrawerWrapper
       visible={visible}
-      onClose={handleClose}
+      onClose={onClose}
+      onCancel={onClose}
+      onConfirm={handleConfirm}
       width={600}
       title={title}
     >
       <Form>
         <FormItem {...formItemLayout} label="操作名称">
           {getFieldDecorator('name', {
+            initialValue: currentAction.name,
             rules: [
               {
                 required: true,
@@ -77,8 +99,20 @@ const ActionForm: React.FC<IProps> = (props) => {
             ],
           })(<Input placeholder="请输入操作名称" />)}
         </FormItem>
+        <FormItem {...formItemLayout} label="显示名称">
+          {getFieldDecorator('displayName', {
+            initialValue: currentAction.displayName,
+            rules: [
+              {
+                required: true,
+                message: '显示名称不能为空'
+              },
+            ],
+          })(<Input placeholder="请输入显示名称" />)}
+        </FormItem>
         <FormItem {...formItemLayout} label="所属模块">
-          {getFieldDecorator('mould', {
+          {getFieldDecorator('moduleId', {
+            initialValue: (currentAction.module || {}).id,
             rules: [
               {
                 required: true,
@@ -95,28 +129,9 @@ const ActionForm: React.FC<IProps> = (props) => {
             </Select>
           )}
         </FormItem>
-        <FormItem {...formItemLayout} label="操作类型">
-          {getFieldDecorator('type', {
-            initialValue: 1,
-            rules: [
-              {
-                required: true,
-                message: '请选择操作类型'
-              },
-            ],
-          })(
-            <Radio.Group>
-              <Radio value={0}>
-                非API
-              </Radio>
-              <Radio value={1}>
-                API
-              </Radio>
-            </Radio.Group>
-          )}
-        </FormItem>
         <FormItem {...formItemLayout} label="备注">
           {getFieldDecorator('remark', {
+            initialValue: currentAction.remark,
             rules: []
           })(
             <TextArea rows={3} />
@@ -127,8 +142,8 @@ const ActionForm: React.FC<IProps> = (props) => {
   )
 };
 
-ActionForm.defaultProps = {
+ActionDrawer.defaultProps = {
   modules: []
 };
 
-export default Form.create()(ActionForm);
+export default Form.create()(ActionDrawer);
