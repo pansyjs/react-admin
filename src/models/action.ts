@@ -4,6 +4,7 @@ import { Effect } from '@/models/connect';
 import {
   fetchList,
   fetchRemove,
+  fetchCreate,
   fetchModuleList
 } from '@/services/action';
 
@@ -29,6 +30,7 @@ export interface IActionModel {
   state: IActionModelState,
   effects: {
     fetchList: Effect;
+    fetchCreate: Effect;
     fetchRemove: Effect;
     fetchModules: Effect;
   },
@@ -60,6 +62,13 @@ const ActionModel: IActionModel = {
           type: 'saveList',
           payload: actions
         })
+      }
+    },
+    *fetchCreate({ payload, callback }, { call }) {
+      const response = yield call(fetchCreate, payload);
+      console.log(payload);
+      if (response && response.code === 200) {
+        callback && callback();
       }
     },
     *fetchRemove({ payload }, { call }) {
