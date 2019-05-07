@@ -44,6 +44,7 @@ const PasswordLoginForm: React.FC<IProps> = (props) => {
     <Form onSubmit={handleSubmit}>
       <FormItem>
         {getFieldDecorator('username', {
+          initialValue: 'admin',
           rules: [
             {
               required: true,
@@ -60,6 +61,7 @@ const PasswordLoginForm: React.FC<IProps> = (props) => {
       </FormItem>
       <FormItem>
         {getFieldDecorator('password', {
+          initialValue: '123456',
           rules: [
             {
               required: true,

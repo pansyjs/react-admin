@@ -1,7 +1,7 @@
 import { mock, Random } from 'mockjs';
 
 let Groups = [];
-const count = 100;
+const count = 20;
 
 for (let i = 0; i < count; i++) {
   Groups.push(mock({
@@ -12,6 +12,16 @@ for (let i = 0; i < count; i++) {
     remark: '@cparagraph(1)',
     createTime: +Random.date('T'),
   }))
+}
+
+function fetchAll(req, res) {
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {
+      list: Groups
+    }
+  });
 }
 
 function fetchList(req, res) {
@@ -80,6 +90,7 @@ function fetchUpdate(req, res) {
 }
 
 export default {
+  'GET /api/groups/all': fetchAll,
   'GET /api/groups/list': fetchList,
   'Post /api/groups/create': fetchCreate,
   'DELETE /api/groups/remove/:groupId': fetchRemove,
