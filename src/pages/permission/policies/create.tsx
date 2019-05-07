@@ -11,7 +11,7 @@ import StandardTable from '@/components/standard-table';
 import { IStatement } from '@/components/authorized/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps } from '@/models/connect';
-import StatementForm from '../components/statement-form';
+import StatementDrawer from '../components/statement-drawer';
 
 interface IProps extends ConnectProps, FormComponentProps {
   modules: IModule[];
@@ -46,6 +46,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
           payload: {
             ...values,
             document: statements
+          },
+          callback: () => {
+            setStatement([]);
+            form.resetFields();
+            handelCancel();
           }
         })
       }
@@ -137,7 +142,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
         </Form>
       </PageHeaderWrapper>
 
-      <StatementForm
+      <StatementDrawer
         visible={visible}
         formType="create"
         modules={modules}
@@ -158,7 +163,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
       </Card>
 
       <FooterToolbar>
-        <Button type="primary" onClick={handleCreate}>确定</Button>
+        <Button
+          type="primary"
+          disabled={!statements.length}
+          onClick={handleCreate}
+        >确定</Button>
         <Button onClick={handelCancel}>返回</Button>
       </FooterToolbar>
     </React.Fragment>

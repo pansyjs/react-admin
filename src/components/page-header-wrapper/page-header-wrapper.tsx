@@ -13,6 +13,7 @@ interface IProps extends PageHeaderProps {
 
 const PageHeaderWrapper: React.FC<IProps> = (props) => {
   const { wrapperClassName, prefixCls, ...restProps } = props;
+  const { location, breadcrumbNameMap } = React.useContext(MenuContext);
 
   const getRoutes = (pathname, breadcrumbNameMap) => {
     const pathSnippets = urlToList(pathname);
@@ -36,28 +37,22 @@ const PageHeaderWrapper: React.FC<IProps> = (props) => {
       : <Link to={route.path}>{route.breadcrumbName}</Link>;
   };
 
+  const pathname = location!.pathname;
+  const routes = getRoutes(pathname, breadcrumbNameMap);
+
   return (
     <div
       className={classNames(wrapperClassName, {
         [`${prefixCls}`]: true
       })}
     >
-      <MenuContext.Consumer>
-        {value => {
-          const { location, breadcrumbNameMap } = value;
-          const pathname = location!.pathname;
-          const routes = getRoutes(pathname, breadcrumbNameMap);
-          return (
-            <PageHeader
-              breadcrumb={{
-                itemRender,
-                routes
-              }}
-              {...restProps}
-            />
-          )
+      <PageHeader
+        breadcrumb={{
+          itemRender,
+          routes
         }}
-      </MenuContext.Consumer>
+        {...restProps}
+      />
     </div>
   )
 };

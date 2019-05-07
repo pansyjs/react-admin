@@ -19,7 +19,7 @@ interface IProps extends ConnectProps, FormComponentProps {
 const RadioGroup = Radio.Group;
 const { Option } = Select;
 
-const StatementForm: React.FC<IProps> = (props) => {
+const StatementDrawer: React.FC<IProps> = (props) => {
   const {
     dispatch,
     visible,
@@ -40,6 +40,12 @@ const StatementForm: React.FC<IProps> = (props) => {
       setTitle(formType === 'create' ? '添加授权语句' : '更新授权语句');
     }
   }, [props.formType]);
+
+  React.useEffect(() => {
+    if (!visible) {
+      form.resetFields();
+    }
+  }, [props.visible]);
 
   const handleClose = () => {
     onClose && onClose();
@@ -195,9 +201,9 @@ const StatementForm: React.FC<IProps> = (props) => {
   )
 };
 
-StatementForm.defaultProps = {
+StatementDrawer.defaultProps = {
   modules: [],
   actions: []
 };
 
-export default Form.create()(StatementForm)
+export default Form.create()(StatementDrawer)
