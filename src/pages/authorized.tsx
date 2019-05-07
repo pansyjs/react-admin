@@ -88,6 +88,11 @@ const AuthComponent: React.FC<IProps> = (props) => {
   )
 };
 
+AuthComponent.defaultProps = {
+  actions: [],
+  policies: []
+};
+
 export default connect(({ menu, user, global }) => ({
   policy: global.policy,
   actions: global.actions,
