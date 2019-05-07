@@ -1,8 +1,10 @@
 import React from 'react';
 import { Divider, Transfer } from 'antd';
+import { TransferItem } from 'antd/es/transfer';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import DescriptionList from '@/components/description-list';
-import { IUser } from '@/models/user';
+import { IUser } from '../models/system-user';
+import { IGroup } from '../models/user-group';
 import './user-to-group.less';
 
 interface IProps {
@@ -10,17 +12,35 @@ interface IProps {
   visible?: boolean;
   onClose?: () => void;
   user?: IUser;
+  groups?: IGroup[];
   onConfirm?: (values) => void;
 }
 
 const Description = DescriptionList.Description;
 
 const UserToGroup: React.FC<IProps> = (props) => {
-  const { prefixCls, visible, user, onClose, onConfirm } = props;
+  const { prefixCls, visible, user, groups, onClose, onConfirm } = props;
   const [targetKeys, setTargetKeys] = React.useState<string[]>([]);
+  const [userGroups, setUserGroups] = React.useState<TransferItem[]>([]);
+
+  React.useEffect(() => {
+    const list: any[] = groups.map(item => ({
+      key: item.id,
+      title: item.name,
+      description: item.displayName
+    }));
+    setUserGroups(list);
+  }, [props.groups]);
+
+  React.useEffect(() => {
+    if (!visible) {
+      setTargetKeys([]);
+    }
+  }, [props.visible]);
 
   const handleConfirm = () => {
-
+    if (!targetKeys.length) return;
+    onConfirm && onConfirm(targetKeys);
   };
 
   const handleChange = (targetKeys) => {
@@ -29,6 +49,19 @@ const UserToGroup: React.FC<IProps> = (props) => {
 
   const filterOption = (inputValue, option) => {
     return option.description.indexOf(inputValue) > -1
+  };
+
+  const renderItem = (item) => {
+    const customLabel = (
+      <span>
+        {item.title} - {item.description}
+      </span>
+    );
+
+    return {
+      label: customLabel,
+      value: item.title
+    };
   };
 
   return (
@@ -60,23 +93,12 @@ const UserToGroup: React.FC<IProps> = (props) => {
         <Divider style={{ marginBottom: 32 }} />
 
         <Transfer
-          dataSource={[
-            {
-              key: '001',
-              title: 'title1',
-              description: 'description1'
-            },
-            {
-              key: '002',
-              title: 'title2',
-              description: 'description2'
-            }
-          ]}
+          dataSource={userGroups}
           showSearch
           filterOption={filterOption}
           targetKeys={targetKeys}
           onChange={handleChange}
-          render={item => item.title}
+          render={renderItem}
         />
       </div>
     </DrawerWrapper>
@@ -85,7 +107,8 @@ const UserToGroup: React.FC<IProps> = (props) => {
 
 UserToGroup.defaultProps = {
   prefixCls: 'lotus-user-to-group',
-  user: {}
+  user: {},
+  groups: []
 };
 
 export default UserToGroup;

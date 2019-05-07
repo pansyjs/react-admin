@@ -1,5 +1,10 @@
 import { Get, Post, Put, Delete } from '@/utils/request';
 
+// 获取所有用户组
+export async function fetchAll(params) {
+  return Get('groups/all', params);
+}
+
 // 获取用户组列表
 export async function fetchList(params) {
   return Get('groups/list', params);

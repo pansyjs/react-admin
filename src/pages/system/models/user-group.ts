@@ -1,6 +1,12 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
-import { fetchList, fetchCreate, fetchRemove, fetchUpdate } from '@/services/group';
+import {
+  fetchAll,
+  fetchList,
+  fetchCreate,
+  fetchRemove,
+  fetchUpdate
+} from '@/services/group';
 import { IPagination } from '@/pages/global';
 import { formatTime } from '@/utils/utils';
 
@@ -19,6 +25,7 @@ export interface IGroupTable {
 }
 
 export interface IUserGroupModelState {
+  list: IGroup[];
   table: IGroupTable;
 }
 
@@ -26,13 +33,14 @@ export interface IUserGroupModel {
   namespace: 'userGroup';
   state: IUserGroupModelState;
   effects: {
-    // 获取用户列表
+    fetchAll: Effect;
     fetchList: Effect;
     fetchCreate: Effect;
     fetchRemove: Effect;
     fetchUpdate: Effect;
   },
   reducers: {
+    saveList: Reducer<any>;
     saveTable: Reducer<any>;
   }
 }
@@ -40,11 +48,29 @@ export interface IUserGroupModel {
 const UserGroupModel: IUserGroupModel = {
   namespace: 'userGroup',
   state: {
+    list: [],
     table: {
       list: []
     }
   },
   effects: {
+    *fetchAll({ payload }, { call, put }) {
+      const response = yield call(fetchAll, payload);
+      if (response && response.code === 200) {
+        const list = response.data.list;
+
+        const groups = list.map(item => ({
+          id: item.id,
+          name: item.name,
+          displayName: item.displayName
+        }));
+
+        yield put({
+          type: 'saveList',
+          payload: groups
+        })
+      }
+    },
     *fetchList({ payload }, { call, put }) {
       const response = yield call(fetchList, payload);
       if (response && response.code === 200) {
@@ -91,6 +117,12 @@ const UserGroupModel: IUserGroupModel = {
     },
   },
   reducers: {
+    saveList(state, { payload }) {
+      return {
+        ...state,
+        list: payload
+      };
+    },
     saveTable(state, { payload }) {
       return {
         ...state,

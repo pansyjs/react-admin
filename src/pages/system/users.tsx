@@ -8,10 +8,12 @@ import UserDrawer, { TType } from './components/user-drawer';
 import UserPermission from './components/user-permission';
 import UserToGroup from './components/user-to-group';
 import { ITable, IUser } from './models/system-user';
+import { IGroup } from './models/user-group';
 
 interface IProps extends ConnectProps {
   loading: boolean;
-  userTable: ITable
+  userTable: ITable;
+  groups: IGroup[];
 }
 
 interface IQueryData {
@@ -23,7 +25,7 @@ const { Paragraph } = Typography;
 const confirm = Modal.confirm;
 
 const UsersPage: React.FC<IProps> = (props) => {
-  const { userTable, loading, dispatch } = props;
+  const { userTable, loading, groups, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [permissionVisible, setPermissionVisible] = React.useState<boolean>(false);
@@ -64,6 +66,11 @@ const UsersPage: React.FC<IProps> = (props) => {
   };
 
   const showGroupView = (record) => {
+    if (!groups.length) {
+      dispatch({
+        type: 'userGroup/fetchAll'
+      })
+    }
     setCurrentUser(record);
     setGroupVisible(true);
   };
@@ -241,6 +248,7 @@ const UsersPage: React.FC<IProps> = (props) => {
       <UserToGroup
         visible={groupVisible}
         user={currentUser}
+        groups={groups}
         onClose={handleGroupClose}
       />
     </React.Fragment>
@@ -248,10 +256,12 @@ const UsersPage: React.FC<IProps> = (props) => {
 };
 
 UsersPage.defaultProps = {
-  loading: false
+  loading: false,
+  groups: []
 };
 
-export default connect(({ systemUser, loading }) => ({
+export default connect(({ systemUser, userGroup, loading }) => ({
   userTable: systemUser.table,
+  groups: userGroup.list,
   loading: loading.effects['systemUser/fetchList'],
 }))(UsersPage);
