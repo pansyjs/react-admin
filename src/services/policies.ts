@@ -6,8 +6,8 @@ export async function fetchList(params) {
 }
 
 // 删除权限策略
-export async function fetchRemove(ids) {
-  return Delete('policies/remove', ids);
+export async function fetchRemove(id) {
+  return Delete(`policies/remove/${id}`);
 }
 
 // 创建权限策略

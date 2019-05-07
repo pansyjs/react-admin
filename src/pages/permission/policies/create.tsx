@@ -11,7 +11,7 @@ import StandardTable from '@/components/standard-table';
 import { IStatement } from '@/components/authorized/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps } from '@/models/connect';
-import StatementForm from '../components/statement-form';
+import StatementDrawer from '../components/statement-drawer';
 
 interface IProps extends ConnectProps, FormComponentProps {
   modules: IModule[];
@@ -142,7 +142,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
         </Form>
       </PageHeaderWrapper>
 
-      <StatementForm
+      <StatementDrawer
         visible={visible}
         formType="create"
         modules={modules}

@@ -28,9 +28,23 @@ function fetchCreate(req, res) {
   });
 }
 
+function fetchRemove(req, res) {
+  const { id } = req.params;
+
+  Policies = Policies.filter(item => item.id !== id);
+
+  res.send({
+    code: 200,
+    message: 'success',
+    data: {}
+  });
+}
+
+
 export default {
   'GET /api/policies/list': fetchList,
-  'POST /api/policies/create': fetchCreate
+  'POST /api/policies/create': fetchCreate,
+  'DELETE /api/policies/remove/:id': fetchRemove
 };
 
 

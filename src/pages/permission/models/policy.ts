@@ -26,6 +26,7 @@ export interface IPolicyModel {
   state: IPolicyModelState,
   effects: {
     fetchList: Effect;
+    fetchRemove: Effect;
     fetchCreate: Effect;
   },
   reducers: {
@@ -48,6 +49,12 @@ const PolicyModel: IPolicyModel = {
           type: 'saveList',
           payload: list
         })
+      }
+    },
+    *fetchRemove({ payload, callback }, { call }) {
+      const response = yield call(fetchRemove, payload);
+      if (response && response.code === 200) {
+        callback && callback();
       }
     },
     *fetchCreate({ payload, callback }, { call }) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Typography, Button, Card, Tooltip, Modal } from 'antd';
+import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
@@ -20,10 +20,14 @@ const PoliciesPage: React.FC<IProps> = (props) => {
   const { prefixCls, policies, dispatch } = props;
 
   React.useEffect(() => {
+    getList();
+  }, []);
+
+  const getList = () => {
     dispatch({
       type: 'policy/fetchList'
     });
-  }, []);
+  };
 
   const showCreateView = () => {
     router.push('/permission/policies/create');
@@ -44,7 +48,14 @@ const PoliciesPage: React.FC<IProps> = (props) => {
   };
 
   const handleRemove = (record) => {
-
+    dispatch({
+      type: 'policy/fetchRemove',
+      payload: record.id,
+      callback: () => {
+        message.success('删除成功！');
+        getList();
+      }
+    });
   };
 
   const columns = [
