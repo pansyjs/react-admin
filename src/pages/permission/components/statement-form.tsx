@@ -41,6 +41,12 @@ const StatementForm: React.FC<IProps> = (props) => {
     }
   }, [props.formType]);
 
+  React.useEffect(() => {
+    if (!visible) {
+      form.resetFields();
+    }
+  }, [props.visible]);
+
   const handleClose = () => {
     onClose && onClose();
   };

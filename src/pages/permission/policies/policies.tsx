@@ -1,20 +1,29 @@
 import React from 'react';
+import { connect } from 'dva';
 import router from 'umi/router';
 import { Typography, Button, Card, Tooltip, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
+import { IPolicy } from '../models/policy';
 import './policies.less';
 
 interface IProps extends ConnectProps {
   prefixCls?: string;
+  policies?: IPolicy[];
 }
 
 const { Paragraph } = Typography;
 const confirm = Modal.confirm;
 
 const PoliciesPage: React.FC<IProps> = (props) => {
-  const { prefixCls } = props;
+  const { prefixCls, policies, dispatch } = props;
+
+  React.useEffect(() => {
+    dispatch({
+      type: 'policy/fetchList'
+    });
+  }, []);
 
   const showCreateView = () => {
     router.push('/permission/policies/create');
@@ -38,21 +47,6 @@ const PoliciesPage: React.FC<IProps> = (props) => {
 
   };
 
-  const list = [
-    {
-      id: '1',
-      name: '胡彦斌',
-      attachmentCount: 32,
-      remark: '西湖区湖底公园1号'
-    },
-    {
-      id: '2',
-      name: '胡彦祖',
-      attachmentCount: 42,
-      remark: '西湖区湖底公园1号'
-    }
-  ];
-
   const columns = [
     {
       title: '权限策略名称',
@@ -60,7 +54,10 @@ const PoliciesPage: React.FC<IProps> = (props) => {
     },
     {
       title: '策略类型',
-      dataIndex: 'type'
+      dataIndex: 'type',
+      render: (text) => {
+        return text === 1 ? '系统策略' : '用户自定义策略';
+      }
     },
     {
       title: '引用次数',
@@ -111,7 +108,7 @@ const PoliciesPage: React.FC<IProps> = (props) => {
         <Card bordered={false}>
           <StandardTable
             data={{
-              list
+              list: policies
             }}
             columns={columns}
           />
@@ -122,7 +119,10 @@ const PoliciesPage: React.FC<IProps> = (props) => {
 };
 
 PoliciesPage.defaultProps = {
-  prefixCls: 'lotus-policies-page'
+  prefixCls: 'lotus-policies-page',
+  policies: []
 };
 
-export default PoliciesPage;
+export default connect(({ policy }) => ({
+  policies: policy.list
+}))(PoliciesPage);

@@ -46,6 +46,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
           payload: {
             ...values,
             document: statements
+          },
+          callback: () => {
+            setStatement([]);
+            form.resetFields();
+            handelCancel();
           }
         })
       }
@@ -158,7 +163,11 @@ const CreatePolicy: React.FC<IProps> = (props) => {
       </Card>
 
       <FooterToolbar>
-        <Button type="primary" onClick={handleCreate}>确定</Button>
+        <Button
+          type="primary"
+          disabled={!statements.length}
+          onClick={handleCreate}
+        >确定</Button>
         <Button onClick={handelCancel}>返回</Button>
       </FooterToolbar>
     </React.Fragment>

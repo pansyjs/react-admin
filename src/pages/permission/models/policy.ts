@@ -41,11 +41,20 @@ const PolicyModel: IPolicyModel = {
   effects: {
     *fetchList({ payload }, { call, put }) {
       const response = yield call(fetchList, payload);
+      if (response && response.code === 200) {
+        const list = response.data;
 
+        yield put({
+          type: 'saveList',
+          payload: list
+        })
+      }
     },
-    *fetchCreate({ payload }, { call, put }) {
+    *fetchCreate({ payload, callback }, { call }) {
       const response = yield call(fetchCreate, payload);
-      console.log(payload);
+      if (response && response.code === 200) {
+        callback && callback();
+      }
     }
   },
   reducers: {
