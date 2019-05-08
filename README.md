@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/react-16.8.1-brightgreen.svg" alt="react">
   </a>
   <a href="https://github.com/ant-design/ant-design">
-    <img src="https://img.shields.io/badge/ant--design-3.16.5-brightgreen.svg" alt="antd">
+    <img src="https://img.shields.io/badge/ant--design-3.17.0-brightgreen.svg" alt="antd">
   </a>
   <a href="https://github.com/umijs/umi">
     <img src="https://img.shields.io/badge/umi-2.6.16-brightgreen.svg" alt="umi">
@@ -39,6 +39,19 @@
 # 广告
 
 [awesome-frontend](https://github.com/wangxingkang/awesome-frontend) 整理前端相关的博客、教程、库... 欢迎查阅
+
+# 目录
+
+- [使用](#使用)
+- [技术栈](#技术栈)
+- [API](#API)
+- [关于权限](#关于权限)
+- [项目目录](#项目目录)
+- [关于打包](#关于打包)
+- [commit-message](#commit-message)
+- [自定义图标](#自定义图标)
+- [借鉴项目](#借鉴项目)
+- [最佳实践](#最佳实践)
 
 # 使用
 
@@ -70,9 +83,59 @@ npm install --global yarn
 - Ajax 库：Axios
 - 样式：Less
 
-# 关于 API
+# API
 
 [nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
+
+# 关于权限
+
+> 权限实现参考参考阿里云权限  [阿里云 Policy 语法结构](https://help.aliyun.com/document_detail/28664.html?spm=a2c8b.12215508.policylist.2.ff466253ERVmtX)
+
+有用户、用户组、操作、权限策略四个概念
+
+* 用户: 系统用户 可直接绑定权限策略 用户绑定权限策略后将不再继承用户组的权限
+* 用户组: 职责相同的用户的集合 可绑定策略 可添加用户 用户自动继承该用户组的权限，用户属于多个用户组时，会同时继承多个用户组的权限 
+* 操作: 基本对应后端API,会存在意外情况，比如某个前端资源的访问权限
+* 权限策略: 操作的集合，一般为每个页面，或者每个模块的权限集合，方便赋权
+
+**注意**
+
+权限分为`allow`和`deny`两种，`deny`优先
+
+**内部实现**
+
+封装[Policy类](https://github.com/ts-react/react-admin-template/blob/master/src/components/authorized/policy.ts) 提供权限策略解析、验证等功能 
+
+PS: 有时间会单独提供npm包
+
+**Policy示例**
+
+```
+{
+  // 策略版本
+  version: 1,
+  // 授权语句
+  statement: [
+    {
+      // 授权效力 allow: 允许 deny: 禁止
+      effect: 'allow',
+      // 操作 
+      // * | string[]
+      // eg: "*" 代表可访问所有权限
+      // eg: "module1/*" 代表可访问module1下所有权限
+      // eg: "module1/action1" 代表可访问module1下action1权限
+      action: 'system:*'
+    },
+    {
+      effect: 'allow',
+      action: [
+        'permission:actionCreate',
+        'permission:actionUpdate'
+      ]
+    }
+  ]
+}
+```
 
 # 项目目录
 
