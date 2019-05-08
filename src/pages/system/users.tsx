@@ -239,6 +239,7 @@ const UsersPage: React.FC<IProps> = (props) => {
       <PoliciesDrawer
         visible={policiesVisible}
         type="user"
+        user={currentUser}
         onClose={() => {
           setPoliciesVisible(false)
         }}

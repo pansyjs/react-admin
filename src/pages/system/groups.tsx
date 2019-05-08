@@ -91,7 +91,8 @@ const GroupsPage: React.FC<IProps> = (props) => {
     })
   };
 
-  const showPoliciesView = (values) => {
+  const showPoliciesView = (data) => {
+    setCurrentGroup(data);
     setPoliciesVisible(true);
   };
 
@@ -220,6 +221,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
       <PoliciesDrawer
         visible={policiesVisible}
         type="group"
+        group={currentGroup}
         onClose={() => {
           setPoliciesVisible(false)
         }}
