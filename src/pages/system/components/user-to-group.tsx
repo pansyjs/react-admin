@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Transfer } from 'antd';
+import { Divider, Transfer, Alert } from 'antd';
 import { TransferItem } from 'antd/es/transfer';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import DescriptionList from '@/components/description-list';
@@ -73,6 +73,11 @@ const UserToGroup: React.FC<IProps> = (props) => {
       width={700}
       title="添加到用户组"
     >
+      <Alert
+        message="用户添加到用户组，将拥有该用户组所有权限"
+        type="warning"
+        closable
+      />
       <div className={prefixCls}>
         <DescriptionList
           size="large"
@@ -90,7 +95,7 @@ const UserToGroup: React.FC<IProps> = (props) => {
           </Description>
         </DescriptionList>
 
-        <Divider style={{ marginBottom: 32 }} />
+        <Divider />
 
         <Transfer
           dataSource={userGroups}

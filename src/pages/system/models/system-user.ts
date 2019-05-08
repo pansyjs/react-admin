@@ -122,5 +122,4 @@ const SystemUserModel: ISystemUserModel = {
   }
 };
 
-// @ts-ignore
 export default SystemUserModel;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
-import { IUser } from '@/models/user';
+import { IUser } from '../models/system-user';
 
 export type TType = 'create' | 'update';
 
