@@ -2,6 +2,7 @@ import React from 'react';
 import { Transfer } from 'antd';
 import DescriptionList from '@/components/description-list';
 import DrawerWrapper from '@/components/drawer-wrapper';
+import { IPolicy } from '@/models/policy';
 import { IUser } from '../models/system-user';
 import { IGroup } from '../models/user-group';
 import './policies-drawer.less';
@@ -10,8 +11,14 @@ interface IProps {
   prefixCls?: string;
   visible?: boolean;
   onClose?: () => void;
+  // 用户信息
   user?: IUser;
+  // 用户组信息
   group?: IGroup;
+  // 所有权限策略
+  policies?: IPolicy[];
+  // 已有的权限策略
+  defaultPolicies: string[];
   type?: 'user' | 'group';
   onConfirm?: (values) => void;
 }
@@ -112,7 +119,8 @@ const PoliciesDrawer: React.FC<IProps> = (props) => {
 PoliciesDrawer.defaultProps = {
   visible: false,
   prefixCls: 'lotus-policies-drawer',
-  user: {}
+  user: {},
+  policies: []
 };
 
 export default PoliciesDrawer;

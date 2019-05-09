@@ -14,13 +14,15 @@ const PasswordReset: React.FC<IProps> = (props) => {
 
   return (
     <div className={prefixCls}>
-      <PasswordResetForm prefixCls={prefixCls} />
+      <PasswordResetForm
+        prefixCls={prefixCls}
+      />
     </div>
   )
 };
 
 PasswordReset.defaultProps = {
-  prefixCls: 'user-password-reset'
+  prefixCls: 'user-password-reset-page'
 };
 
 export default connect(({ loading }) => ({
