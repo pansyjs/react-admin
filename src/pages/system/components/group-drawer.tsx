@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
-import { IGroup } from '@/models/user-group';
 import DrawerWrapper from '@/components/drawer-wrapper';
+import { IGroup } from '../models/user-group';
 
 export type TType = 'create' | 'update';
 

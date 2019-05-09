@@ -20,7 +20,7 @@ interface IProps {
 }))
 class LoginPage extends React.Component<IProps, any> {
   static defaultProps = {
-    prefixCls: 'lotus-login-page'
+    prefixCls: 'login-page'
   };
 
   handleLogin = (values) => {

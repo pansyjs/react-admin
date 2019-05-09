@@ -1,4 +1,5 @@
 import React from 'react';
+import router from 'umi/router';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
@@ -6,8 +7,7 @@ import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
 interface IProps extends FormComponentProps {
   prefixCls?: string;
   loading?: boolean;
-  onLogin?: (values) => void;
-  onChangeType?: (type: string) => void;
+  onSubmit?: (values) => void;
 }
 
 const FormItem = Form.Item;
@@ -16,26 +16,21 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
   const {
     prefixCls,
     loading,
-    onLogin,
-    onChangeType,
+    onSubmit,
     form: { validateFields, getFieldDecorator }
   } = props;
-  const loginType = 'password';
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     validateFields((error, values) => {
       if (!error) return;
-      onLogin && onLogin({
-        ...values,
-        type: loginType
-      });
+      onSubmit && onSubmit(values);
     })
   };
 
-  const handleChangeLoginType = () => {
-    onChangeType && onChangeType(loginType);
+  const handleReturnLogin = () => {
+    router.push('/user/login');
   };
 
   return (
@@ -57,6 +52,22 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
         )}
       </FormItem>
       <FormItem>
+        {getFieldDecorator('oldPassword', {
+          rules: [
+            {
+              required: true,
+              message: formatMessage({ id: 'validation.verification-code.required' })
+            }
+          ]
+        })(
+          <Input
+            size="large"
+            prefix={<Icon type="lock" />}
+            placeholder={`${formatMessage({ id: 'app.password-reset.old-password' })}`}
+          />
+        )}
+      </FormItem>
+      <FormItem>
         {getFieldDecorator('password', {
           rules: [
             {
@@ -69,6 +80,7 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
             size="large"
             type="password"
             autoComplete="off"
+            prefix={<Icon type="lock" />}
             placeholder={`${formatMessage({ id: 'app.password-reset.new-password' })}`}
           />
         )}
@@ -86,6 +98,7 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
             size="large"
             type="password"
             autoComplete="off"
+            prefix={<Icon type="lock" />}
             placeholder={`${formatMessage({ id: 'app.password-reset.confirm-password' })}`}
           />
         )}
@@ -100,6 +113,11 @@ const PasswordResetForm: React.FC<IProps> = (props) => {
         >
           <FormattedMessage id="app.password-reset.button" />
         </Button>
+        <div className={`${prefixCls}__tools`}>
+          <span onClick={handleReturnLogin}>
+            <FormattedMessage id="app.password-reset.login" />
+          </span>
+        </div>
       </FormItem>
     </Form>
   )

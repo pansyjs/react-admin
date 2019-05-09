@@ -27,6 +27,7 @@ const AuthComponent: React.FC<IProps> = (props) => {
   const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useState(() => {
+    // 类似 Promise.all 实现比较合理，待优化
     // 获取所有操作
     dispatch({
       type: 'global/fetchActions'

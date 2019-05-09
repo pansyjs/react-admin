@@ -70,6 +70,7 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
             size="large"
             autoComplete="off"
             maxLength={6}
+            prefix={<Icon type="key" />}
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
             suffix={
               <SendCode className="verification-code-button" />

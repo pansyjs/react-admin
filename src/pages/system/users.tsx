@@ -5,7 +5,7 @@ import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
 import UserDrawer, { TType } from './components/user-drawer';
-import UserPermission from './components/user-permission';
+import PoliciesDrawer from './components/policies-drawer';
 import UserToGroup from './components/user-to-group';
 import { ITable, IUser } from './models/system-user';
 import { IGroup } from './models/user-group';
@@ -28,7 +28,7 @@ const UsersPage: React.FC<IProps> = (props) => {
   const { userTable, loading, groups, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [permissionVisible, setPermissionVisible] = React.useState<boolean>(false);
+  const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
   const [groupVisible, setGroupVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
   const [currentUser, setCurrentUser] = React.useState<IUser>({});
@@ -60,9 +60,9 @@ const UsersPage: React.FC<IProps> = (props) => {
     setVisible(true);
   };
 
-  const showPermissionView = (record) => {
+  const showPoliciesView = (record) => {
     setCurrentUser(record);
-    setPermissionVisible(true);
+    setPoliciesVisible(true);
   };
 
   const showGroupView = (record) => {
@@ -77,10 +77,6 @@ const UsersPage: React.FC<IProps> = (props) => {
 
   const handleClose = () => {
     setVisible(false);
-  };
-
-  const handlePermissionClose = () => {
-    setPermissionVisible(false);
   };
 
   const handleGroupClose = () => {
@@ -179,7 +175,7 @@ const UsersPage: React.FC<IProps> = (props) => {
             <Button
               size="small"
               icon="api"
-              onClick={() => { showPermissionView(record) }}
+              onClick={() => { showPoliciesView(record) }}
             />
           </Tooltip>
           <Tooltip placement="top" title="更新">
@@ -240,9 +236,13 @@ const UsersPage: React.FC<IProps> = (props) => {
         onClose={handleClose}
       />
 
-      <UserPermission
-        visible={permissionVisible}
-        onClose={handlePermissionClose}
+      <PoliciesDrawer
+        visible={policiesVisible}
+        type="user"
+        user={currentUser}
+        onClose={() => {
+          setPoliciesVisible(false)
+        }}
       />
 
       <UserToGroup

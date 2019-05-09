@@ -4,8 +4,9 @@ import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps } from '@/models/connect';
-import { IGroupTable, IGroup } from '@/models/user-group';
+import { IGroupTable, IGroup } from './models/user-group';
 import GroupDrawer, { TType } from './components/group-drawer';
+import PoliciesDrawer from './components/policies-drawer';
 
 interface IProps extends ConnectProps {
   loading: boolean;
@@ -25,6 +26,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
   const [currentGroup, setCurrentGroup] = React.useState<IGroup>({});
+  const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
 
   const [queryData, setQueryData] = React.useState<IQueryData>({
     page: 1,
@@ -89,6 +91,11 @@ const GroupsPage: React.FC<IProps> = (props) => {
     })
   };
 
+  const showPoliciesView = (data) => {
+    setCurrentGroup(data);
+    setPoliciesVisible(true);
+  };
+
   const showCreateView = () => {
     setVisible(true);
     setType('create');
@@ -148,6 +155,7 @@ const GroupsPage: React.FC<IProps> = (props) => {
             <Button
               size="small"
               icon="api"
+              onClick={() => { showPoliciesView(record) }}
             />
           </Tooltip>
           <Tooltip placement="top" title="更新">
@@ -208,6 +216,15 @@ const GroupsPage: React.FC<IProps> = (props) => {
         currentGroup={currentGroup}
         onClose={handleClose}
         onSubmit={handleSubmit}
+      />
+
+      <PoliciesDrawer
+        visible={policiesVisible}
+        type="group"
+        group={currentGroup}
+        onClose={() => {
+          setPoliciesVisible(false)
+        }}
       />
     </React.Fragment>
   )
