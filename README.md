@@ -104,38 +104,7 @@ npm install --global yarn
 
 **内部实现**
 
-封装[Policy类](https://github.com/ts-react/react-admin-template/blob/master/src/components/authorized/policy.ts) 提供权限策略解析、验证等功能 
-
-PS: 有时间会单独提供npm包
-
-**Policy示例**
-
-```
-{
-  // 策略版本
-  version: 1,
-  // 授权语句
-  statement: [
-    {
-      // 授权效力 allow: 允许 deny: 禁止
-      effect: 'allow',
-      // 操作 
-      // * | string[]
-      // eg: "*" 代表可访问所有权限
-      // eg: "module1/*" 代表可访问module1下所有权限
-      // eg: "module1/action1" 代表可访问module1下action1权限
-      action: 'system:*'
-    },
-    {
-      effect: 'allow',
-      action: [
-        'permission:actionCreate',
-        'permission:actionUpdate'
-      ]
-    }
-  ]
-}
-```
+[Policy](https://github.com/ts-react/policy) 提供权限策略解析、验证等功能 
 
 # 项目目录
 
