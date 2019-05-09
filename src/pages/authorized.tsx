@@ -76,12 +76,12 @@ const AuthComponent: React.FC<IProps> = (props) => {
     )
   }
 
-  const Authorized = RenderAuthorized(policy.getAllAction());
+  const Authorized = RenderAuthorized([]);
   const authority = getRouteAuthority(location.pathname, routerData);
 
   return (
     <Authorized
-      authority={policy.verifyAction(authority)}
+      authority={policy.multipleVerify(authority)}
       noMatch={<Exception403 />}
     >
       {children}
