@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { fetchNotices } from '@/services/global';
 import { fetchList } from '@/services/action';
-import Policy, { IAction } from '@/components/authorized/policy';
+import Policy, { IAction } from '@jiumao/policy';
 import { Effect } from '@/models/connect';
 
 export interface IGlobalModelState {
