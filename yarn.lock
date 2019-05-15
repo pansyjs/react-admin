@@ -1440,10 +1440,10 @@
   resolved "https://registry.yarnpkg.com/@jiumao/commitlint-config/-/commitlint-config-0.1.3.tgz#bb041524d17e4127b119fc3a29bee6420b9794ac"
   integrity sha512-axyZO4FX3aHjQl2lkvie1G/PzC3aoVbo3KOsg2fw4/ewqOeZhTA3aq4esc6SJYojy3VRyiQanprWLDwLJNtCng==
 
-"@jiumao/policy@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@jiumao/policy/-/policy-0.0.2.tgz#2774771f322a1f1539c1945c179e489c4151e8b4"
-  integrity sha512-NTv9+n9RQ5cm1zNoi7qoitKIIybRhnP+793xkyV23wli7UApwBOd7b2inqND7j9T4h+A4vOBsi1aCESdUagnAA==
+"@jiumao/policy@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@jiumao/policy/-/policy-1.0.1.tgz#b1e7af9bc1640cc9526b5449aeb6c441df6ada92"
+  integrity sha512-wWaf68PlCSWmCF5+2wvsS+M9gZNaafukHc/ZLg3O7CN3R60n0Qpv5gW1vDtZp41g9op8lJgQalgczyasYZ52qg==
 
 "@marionebl/sander@^0.6.0":
   version "0.6.1"

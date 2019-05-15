@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
-import { IPolicyData } from '@/components/authorized/policy';
+import { IPolicyData } from '@jiumao/policy';
 import { IUser } from '@/pages/system/models/system-user';
 
 export interface ICurrentUser extends IUser {

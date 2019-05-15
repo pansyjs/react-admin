@@ -6,7 +6,7 @@ import {
   fetchRemove,
   fetchUpdate
 } from '@/services/user';
-import { IPolicyData } from '@/components/authorized/policy';
+import { IPolicyData } from '@jiumao/policy';
 import { IPagination } from '@/pages/global';
 import { formatTime } from '@/utils/utils';
 

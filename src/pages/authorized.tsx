@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import pathToRegexp from 'path-to-regexp';
 import RenderAuthorized from '@/components/authorized';
-import Policy, { IAction, IPolicyData } from '@/components/authorized/policy';
+import Policy, { IAction, IPolicyData } from '@jiumao/policy';
 import PageLoading from '@/components/page-loading';
 import Exception403 from '@/pages/exception/403';
 import { ConnectProps } from '@/models/connect';
@@ -76,12 +76,12 @@ const AuthComponent: React.FC<IProps> = (props) => {
     )
   }
 
-  const Authorized = RenderAuthorized(policy.getAllAction());
+  const Authorized = RenderAuthorized([]);
   const authority = getRouteAuthority(location.pathname, routerData);
 
   return (
     <Authorized
-      authority={policy.verifyAction(authority)}
+      authority={policy.multipleVerify(authority)}
       noMatch={<Exception403 />}
     >
       {children}

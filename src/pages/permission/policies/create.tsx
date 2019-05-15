@@ -8,7 +8,7 @@ import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import FooterToolbar from '@/components/footer-toolbar';
 import StandardTable from '@/components/standard-table';
-import { IStatement } from '@/components/authorized/policy';
+import { IStatement } from '@jiumao/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps } from '@/models/connect';
 import StatementDrawer from '../components/statement-drawer';
