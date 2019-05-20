@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@ant-design/colors@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-3.1.0.tgz#b7e2cc61a4e86d3d109494034acfb1222dacaa3c"
+  integrity sha512-Td7g1P53sNFyT4Gya6836e70TrhoVZ+HjZs6mpWIHrxl4/VqsjjOyzj/8ktOuw0lCx+BfYu9UO1CiJ0MoYYfhg==
+  dependencies:
+    tinycolor2 "^1.4.1"
+
 "@ant-design/create-react-context@^0.2.4":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@ant-design/create-react-context/-/create-react-context-0.2.4.tgz#0fe9adad030350c0c9bb296dd6dcf5a8a36bd425"
@@ -18,10 +25,23 @@
     ant-design-palettes "^1.1.3"
     babel-runtime "^6.26.0"
 
+"@ant-design/icons-react@~2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/icons-react/-/icons-react-2.0.1.tgz#17a2513571ab317aca2927e58cea25dd31e536fb"
+  integrity sha512-r1QfoltMuruJZqdiKcbPim3d8LNsVPB733U0gZEUSxBLuqilwsW28K2rCTWSMTjmFX7Mfpf+v/wdiFe/XCqThw==
+  dependencies:
+    "@ant-design/colors" "^3.1.0"
+    babel-runtime "^6.26.0"
+
 "@ant-design/icons@~1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-1.2.1.tgz#8e19301b1433ec67d6bbd0e892782e2ade561ff9"
   integrity sha512-gQx3nH6m1xvebOWh5xibhzVK02aoqHY7JUXUS4doAidSDRWsj5iwKC8Gq9DemDZ4T+bW6xO7jJZN1UsbvcW7Uw==
+
+"@ant-design/icons@~2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.0.0.tgz#f9b8b16e188ec71ed40a24a0037f1a26d8c2be59"
+  integrity sha512-N4h0v9TbAkzobiDrPNF5LMLbBoR+VdlXJX7RFbZS33lar6Pff37wIF1xJHzTYSZZmE6THSYGmSlEsHQJHx0pJg==
 
 "@antv/adjust@~0.1.0":
   version "0.1.1"
@@ -1528,14 +1548,6 @@
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
 
-"@types/hoist-non-react-statics@^3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
-  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
-  dependencies:
-    "@types/react" "*"
-    hoist-non-react-statics "^3.3.0"
-
 "@types/isomorphic-fetch@^0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
@@ -2292,15 +2304,14 @@ antd@3.x:
     shallowequal "^1.1.0"
     warning "~4.0.2"
 
-antd@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-3.17.0.tgz#d7eabadc3ffb499f9393fd865ac9a54d9b4345de"
-  integrity sha512-8BMPTnKjlLH6N/vOhxrnSt+dVi6SsxGRE2SgEBURokAnexFx04NyBpQZNNXJks0e7aYc54IvyxlTYVejg18wIw==
+antd@^3.18.2:
+  version "3.18.2"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.18.2.tgz#10d5c1685e0ba782565eb45508e9a34b4aadb180"
+  integrity sha512-TfWIO4W8s+e1s4lClR/uth/cx8sDZKzvjdhvycstEmems56tgBGo28xtrLLojQJtHS8vQ0aqhZ6Di95YKQLfHg==
   dependencies:
     "@ant-design/create-react-context" "^0.2.4"
-    "@ant-design/icons" "~1.2.0"
-    "@ant-design/icons-react" "~1.1.5"
-    "@types/hoist-non-react-statics" "^3.3.1"
+    "@ant-design/icons" "~2.0.0"
+    "@ant-design/icons-react" "~2.0.0"
     "@types/react-slick" "^0.23.3"
     array-tree-filter "^2.1.0"
     babel-runtime "6.x"
@@ -2315,11 +2326,11 @@ antd@^3.17.0:
     prop-types "^15.6.2"
     raf "^3.4.0"
     rc-animate "^2.5.4"
-    rc-calendar "~9.12.1"
+    rc-calendar "~9.13.3"
     rc-cascader "~0.17.0"
     rc-checkbox "~2.1.5"
     rc-collapse "~1.11.1"
-    rc-dialog "~7.3.0"
+    rc-dialog "~7.4.0"
     rc-drawer "~1.8.0"
     rc-dropdown "~2.4.1"
     rc-editor-mention "^1.1.7"
@@ -2327,7 +2338,7 @@ antd@^3.17.0:
     rc-input-number "~4.4.0"
     rc-menu "~7.4.12"
     rc-notification "~3.3.0"
-    rc-pagination "~1.17.7"
+    rc-pagination "~1.18.0"
     rc-progress "~2.3.0"
     rc-rate "~2.5.0"
     rc-select "~9.1.0"
@@ -7278,7 +7289,7 @@ hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0, hoist-non-react-
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
-hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
+hoist-non-react-statics@^3.1.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
@@ -11694,6 +11705,19 @@ rc-calendar@~9.12.1:
     rc-util "^4.1.1"
     react-lifecycles-compat "^3.0.4"
 
+rc-calendar@~9.13.3:
+  version "9.13.4"
+  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-9.13.4.tgz#6ad89c1b9fbf814422bfda09405053592cd52592"
+  integrity sha512-aVFJ6QTHGRD9uEWEe2w/Tim1FhM3MeQ+8xmhfeVVSPcPAIK28vCHpt25DSA5+3U/Uu7d//mO2LsHQOHQnD3M5Q==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    moment "2.x"
+    prop-types "^15.5.8"
+    rc-trigger "^2.2.0"
+    rc-util "^4.1.1"
+    react-lifecycles-compat "^3.0.4"
+
 rc-cascader@~0.17.0:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/rc-cascader/-/rc-cascader-0.17.1.tgz#914481c3370b5fd8f82e4f9df9b6596dfeda14d5"
@@ -11757,6 +11781,15 @@ rc-dialog@~7.3.0:
     rc-animate "2.x"
     rc-util "^4.4.0"
 
+rc-dialog@~7.4.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/rc-dialog/-/rc-dialog-7.4.0.tgz#640551235b1f886c7f9a01ce75f87102a70ae1d4"
+  integrity sha512-X2JdDjphlOHPkqXUmmTAhYvcDAgGeM/VFjF5r/AMqjDYIL2xZkvrrOOq7KNxddRAJ0r1V4Ib/MTgCfhhti/aew==
+  dependencies:
+    babel-runtime "6.x"
+    rc-animate "2.x"
+    rc-util "^4.4.0"
+
 rc-drawer@~1.7.6:
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-1.7.6.tgz#925ce0768cf81ef5fa83eb22d90c603422b1b1b1"
@@ -11767,9 +11800,9 @@ rc-drawer@~1.7.6:
     rc-util "^4.5.1"
 
 rc-drawer@~1.8.0:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-1.8.1.tgz#0398c440f6e434e2b72f5ce38f114c66cacbaad4"
-  integrity sha512-H8i1UrqCa51pYauFxU5O9uazREezkAekiu+NyfHaiEKSviSG6QcwbdyeuMWjkoMrxBI89jAz35rpjx/NeWzkGQ==
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-1.8.3.tgz#5d477e254419569f1d54b097c4161921b73238b8"
+  integrity sha512-SmJWV4hzJBXtyyQZcY642+fNGpjemsJQiYBKhfQ+seyjzhbaoU9MisL+fA03WVPStty4EihT0IQlgpf9J7Oavg==
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.5"
@@ -11900,6 +11933,16 @@ rc-pagination@~1.17.7:
     prop-types "^15.5.7"
     react-lifecycles-compat "^3.0.4"
 
+rc-pagination@~1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-1.18.0.tgz#004a7d381f0e03dc025f96929de3657094496525"
+  integrity sha512-5kO8w9OxRlYkY1urXeYPcFTf7D8Tb6AdKtpE0RLh9kh1+UWxrXur1gQ6XMM1OecTzU/Vyu/hQi3laTCg3h4z2g==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "^2.2.6"
+    prop-types "^15.5.7"
+    react-lifecycles-compat "^3.0.4"
+
 rc-progress@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/rc-progress/-/rc-progress-2.3.0.tgz#cfbd07ff9026c450100980de209a92650e24f313"
@@ -11937,9 +11980,9 @@ rc-select@~9.0.0:
     warning "^4.0.2"
 
 rc-select@~9.1.0:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-9.1.1.tgz#c4218945502a95f77a11a99d380cf163ae1d2b72"
-  integrity sha512-nCfUeoJIXeMKtpeSjm+Gsb2LBEJMELVPS6sxSeTX4vHnU89gvFtwqmKfAQl/cA5riInxt5JraVhRrqUbkKNa2w==
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-9.1.2.tgz#fad0446a31540c5fb15db253ed9229fcc3426a03"
+  integrity sha512-ZkxW2ncUewkgfBr0zEQHn2NpeKtge6JQEksHk8V0CfGlL0MlYwvhJYj4TlpQ+KGbzWnnvDmqaEMNy07NALcKmg==
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -12024,9 +12067,9 @@ rc-table@~6.4.0:
     warning "^3.0.0"
 
 rc-table@~6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-6.5.0.tgz#0887240342f8f3a764c954638cc46dea45921a14"
-  integrity sha512-UXsoTcJIr5Ehyf1GXAKLcc5x0/+cOSgBaKL7wt6vmVEIW5CF6bVJj4iOr7P8LGdoez/omoHmr5GXcW6/AZxR7A==
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-6.5.1.tgz#b05ef79127e24b353083f8399dedaa9cbfbd16a2"
+  integrity sha512-Tu6+UQmKV5ZKMs3TB52OUb9oF9epyk/wlSQxGa7eP6fBQfKcjNVEfzVEjayh203IWI39xjHw0cgeMuvTnnRHaQ==
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.5"
