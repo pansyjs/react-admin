@@ -3,7 +3,7 @@ import plugins from './plugin.config';
 import themeConfig from './theme.config';
 import serverConfig from './server.config';
 
-const { NODE_ENV } = process.env;
+const { SERVER_ENV } = process.env;
 
 export default {
   plugins,
@@ -11,7 +11,7 @@ export default {
     ie: 11
   },
   define: {
-    BASE_URL: serverConfig[NODE_ENV] || serverConfig.development
+    BASE_URL: serverConfig[SERVER_ENV] || serverConfig.production
   },
   // 路由配置
   routes,
