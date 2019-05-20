@@ -10,6 +10,7 @@ export default {
   targets: {
     ie: 11
   },
+  treeShaking: true,
   define: {
     BASE_URL: serverConfig[SERVER_ENV] || serverConfig.production
   },
