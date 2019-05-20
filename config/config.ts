@@ -16,8 +16,8 @@ export default {
   // 路由配置
   routes,
   // 请根据项目需要修改
-  publicPath: './',
-  history: 'hash',
+  base: '/react-admin-template',
+  publicPath: '/react-admin-template/',
   hash: true,
   theme: themeConfig,
   ignoreMomentLocale: true,
