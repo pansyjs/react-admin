@@ -13,7 +13,9 @@ const plugins: IPlugin[] = [
         baseNavigator: true
       },
       dynamicImport: {
-        loadingComponent: './components/page-loading/index'
+        loadingComponent: './components/page-loading/index',
+        webpackChunkName: true,
+        level: 3
       },
       dll: {
         exclude: [],

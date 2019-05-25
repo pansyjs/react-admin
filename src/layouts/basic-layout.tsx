@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
-import SideMenu, { ISideMenuProps, IMenu } from '@/components/side-menu';
+import SidebarMenu, { ISidebarMenuProps, IMenu } from '@/components/sidebar-menu';
 import TabPages, { ITab } from '@/components/tab-pages';
 import { moGetPageTitle } from '@/utils/getPageTitle';
 import { SETTING_DEFAULT_CONFIG, STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
@@ -18,7 +18,7 @@ import Header from './header';
 import './basic-layout.less';
 
 interface IProps
-  extends Required<ConnectProps>, ISideMenuProps {
+  extends Required<ConnectProps>, ISidebarMenuProps {
     prefixCls?: string;
     tabList?: ITab[];
     tabActiveKey?: string;
@@ -51,7 +51,7 @@ const query = {
   },
 };
 const { Content } = Layout;
-const { theme, fixedSide } = SETTING_DEFAULT_CONFIG;
+const { theme } = SETTING_DEFAULT_CONFIG;
 const { tabListKey, storageTabActiveKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
@@ -154,11 +154,11 @@ const BasicLayout: React.FC<IProps> = (props) => {
   const layout = (
     <Layout className={prefixCls}>
       {/** 左侧菜单 */}
-      <SideMenu
+      <SidebarMenu
         logo={logo}
         theme={theme}
         menuData={menuData}
-        fixedSide={fixedSide}
+        isMobile={isMobile}
         {...restProps}
       />
 
