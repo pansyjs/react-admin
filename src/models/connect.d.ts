@@ -5,6 +5,7 @@ import { EffectsCommandMap } from 'dva';
 import { match } from 'react-router-dom';
 import { IMenuModelState } from '@/models/menu';
 import { IGlobalModelState } from '@/models/global';
+import { ISettingModelState } from '@/models/setting';
 import { IUserModelState } from '@/models/user';
 import { IActionModelState } from '@/models/action';
 import { IUserGroupModelState } from '@/pages/system/models/user-group';
@@ -14,6 +15,7 @@ export interface ConnectState {
   loading: Loading;
   menu: IMenuModelState;
   global: IGlobalModelState;
+  setting: ISettingModelState;
   user: IUserModelState;
   userGroup: IUserGroupModelState;
   action: IActionModelState;
