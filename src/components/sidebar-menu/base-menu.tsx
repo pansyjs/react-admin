@@ -173,6 +173,7 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
         onOpenChange={onOpenChange}
         selectedKeys={selectedKeys}
         {...props}
+        inlineCollapsed={collapsed}
       >
         {this.getNavMenuItems(menuData)}
       </Menu>

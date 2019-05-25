@@ -7,7 +7,6 @@ interface ISetting {
   theme: MenuTheme;
   fixedHeader: boolean;
   autoHideHeader: boolean;
-  fixedSide: boolean;
   iconFontUrl: string;
 }
 
@@ -44,7 +43,6 @@ export const SETTING_DEFAULT_CONFIG: ISetting = {
   theme: 'dark',
   fixedHeader: false,
   autoHideHeader: false,
-  fixedSide: false,
   // 自定义图标链接
   iconFontUrl: ''
 };
