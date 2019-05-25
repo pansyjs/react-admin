@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
-import router from 'umi/router';
-import store from 'store';
 import classNames from 'classnames';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import SidebarMenu, { ISidebarMenuProps, IMenu } from '@/components/sidebar-menu';
-import TabPages, { ITab } from '@/components/tab-pages';
 import { moGetPageTitle } from '@/utils/getPageTitle';
-import { SETTING_DEFAULT_CONFIG, STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
+import { SETTING_DEFAULT_CONFIG } from '@/config';
 import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Context from './menu-context';
@@ -20,7 +17,6 @@ import './basic-layout.less';
 interface IProps
   extends Required<ConnectProps>, ISidebarMenuProps {
     prefixCls?: string;
-    tabList?: ITab[];
     tabActiveKey?: string;
     breadcrumbNameMap?: { [path: string]: IMenu;
   }
@@ -52,7 +48,6 @@ const query = {
 };
 const { Content } = Layout;
 const { theme } = SETTING_DEFAULT_CONFIG;
-const { tabListKey, storageTabActiveKey } = STORAGE_KEY_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
@@ -60,8 +55,6 @@ const BasicLayout: React.FC<IProps> = (props) => {
     location,
     route,
     menuData,
-    tabList,
-    tabActiveKey,
     breadcrumbNameMap,
     children
   } = props;
@@ -70,7 +63,6 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
   // constructor
   useState(() => {
-    const tabList = store.get(tabListKey) || [];
     // 获取当前登录用户信息
     // dispatch!({
     //   type: 'user/fetchCurrent'
@@ -83,71 +75,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
         authority
       },
     });
-    // 保存Tab数据到全局状态
-    dispatch!({
-      type: 'tabs/fetchAddTab',
-      payload: {
-        tabList,
-        location
-      }
-    });
-    // 保存当前活跃Tab Key
-    dispatch!({
-      type: 'tabs/saveTabActiveKey',
-      payload: store.get(storageTabActiveKey) || ''
-    });
   });
-
-  useEffect(() => {
-    setTabListData();
-  }, [props.location]);
-
-  useEffect(() => {
-    const pathname = location.pathname;
-    if (!tabActiveKey || tabActiveKey === pathname) return;
-    router.push(tabActiveKey);
-  }, [props.tabActiveKey]);
-
-  const setTabListData = () => {
-    const pathname = location!.pathname;
-    if (!pathname) return;
-
-    const menuData = breadcrumbNameMap[pathname];
-    if (!menuData) return;
-
-    dispatch!({
-      type: 'tabs/saveTabActiveKey',
-      payload: menuData.path
-    });
-
-    const tabData = {
-      menuData,
-      id: pathname
-    };
-
-    dispatch!({
-      type: 'tabs/fetchAddTab',
-      payload: {
-        tabData,
-        location
-      }
-    });
-  };
-
-  const handleTabClick = (tabData: ITab) => {
-    const { menuData } = tabData;
-    dispatch!({
-      type: 'tabs/saveTabActiveKey',
-      payload: menuData.path
-    });
-  };
-
-  const handleTabRemove = (id) => {
-    dispatch({
-      type: 'tabs/fetchRemoveTab',
-      payload: id
-    })
-  };
 
   const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
@@ -162,17 +90,12 @@ const BasicLayout: React.FC<IProps> = (props) => {
         {...restProps}
       />
 
+      <Header
+        isMobile={isMobile}
+        {...restProps}
+      />
       <Content className={`${prefixCls}__wrapper`}>
-        <Header
-          isMobile={isMobile}
-          {...restProps}
-        />
-        <TabPages
-          onClick={handleTabClick}
-          onRemove={handleTabRemove}
-          activeKey={tabActiveKey}
-          tabList={tabList}
-        />
+        {children}
       </Content>
     </Layout>
   );
@@ -196,9 +119,7 @@ BasicLayout.defaultProps = {
   prefixCls: 'lotus-basic-layout'
 };
 
-export default connect(({ menu, tabs }) => ({
-  tabActiveKey: tabs.tabActiveKey,
-  tabList: tabs.tabList,
+export default connect(({ menu }) => ({
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
 }))(BasicLayout);
