@@ -27,7 +27,7 @@ const AuthComponent: React.FC<IProps> = (props) => {
     // 类似 Promise.all 实现比较合理，待优化
     // 获取所有操作
     dispatch({
-      type: 'global/fetchActions'
+      type: 'user/fetchActions'
     })
     .then(() => {
       // 获取当前登录用户信息 -- 包含权限策略
