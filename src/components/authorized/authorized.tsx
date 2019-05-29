@@ -1,26 +1,20 @@
 import React from 'react';
-import CheckPermissions, { Authority } from './check-permissions';
-import AuthorizedRoute from './authorized-route';
-import Secured from './secured';
+import { connect } from 'dva';
+import { ConnectState } from '@/models/connect';
+import Policy from '@jiumao/policy';
+import CheckPermissions, { TAuthority } from './check-permissions';
 
 export interface AuthorizedProps {
-  authority?: Authority;
+  authority?: TAuthority;
   noMatch?: React.ReactNode;
+  policy?: Policy;
 }
 
-interface Authorized extends React.FC<AuthorizedProps> {
-  AuthorizedRoute: typeof AuthorizedRoute;
-  check: typeof CheckPermissions;
-  Secured: typeof Secured;
-}
-
-const Authorized: Authorized = ({ children, authority, noMatch }) => {
+const Authorized: React.FC<AuthorizedProps> = ({ policy, children, authority, noMatch }) => {
   const childrenRender = typeof children === 'undefined' ? null : children;
-  return CheckPermissions(authority, childrenRender, noMatch) as React.ReactElement;
+  return CheckPermissions(authority, childrenRender, noMatch, policy) as React.ReactElement;
 };
 
-Authorized.AuthorizedRoute = AuthorizedRoute;
-Authorized.check = CheckPermissions;
-Authorized.Secured = Secured;
-
-export default Authorized;
+export default connect(({ user }: ConnectState) => ({
+  policy: user.policy
+}))(Authorized);

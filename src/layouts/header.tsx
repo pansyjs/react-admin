@@ -32,7 +32,7 @@ const HeaderView: React.FC<IHeaderViewProps> = (props) => {
   };
 
   return (
-    <Header style={{ padding: 0 }}>
+    <Header style={{ padding: 0, zIndex: 2 }}>
       <GlobalHeader
         onMenuClick={handleMenuClick}
         {...props}

@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
-import { IPolicyData } from '@jiumao/policy';
+import Policy from '@jiumao/policy';
 import { IUser } from '@/pages/system/models/system-user';
 
 export interface ICurrentUser extends IUser {
@@ -10,7 +10,7 @@ export interface ICurrentUser extends IUser {
 
 export interface IUserModelState {
   currentUser: ICurrentUser;
-  policies: IPolicyData[];
+  policy: Policy;
 }
 
 export interface IUserModel {
@@ -22,7 +22,7 @@ export interface IUserModel {
   },
   reducers: {
     saveCurrentUser: Reducer<any>;
-    savePolicies: Reducer<any>;
+    savePolicy: Reducer<any>;
     changeNotifyCount: Reducer<any>;
   }
 }
@@ -31,14 +31,26 @@ const UserModel: IUserModel = {
   namespace: 'user',
   state: {
     currentUser: {},
-    policies: []
+    policy: null
   },
   effects: {
-    *fetchCurrent(_, { call, put }) {
+    *fetchCurrent(_, { call, put, select }) {
       const response = yield call(fetchCurrent);
       if (response && response.code === 200) {
         const info = response.data || {};
-        const { policies } = info;
+        const { policies = [] } = info;
+
+        const { actions = [] } = yield select(
+          (state) => state.global
+        );
+
+        const policy = new Policy(actions);
+
+        policies.forEach(item => {
+          policy.addPolicy(item);
+        });
+
+        console.log(policy);
 
         yield put({
           type: 'saveCurrentUser',
@@ -48,8 +60,8 @@ const UserModel: IUserModel = {
         });
 
         yield put({
-          type: 'savePolicies',
-          payload: policies
+          type: 'savePolicy',
+          payload: policy
         })
       }
     },
@@ -61,10 +73,10 @@ const UserModel: IUserModel = {
         currentUser: payload
       };
     },
-    savePolicies(state, { payload }) {
+    savePolicy(state, { payload }) {
       return {
         ...state,
-        policies: payload
+        policy: payload
       };
     },
     changeNotifyCount(state, { payload }) {
@@ -80,5 +92,4 @@ const UserModel: IUserModel = {
   }
 };
 
-// @ts-ignore
 export default UserModel;
