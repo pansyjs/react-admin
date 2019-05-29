@@ -1,11 +1,10 @@
 import { Reducer } from 'redux';
 import { fetchNotices } from '@/services/global';
 import { fetchList } from '@/services/action';
-import Policy, { IAction } from '@jiumao/policy';
+import { IAction } from '@jiumao/policy';
 import { Effect } from '@/models/connect';
 
 export interface IGlobalModelState {
-  policy: Policy;
   actions: IAction[];
   notices: any[];
 }
@@ -18,7 +17,6 @@ export interface IGlobalModel {
     fetchActions: Effect;
   },
   reducers: {
-    savePolicy: Reducer<any>;
     saveNotices: Reducer<any>;
     saveActions: Reducer<any>;
   }
@@ -27,7 +25,6 @@ export interface IGlobalModel {
 const GlobalModel: IGlobalModel = {
   name: 'global',
   state: {
-    policy: null,
     actions: [],
     notices: []
   },
@@ -39,7 +36,7 @@ const GlobalModel: IGlobalModel = {
 
         const actions = list.map(item => ({
           module: item.module.name,
-          name: item.name
+          action: item.name
         }));
 
         yield put({
@@ -70,12 +67,6 @@ const GlobalModel: IGlobalModel = {
     },
   },
   reducers: {
-    savePolicy(state, { payload }) {
-      return {
-        ...state,
-        policy: payload
-      };
-    },
     saveNotices(state, { payload }) {
       return {
         ...state,
