@@ -30,7 +30,7 @@
     "@antv/data-set": "^0.10.1",
     "@jiumao/dharma": "^0.0.4",
     "@jiumao/policy": "^1.0.4",
-    "antd": "^3.18.2",
+    "antd": "^3.19.1",
     "axios": "^0.18.0",
     "bizcharts": "^3.5.2",
     "braft-editor": "^2.2.9",
