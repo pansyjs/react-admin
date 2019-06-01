@@ -15,13 +15,13 @@ interface IProps extends ConnectProps {
 
 const AuthComponent: React.FC<IProps> = (props) => {
   const {
+    policy,
     loading,
     location,
     children,
     routerData,
     dispatch
   } = props;
-  let policy = props.policy;
 
   React.useState(() => {
     // 类似 Promise.all 实现比较合理，待优化
@@ -71,7 +71,9 @@ const AuthComponent: React.FC<IProps> = (props) => {
   )
 };
 
-AuthComponent.defaultProps = {};
+AuthComponent.defaultProps = {
+  policy: null
+};
 
 export default connect(({ menu, user, loading }: ConnectState) => ({
   policy: user.policy,
