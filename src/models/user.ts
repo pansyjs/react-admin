@@ -55,8 +55,6 @@ const UserModel: IUserModel = {
           policy.addPolicy(item);
         });
 
-        console.log(policy);
-
         yield put({
           type: 'saveCurrentUser',
           payload: {
