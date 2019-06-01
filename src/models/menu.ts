@@ -3,7 +3,7 @@ import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
-import { IMenu } from '@/components/side-menu';
+import { IMenu } from '@/components/sidebar-menu';
 import { SETTING_DEFAULT_CONFIG } from '@/config';
 
 const { menu } = SETTING_DEFAULT_CONFIG;
