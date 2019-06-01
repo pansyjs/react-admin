@@ -1465,10 +1465,15 @@
   resolved "https://registry.yarnpkg.com/@jiumao/dharma/-/dharma-0.0.4.tgz#c1fe3c54047d742ccb19f9715d2da5d07cafe316"
   integrity sha512-nUK5oGWGDuFVbUJHL459UQr0hmX/kXMx4/oojcjppJsO0oB/rF/GFWc6Vtr8cyvjtVBR3ANY1tSgfhUZe1zGtw==
 
-"@jiumao/policy@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@jiumao/policy/-/policy-1.0.4.tgz#d2348ef784a4814efadd1e68865ea7d0e495da34"
-  integrity sha512-s2kfLmXU7EpIp4wiGuaNB3MmzyYd34Tw7ULJ3ooXVytt+AIsjEh6oEviDLlxAHuF5crcp42OmsDAel6z38jmJg==
+"@jiumao/dharma@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@jiumao/dharma/-/dharma-0.0.5.tgz#58299d9aea46204d2a3bd0a120f8dce809ed5b29"
+  integrity sha512-yp8bjDhCri5Z7pHcIPbWTpIhOU8zKH79gcRrA/YoFtfeR7xtTdSoHQ8MRHUXaCVkfbA1xoA/V61u1kss+epZCw==
+
+"@jiumao/policy@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jiumao/policy/-/policy-1.0.5.tgz#03cc58f230ec00f99f7ce1f9404728b54135baac"
+  integrity sha512-aXV9XbbQRIaN/lBNvkb+1qyNuw0DXD5xHlG+HnfCLWNRFQc+JWiKAIOAlnwtGK95UJ/u5/9+YZoLSrZENjHekA==
   dependencies:
     "@jiumao/dharma" "^0.0.4"
 
