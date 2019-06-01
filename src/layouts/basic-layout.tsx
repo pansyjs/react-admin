@@ -7,7 +7,6 @@ import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import SidebarMenu, { ISidebarMenuProps, IMenu } from '@/components/sidebar-menu';
 import { moGetPageTitle } from '@/utils/getPageTitle';
-import { SETTING_DEFAULT_CONFIG } from '@/config';
 import { ConnectProps, ConnectState, ISettingModelState } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Context from './menu-context';
@@ -47,7 +46,6 @@ const query = {
   },
 };
 const { Content } = Layout;
-const { theme } = SETTING_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
@@ -59,7 +57,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     setting,
     children
   } = props;
-  const { fixedHeader } = setting;
+  const { fixedHeader, theme } = setting;
   const { prefixCls, ...restProps } = props;
   const { routes, authority } = route!;
 

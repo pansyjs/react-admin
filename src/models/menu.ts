@@ -4,9 +4,9 @@ import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
 import { IMenu } from '@/components/sidebar-menu';
-import { SETTING_DEFAULT_CONFIG } from '@/config';
+import defaultSettings from '@/config/default-settings';
 
-const { menu } = SETTING_DEFAULT_CONFIG;
+const { menu } = defaultSettings;
 
 // 将路由数据转换为菜单数据
 function formatter(

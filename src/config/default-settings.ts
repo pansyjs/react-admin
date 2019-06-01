@@ -21,7 +21,7 @@ const defaultSettings: IDefaultSettings = {
   menu: {
     disableLocal: false,
   },
-  fixedHeader: true,
+  fixedHeader: false,
   title: 'React Admin Template',
   iconFontUrl: ''
 };
