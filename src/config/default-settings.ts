@@ -22,7 +22,7 @@ const defaultSettings: IDefaultSettings = {
     disableLocal: false,
   },
   fixedHeader: true,
-  title: 'Ant Design Pro',
+  title: 'React Admin Template',
   iconFontUrl: ''
 };
 
