@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'umi/link';
 import { Menu } from 'antd';
 import { MenuMode, MenuTheme } from 'antd/es/menu';
-import { urlToList } from '@/utils/path-tools';
+import { urlToList } from '@jiumao/dharma';
 import { ConnectProps } from '@/models/connect';
 import { getIcon, getMenuMatches } from './utils';
 
