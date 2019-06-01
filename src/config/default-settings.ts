@@ -14,6 +14,8 @@ export interface IDefaultSettings {
   iconFontUrl: string;
   // 项目标题
   title: string;
+  // 公司名称
+  company: string;
 }
 
 const defaultSettings: IDefaultSettings = {
@@ -23,7 +25,8 @@ const defaultSettings: IDefaultSettings = {
   },
   fixedHeader: false,
   title: 'React Admin Template',
-  iconFontUrl: ''
+  iconFontUrl: '',
+  company: '九毛科技',
 };
 
 export default defaultSettings;

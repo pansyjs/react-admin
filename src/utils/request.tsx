@@ -2,12 +2,12 @@ import Axios, { AxiosRequestConfig } from 'axios';
 import router from 'umi/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { AXIOS_DEFAULT_CONFIG } from '@/config';
+import { AJAX_DEFAULT_CONFIG } from '@/config';
 import { getCookie } from '@/utils/cookie';
 
-Axios.defaults.timeout = AXIOS_DEFAULT_CONFIG.timeout;
-Axios.defaults.baseURL = AXIOS_DEFAULT_CONFIG.baseURL;
-Axios.defaults.withCredentials = AXIOS_DEFAULT_CONFIG.withCredentials;
+Axios.defaults.timeout = AJAX_DEFAULT_CONFIG.timeout;
+Axios.defaults.baseURL = AJAX_DEFAULT_CONFIG.baseURL;
+Axios.defaults.withCredentials = AJAX_DEFAULT_CONFIG.withCredentials;
 
 function requestSuccess(config) {
   // 请求开始，开启进度条
