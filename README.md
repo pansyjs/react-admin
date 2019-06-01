@@ -83,6 +83,72 @@ npm install --global yarn
 - Ajax 库：Axios
 - 样式：Less
 
+# 路由配置
+
+> 系统采用手动配置路由的形式
+
+**相关字典**
+
+## icon
+
+> 配合[iconfont](https://www.iconfont.cn)使用
+
+* 参数类型:  `string`
+* 参数描述: 左侧菜单的Icon
+* 默认值: 无
+
+## name
+
+* 参数类型: `string`
+* 参数描述: 参数名称 配合多言插件使用 添加路由请在 locals 目录下的 menu.ts 添加对应项
+* 默认值: 无
+* examples:
+
+```
+// router.config.ts
+{
+  path: '/module1',
+  name: 'module1',
+  component: 'component path',
+  routes: [
+    path: '/module1/page1',
+    name: 'page1',
+    component: 'component path',
+  ]
+}
+
+// menu.ts 添加下面几行配置
+'module1': '***',
+'module1.page1': '***'
+```
+
+### authority
+
+> 配合[Policy](https://github.com/ts-react/policy)使用
+
+* 参数类型: `string` | `string[]`
+* 参数描述: 权限 控制是否显示左侧菜单 以及路由拦截
+* 默认值: 无
+  
+
+### hideBreadcrumb 
+
+* 参数类型: `boolean`
+* 参数描述: 是否显示面包屑
+* 默认值: true
+
+### hideInMenu
+
+* 参数类型: `boolean`
+* 参数描述: 是否隐藏菜单
+* 默认值: false
+
+### hideChildrenInMenu
+
+* 参数类型: `boolean`
+* 参数描述: 是否隐藏该菜单的子菜单
+* 默认值: false
+
 # API
 
 [nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...

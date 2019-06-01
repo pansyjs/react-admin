@@ -2,10 +2,9 @@ import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
 import pathToRegexp from 'path-to-regexp';
 import { formatMessage } from 'umi-plugin-react/locale';
-import { SETTING_DEFAULT_CONFIG, APP_DEFAULT_CONFIG } from '@/config';
+import defaultSettings from '@/config/default-settings';
 
-const { title } = APP_DEFAULT_CONFIG;
-const { menu } = SETTING_DEFAULT_CONFIG;
+const { menu, title } = defaultSettings;
 
 interface RouterData {
   name: string;

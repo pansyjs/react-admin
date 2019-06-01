@@ -14,50 +14,44 @@ interface IProps {
   currentUser?: ICurrentUser;
 }
 
-class GlobalHeaderRight extends React.Component<IProps> {
+const GlobalHeaderRight: React.FC<IProps> = (props) => {
+  const { prefixCls, onMenuClick, currentUser } = props;
 
-  handleMenuClick = ({ key }) => {
-    const { onMenuClick } = this.props;
+  const handleMenuClick = ({ key }) => {
     onMenuClick && onMenuClick(key);
   };
 
-  render() {
-    const {
-      prefixCls,
-      currentUser = {} as any,
-    } = this.props;
+  const menu = (
+    <Menu
+      className={`${prefixCls}__menu`}
+      selectedKeys={[]}
+      onClick={handleMenuClick}
+    >
+      <Menu.Item key="account-center">
+        <Icon type="user" />
+        <FormattedMessage id="menu.account.center" defaultMessage="account center" />
+      </Menu.Item>
+      <Menu.Item key="account-settings">
+        <Icon type="setting" />
+        <FormattedMessage id="menu.account.settings" defaultMessage="account settings" />
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="logout">
+        <Icon type="logout" />
+        <FormattedMessage id="menu.account.logout" defaultMessage="logout" />
+      </Menu.Item>
+    </Menu>
+  );
 
-    const menu = (
-      <Menu
-        className={`${prefixCls}__menu`}
-        selectedKeys={[]}
-        onClick={this.handleMenuClick}
-      >
-        <Menu.Item key="account-center">
-          <Icon type="user" />
-          <FormattedMessage id="menu.account.center" defaultMessage="account center" />
-        </Menu.Item>
-        <Menu.Item key="account-settings">
-          <Icon type="setting" />
-          <FormattedMessage id="menu.account.settings" defaultMessage="account settings" />
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="logout">
-          <Icon type="logout" />
-          <FormattedMessage id="menu.account.logout" defaultMessage="logout" />
-        </Menu.Item>
-      </Menu>
-    );
+  return (
+    <div className={`${prefixCls}__right`}>
 
-    return (
-      <div className={`${prefixCls}__right`}>
+      <ScreenFull className={`${prefixCls}__action`} />
 
-        <ScreenFull className={`${prefixCls}__action`} />
+      <SelectLang className={`${prefixCls}__action`} />
 
-        <SelectLang className={`${prefixCls}__action`} />
-
-        {currentUser.name ? (
-          <HeaderDropdown overlay={menu}>
+      {currentUser.name ? (
+        <HeaderDropdown overlay={menu}>
             <span
               className={classNames({
                 [`${prefixCls}__action`]: true,
@@ -71,16 +65,20 @@ class GlobalHeaderRight extends React.Component<IProps> {
               />
               <span>{currentUser.name}</span>
             </span>
-          </HeaderDropdown>
-        ) : (
-          <Spin
-            size="small"
-            style={{ marginLeft: 8, marginRight: 8 }}
-          />
-        )}
-      </div>
-    )
-  }
-}
+        </HeaderDropdown>
+      ) : (
+        <Spin
+          size="small"
+          style={{ marginLeft: 8, marginRight: 8 }}
+        />
+      )}
+    </div>
+  )
+};
+
+GlobalHeaderRight.defaultProps = {
+  prefixCls: 'lotus-global-header',
+  currentUser: {}
+};
 
 export default GlobalHeaderRight;

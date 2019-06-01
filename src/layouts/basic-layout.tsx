@@ -7,8 +7,7 @@ import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import SidebarMenu, { ISidebarMenuProps, IMenu } from '@/components/sidebar-menu';
 import { moGetPageTitle } from '@/utils/getPageTitle';
-import { SETTING_DEFAULT_CONFIG } from '@/config';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState, ISettingModelState } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Context from './menu-context';
 import Header from './header';
@@ -18,8 +17,8 @@ interface IProps
   extends Required<ConnectProps>, ISidebarMenuProps {
     prefixCls?: string;
     tabActiveKey?: string;
-    breadcrumbNameMap?: { [path: string]: IMenu;
-  }
+    breadcrumbNameMap?: { [path: string]: IMenu };
+    setting?: ISettingModelState;
 }
 
 const query = {
@@ -47,7 +46,6 @@ const query = {
   },
 };
 const { Content } = Layout;
-const { theme } = SETTING_DEFAULT_CONFIG;
 
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
@@ -56,8 +54,10 @@ const BasicLayout: React.FC<IProps> = (props) => {
     route,
     menuData,
     breadcrumbNameMap,
+    setting,
     children
   } = props;
+  const { fixedHeader, theme } = setting;
   const { prefixCls, ...restProps } = props;
   const { routes, authority } = route!;
 
@@ -89,14 +89,22 @@ const BasicLayout: React.FC<IProps> = (props) => {
         isMobile={isMobile}
         {...restProps}
       />
-
-      <Header
-        isMobile={isMobile}
-        {...restProps}
-      />
-      <Content className={`${prefixCls}__wrapper`}>
-        {children}
-      </Content>
+      <Layout
+        style={{
+          minHeight: '100vh',
+        }}
+      >
+        <Header
+          isMobile={isMobile}
+          {...restProps}
+        />
+        <Content
+          className={`${prefixCls}__wrapper`}
+          style={!fixedHeader ? { paddingTop: 0 } : {}}
+        >
+          {children}
+        </Content>
+      </Layout>
     </Layout>
   );
 
@@ -119,7 +127,8 @@ BasicLayout.defaultProps = {
   prefixCls: 'lotus-basic-layout'
 };
 
-export default connect(({ menu }) => ({
+export default connect(({ menu, setting }: ConnectState) => ({
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
+  setting
 }))(BasicLayout);

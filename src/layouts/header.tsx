@@ -1,20 +1,30 @@
 import React from 'react';
+import classNames from 'classnames';
 import router from 'umi/router';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/global-header';
-import { ConnectProps, ConnectState } from '@/models/connect';
+import {
+  ConnectProps,
+  ConnectState,
+  ISettingModelState
+} from '@/models/connect';
+import { ICurrentUser } from '@/models/user';
 import './header.less';
 
-export interface IHeaderViewProps extends Required<ConnectProps>{
+export interface IHeaderViewProps extends Required<ConnectProps> {
+  prefixCls?: string;
   isMobile?: boolean;
   autoHideHeader?: boolean;
+  currentUser: ICurrentUser;
+  setting: ISettingModelState;
 }
 
 const { Header } = Layout;
 
 const HeaderView: React.FC<IHeaderViewProps> = (props) => {
-  const { dispatch } = props;
+  const { prefixCls, setting, dispatch, currentUser } = props;
+  const { fixedHeader, theme } = setting;
 
   const handleMenuClick = (key) => {
     // 跳转到个人中心
@@ -32,15 +42,25 @@ const HeaderView: React.FC<IHeaderViewProps> = (props) => {
   };
 
   return (
-    <Header style={{ padding: 0, zIndex: 2 }}>
+    <Header
+      style={{ padding: 0, zIndex: 2 }}
+      className={classNames(prefixCls, {
+        [`is-fixed`]: fixedHeader
+      })}
+    >
       <GlobalHeader
         onMenuClick={handleMenuClick}
-        {...props}
+        currentUser={currentUser}
       />
     </Header>
   )
 };
 
-export default connect(({ user }: ConnectState) => ({
+HeaderView.defaultProps = {
+  prefixCls: 'city-basic-layout-header'
+};
+
+export default connect(({ user, setting }: ConnectState) => ({
   currentUser: user.currentUser,
+  setting
 }))(HeaderView);

@@ -10,23 +10,22 @@ interface IProps {
   currentUser?: ICurrentUser;
 }
 
-export class GlobalHeader extends React.Component<IProps, any> {
-  static defaultProps = {
-    prefixCls: 'lotus-global-header'
-  };
+const GlobalHeader: React.FC<IProps> = (props) => {
+  const { prefixCls, onMenuClick, currentUser } = props;
 
-  render() {
-    const { prefixCls, onMenuClick, currentUser } = this.props;
+  return (
+    <div className={prefixCls}>
+      <RightContent
+        prefixCls={prefixCls}
+        onMenuClick={onMenuClick}
+        currentUser={currentUser}
+      />
+    </div>
+  )
+};
 
-    return (
-      <div className={prefixCls}>
+GlobalHeader.defaultProps = {
+  prefixCls: 'lotus-global-header'
+};
 
-        <RightContent
-          prefixCls={prefixCls}
-          onMenuClick={onMenuClick}
-          currentUser={currentUser}
-        />
-      </div>
-    )
-  }
-}
+export default GlobalHeader;

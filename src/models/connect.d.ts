@@ -22,6 +22,16 @@ export interface ConnectState {
   policy: IPolicyModelState;
 }
 
+export {
+  IMenuModelState,
+  IGlobalModelState,
+  ISettingModelState,
+  IUserGroupModelState,
+  IActionModelState,
+  IPolicyModelState,
+  IUserModelState
+};
+
 export type Effect = (
   action: AnyAction,
   effects: EffectsCommandMap & { select: <T>(func: (state: ConnectState) => T) => T },
