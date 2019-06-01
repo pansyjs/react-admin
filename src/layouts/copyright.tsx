@@ -1,13 +1,13 @@
 import React from 'react';
 import { Icon } from 'antd';
-import { APP_DEFAULT_CONFIG } from '@/config';
+import defaultSettings from '@/config/default-settings';
 
-const { companyName } = APP_DEFAULT_CONFIG;
+const { company } = defaultSettings;
 
 const Copyright = () => {
   return (
     <div>
-      Copyright <Icon type="copyright" /> 2019{companyName}技术部出品
+      Copyright <Icon type="copyright" /> 2019{company}技术部出品
     </div>
   )
 };

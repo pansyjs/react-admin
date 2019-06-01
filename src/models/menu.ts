@@ -1,41 +1,57 @@
 import { Reducer } from 'redux';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
+import Policy from '@jiumao/policy';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
+import checkAuthority from '@/components/authorized/check-authority';
 import { IMenu } from '@/components/sidebar-menu';
 import defaultSettings from '@/config/default-settings';
 
 const { menu } = defaultSettings;
+let policy: Policy = null;
 
-// 将路由数据转换为菜单数据
-function formatter(
+function formatterMenu(
   data: IRoute[],
-  parentAuthority?: string[] | string,
   parentName?: string,
 ): IMenu[] {
-  return data
-    .filter(item => item.name && item.path)
-    .map(item => {
-      const locale = `${parentName || 'menu'}.${item.name!}`;
-      // if enableMenuLocale use item.name,
-      // close menu international
-      const name = menu.disableLocal
-        ? item.name!
-        : formatMessage({ id: locale, defaultMessage: item.name! });
-      const result: IMenu = {
-        ...item,
-        name,
-        locale,
-        routes: void 0,
-        authority: item.authority || parentAuthority,
-      };
-      if (item.routes) {
-        // Reduce memory usage
-        result.children = formatter(item.routes, item.authority, locale);
+  let newMenus: IMenu[] = [];
+
+  const menus = data.filter(item => item.name && item.path);
+
+  menus.forEach(item => {
+    const locale = `${parentName || 'menu'}.${item.name!}`;
+
+    const name = menu.disableLocal
+      ? item.name!
+      : formatMessage({ id: locale, defaultMessage: item.name! });
+
+    const result: IMenu = {
+      ...item,
+      name,
+      locale,
+      routes: void 0,
+      authority: item.authority || undefined,
+    };
+
+    if (item.routes) {
+      // Reduce memory usage
+      result.children = formatterMenu(item.routes, locale);
+
+      if (!result.children.length) {
+        return;
       }
-      return result;
-    });
+    }
+
+    // 检查权限
+    let authResult = checkAuthority(policy, result.authority);
+
+    if (authResult) {
+      newMenus.push(result);
+    }
+  });
+
+  return newMenus;
 }
 
 // 获取面包屑映射
@@ -54,7 +70,7 @@ const getBreadcrumbNameMap = (menuData: IMenu[]) => {
   return routerMap;
 };
 
-const memoizeOneFormatter = memoizeOne(formatter, isEqual);
+const memoizeOneFormatter = memoizeOne(formatterMenu, isEqual);
 const memoizeOneGetBreadcrumbNameMap = memoizeOne(getBreadcrumbNameMap, isEqual);
 
 // 过滤菜单数据
@@ -97,8 +113,9 @@ const MenuModel: IMenuModel = {
   },
   effects: {
     *getMenuData({ payload, callback }, { put }) {
-      const { routes, authority } = payload;
-      const originalMenuData = memoizeOneFormatter(routes, authority);
+      const { routes } = payload;
+      policy = payload.policy;
+      const originalMenuData = memoizeOneFormatter(routes);
       const menuData = filterMenuData(originalMenuData);
       const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(originalMenuData);
 

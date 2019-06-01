@@ -1,5 +1,5 @@
-// axios 相关配置
-export const AXIOS_DEFAULT_CONFIG = {
+// ajax 相关配置
+export const AJAX_DEFAULT_CONFIG = {
   timeout: 20000,
   withCredentials: true,
   // 使用webpack DefinePlugin 插件
@@ -10,8 +10,6 @@ export const AXIOS_DEFAULT_CONFIG = {
 
 // 项目相关配置
 export const APP_DEFAULT_CONFIG = {
-  companyName: '九毛科技',
-  title: 'React Admin Template',
   // 免登陆白名单
   whiteList: ['/user/*']
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PageLoading from '@/components/page-loading';
-import { APP_DEFAULT_CONFIG } from '@/config';
+import defaultSettings from '@/config/default-settings';
 import BaseMenu, { IBaseMenuProps } from './base-menu';
 import { getDefaultCollapsedSubMenus } from './utils';
 import './sidebar-menu.less';
@@ -12,7 +12,7 @@ export interface ISidebarMenuProps extends IBaseMenuProps {
   isMobile?: boolean;
 }
 
-const { title } = APP_DEFAULT_CONFIG;
+const { title } = defaultSettings;
 
 const SidebarMenu: React.FC<ISidebarMenuProps> = (props) => {
   const { prefixCls, className, style, collapsed, logo } = props;
