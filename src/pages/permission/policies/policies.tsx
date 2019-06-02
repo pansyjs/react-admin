@@ -5,7 +5,7 @@ import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import StandardTable from '@/components/standard-table';
 import { ConnectProps } from '@/models/connect';
-import { IPolicy } from '../models/policy';
+import { IPolicy } from '@/models/policy';
 import './policies.less';
 
 interface IProps extends ConnectProps {
