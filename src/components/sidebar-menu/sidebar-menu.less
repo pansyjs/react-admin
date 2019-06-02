@@ -8,13 +8,13 @@
 
 .@{prefix-cls} {
   position: fixed;
-  width: 280px;
-  left: -200px;
-  bottom: 0;
   top: 0;
   right: auto;
-  overflow: hidden;
+  bottom: 0;
+  left: -200px;
   z-index: @z-index-sidebar;
+  width: 280px;
+  overflow: hidden;
   background: @sidebar-background;
   cursor: pointer;
   transition: transform @animation-duration-slow cubic-bezier(0.05, 0.74, 0.27, 0.99);
@@ -49,8 +49,8 @@
     // 请根据项目logo自行调整
     .lotus-sidebar-menu__logo > img {
       position: absolute;
-      right: 25px;
       top: 15px;
+      right: 25px;
     }
 
     .lotus-sidebar-menu__logo > h1 {
