@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import './pattern-lock.less';
 
 interface IProps {
   prefixCls: string;

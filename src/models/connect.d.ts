@@ -9,6 +9,7 @@ import { ISettingModelState } from '@/models/setting';
 import { IUserModelState } from '@/models/user';
 import { IActionModelState } from '@/models/action';
 import { IUserGroupModelState } from '@/pages/system/models/user-group';
+import { ISystemUserModelState } from '@/pages/system/models/system-user';
 import { IPolicyModelState } from '@/models/policy';
 
 export interface ConnectState {
@@ -17,6 +18,7 @@ export interface ConnectState {
   global: IGlobalModelState;
   setting: ISettingModelState;
   user: IUserModelState;
+  systemUser: ISystemUserModelState;
   userGroup: IUserGroupModelState;
   action: IActionModelState;
   policy: IPolicyModelState;

@@ -7,7 +7,7 @@ import {
   fetchRemove,
   fetchUpdate
 } from '@/services/group';
-import { IPagination } from '@/pages/global';
+import { ITableData } from '@/components/standard-table';
 import { formatTime } from '@/utils/utils';
 
 export interface IGroup {
@@ -19,14 +19,11 @@ export interface IGroup {
   createTime?: string;
 }
 
-export interface IGroupTable {
-  list: IGroup[];
-  pagination?: IPagination;
-}
+export interface IGroupTableData extends ITableData<IGroup> {}
 
 export interface IUserGroupModelState {
   list: IGroup[];
-  table: IGroupTable;
+  tableData: IGroupTableData;
 }
 
 export interface IUserGroupModel {
@@ -41,17 +38,17 @@ export interface IUserGroupModel {
   },
   reducers: {
     saveList: Reducer<any>;
-    saveTable: Reducer<any>;
+    saveTableData: Reducer<any>;
   }
 }
 
 const UserGroupModel: IUserGroupModel = {
   namespace: 'userGroup',
   state: {
-    list: [],
-    table: {
+    tableData: {
       list: []
-    }
+    },
+    list: [],
   },
   effects: {
     *fetchAll({ payload }, { call, put }) {
@@ -85,7 +82,7 @@ const UserGroupModel: IUserGroupModel = {
         });
 
         yield put({
-          type: 'saveTable',
+          type: 'saveTableData',
           payload: {
             list: groups,
             pagination: {
@@ -123,10 +120,10 @@ const UserGroupModel: IUserGroupModel = {
         list: payload
       };
     },
-    saveTable(state, { payload }) {
+    saveTableData(state, { payload }) {
       return {
         ...state,
-        table: payload
+        tableData: payload
       };
     },
   }

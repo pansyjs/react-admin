@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'dva';
 import { Form, Radio, Select } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
@@ -206,4 +207,4 @@ StatementDrawer.defaultProps = {
   actions: []
 };
 
-export default Form.create()(StatementDrawer)
+export default connect()(Form.create()(StatementDrawer));

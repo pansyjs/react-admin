@@ -7,14 +7,14 @@
 <h1 align="center">React Admin Template</h1>
 
 <p align="center">
+  <a href="http://umijs.org">
+    <img src="https://img.shields.io/badge/build%20with-umi-028fe4.svg" alt="react">
+  </a>
   <a href="https://github.com/facebook/react">
     <img src="https://img.shields.io/badge/react-16.8.1-brightgreen.svg" alt="react">
   </a>
   <a href="https://github.com/ant-design/ant-design">
-    <img src="https://img.shields.io/badge/ant--design-3.17.0-brightgreen.svg" alt="antd">
-  </a>
-  <a href="https://github.com/umijs/umi">
-    <img src="https://img.shields.io/badge/umi-2.6.17-brightgreen.svg" alt="umi">
+    <img src="https://img.shields.io/badge/ant--design-3.19.2-brightgreen.svg" alt="antd">
   </a>
   <a href="https://github.com/Microsoft/TypeScript">
     <img src="https://img.shields.io/badge/typescript-3.4.2-brightgreen.svg" alt="typescript">

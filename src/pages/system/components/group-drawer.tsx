@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'dva';
 import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
@@ -115,4 +116,4 @@ GroupDrawer.defaultProps = {
   currentGroup: {}
 };
 
-export default Form.create()(GroupDrawer);
+export default connect()(Form.create()(GroupDrawer));

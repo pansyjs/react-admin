@@ -7,7 +7,7 @@ import {
   fetchUpdate
 } from '@/services/user';
 import { IPolicyData } from '@jiumao/policy';
-import { IPagination } from '@/pages/global';
+import { ITableData } from '@/components/standard-table';
 import { formatTime } from '@/utils/utils';
 
 export interface IUser {
@@ -19,14 +19,11 @@ export interface IUser {
   remark?: string;
 }
 
-export interface ITable {
-  list: IUser[];
-  pagination: IPagination;
-}
+export interface IUserTableData extends ITableData<IUser> {}
 
 export interface ISystemUserModelState {
   list: IUser[],
-  table: ITable
+  tableData: IUserTableData
   policies: IPolicyData[];
 }
 
@@ -41,7 +38,7 @@ export interface ISystemUserModel {
     fetchUpdate: Effect;
   },
   reducers: {
-    saveTable: Reducer<any>;
+    saveTableData: Reducer<any>;
     savePolicies: Reducer<any>;
   }
 }
@@ -50,13 +47,8 @@ const SystemUserModel: ISystemUserModel = {
   namespace: 'systemUser',
   state: {
     list: [],
-    table: {
-      list: [],
-      pagination: {
-        total: 0,
-        current: 1,
-        pageSize: 10
-      }
+    tableData: {
+      list: []
     },
     policies: []
   },
@@ -75,7 +67,7 @@ const SystemUserModel: ISystemUserModel = {
         });
 
         yield put({
-          type: 'saveTable',
+          type: 'saveTableData',
           payload: {
             list: users,
             pagination: {
@@ -107,10 +99,10 @@ const SystemUserModel: ISystemUserModel = {
     }
   },
   reducers: {
-    saveTable(state, { payload }) {
+    saveTableData(state, { payload }) {
       return {
         ...state,
-        table: payload
+        tableData: payload
       };
     },
     savePolicies(state, { payload }) {

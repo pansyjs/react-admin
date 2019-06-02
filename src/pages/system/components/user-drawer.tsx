@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'dva';
 import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import DrawerWrapper from '@/components/drawer-wrapper';
@@ -125,4 +126,4 @@ UserDrawer.defaultProps = {
   currentUser: {}
 };
 
-export default Form.create()(UserDrawer);
+export default connect()(Form.create()(UserDrawer));
