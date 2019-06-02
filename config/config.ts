@@ -22,5 +22,14 @@ export default {
   hash: true,
   theme: themeConfig,
   ignoreMomentLocale: true,
-  disableCSSModules: true
+  disableCSSModules: true,
+  // 代理配置 - 请根据需要开启
+  // 访问 `/api/users` 代理到 `http://api.jiumao.com/users`]
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://api.jiumao.com/',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/api' : '' }
+  //   }
+  // }
 };
