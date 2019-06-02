@@ -104,13 +104,13 @@ export default [
           {
             path: '/system/user',
             name: 'user',
-            authority: ['system/action1'],
+            authority: '*',
             component: './system/users'
           },
           {
             path: '/system/group',
             name: 'group',
-            authority: ['system/action2'],
+            authority: '*',
             component: './system/groups'
           }
         ],

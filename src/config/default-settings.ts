@@ -23,7 +23,7 @@ const defaultSettings: IDefaultSettings = {
   menu: {
     disableLocal: false,
   },
-  fixedHeader: false,
+  fixedHeader: true,
   title: 'React Admin Template',
   iconFontUrl: '',
   company: '九毛科技',

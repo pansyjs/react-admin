@@ -12,7 +12,7 @@ export default {
   },
   treeShaking: true,
   define: {
-    BASE_URL: serverConfig[SERVER_ENV] || serverConfig.production
+    BASE_URL: serverConfig[SERVER_ENV] || serverConfig.localhost
   },
   // 路由配置
   routes,
