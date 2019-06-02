@@ -26,7 +26,6 @@ const confirm = Modal.confirm;
 
 const UsersPage: React.FC<IProps> = (props) => {
   const { tableData, loading, groups, dispatch } = props;
-
   const [visible, setVisible] = React.useState<boolean>(false);
   const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
   const [groupVisible, setGroupVisible] = React.useState<boolean>(false);

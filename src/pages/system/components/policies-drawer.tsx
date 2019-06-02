@@ -18,7 +18,7 @@ interface IProps {
   // 所有权限策略
   policies?: IPolicy[];
   // 已有的权限策略
-  defaultPolicies: string[];
+  defaultPolicies?: string[];
   type?: 'user' | 'group';
   onConfirm?: (values) => void;
 }
