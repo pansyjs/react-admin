@@ -3,14 +3,14 @@ import { connect } from 'dva';
 import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import { ConnectProps } from '@/models/connect';
-import { IGroupTable, IGroup } from './models/user-group';
+import { ConnectProps, ConnectState } from '@/models/connect';
+import { IGroupTableData, IGroup } from './models/user-group';
 import GroupDrawer, { TType } from './components/group-drawer';
 import PoliciesDrawer from './components/policies-drawer';
 
 interface IProps extends ConnectProps {
   loading: boolean;
-  groupTable: IGroupTable
+  tableData: IGroupTableData
 }
 
 interface IQueryData {
@@ -21,7 +21,7 @@ interface IQueryData {
 const confirm = Modal.confirm;
 
 const GroupsPage: React.FC<IProps> = (props) => {
-  const { groupTable, loading, dispatch } = props;
+  const { tableData, loading, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
@@ -182,12 +182,12 @@ const GroupsPage: React.FC<IProps> = (props) => {
     return (
       <StandardTable
         loading={loading}
-        data={groupTable}
+        data={tableData}
         columns={columns}
         onChange={handleTableChange}
       />
     )
-  }, [props.groupTable, props.loading]);
+  }, [props.tableData, props.loading]);
 
   return (
     <React.Fragment>
@@ -234,7 +234,7 @@ GroupsPage.defaultProps = {
   loading: false
 };
 
-export default connect(({ userGroup, loading }) => ({
-  groupTable: userGroup.table,
+export default connect(({ userGroup, loading }: ConnectState) => ({
+  tableData: userGroup.tableData,
   loading: loading.effects['userGroup/fetchList'],
 }))(GroupsPage);

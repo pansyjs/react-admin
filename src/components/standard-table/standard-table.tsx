@@ -9,12 +9,14 @@ import {
 } from 'antd/es/table';
 import './standard-table.less';
 
+export interface ITableData<T> {
+  list: T[];
+  pagination?: PaginationConfig
+}
+
 interface IProps<T> extends TableProps<T> {
   onSelectRow?: (rows: T[]) => void;
-  data: {
-    list: T[];
-    pagination?: PaginationConfig
-  };
+  data: ITableData<T>;
   selectedRows?: T[];
   onChange?: (
     pagination: PaginationConfig,
