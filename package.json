@@ -19,8 +19,7 @@
     "tsc": "tsc",
     "test": "umi test",
     "test:component": "umi test ./src/components",
-    "deploy": "rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
-    "build:view": "npm run build && cd ./dist && anywhere -p 8080",
+    "deploy": "yarn build && rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": "https://github.com/ts-react/react-admin-template.git",
@@ -30,7 +29,7 @@
     "@antv/data-set": "^0.10.1",
     "@jiumao/dharma": "^0.0.5",
     "@jiumao/policy": "^1.0.5",
-    "antd": "^3.19.1",
+    "antd": "^3.19.2",
     "axios": "^0.18.0",
     "bizcharts": "^3.5.2",
     "braft-editor": "^2.2.9",
