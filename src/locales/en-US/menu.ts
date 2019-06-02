@@ -16,7 +16,7 @@ export default {
   'menu.permission': 'Permission',
   'menu.permission.actions': 'Actions',
   'menu.permission.policies': 'Policies',
-  'menu.permission.policies.create': 'Create Policies',
+  'menu.permission.policy-create': 'Create Policies',
   'menu.account.center': 'Account Center',
   'menu.account.settings': 'Account Settings',
   'menu.account.logout': 'Logout',

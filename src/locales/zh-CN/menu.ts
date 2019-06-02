@@ -16,7 +16,7 @@ export default {
   'menu.permission': '权限管理',
   'menu.permission.actions': '操作管理',
   'menu.permission.policies': '策略管理',
-  'menu.permission.policies.create': '新建权限策略',
+  'menu.permission.policy-create': '新建权限策略',
   'menu.account.center': '个人中心',
   'menu.account.settings': '个人设置',
   'menu.account.logout': '退出登录',
