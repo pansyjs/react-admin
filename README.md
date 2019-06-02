@@ -7,7 +7,6 @@
 <h1 align="center">React Admin Template</h1>
 
 <p align="center">
-
   <a href="http://umijs.org">
     <img src="https://img.shields.io/badge/build%20with-umi-028fe4.svg" alt="react">
   </a>
