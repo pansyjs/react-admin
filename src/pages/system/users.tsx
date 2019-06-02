@@ -3,16 +3,16 @@ import { connect } from 'dva';
 import { Button, Card, Tooltip, Typography, Modal, message } from 'antd';
 import StandardTable from '@/components/standard-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import UserDrawer, { TType } from './components/user-drawer';
 import PoliciesDrawer from './components/policies-drawer';
 import UserToGroup from './components/user-to-group';
-import { ITable, IUser } from './models/system-user';
+import { IUserTableData, IUser } from './models/system-user';
 import { IGroup } from './models/user-group';
 
 interface IProps extends ConnectProps {
   loading: boolean;
-  userTable: ITable;
+  tableData: IUserTableData;
   groups: IGroup[];
 }
 
@@ -25,7 +25,7 @@ const { Paragraph } = Typography;
 const confirm = Modal.confirm;
 
 const UsersPage: React.FC<IProps> = (props) => {
-  const { userTable, loading, groups, dispatch } = props;
+  const { tableData, loading, groups, dispatch } = props;
 
   const [visible, setVisible] = React.useState<boolean>(false);
   const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
@@ -202,12 +202,12 @@ const UsersPage: React.FC<IProps> = (props) => {
     return (
       <StandardTable
         loading={loading}
-        data={userTable}
+        data={tableData}
         columns={columns}
         onChange={handleTableChange}
       />
     )
-  }, [props.userTable, props.loading]);
+  }, [props.tableData, props.loading]);
 
   return (
     <React.Fragment>
@@ -260,8 +260,8 @@ UsersPage.defaultProps = {
   groups: []
 };
 
-export default connect(({ systemUser, userGroup, loading }) => ({
-  userTable: systemUser.table,
+export default connect(({ systemUser, userGroup, loading }: ConnectState) => ({
+  tableData: systemUser.tableData,
   groups: userGroup.list,
   loading: loading.effects['systemUser/fetchList'],
 }))(UsersPage);
