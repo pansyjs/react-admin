@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import classNames from 'classnames';
-import Policy from '@jiumao/policy';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
@@ -17,7 +16,6 @@ import './basic-layout.less';
 interface IProps
   extends Required<ConnectProps>, ISidebarMenuProps {
     prefixCls?: string;
-    policy: Policy;
     tabActiveKey?: string;
     breadcrumbNameMap?: { [path: string]: IMenu };
     setting?: ISettingModelState;
@@ -54,7 +52,6 @@ const BasicLayout: React.FC<IProps> = (props) => {
     dispatch,
     location,
     route,
-    policy,
     menuData,
     breadcrumbNameMap,
     setting,
@@ -70,8 +67,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     dispatch!({
       type: 'menu/getMenuData',
       payload: {
-        routes,
-        policy
+        routes
       },
     });
   });
@@ -126,8 +122,7 @@ BasicLayout.defaultProps = {
   prefixCls: 'lotus-basic-layout'
 };
 
-export default connect(({ menu, setting, user }: ConnectState) => ({
-  policy: user.policy,
+export default connect(({ menu, setting }: ConnectState) => ({
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
   setting
