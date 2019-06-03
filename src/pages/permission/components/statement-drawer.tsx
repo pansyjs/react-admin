@@ -207,4 +207,4 @@ StatementDrawer.defaultProps = {
   actions: []
 };
 
-export default connect()(Form.create()(StatementDrawer));
+export default Form.create<IProps>()(StatementDrawer);

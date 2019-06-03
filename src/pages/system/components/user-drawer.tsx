@@ -126,4 +126,4 @@ UserDrawer.defaultProps = {
   currentUser: {}
 };
 
-export default connect()(Form.create()(UserDrawer));
+export default Form.create<IProps>()(UserDrawer);

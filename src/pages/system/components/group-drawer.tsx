@@ -116,4 +116,4 @@ GroupDrawer.defaultProps = {
   currentGroup: {}
 };
 
-export default connect()(Form.create()(GroupDrawer));
+export default Form.create<IProps>()(GroupDrawer);
