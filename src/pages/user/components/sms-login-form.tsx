@@ -102,4 +102,4 @@ SMSLoginForm.defaultProps = {
   loading: false
 };
 
-export default Form.create()(SMSLoginForm);
+export default Form.create<IProps>()(SMSLoginForm);

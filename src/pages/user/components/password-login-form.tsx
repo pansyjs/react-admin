@@ -109,4 +109,4 @@ PasswordLoginForm.defaultProps = {
   loading: false
 };
 
-export default Form.create()(PasswordLoginForm);
+export default Form.create<IProps>()(PasswordLoginForm);
