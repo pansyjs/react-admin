@@ -75,6 +75,20 @@ npm install --global yarn
 
 `npm run build` 或者 `yarn build`
 
+**本地开发后端接口配置**
+
+> 可用 server.config.ts 下的配置，使用此项可解决冲突风险
+
+可在 config 目下新建`local-server.config.ts`文件
+
+内容如下:
+
+```
+export default {
+  baseURL: 'https://api.jiumao.com'
+};
+```
+
 # 技术栈
 
 - 框架：React、Umi

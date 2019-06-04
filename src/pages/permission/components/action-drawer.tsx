@@ -146,4 +146,4 @@ ActionDrawer.defaultProps = {
   modules: []
 };
 
-export default Form.create()(ActionDrawer);
+export default Form.create<IProps>()(ActionDrawer);

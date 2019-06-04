@@ -1,9 +1,31 @@
+import isString from 'lodash/isString';
 import routes from './router.config';
 import plugins from './plugin.config';
 import themeConfig from './theme.config';
 import serverConfig from './server.config';
 
 const { SERVER_ENV } = process.env;
+
+// 设置后端接口地址
+let localServerConfig;
+let BaseURL = '';
+
+try {
+  localServerConfig = require('./local-server.config.ts');
+} catch (error) {}
+
+if (SERVER_ENV) {
+  BaseURL = serverConfig[SERVER_ENV];
+} else {
+  BaseURL =
+    localServerConfig && localServerConfig.baseURL
+      ? localServerConfig.baseURL
+      : '';
+}
+
+if (!BaseURL || !isString(BaseURL)) {
+  BaseURL = serverConfig.localhost;
+}
 
 export default {
   plugins,
