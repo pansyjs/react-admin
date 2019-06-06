@@ -1,4 +1,3 @@
-import isString from 'lodash/isString';
 import routes from './router.config';
 import plugins from './plugin.config';
 import themeConfig from './theme.config';
@@ -14,16 +13,11 @@ try {
   localServerConfig = require('./local-server.config.ts');
 } catch (error) {}
 
-if (SERVER_ENV) {
+if (serverConfig[SERVER_ENV]) {
   BaseURL = serverConfig[SERVER_ENV];
+} else if (localServerConfig && localServerConfig.baseURL) {
+  BaseURL = localServerConfig.baseURL;
 } else {
-  BaseURL =
-    localServerConfig && localServerConfig.baseURL
-      ? localServerConfig.baseURL
-      : '';
-}
-
-if (!BaseURL || !isString(BaseURL)) {
   BaseURL = serverConfig.localhost;
 }
 
