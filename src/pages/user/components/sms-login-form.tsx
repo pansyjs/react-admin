@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import { SendCode } from '@/components/send-code';
+import SendCode from '@/components/send-code';
 
 interface IProps extends FormComponentProps {
   prefixCls: string;
@@ -13,26 +13,27 @@ interface IProps extends FormComponentProps {
 
 const FormItem = Form.Item;
 
-const SMSLoginForm: React.FC<IProps> = (props) => {
+const SMSLoginForm: React.FC<IProps> = props => {
   const {
     prefixCls,
     loading,
     onLogin,
     onChangeType,
-    form: { validateFields, getFieldDecorator }
+    form: { validateFields, getFieldDecorator },
   } = props;
   const loginType = 'password';
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     validateFields((error, values) => {
       if (!error) return;
-      onLogin && onLogin({
-        ...values,
-        type: loginType
-      });
-    })
+      onLogin &&
+        onLogin({
+          ...values,
+          type: loginType,
+        });
+    });
   };
 
   const handleChangeLoginType = () => {
@@ -46,15 +47,15 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
           rules: [
             {
               required: true,
-              message: formatMessage({ id: 'validation.mobile.required' })
-            }
-          ]
+              message: formatMessage({ id: 'validation.mobile.required' }),
+            },
+          ],
         })(
           <Input
             size="large"
             prefix={<Icon type="mobile" />}
             placeholder={`${formatMessage({ id: 'app.login.mobile' })}`}
-          />
+          />,
         )}
       </FormItem>
       <FormItem>
@@ -62,9 +63,9 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
           rules: [
             {
               required: true,
-              message: formatMessage({ id: 'validation.verification-code.required' })
-            }
-          ]
+              message: formatMessage({ id: 'validation.verification-code.required' }),
+            },
+          ],
         })(
           <Input
             size="large"
@@ -72,20 +73,12 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
             maxLength={6}
             prefix={<Icon type="key" />}
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
-            suffix={
-              <SendCode className="verification-code-button" />
-            }
-          />
+            suffix={<SendCode className="verification-code-button" />}
+          />,
         )}
       </FormItem>
       <FormItem>
-        <Button
-          loading={loading}
-          type="primary"
-          htmlType="submit"
-          size="large"
-          block
-        >
+        <Button loading={loading} type="primary" htmlType="submit" size="large" block>
           <FormattedMessage id="app.login.login" />
         </Button>
         <div className={`${prefixCls}__switch`}>
@@ -95,11 +88,11 @@ const SMSLoginForm: React.FC<IProps> = (props) => {
         </div>
       </FormItem>
     </Form>
-  )
+  );
 };
 
 SMSLoginForm.defaultProps = {
-  loading: false
+  loading: false,
 };
 
 export default Form.create<IProps>()(SMSLoginForm);

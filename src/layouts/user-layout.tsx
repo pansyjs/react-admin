@@ -3,27 +3,26 @@ import { connect } from 'dva';
 import DocumentTitle from 'react-document-title';
 import GlobalFooter from '@/components/global-footer';
 import SelectLang from '@/components/select-lang';
-import { IMenu } from '@/components/side-menu';
+import { IMenu } from '@/components/sidebar-menu';
 import { moGetPageTitle, moGetTitle } from '@/utils/getPageTitle';
 import { ConnectProps } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Copyright from './copyright';
 import './user-layout.less';
 
-export interface IProps
-  extends Required<ConnectProps> {
-    prefixCls?: string;
-    breadcrumbNameMap: { [path: string]: IMenu };
-  }
+export interface IProps extends Required<ConnectProps> {
+  prefixCls?: string;
+  breadcrumbNameMap: { [path: string]: IMenu };
+}
 
-const UserLayout: React.FC<IProps> = (props) => {
+const UserLayout: React.FC<IProps> = props => {
   const {
     prefixCls,
     location,
     dispatch,
     breadcrumbNameMap,
     route: { routes, authority },
-    children
+    children,
   } = props;
 
   useState(() => {
@@ -31,8 +30,8 @@ const UserLayout: React.FC<IProps> = (props) => {
       type: 'menu/getMenuData',
       payload: {
         routes,
-        authority
-      }
+        authority,
+      },
     });
   });
 
@@ -48,15 +47,13 @@ const UserLayout: React.FC<IProps> = (props) => {
                 <SelectLang />
               </div>
               <div className={`${prefixCls}__header`}>
-                <img src={logo} alt="logo"/>
+                <img src={logo} alt="logo" />
                 <h2>React Admin Template</h2>
               </div>
               <div className={`${prefixCls}__title`}>
                 <h2>{title}</h2>
               </div>
-              <div className={`${prefixCls}__children`}>
-                {children}
-              </div>
+              <div className={`${prefixCls}__children`}>{children}</div>
             </div>
           </div>
         </div>
@@ -67,9 +64,9 @@ const UserLayout: React.FC<IProps> = (props) => {
 };
 
 UserLayout.defaultProps = {
-  prefixCls: 'lotus-user-layout'
+  prefixCls: 'lotus-user-layout',
 };
 
 export default connect(({ menu }) => ({
-  breadcrumbNameMap: menu.breadcrumbNameMap
+  breadcrumbNameMap: menu.breadcrumbNameMap,
 }))(UserLayout);
