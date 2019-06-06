@@ -19,6 +19,8 @@ export function onRouteChange({ location }) {
     }
   });
 
+  const test = '123';
+
   // 需要登录页面 未登录状态不可访问
   if (!token && isLogin) {
     message.warning('登录已过期，请重新登录！');
