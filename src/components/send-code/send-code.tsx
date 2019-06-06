@@ -23,19 +23,10 @@ export interface IProps extends NativeButtonProps {
   onCaptcha?: () => boolean | Promise<any>;
 }
 
-export const SendCode: React.FC<IProps> = (props) => {
+const SendCode: React.FC<IProps> = props => {
   let timer: NodeJS.Timer = null;
   let lastSecond: number = 0;
-  const {
-    second,
-    initText,
-    runText,
-    resetText,
-    onCaptcha,
-    storageKey,
-    onEnd,
-    ...rest
-  } = props;
+  const { second, initText, runText, resetText, onCaptcha, storageKey, onEnd, ...rest } = props;
   const [buttonText, setButtonText] = useState<string>(initText);
   const [start, setStart] = useState<boolean>(false);
   // 倒计时最后结束的秒数
@@ -56,7 +47,7 @@ export const SendCode: React.FC<IProps> = (props) => {
 
     return () => {
       timer && clearInterval(timer);
-    }
+    };
   }, []);
 
   // 触发获取验证码
@@ -110,7 +101,7 @@ export const SendCode: React.FC<IProps> = (props) => {
       if (second <= 0) {
         timeout();
       }
-    }, 1000)
+    }, 1000);
   }
 
   // 倒计时结束处理函数
@@ -129,20 +120,17 @@ export const SendCode: React.FC<IProps> = (props) => {
   }
 
   return (
-    <Button
-      {...rest}
-      onClick={handleClick}
-      loading={loading}
-      disabled={start}
-    >
+    <Button {...rest} onClick={handleClick} loading={loading} disabled={start}>
       {buttonText}
     </Button>
-  )
+  );
 };
 
 SendCode.defaultProps = {
   second: 60,
   initText: '获取验证码',
   runText: '{%s}秒后重新获取',
-  resetText: '重新获取验证码'
+  resetText: '重新获取验证码',
 };
+
+export default SendCode;
