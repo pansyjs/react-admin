@@ -12,15 +12,13 @@
     "build:prod": "cross-env SERVER_ENV=production umi build",
     "build:web": "yarn build && cd ./dist && anywhere -h localhost -p 8080",
     "gh-pages": "yarn build:prod && gh-pages -d dist",
-    "lint-staged": "lint-staged",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
     "docker:build": "./scripts/docker-build.sh",
     "tsc": "tsc",
     "test": "umi test",
     "test:component": "umi test ./src/components",
-    "deploy": "yarn build && rm -rf node_modules/gh-pages/.cache && gh-pages -d dist",
-    "prettier": "check-prettier write"
+    "deploy": "yarn build && rm -rf node_modules/gh-pages/.cache && gh-pages -d dist"
   },
   "repository": "https://github.com/ts-react/react-admin-template.git",
   "author": "JiuMao FE Team",
@@ -82,7 +80,6 @@
     "@types/react-text-mask": "^5.4.2",
     "@types/react-virtualized": "^9.21.1",
     "@types/store": "^2.0.0",
-    "check-prettier": "^1.0.3",
     "cross-env": "^5.2.0",
     "eslint": "^5.14.1",
     "gh-pages": "^2.0.1",
@@ -107,14 +104,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged",
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
     "**/*.{js,ts,tsx,md,json,jsx,less}": [
-      "npm run prettier",
+      "prettier --write",
       "git add"
     ]
   },
