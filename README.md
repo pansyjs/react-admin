@@ -164,13 +164,13 @@ export default {
 ### hideInMenu
 
 - 参数类型: `boolean`
-- 参数描述: 是否隐藏菜单
+- 参数描述: 可以在菜单中不展示这个路由，包括子路由
 - 默认值: false
 
 ### hideChildrenInMenu
 
 - 参数类型: `boolean`
-- 参数描述: 是否隐藏该菜单的子菜单
+- 参数描述: 用于隐藏不需要在菜单中展示的子路由
 - 默认值: false
 
 # API

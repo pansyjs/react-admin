@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "analyze": "cross-env ANALYZE=1 umi build",
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
-    "start": "cross-env PORT=8080 umi dev",
+    "start": "umi dev",
+    "start:no-mock": "cross-env MOCK=none umi dev",
     "build": "umi build",
     "build:dev": "cross-env SERVER_ENV=dev umi build",
     "build:test": "cross-env SERVER_ENV=test umi build",
