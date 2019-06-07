@@ -6,3 +6,4 @@ declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.gif';
 declare module '*.bmp';
+declare const BASE_URL: string;
