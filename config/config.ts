@@ -24,11 +24,11 @@ if (serverConfig[SERVER_ENV]) {
 export default {
   plugins,
   targets: {
-    ie: 11
+    ie: 11,
   },
   treeShaking: true,
   define: {
-    BASE_URL: serverConfig[SERVER_ENV] || serverConfig.localhost
+    BASE_URL: BaseURL,
   },
   // 路由配置
   routes,

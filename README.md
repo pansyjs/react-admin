@@ -47,6 +47,12 @@
 
 <img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/dingding.jpeg"></img>
 
+# 使用案例
+
+> 如果你的项目使用了此模板 可给出访问链接
+
+- [fashop-admin](https://github.com/mojisrc/fashop-admin/tree/v3) 正在开发中...
+
 # 广告
 
 [awesome-frontend](https://github.com/wangxingkang/awesome-frontend) 整理前端相关的博客、教程、库... 欢迎查阅
