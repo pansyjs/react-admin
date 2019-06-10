@@ -2,8 +2,8 @@ import React from 'react';
 import store from 'store';
 
 interface IQueryData {
-  page?: number;
-  size?: number;
+  page: number;
+  limit: number;
   [key: string]: any;
 }
 
