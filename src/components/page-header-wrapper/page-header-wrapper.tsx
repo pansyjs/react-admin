@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { PageHeader } from 'antd';
 import { PageHeaderProps } from 'antd/es/page-header';
 import MenuContext from '@/layouts/menu-context';
-import { urlToList } from '@jiumao/dharma';
+import { urlToList } from 'awe-utils';
 import './page-header-wrapper.less';
 
 interface IProps extends PageHeaderProps {
