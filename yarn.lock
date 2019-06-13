@@ -1484,14 +1484,6 @@
   dependencies:
     "@jiumao/dharma" "^0.0.4"
 
-"@jiumao/rc-send-code@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@jiumao/rc-send-code/-/rc-send-code-0.0.1.tgz#b16583426a48939753777c5b5706133e7f0fdfbf"
-  integrity sha512-tu9+2aHveWEDe7a1/22kvMuAbky2zdO/0eLzgLgVO0n2aj9FzLLWpKTUvHepJ5ezwI05bfHuwaUkkj4hOJ+r6g==
-  dependencies:
-    antd "^3.19.3"
-    awe-utils "^0.0.7"
-
 "@marionebl/sander@^0.6.0":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@marionebl/sander/-/sander-0.6.1.tgz#1958965874f24bc51be48875feb50d642fc41f7b"
@@ -15383,7 +15375,7 @@ umi-plugin-polyfills@1.4.2:
     umi-utils "1.4.2"
     url-polyfill "1.1.3"
 
-umi-plugin-react@^1.8.2:
+umi-plugin-react@^1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/umi-plugin-react/-/umi-plugin-react-1.8.3.tgz#cc93b7eeaa168c77b02b545e894b42db1939f77c"
   integrity sha512-T0vieS8rMUNn3jwTfiycIjqp1XfZ6kDp64I8biGs8Kw8emhoplazgO+VSZoSTYeaeLZQv+Uvpr+0j8xflsuOSg==
@@ -15436,7 +15428,7 @@ umi-test@1.5.11:
     umi-utils "1.4.4"
     yargs-parser "13.0.0"
 
-umi-types@^0.3.7:
+umi-types@^0.3.8:
   version "0.3.8"
   resolved "https://registry.yarnpkg.com/umi-types/-/umi-types-0.3.8.tgz#ebb194f1856e0d6964e2949ca54c853676ef4a91"
   integrity sha512-db+1gGcCrUchMQwMO47RiRfs3kGr8U5Q9SGwrWvzFvlXIJDHeG/37j7Y+0mIprFZKHMbpcUUhe80WozPdW8uIQ==
@@ -15490,7 +15482,7 @@ umi-webpack-bundle-analyzer@3.3.2:
     opener "^1.5.1"
     ws "^6.0.0"
 
-umi@^2.7.3:
+umi@^2.7.5:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/umi/-/umi-2.7.5.tgz#b51bc05390ab304639a01ff4b053f91c99f5cd8d"
   integrity sha512-Vzeu+UFxIAv90Z57SJHBGkO+OCvSaSml+WYXG1HSdEbpdahVo3L4KtHHYyH7695JjVK8dNpGIZ0m/VS0Mi4Mug==

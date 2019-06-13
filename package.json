@@ -6,7 +6,7 @@
     "analyze": "cross-env ANALYZE=1 umi build",
     "bootstrap": "yarn || npm i",
     "clean": "rimraf dist",
-    "start": "umi dev",
+    "start": "cross-env PORT=8888 umi dev",
     "start:no-mock": "cross-env MOCK=none umi dev",
     "build": "umi build",
     "build:dev": "cross-env SERVER_ENV=dev umi build",
@@ -28,7 +28,6 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "@jiumao/policy": "^1.0.5",
-    "@jiumao/rc-send-code": "^0.0.1",
     "antd": "^3.19.3",
     "awe-utils": "^0.0.7",
     "axios": "^0.19.0",
@@ -102,9 +101,9 @@
     "stylelint-order": "^3.0.0",
     "stylelint-prettier": "^1.1.1",
     "typescript": "^3.5.1",
-    "umi": "^2.7.3",
-    "umi-plugin-react": "^1.8.2",
-    "umi-types": "^0.3.7"
+    "umi": "^2.7.5",
+    "umi-plugin-react": "^1.8.3",
+    "umi-types": "^0.3.8"
   },
   "husky": {
     "hooks": {
