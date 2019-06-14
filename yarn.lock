@@ -1399,6 +1399,14 @@
   dependencies:
     "@jiumao/dharma" "^0.0.4"
 
+"@jiumao/rc-send-code@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@jiumao/rc-send-code/-/rc-send-code-0.0.2.tgz#ecbf1a8b4e64f371bc63dd0b6f3a222f6f4b9734"
+  integrity sha512-WvmydczdyFzFLHXYdIFdBYDj+p5oH6/K54z9x80FGndDetr3unJ8+uCuxz1IjOjSygBGggsY597SXf16T92kdA==
+  dependencies:
+    antd "^3.19.3"
+    awe-utils "^0.0.7"
+
 "@marionebl/sander@^0.6.0":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@marionebl/sander/-/sander-0.6.1.tgz#1958965874f24bc51be48875feb50d642fc41f7b"

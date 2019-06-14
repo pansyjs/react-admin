@@ -28,6 +28,7 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "@jiumao/policy": "^1.0.5",
+    "@jiumao/rc-send-code": "^0.0.2",
     "antd": "^3.19.3",
     "awe-utils": "^0.0.7",
     "axios": "^0.19.0",
