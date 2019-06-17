@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import SendCode from '@/components/send-code';
+import SendCode from '@jiumao/rc-send-code';
 
 interface IProps extends FormComponentProps {
   prefixCls: string;
@@ -73,7 +73,14 @@ const SMSLoginForm: React.FC<IProps> = props => {
             maxLength={6}
             prefix={<Icon type="key" />}
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
-            suffix={<SendCode className="verification-code-button" />}
+            suffix={
+              <SendCode
+                onCaptcha={() => {
+                  return true;
+                }}
+                className="verification-code-button"
+              />
+            }
           />,
         )}
       </FormItem>
