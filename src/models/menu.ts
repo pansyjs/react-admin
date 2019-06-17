@@ -12,10 +12,7 @@ import defaultSettings from '@/config/default-settings';
 const { menu } = defaultSettings;
 let policy: Policy = null;
 
-function formatterMenu(
-  data: IRoute[],
-  parentName?: string,
-): IMenu[] {
+function formatterMenu(data: IRoute[], parentName?: string): IMenu[] {
   let newMenus: IMenu[] = [];
 
   const menus = data.filter(item => item.name && item.path);
@@ -25,7 +22,7 @@ function formatterMenu(
 
     const name = menu.disableLocal
       ? item.name!
-      : formatMessage({ id: locale, defaultMessage: item.name! });
+      : formatMessage({ id: locale as any, defaultMessage: item.name! });
 
     const result: IMenu = {
       ...item,
@@ -76,9 +73,7 @@ const memoizeOneGetBreadcrumbNameMap = memoizeOne(getBreadcrumbNameMap, isEqual)
 
 // 过滤菜单数据
 const filterMenuData = (menuData: IMenu[] = []): IMenu[] => {
-  return menuData
-    .filter(item => item.name && !item.hideInMenu)
-    .filter(item => item);
+  return menuData.filter(item => item.name && !item.hideInMenu).filter(item => item);
 };
 
 export interface IRoute extends IMenu {
@@ -95,11 +90,11 @@ export interface IMenuModelState {
 }
 
 export interface IMenuModel {
-  namespace: 'menu',
-  state: IMenuModelState,
+  namespace: 'menu';
+  state: IMenuModelState;
   effects: {
     getMenuData: Effect;
-  },
+  };
   reducers: {
     saveState: Reducer<any>;
   };
@@ -110,16 +105,15 @@ const MenuModel: IMenuModel = {
   state: {
     menuData: [],
     routerData: [],
-    breadcrumbNameMap: {}
+    breadcrumbNameMap: {},
   },
   effects: {
     *getMenuData({ payload, callback }, { put, call, select }) {
       // 解决先于生成policy执行问题
       yield call(delay, 400);
+      console.log(123);
 
-      const user = yield select(
-        (state) => state.user
-      );
+      const user = yield select(state => state.user);
 
       const { routes } = payload;
       policy = user.policy;
@@ -132,21 +126,21 @@ const MenuModel: IMenuModel = {
         payload: {
           menuData,
           breadcrumbNameMap,
-          routerData: routes
-        }
+          routerData: routes,
+        },
       });
 
       callback && callback();
-    }
+    },
   },
   reducers: {
     saveState(state, action) {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
-    }
-  }
+    },
+  },
 };
 
 export default MenuModel;
