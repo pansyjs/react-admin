@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { connect } from 'dva';
 import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
-import StandardTable from '@/components/standard-table';
+import Table from '@jiumao/rc-table';
 import { ConnectProps } from '@/models/connect';
 import { IModule, IAction } from '@/models/action';
 import ActionDrawer, { TFormType } from './components/action-drawer';
@@ -162,7 +162,7 @@ const ActionPage: React.FC<IProps> = props => {
 
   const table = useMemo(() => {
     return (
-      <StandardTable
+      <Table
         data={{
           list: actions,
         }}

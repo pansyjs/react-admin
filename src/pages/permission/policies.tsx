@@ -4,7 +4,7 @@ import router from 'umi/router';
 import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import useQueryData from '@/hooks/use-query-data';
-import StandardTable from '@/components/standard-table';
+import Table from '@jiumao/rc-table';
 import { ConnectProps } from '@/models/connect';
 import { IPolicy } from '@/models/policy';
 import './policies.less';
@@ -121,7 +121,7 @@ const PoliciesPage: React.FC<IProps> = props => {
       </PageHeaderWrapper>
       <div className={prefixCls}>
         <Card bordered={false}>
-          <StandardTable
+          <Table
             data={{
               list: policies,
             }}
