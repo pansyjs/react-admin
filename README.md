@@ -241,7 +241,6 @@ export default {
 │   │   ├── notice-icon         # 消息通知组件
 │   │   ├── send-code           # 发送验证码组件
 │   │   ├── side-menu           # 左侧菜单组件
-│   │   ├── standard-table      # 对table的二次封装
 │   │   ├── tab-pages           # 页面Tab组件
 │   │   └──                     #
 │   ├── config                  # 项目配置

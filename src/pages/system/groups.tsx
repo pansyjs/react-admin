@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
-import StandardTable from '@/components/standard-table';
+import Table from '@jiumao/rc-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps, ConnectState } from '@/models/connect';
 import useQueryData from '@/hooks/use-query-data';
@@ -175,12 +175,7 @@ const GroupsPage: React.FC<IProps> = props => {
 
   const table = React.useMemo(() => {
     return (
-      <StandardTable
-        loading={loading}
-        data={tableData}
-        columns={columns}
-        onChange={handleTableChange}
-      />
+      <Table loading={loading} data={tableData} columns={columns} onChange={handleTableChange} />
     );
   }, [props.tableData, props.loading]);
 
