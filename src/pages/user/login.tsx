@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import store from 'store';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 import { TLoginType } from '@/models/login';
+import { ConnectState } from '@/models/connect';
 import PasswordLoginForm from './components/password-login-form';
 import SMSLoginForm from './components/sms-login-form';
 import './login.less';
@@ -14,25 +15,21 @@ interface IProps {
   dispatch: (args: any) => void;
 }
 
-@connect(({ loading, login }) => ({
-  loginType: login.type,
-  loading: loading.effects['login/fetchLogin']
-}))
 class LoginPage extends React.Component<IProps, any> {
   static defaultProps = {
-    prefixCls: 'login-page'
+    prefixCls: 'login-page',
   };
 
-  handleLogin = (values) => {
+  handleLogin = values => {
     const { dispatch } = this.props;
 
     dispatch({
       type: 'login/fetchLogin',
-      payload: values
+      payload: values,
     });
   };
 
-  handleChangeType = (type) => {
+  handleChangeType = type => {
     const { dispatch } = this.props;
     const { loginType } = STORAGE_KEY_DEFAULT_CONFIG;
 
@@ -40,7 +37,7 @@ class LoginPage extends React.Component<IProps, any> {
 
     dispatch({
       type: 'login/changeLoginType',
-      payload: type
+      payload: type,
     });
   };
 
@@ -73,4 +70,7 @@ class LoginPage extends React.Component<IProps, any> {
   }
 }
 
-export default LoginPage;
+export default connect(({ login, loading }: ConnectState) => ({
+  loginType: login.type,
+  loading: loading.effects['login/fetchLogin'],
+}))(LoginPage);

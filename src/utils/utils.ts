@@ -7,11 +7,6 @@ export function isUrl(path: string): boolean {
   return urlRegexp.test(path);
 }
 
-// 检查 `value` 是否为承诺（Promise）
-export function isPromise(value: any): value is Promise<any> {
-  return !!value && typeof value.then === 'function';
-}
-
 // 格式化时间
 export function formatTime(time, formatStr?) {
   return Moment(time).format(formatStr || 'YYYY-MM-DD HH:mm:ss');

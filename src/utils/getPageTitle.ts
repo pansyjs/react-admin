@@ -27,9 +27,10 @@ const getPageTitle = (pathname: string, breadcrumbNameMap: object): string => {
   const pageName = menu.disableLocal
     ? currentRouterData.name
     : formatMessage({
-      id: currentRouterData.locale || currentRouterData.name,
-      defaultMessage: currentRouterData.name,
-    });
+        // @ts-ignore
+        id: currentRouterData.locale || currentRouterData.name,
+        defaultMessage: currentRouterData.name,
+      });
 
   return `${pageName} · ${title}`;
 };
@@ -41,9 +42,10 @@ const getTitle = (pathname: string, breadcrumbNameMap: object): string => {
   const pageName = menu.disableLocal
     ? currentRouterData.name
     : formatMessage({
-      id: currentRouterData.locale || currentRouterData.name,
-      defaultMessage: currentRouterData.name,
-    });
+        // @ts-ignore
+        id: currentRouterData.locale || currentRouterData.name,
+        defaultMessage: currentRouterData.name,
+      });
 
   return `${pageName}`;
 };

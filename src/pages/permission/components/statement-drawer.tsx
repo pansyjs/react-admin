@@ -64,7 +64,7 @@ const StatementDrawer: React.FC<IProps> = props => {
     form.validateFields((error, values) => {
       if (!error) {
         if (!currentModule) return;
-        const { effect, type, actions } = values;
+        const { effect, type, actions } = values as any;
         const moduleName = currentModule.name;
         const actionData =
           type === 'all' ? [`${moduleName}/*`] : actions.map(item => `${moduleName}/${item.label}`);

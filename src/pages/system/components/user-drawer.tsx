@@ -38,6 +38,7 @@ const UserDrawer: React.FC<IProps> = props => {
         const data = { ...values };
 
         if (type === 'update') {
+          // @ts-ignore
           data.id = currentUser.id;
         }
 

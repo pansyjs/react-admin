@@ -4,6 +4,7 @@ import { IRoute } from 'umi-types';
 import { EffectsCommandMap } from 'dva';
 import { match } from 'react-router-dom';
 import { IMenuModelState } from '@/models/menu';
+import { ILoginModelState } from '@/models/login';
 import { IGlobalModelState } from '@/models/global';
 import { ISettingModelState } from '@/models/setting';
 import { IUserModelState } from '@/models/user';
@@ -18,6 +19,7 @@ export interface ConnectState {
   global: IGlobalModelState;
   setting: ISettingModelState;
   user: IUserModelState;
+  login: ILoginModelState;
   systemUser: ISystemUserModelState;
   userGroup: IUserGroupModelState;
   action: IActionModelState;
@@ -31,7 +33,8 @@ export {
   IUserGroupModelState,
   IActionModelState,
   IPolicyModelState,
-  IUserModelState
+  ILoginModelState,
+  IUserModelState,
 };
 
 export type Effect = (
@@ -56,8 +59,8 @@ export interface Loading {
 
 export interface ConnectProps<P extends { [K in keyof P]?: string } = {}>
   extends Partial<RouterTypes<IRoute>> {
-    dispatch?: Dispatch;
-    match?: match<P>;
-  }
+  dispatch?: Dispatch;
+  match?: match<P>;
+}
 
 export default ConnectState;

@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import Table from '@jiumao/rc-table';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import { IModule, IAction } from '@/models/action';
 import ActionDrawer, { TFormType } from './components/action-drawer';
 
@@ -200,7 +200,7 @@ const ActionPage: React.FC<IProps> = props => {
   );
 };
 
-export default connect(({ action }) => ({
+export default connect(({ action }: ConnectState) => ({
   modules: action.modules,
   actions: action.list,
 }))(ActionPage);

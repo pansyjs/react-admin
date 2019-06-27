@@ -5,7 +5,7 @@ import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import useQueryData from '@/hooks/use-query-data';
 import Table from '@jiumao/rc-table';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import { IPolicy } from '@/models/policy';
 import './policies.less';
 
@@ -138,6 +138,6 @@ PoliciesPage.defaultProps = {
   policies: [],
 };
 
-export default connect(({ policy }) => ({
+export default connect(({ policy }: ConnectState) => ({
   policies: policy.list,
 }))(PoliciesPage);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'dva';
+import { connect, useDispatch } from 'dva';
 import { Button, Card, Tooltip, Alert, message, Modal } from 'antd';
 import Table from '@jiumao/rc-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
@@ -17,8 +17,8 @@ interface IProps extends ConnectProps {
 const confirm = Modal.confirm;
 
 const GroupsPage: React.FC<IProps> = props => {
-  const { tableData, loading, dispatch } = props;
-
+  const dispatch = useDispatch();
+  const { tableData, loading } = props;
   const [visible, setVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
   const [currentGroup, setCurrentGroup] = React.useState<IGroup>({});
@@ -137,37 +137,32 @@ const GroupsPage: React.FC<IProps> = props => {
       key: 'action',
       render: (text, record) => (
         <div className="table-action">
-          <Tooltip placement="top" title="添加组成员">
-            <Button size="small" icon="user-add" />
-          </Tooltip>
-          <Tooltip placement="top" title="赋权">
-            <Button
-              size="small"
-              icon="api"
-              onClick={() => {
-                showPoliciesView(record);
-              }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="更新">
-            <Button
-              size="small"
-              icon="edit"
-              onClick={() => {
-                showUpdateView(record);
-              }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="删除">
-            <Button
-              type="danger"
-              size="small"
-              icon="delete"
-              onClick={() => {
-                handleConfirmRemove(record);
-              }}
-            />
-          </Tooltip>
+          <Button size="small">添加组成员</Button>
+          <Button
+            size="small"
+            onClick={() => {
+              showPoliciesView(record);
+            }}
+          >
+            赋权
+          </Button>
+          <Button
+            size="small"
+            onClick={() => {
+              showUpdateView(record);
+            }}
+          >
+            更新
+          </Button>
+          <Button
+            type="danger"
+            size="small"
+            onClick={() => {
+              handleConfirmRemove(record);
+            }}
+          >
+            删除
+          </Button>
         </div>
       ),
     },

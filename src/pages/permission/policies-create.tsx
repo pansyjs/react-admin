@@ -3,14 +3,14 @@ import isEqual from 'lodash/isEqual';
 import uniqueId from 'lodash/uniqueId';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Button, Card, Tooltip, Form, Input, Tag } from 'antd';
+import { Button, Card, Form, Input, Tag } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
-import PageHeaderWrapper from '../../components/page-header-wrapper/index';
-import FooterToolbar from '../../components/footer-toolbar/index';
+import PageHeaderWrapper from '@/components/page-header-wrapper/index';
+import FooterToolbar from '@/components/footer-toolbar/index';
 import StandardTable from '@jiumao/rc-table';
 import { IStatement } from '@jiumao/policy';
 import { IModule, IAction } from '@/models/action';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import StatementDrawer from './components/statement-drawer';
 
 interface IProps extends ConnectProps, FormComponentProps {
@@ -101,14 +101,9 @@ const CreatePolicy: React.FC<IProps> = props => {
       title: '操作',
       key: 'buttons',
       render: (text, record) => (
-        <Tooltip placement="top" title="删除">
-          <Button
-            type="danger"
-            size="small"
-            icon="delete"
-            onClick={() => handleStatementRemove(record)}
-          />
-        </Tooltip>
+        <Button type="danger" size="small" onClick={() => handleStatementRemove(record)}>
+          删除
+        </Button>
       ),
     },
   ];
@@ -174,7 +169,7 @@ CreatePolicy.defaultProps = {
   modules: [],
 };
 
-export default connect(({ action }) => ({
+export default connect(({ action }: ConnectState) => ({
   modules: action.modules,
   actions: action.list,
 }))(Form.create()(CreatePolicy));
