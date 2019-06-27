@@ -49,6 +49,10 @@
 
 <img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/dingding.jpeg"></img>
 
+使用微信扫描下方二维码(过期请留言)
+
+<img height="200" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/wehact.jpg"></img>
+
 # 使用案例
 
 > 如果你的项目使用了此模板 可给出访问链接
