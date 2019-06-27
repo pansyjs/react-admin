@@ -34,7 +34,7 @@
     "axios": "^0.19.0",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
-    "dva": "^2.4.1",
+    "dva": "^2.6.0-beta.8",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
@@ -97,9 +97,9 @@
     "stylelint-order": "^3.0.0",
     "stylelint-prettier": "^1.1.1",
     "typescript": "^3.5.1",
-    "umi": "^2.8.3",
-    "umi-plugin-react": "^1.9.1",
-    "umi-types": "^0.3.9"
+    "umi": "^2.8.6",
+    "umi-plugin-react": "^1.9.4",
+    "umi-types": "^0.3.10"
   },
   "husky": {
     "hooks": {
