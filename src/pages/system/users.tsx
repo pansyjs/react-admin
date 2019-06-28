@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, useDispatch } from 'dva';
-import { Button, Card, Tooltip, Typography, Modal, message } from 'antd';
+import { Button, Card, Typography, Modal, message } from 'antd';
 import Table from '@jiumao/rc-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps, ConnectState } from '@/models/connect';
