@@ -70,21 +70,7 @@ const IntroduceRow = () => {
             value: 8846,
           }}
         >
-          <Area
-            colors={['#975FE4']}
-            data={chartData}
-            smooth={true}
-            height={46}
-            xAxis={{
-              visible: false,
-            }}
-            yAxis={{
-              visible: false,
-            }}
-            legend={{
-              visible: false,
-            }}
-          />
+          <Area colors={['#975FE4']} data={chartData} smooth={true} height={46} mini={true} />
         </ChartCard>
       </Col>
       <Col {...responsiveProps}>
@@ -99,17 +85,7 @@ const IntroduceRow = () => {
             value: 6560,
           }}
         >
-          <Bar
-            height={46}
-            colors={['#1890FF']}
-            data={chartData}
-            xAxis={{
-              visible: false,
-            }}
-            yAxis={{
-              visible: false,
-            }}
-          />
+          <Bar height={46} colors={['#1890FF']} data={chartData} mini={true} />
         </ChartCard>
       </Col>
       <Col {...responsiveProps}>
