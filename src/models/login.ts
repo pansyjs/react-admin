@@ -11,23 +11,25 @@ import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
 export type TLoginType = 'password' | 'sms';
 
+export interface ILoginModelState {
+  status: boolean;
+  type: TLoginType;
+}
+
 export interface ILoginModel {
-  namespace: 'login',
-  state: {
-    status: boolean;
-    type: TLoginType;
-  },
+  namespace: 'login';
+  state: ILoginModelState;
   effects: {
     // 用户登录
     fetchLogin: Effect;
     fetchLogout: Effect;
     fetchCaptcha: Effect;
     fetchResetPassword: Effect;
-  },
+  };
   reducers: {
     changeStatus: Reducer<any>;
     changeLoginType: Reducer<any>;
-  }
+  };
 }
 
 const { loginType } = STORAGE_KEY_DEFAULT_CONFIG;
@@ -36,7 +38,7 @@ const Login: ILoginModel = {
   namespace: 'login',
   state: {
     status: false,
-    type: store.get(loginType, 'password')
+    type: store.get(loginType, 'password'),
   },
   effects: {
     *fetchLogin({ payload }, { call, put }) {
@@ -69,7 +71,6 @@ const Login: ILoginModel = {
     },
     *fetchCaptcha({ payload }, { call, put }) {
       const response = yield call(fetchCaptcha, payload);
-
     },
     *fetchLogout({ payload }, { call, put }) {
       // 发送退出登录请求
@@ -78,7 +79,7 @@ const Login: ILoginModel = {
       yield put({
         type: 'changeStatus',
         payload: {
-          status: false
+          status: false,
         },
       });
 
@@ -98,23 +99,22 @@ const Login: ILoginModel = {
     },
     *fetchResetPassword({ payload }, { call, put }) {
       const response = yield call(fetchResetPassword, payload);
-
-    }
+    },
   },
   reducers: {
     changeStatus(state, { payload }) {
       return {
         ...state,
-        status: payload.status
+        status: payload.status,
       };
     },
     changeLoginType(state, { payload }) {
       return {
         ...state,
-        type: payload
+        type: payload,
       };
-    }
-  }
+    },
+  },
 };
 
 export default Login;

@@ -41,7 +41,7 @@ const PageHeaderWrapper: React.FC<IProps> = props => {
   const pathname = location!.pathname;
   const routes = getRoutes(pathname, breadcrumbNameMap);
 
-  const handleItemRender = (route, params, routes, paths) => {
+  const handleItemRender = (route, params, routes) => {
     const last = routes.indexOf(route) === routes.length - 1;
     return last ? (
       <span>{route.breadcrumbName}</span>

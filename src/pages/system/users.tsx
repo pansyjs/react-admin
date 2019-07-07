@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'dva';
-import { Button, Card, Tooltip, Typography, Modal, message } from 'antd';
+import { connect, useDispatch } from 'dva';
+import { Button, Card, Typography, Modal, message } from 'antd';
 import Table from '@jiumao/rc-table';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import { ConnectProps, ConnectState } from '@/models/connect';
@@ -21,7 +21,8 @@ const { Paragraph } = Typography;
 const confirm = Modal.confirm;
 
 const UsersPage: React.FC<IProps> = props => {
-  const { tableData, loading, groups, dispatch } = props;
+  const dispatch = useDispatch();
+  const { tableData, loading, groups } = props;
   const [visible, setVisible] = React.useState<boolean>(false);
   const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
   const [groupVisible, setGroupVisible] = React.useState<boolean>(false);
@@ -156,43 +157,39 @@ const UsersPage: React.FC<IProps> = props => {
       key: 'action',
       render: (text, record) => (
         <div className="table-action">
-          <Tooltip placement="top" title="添加到用户组">
-            <Button
-              size="small"
-              icon="team"
-              onClick={() => {
-                showGroupView(record);
-              }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="赋权">
-            <Button
-              size="small"
-              icon="api"
-              onClick={() => {
-                showPoliciesView(record);
-              }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="更新">
-            <Button
-              size="small"
-              icon="edit"
-              onClick={() => {
-                showUpdateView(record);
-              }}
-            />
-          </Tooltip>
-          <Tooltip placement="top" title="删除">
-            <Button
-              type="danger"
-              size="small"
-              icon="delete"
-              onClick={() => {
-                handleConfirmRemove(record);
-              }}
-            />
-          </Tooltip>
+          <Button
+            size="small"
+            onClick={() => {
+              showGroupView(record);
+            }}
+          >
+            添加到用户组
+          </Button>
+          <Button
+            size="small"
+            onClick={() => {
+              showPoliciesView(record);
+            }}
+          >
+            赋权
+          </Button>
+          <Button
+            size="small"
+            onClick={() => {
+              showUpdateView(record);
+            }}
+          >
+            更新
+          </Button>
+          <Button
+            type="danger"
+            size="small"
+            onClick={() => {
+              handleConfirmRemove(record);
+            }}
+          >
+            删除
+          </Button>
         </div>
       ),
     },

@@ -1,0 +1,44 @@
+@import '~antd/lib/style/themes/default.less';
+
+@prefix-cls: ~'lotus-chart-card';
+
+.@{prefix-cls} {
+  position: relative;
+  padding: 0 24px 8px 24px;
+
+  .ant-card-head {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .ant-card-head-title,
+  .ant-card-extra {
+    color: @text-color-secondary;
+    font-size: @font-size-base;
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  &__content-fixed {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__footer {
+    margin-top: 8px;
+    padding-top: 9px;
+    border-top: 1px solid @border-color-split;
+    & > * {
+      position: relative;
+    }
+    &.is-margin {
+      margin-top: 20px;
+    }
+  }
+}

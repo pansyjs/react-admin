@@ -11,6 +11,8 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+      - run: node -v
+      - run: npm -v
       - run: npm install
       - run: npm run build
       - run: mv dist docker

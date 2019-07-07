@@ -86,7 +86,7 @@ export interface IRoute extends IMenu {
 export interface IMenuModelState {
   menuData: IMenu[];
   routerData: IRoute[];
-  breadcrumbNameMap: object;
+  breadcrumbNameMap: { [path: string]: IMenu };
 }
 
 export interface IMenuModel {

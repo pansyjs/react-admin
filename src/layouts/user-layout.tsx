@@ -5,7 +5,7 @@ import GlobalFooter from '@/components/global-footer';
 import SelectLang from '@/components/select-lang';
 import { IMenu } from '@/components/sidebar-menu';
 import { moGetPageTitle, moGetTitle } from '@/utils/getPageTitle';
-import { ConnectProps } from '@/models/connect';
+import { ConnectProps, ConnectState } from '@/models/connect';
 import logo from '@/assets/logo.svg';
 import Copyright from './copyright';
 import './user-layout.less';
@@ -67,6 +67,6 @@ UserLayout.defaultProps = {
   prefixCls: 'lotus-user-layout',
 };
 
-export default connect(({ menu }) => ({
+export default connect(({ menu }: ConnectState) => ({
   breadcrumbNameMap: menu.breadcrumbNameMap,
 }))(UserLayout);
