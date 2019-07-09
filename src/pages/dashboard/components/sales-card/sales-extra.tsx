@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { DatePicker, Radio } from 'antd';
 import { RangePickerProps, RangePickerValue } from 'antd/es/date-picker/interface';
 import './sales-extra.less';
-import set = Reflect.set;
 
 export type TRangeType = 'today' | 'week' | 'month' | 'year';
 

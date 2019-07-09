@@ -52,30 +52,38 @@ const SalesCard: React.FC<ISalesCardProps> = props => {
           <Row type="flex">
             <Col {...chartResponsiveProps}>
               <Bar
+                title="销售趋势"
                 data={chartData}
                 colors={['#1890FF']}
                 titleMap={{
                   y: '销售额',
                 }}
+                legend={{
+                  visible: false,
+                }}
                 type="intervalStack"
               />
             </Col>
-            <Col {...rankingResponsiveProps}></Col>
+            <Col {...rankingResponsiveProps}>123</Col>
           </Row>
         </TabPane>
         <TabPane tab="访问量" key="views">
           <Row type="flex">
             <Col {...chartResponsiveProps}>
               <Bar
+                title="访问量趋势"
                 data={chartData}
                 colors={['#1890FF']}
                 titleMap={{
                   y: '销售额',
                 }}
+                legend={{
+                  visible: false,
+                }}
                 type="intervalStack"
               />
             </Col>
-            <Col {...rankingResponsiveProps}></Col>
+            <Col {...rankingResponsiveProps}>123</Col>
           </Row>
         </TabPane>
       </Tabs>
