@@ -75,14 +75,9 @@ const IntroduceRow = () => {
             data={chartData}
             smooth={true}
             height={46}
-            xAxis={{
-              visible: false,
-            }}
-            yAxis={{
-              visible: false,
-            }}
-            legend={{
-              visible: false,
+            mini={true}
+            titleMap={{
+              y: '访问量',
             }}
           />
         </ChartCard>
@@ -103,11 +98,9 @@ const IntroduceRow = () => {
             height={46}
             colors={['#1890FF']}
             data={chartData}
-            xAxis={{
-              visible: false,
-            }}
-            yAxis={{
-              visible: false,
+            mini={true}
+            titleMap={{
+              y: '访问量',
             }}
           />
         </ChartCard>

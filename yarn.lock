@@ -12556,10 +12556,10 @@ rc-cascader@~0.17.4:
     shallow-equal "^1.0.0"
     warning "^4.0.1"
 
-rc-charts@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/rc-charts/-/rc-charts-0.2.6.tgz#ac32fbcc7f5111fa3ac99b921b339b94783063ad"
-  integrity sha512-oO5NTqnZrjX2HUeeJkFESwahhpEyYxdV1gGh8IsfVPOKCHbPzuGqK0q0idPgUv/xYJdcyJx0/zwckzq9rTXLEw==
+rc-charts@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/rc-charts/-/rc-charts-0.2.7.tgz#dac76654b169e3f7f23560851b6d69df29838ac9"
+  integrity sha512-gsE7vat+RsPQr/YdxHtiasq959uJDSMyecmVHIF5yX3A65av78g2jsy3OR6Sg3v7WuUt+0WcEeaGxKtxqpBvBA==
   dependencies:
     "@antv/data-set" "^0.10.2"
     antd "^3.19.3"

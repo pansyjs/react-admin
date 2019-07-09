@@ -45,7 +45,7 @@
     "path-to-regexp": "^3.0.0",
     "qs": "^6.7.0",
     "rc-animate": "^2.4.4",
-    "rc-charts": "^0.2.6",
+    "rc-charts": "^0.2.7",
     "react": "^16.8.6",
     "react-container-query": "^0.11.0",
     "react-document-title": "^2.0.3",
