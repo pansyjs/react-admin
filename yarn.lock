@@ -2952,6 +2952,11 @@ awe-utils@^0.0.7:
   resolved "https://registry.yarnpkg.com/awe-utils/-/awe-utils-0.0.7.tgz#bf1c455a562b0b7678e61670034373441d92fd39"
   integrity sha512-gIt7cdPUhaABY4RzYHRxw23c4D1vJClbgzU1mtmto1oCcgTY1zttyZ91nfKduS+UD00zE8eGXa2gBlrfat5K3A==
 
+awe-utils@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/awe-utils/-/awe-utils-0.1.2.tgz#ed2971d37fe3b3a3a617cd9a9305d35221747b40"
+  integrity sha512-LZUUx4KF4lrybDSTok/gesh0d+xq2rrsDeH3IYhBqs3AIUOne9LXjkisRccPC7mtQCcTixzlBnM9H3ZgF5h6QQ==
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
