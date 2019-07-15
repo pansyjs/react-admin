@@ -26,11 +26,11 @@
   "author": "JiuMao FE Team",
   "license": "MIT",
   "dependencies": {
+    "@alitajs/autils": "^0.1.2",
     "@jiumao/policy": "^1.0.5",
     "@jiumao/rc-send-code": "^0.0.2",
     "@jiumao/rc-table": "^0.0.2",
     "antd": "^3.19.7",
-    "awe-utils": "^0.1.2",
     "axios": "^0.19.0",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
