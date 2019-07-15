@@ -5,7 +5,7 @@ import { PageHeader } from 'antd';
 import { PageHeaderProps } from 'antd/es/page-header';
 import pathToRegexp from 'path-to-regexp';
 import MenuContext from '@/layouts/menu-context';
-import { urlToList } from 'awe-utils';
+import { urlToList } from '@alitajs/autils';
 import './page-header-wrapper.less';
 
 interface IProps extends PageHeaderProps {

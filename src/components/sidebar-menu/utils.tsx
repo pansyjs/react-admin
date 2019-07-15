@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import IconFont from '@/components/icon-font';
-import { urlToList } from 'awe-utils';
+import { urlToList } from '@alitajs/autils';
 import { isUrl } from '@/utils/utils';
 
 // 获取Icon图标
