@@ -1,5 +1,12 @@
+/**
+ * @author wangxingkang
+ * @date 2019-07-15 22:20
+ * @description Analysis页面
+ *
+ * @last-modified-by wangxingkang
+ * @last-modified-time 2019-07-15 22:20
+ */
 import React from 'react';
-import { Pie } from 'rc-charts';
 import IntroduceRow from './components/introduce-row';
 import SalesCard from './components/sales-card';
 
