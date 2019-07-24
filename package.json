@@ -26,15 +26,16 @@
   "author": "JiuMao FE Team",
   "license": "MIT",
   "dependencies": {
+    "@alitajs/antd-plus": "^1.0.1",
     "@alitajs/autils": "^0.1.2",
     "@jiumao/policy": "^1.0.5",
     "@jiumao/rc-send-code": "^0.0.2",
     "@jiumao/rc-table": "^0.0.2",
-    "antd": "^3.19.7",
+    "antd": "^3.20.5",
     "axios": "^0.19.0",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
-    "dva": "^2.6.0-beta.9",
+    "dva": "^2.6.0-beta.12",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
     "lodash-decorators": "^6.0.0",
@@ -97,9 +98,9 @@
     "stylelint-order": "^3.0.0",
     "stylelint-prettier": "^1.1.1",
     "typescript": "^3.5.1",
-    "umi": "^2.8.9",
-    "umi-plugin-react": "^1.9.8",
-    "umi-types": "^0.3.11"
+    "umi": "^2.8.14",
+    "umi-plugin-react": "^1.9.13",
+    "umi-types": "^0.3.15"
   },
   "husky": {
     "hooks": {
