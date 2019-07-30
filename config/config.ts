@@ -24,7 +24,8 @@ if (serverConfig[SERVER_ENV]) {
 export default {
   plugins,
   targets: {
-    ie: 11,
+    // 推荐设置，项目不用考虑IE可删除
+    ie: 9,
   },
   treeShaking: true,
   define: {
