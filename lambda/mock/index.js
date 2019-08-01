@@ -10,6 +10,21 @@
   mockjs = mockjs && mockjs.hasOwnProperty('default') ? mockjs['default'] : mockjs;
   moment = moment && moment.hasOwnProperty('default') ? moment['default'] : moment;
 
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
   function _objectSpread(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
