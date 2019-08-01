@@ -15,6 +15,7 @@
     "build:web": "yarn build && cd ./dist && anywhere -h localhost -p 8080",
     "functions:build": "netlify-lambda build ./lambda",
     "functions:run": "cross-env NODE_ENV=dev netlify-lambda serve ./lambda",
+    "site": "npm run build && npm run functions:build",
     "gh-pages": "yarn build:prod && gh-pages -d dist",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
