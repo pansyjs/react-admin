@@ -46,6 +46,94 @@
     return target;
   }
 
+  const modules = [{ id: 1, name: 'dashboard' }, { id: 2, name: 'permission' }];
+
+  let actions = [
+    { moduleId: 1, name: 'analysis', displayName: 'Analysis', type: 1, remark: 'dashboard1' },
+    { moduleId: 1, name: 'workplace', displayName: 'Workplace', type: 1, remark: 'dashboard2' },
+    {
+      moduleId: 2,
+      name: 'actionCreate',
+      displayName: '创建操作API',
+      type: 1,
+      remark: '权限模块创建操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'actionUpdate',
+      displayName: '更新操作API',
+      type: 1,
+      remark: '权限模块修改操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'actionRemove',
+      displayName: '删除操作API',
+      type: 1,
+      remark: '权限模块删除操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'actionList',
+      displayName: '操作列表API',
+      type: 1,
+      remark: '权限模块查询列表权限',
+    },
+    {
+      moduleId: 2,
+      name: 'policyCreate',
+      displayName: '权限策略创建API',
+      type: 1,
+      remark: '权限策略创建操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'policyUpdate',
+      displayName: '权限策略修改API',
+      type: 1,
+      remark: '权限策略修改操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'policyRemove',
+      displayName: '权限策略删除API',
+      type: 1,
+      remark: '权限策略删除操作权限',
+    },
+    {
+      moduleId: 2,
+      name: 'policyList',
+      displayName: '权限策略列表API',
+      type: 1,
+      remark: '权限策略查询列表权限',
+    },
+  ];
+
+  function getModule(moduleId) {
+    let module;
+
+    for (let i = 0, len = modules.length; i < len; i++) {
+      if (modules[i].id === moduleId) {
+        module = modules[i];
+      }
+    }
+
+    return module;
+  }
+
+  var server_action = {
+    'GET /api/actions/list': (req, res) => {
+      return actions.map(item => {
+        const action = { ...item };
+        action['module'] = getModule(action.moduleId);
+
+        delete action.moduleId;
+
+        return action;
+      });
+    },
+  };
+
   var api = {
     'GET /api/users/current': (req, res) => {
       res.send({

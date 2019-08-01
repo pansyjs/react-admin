@@ -20,11 +20,11 @@ export function onRouteChange({ location }) {
   });
 
   // 需要登录页面 未登录状态不可访问
-  if (!token && isLogin) {
-    message.warning('登录已过期，请重新登录！');
-    router.push('/user/login');
-    return;
-  }
+  // if (!token && isLogin) {
+  //   message.warning('登录已过期，请重新登录！');
+  //   router.push('/user/login');
+  //   return;
+  // }
 
   // 无需登录页面 登录状态不可访问
   // if (token && !isLogin) {
