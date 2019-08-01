@@ -97,9 +97,9 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
     "stylelint-order": "^3.0.0",
     "stylelint-prettier": "^1.1.1",
-    "typescript": "^3.5.1",
-    "umi": "^2.8.14",
-    "umi-plugin-react": "^1.9.13",
+    "typescript": "^3.5.3",
+    "umi": "^2.8.16",
+    "umi-plugin-react": "^1.9.14",
     "umi-types": "^0.3.15"
   },
   "husky": {

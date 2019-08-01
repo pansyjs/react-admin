@@ -24,7 +24,8 @@ if (serverConfig[SERVER_ENV]) {
 export default {
   plugins,
   targets: {
-    ie: 11,
+    // 推荐设置，项目不用考虑IE可删除
+    ie: 9,
   },
   treeShaking: true,
   define: {
@@ -32,9 +33,6 @@ export default {
   },
   // 路由配置
   routes,
-  // 请根据项目需要修改
-  base: '/react-admin-template',
-  publicPath: '/react-admin-template/',
   hash: true,
   theme: themeConfig,
   ignoreMomentLocale: true,
