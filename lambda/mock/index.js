@@ -159,9 +159,9 @@
       });
     },
     'POST /api/users/login': (req, res) => {
-      const { password, userName, type } = req.body;
+      const { password, username, type } = req.body;
 
-      if (password === '123456' && userName === 'admin') {
+      if (password === '123456' && username === 'admin') {
         res.send({
           status: 'ok',
           type,
@@ -170,7 +170,7 @@
         return;
       }
 
-      if (password === 'user' && userName === '123456') {
+      if (password === 'user' && username === '123456') {
         res.send({
           status: 'ok',
           type,
@@ -187,5 +187,5 @@
     },
   };
 
-  return _objectSpread({}, api);
+  return _objectSpread({}, api, server_action);
 });
