@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import store from 'store';
 import { stringify } from 'qs';
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'dva';
 import { Effect } from '@/models/connect';
 import { fetchCaptcha } from '@/services/global';
 import { fetchLogin, fetchLogout, fetchResetPassword } from '@/services/user';
@@ -97,8 +97,8 @@ const Login: ILoginModel = {
         );
       }
     },
-    *fetchResetPassword({ payload }, { call, put }) {
-      const response = yield call(fetchResetPassword, payload);
+    *fetchResetPassword({ payload }, { call }) {
+      yield call(fetchResetPassword, payload);
     },
   },
   reducers: {
