@@ -34,7 +34,7 @@
     "@jiumao/policy": "^1.0.5",
     "@jiumao/rc-send-code": "^0.0.2",
     "@jiumao/rc-table": "^0.0.2",
-    "antd": "^3.20.5",
+    "antd": "^3.21.2",
     "axios": "^0.19.0",
     "braft-editor": "^2.2.9",
     "classnames": "^2.2.6",
@@ -105,9 +105,9 @@
     "stylelint-order": "^3.0.0",
     "stylelint-prettier": "^1.1.1",
     "typescript": "^3.5.3",
-    "umi": "^2.8.16",
-    "umi-plugin-react": "^1.9.14",
-    "umi-types": "^0.3.15"
+    "umi": "^2.8.17",
+    "umi-plugin-react": "^1.9.15",
+    "umi-types": "^0.3.16"
   },
   "husky": {
     "hooks": {
