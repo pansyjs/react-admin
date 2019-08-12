@@ -8,7 +8,7 @@ import useQueryData from '@/hooks/use-query-data';
 import UserDrawer, { TType } from './components/user-drawer';
 import PoliciesDrawer from './components/policies-drawer';
 import UserToGroup from './components/user-to-group';
-import { IUserTableData, IUser } from './models/system-user';
+import { IUserTableData } from './models/system-user';
 import { IGroup } from './models/user-group';
 
 interface IProps extends ConnectProps {
@@ -27,7 +27,7 @@ const UsersPage: React.FC<IProps> = props => {
   const [policiesVisible, setPoliciesVisible] = React.useState<boolean>(false);
   const [groupVisible, setGroupVisible] = React.useState<boolean>(false);
   const [type, setType] = React.useState<TType>('create');
-  const [currentUser, setCurrentUser] = React.useState<IUser>({});
+  const [currentUser, setCurrentUser] = React.useState<APP.IUser>({});
   const [queryData, setQueryData] = useQueryData(props.location.pathname);
 
   React.useEffect(() => {
@@ -142,7 +142,7 @@ const UsersPage: React.FC<IProps> = props => {
     },
     {
       title: '手机号',
-      dataIndex: 'mobile',
+      dataIndex: 'phone',
     },
     {
       title: '创建时间',
