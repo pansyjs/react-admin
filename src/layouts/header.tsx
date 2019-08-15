@@ -5,14 +5,13 @@ import { Layout } from 'antd';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/global-header';
 import { ConnectProps, ConnectState, ISettingModelState } from '@/models/connect';
-import { ICurrentUser } from '@/models/user';
 import './header.less';
 
 export interface IHeaderViewProps extends Required<ConnectProps> {
   prefixCls?: string;
   isMobile?: boolean;
   autoHideHeader?: boolean;
-  currentUser: ICurrentUser;
+  currentUser: APP.ICurrentUser;
   setting: ISettingModelState;
 }
 

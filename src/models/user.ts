@@ -2,17 +2,12 @@ import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
 import Policy, { IAction } from '@jiumao/policy';
-import { IUser } from '@/pages/system/models/system-user';
-import {fetchList} from "@/services/action";
-
-export interface ICurrentUser extends IUser {
-  name?: string;
-}
+import { fetchList } from '@/services/action';
 
 export interface IUserModelState {
   policy: Policy;
   actions: IAction[];
-  currentUser: ICurrentUser;
+  currentUser: APP.ICurrentUser;
 }
 
 export interface IUserModel {
@@ -22,13 +17,13 @@ export interface IUserModel {
     // 获取当前用户信息
     fetchCurrent: Effect;
     fetchActions: Effect;
-  },
+  };
   reducers: {
     savePolicy: Reducer<any>;
     saveActions: Reducer<any>;
     saveCurrentUser: Reducer<any>;
     changeNotifyCount: Reducer<any>;
-  }
+  };
 }
 
 const UserModel: IUserModel = {
@@ -36,7 +31,7 @@ const UserModel: IUserModel = {
   state: {
     policy: null,
     actions: [],
-    currentUser: {}
+    currentUser: {},
   },
   effects: {
     *fetchCurrent(_, { call, put, select }) {
@@ -45,9 +40,7 @@ const UserModel: IUserModel = {
         const info = response.data || {};
         const { policies = [] } = info;
 
-        const { actions = [] } = yield select(
-          (state) => state.user
-        );
+        const { actions = [] } = yield select(state => state.user);
 
         const policy = new Policy(actions);
 
@@ -58,14 +51,14 @@ const UserModel: IUserModel = {
         yield put({
           type: 'saveCurrentUser',
           payload: {
-            ...info
-          }
+            ...info,
+          },
         });
 
         yield put({
           type: 'savePolicy',
-          payload: policy
-        })
+          payload: policy,
+        });
       }
     },
     *fetchActions(_, { call, put }) {
@@ -75,12 +68,12 @@ const UserModel: IUserModel = {
 
         const actions = list.map(item => ({
           module: item.module.name,
-          action: item.name
+          action: item.name,
         }));
 
         yield put({
           type: 'saveActions',
-          payload: actions
+          payload: actions,
         });
       }
     },
@@ -89,19 +82,19 @@ const UserModel: IUserModel = {
     savePolicy(state, { payload }) {
       return {
         ...state,
-        policy: payload
+        policy: payload,
       };
     },
     saveActions(state, { payload }) {
       return {
         ...state,
-        actions: payload
+        actions: payload,
       };
     },
     saveCurrentUser(state, { payload }) {
       return {
         ...state,
-        currentUser: payload
+        currentUser: payload,
       };
     },
     changeNotifyCount(state, { payload }) {
@@ -110,11 +103,11 @@ const UserModel: IUserModel = {
         currentUser: {
           ...state.currentUser,
           notifyCount: payload.totalCount,
-          unreadCount: payload.unreadCount
-        }
+          unreadCount: payload.unreadCount,
+        },
       };
-    }
-  }
+    },
+  },
 };
 
 export default UserModel;

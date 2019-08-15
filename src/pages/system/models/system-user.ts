@@ -14,7 +14,7 @@ export interface IUser {
   remark?: string;
 }
 
-export interface IUserTableData extends ITableData<IUser> {}
+export interface IUserTableData extends ITableData<APP.IUser> {}
 
 export interface ISystemUserModelState {
   list: IUser[];

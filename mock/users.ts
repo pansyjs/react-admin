@@ -4,14 +4,16 @@ let Users = [];
 const count = 100;
 
 for (let i = 0; i < count; i++) {
-  Users.push(mock({
-    id: '@guid',
-    username: '@first',
-    email: '@email',
-    mobile: '17710067606',
-    remark: '@cparagraph(1)',
-    createTime: +Random.date('T'),
-  }))
+  Users.push(
+    mock({
+      id: '@guid',
+      username: '@first',
+      email: '@email',
+      phone: '17710067606',
+      remark: '@cparagraph(1)',
+      createTime: +Random.date('T'),
+    }),
+  );
 }
 
 function fetchCurrent(req, res) {
@@ -28,16 +30,13 @@ function fetchCurrent(req, res) {
           statement: [
             {
               effect: 'allow',
-              action: [
-                'permission/*',
-                'dashboard/analysis'
-              ]
-            }
-          ]
-        }
-      ]
+              action: ['permission/*', 'dashboard/analysis'],
+            },
+          ],
+        },
+      ],
     },
-    message: 'success'
+    message: 'success',
   });
 }
 
@@ -45,7 +44,7 @@ function fetchList(req, res) {
   const { page = 1, limit = 10 } = req.query;
 
   const pageList = Users.filter((item, index) => {
-    return index < limit * page && index >= limit * (page - 1)
+    return index < limit * page && index >= limit * (page - 1);
   });
 
   res.send({
@@ -53,8 +52,8 @@ function fetchList(req, res) {
     message: 'success',
     data: {
       list: pageList,
-      total: Users.length
-    }
+      total: Users.length,
+    },
   });
 }
 
@@ -64,13 +63,13 @@ function fetchCreate(req, res) {
   Users.push({
     ...data,
     id: Random.guid(),
-    createTime: new Date().getTime()
+    createTime: new Date().getTime(),
   });
 
   res.send({
     code: 200,
     message: 'success',
-    data: {}
+    data: {},
   });
 }
 
@@ -90,7 +89,7 @@ function fetchUpdate(req, res) {
   res.send({
     code: 200,
     message: 'success',
-    data: {}
+    data: {},
   });
 }
 
@@ -102,7 +101,7 @@ function fetchRemove(req, res) {
   res.send({
     code: 200,
     message: 'success',
-    data: {}
+    data: {},
   });
 }
 
@@ -114,18 +113,18 @@ function fetchLogin(req, res) {
       code: 200,
       message: 'success',
       data: {
-        token: 'admin_token'
-      }
+        token: 'admin_token',
+      },
     });
     return;
   }
-  if ( username === 'user'  && password === '123456') {
+  if (username === 'user' && password === '123456') {
     res.send({
       code: 200,
       message: 'success',
       data: {
-        token: 'user_token'
-      }
+        token: 'user_token',
+      },
     });
     return;
   }
@@ -133,7 +132,7 @@ function fetchLogin(req, res) {
   res.send({
     code: 10001,
     message: '账号或密码错误',
-    data: {}
+    data: {},
   });
 }
 
@@ -141,7 +140,7 @@ function fetchLogout(req, res) {
   res.send({
     code: 200,
     message: 'success',
-    data: {}
+    data: {},
   });
 }
 
@@ -152,5 +151,5 @@ export default {
   'DELETE /api/users/remove/:userId': fetchRemove,
   'GET /api/users/list': fetchList,
   'GET /api/users/current': fetchCurrent,
-  'GET /api/users/logout': fetchLogout
+  'GET /api/users/logout': fetchLogout,
 };
