@@ -27,7 +27,7 @@
   </a>
 </p>
 
-# 特性
+## 特性
 
 - 💡 TypeScript: 应用程序级 JavaScript 的语言
 - 💎 优雅美观：基于 Ant Design 体系精心设计
@@ -38,7 +38,7 @@
 - 🔢 Mock 数据：实用的本地数据调试方案
 - 🔒 优秀的权限设计：目前能找到的最好的权限实现方案
 
-# 参与开发
+## 参与开发
 
 - 🎉🎉🎉 欢迎 PR
 - 🌴🌴🌴 钉钉交流群(23355178)
@@ -51,20 +51,21 @@
 
 <img height="200" src="https://github.com/ts-react/react-admin-template/blob/master/public/assets/wehact.jpg"></img>
 
-# 使用案例
+## 使用案例
 
 > 如果你的项目使用了此模板 可给出访问链接
 
 - [fashop-admin](https://github.com/mojisrc/fashop-admin/tree/v3) 正在开发中...
 
-# 广告
+## 广告
 
 [awesome-frontend](https://github.com/wangxingkang/awesome-frontend) 整理前端相关的博客、教程、库... 欢迎查阅
 
-# 目录
+## 目录
 
 - [使用](#使用)
 - [技术栈](#技术栈)
+- [部署相关](#部署相关)
 - [API](#API)
 - [关于权限](#关于权限)
 - [项目目录](#项目目录)
@@ -74,7 +75,7 @@
 - [借鉴项目](#借鉴项目)
 - [最佳实践](#最佳实践)
 
-# 使用
+## 使用
 
 1. 安装 NodeJs 推荐安装最新稳定版
 
@@ -110,7 +111,7 @@ export default {
 };
 ```
 
-# 技术栈
+## 技术栈
 
 - 框架：React、Umi
 - 组件库：ant-design
@@ -118,13 +119,21 @@ export default {
 - Ajax 库：Axios
 - 样式：Less
 
-# 路由配置
+## 部署相关
+
+- 代码上 CDN 请使用以下 umi 插件
+
+> 解决资源访问路径问题以及 API 地址配置问题
+
+[umi-plugin-deploy-config](https://github.com/alitajs/umi-plugin-packages/tree/master/packages/umi-plugin-deploy-config)
+
+## 路由配置
 
 > 系统采用手动配置路由的形式
 
 **相关字典**
 
-## icon
+### icon
 
 > 配合[iconfont](https://www.iconfont.cn)使用
 
@@ -132,7 +141,7 @@ export default {
 - 参数描述: 左侧菜单的 Icon
 - 默认值: 无
 
-## name
+### name
 
 - 参数类型: `string`
 - 参数描述: 参数名称 配合多言插件使用 添加路由请在 locals 目录下的 menu.ts 添加对应项
@@ -183,11 +192,11 @@ export default {
 - 参数描述: 用于隐藏不需要在菜单中展示的子路由
 - 默认值: false
 
-# API
+## API
 
 [nest-serve-starter](https://github.com/typescript-projects/nest-serve-starter) 正在开发中...
 
-# 关于权限
+## 关于权限
 
 > 权限实现参考参考阿里云权限 [阿里云 Policy 语法结构](https://help.aliyun.com/document_detail/28664.html?spm=a2c8b.12215508.policylist.2.ff466253ERVmtX)
 
@@ -206,7 +215,7 @@ export default {
 
 [Policy](https://github.com/ts-react/policy) 提供权限策略解析、验证等功能
 
-# 项目目录
+## 项目目录
 
 ```
 ├── config                      # UMI配置相关
@@ -273,30 +282,30 @@ export default {
 └── yarn.lock                   # yarn生成文件
 ```
 
-# 关于打包
+## 关于打包
 
 > 提供`build:test`、`build:prod`两个编译命令、可结合 CI 使用
 
 请在 `config/server.config.ts`中配置各个环境的 API 地址
 
-# commit-message
+## commit-message
 
 > git 提交信息使用[commitlint](https://github.com/marionebl/commitlint) 进行规范
 
 具体配置以及説明请查看[commitlint-config-jiumao](https://github.com/jiumao-fe/commitlint-config-jiumao)
 
-# 自定义图标
+## 自定义图标
 
 > 采用 ant-design 提供的解决方案，具体请查看[自定义图标](https://ant.design/components/icon-cn/#components-icon-demo-custom)
 
 在 `/src/config/index.ts` 中配置 `SETTING_DEFAULT_CONFIG.iconFontUrl`
 
-# 借鉴项目
+## 借鉴项目
 
 - [TypeScript-React-Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 - [ant-design-pro](https://github.com/ant-design/ant-design-pro)
 
-# 最佳实践
+## 最佳实践
 
 - [react-typescript-cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet)
 - [react-redux-typescript-guide](https://github.com/piotrwitek/react-redux-typescript-guide)
