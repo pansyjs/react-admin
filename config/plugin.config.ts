@@ -2,31 +2,25 @@ import { IPlugin } from 'umi-types';
 
 const plugins: IPlugin[] = [
   [
-    'umi-plugin-react', {
+    'umi-plugin-react',
+    {
       antd: true,
       dva: {
-        immer: true,
+        hmr: true,
       },
       locale: {
         enable: true,
         default: 'zh-CN',
-        baseNavigator: true
+        baseNavigator: true,
       },
       dynamicImport: {
         loadingComponent: './components/page-loading/index',
         webpackChunkName: true,
-        level: 3
+        level: 3,
       },
-      dll: {
-        exclude: [],
-        include: [
-          'dva',
-          'dva/router',
-          'dva/saga'
-        ]
-      }
-    }
-  ]
+    },
+  ],
+  ['@alitajs/umi-plugin-lodash', {}],
 ];
 
 export default plugins;
