@@ -37,6 +37,16 @@ export default {
   theme: themeConfig,
   ignoreMomentLocale: true,
   disableCSSModules: true,
+  // 配置按需加载
+  extraBabelPlugins: [
+    [
+      'import',
+      {
+        libraryName: '@alitajs/antd-plus',
+        style: true,
+      },
+    ],
+  ],
   // 代理配置 - 请根据需要开启
   // 访问 `/api/users` 代理到 `http://api.jiumao.com/users`]
   // proxy: {

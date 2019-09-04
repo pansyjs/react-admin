@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import SendCode from '@jiumao/rc-send-code';
+import { SendCode } from '@alitajs/antd-plus';
 
 interface IProps extends FormComponentProps {
   prefixCls: string;
@@ -22,6 +22,7 @@ const SMSLoginForm: React.FC<IProps> = props => {
     form: { validateFields, getFieldDecorator },
   } = props;
   const loginType = 'password';
+  const [start, setStart] = React.useState<boolean>(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -38,6 +39,10 @@ const SMSLoginForm: React.FC<IProps> = props => {
 
   const handleChangeLoginType = () => {
     onChangeType && onChangeType(loginType);
+  };
+
+  const handleSendCode = () => {
+    setStart(true);
   };
 
   return (
@@ -75,9 +80,8 @@ const SMSLoginForm: React.FC<IProps> = props => {
             placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
             suffix={
               <SendCode
-                onCaptcha={() => {
-                  return true;
-                }}
+                start={start}
+                onClick={handleSendCode}
                 className="verification-code-button"
               />
             }
