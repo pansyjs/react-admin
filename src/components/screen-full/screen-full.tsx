@@ -1,56 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Icon } from 'antd';
-import screenfull from 'screenfull';
+import { FullScreen } from '@alitajs/antd-plus';
 import './screen-full.less';
 
 interface IProps {
-  className?: string;
   prefixCls?: string;
-  style?: React.CSSProperties;
+  className?: string;
 }
 
-const ScreenFull: React.FC<IProps> = (props) => {
-  const { className, prefixCls, style } = props;
+const FullScreenIcon: React.FC<IProps> = props => {
+  const { prefixCls, className } = props;
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
-  useEffect(() => {
-    screenfull['on']('change', change);
-
-    return () => {
-      screenfull['off']('change', change);
-    }
-  }, [1]);
-
-  const change = () => {
-    setIsFullScreen(screenfull['isFullscreen']);
-  };
-
-  const handleClick = () => {
-    if (!screenfull['enabled']) return;
-    screenfull['toggle']()
+  const handleChange = status => {
+    setIsFullScreen(status);
   };
 
   return (
-    <div
+    <FullScreen
+      isBody={true}
       className={classNames(className, {
-        [`${prefixCls}`]: true
+        [`${prefixCls}`]: true,
       })}
-      style={style}
-      onClick={handleClick}
+      onChange={handleChange}
     >
-      {!isFullScreen && (
-        <Icon type="fullscreen" />
-      )}
-      {isFullScreen && (
-        <Icon type="fullscreen-exit" />
-      )}
-    </div>
-  )
+      {!isFullScreen && <Icon type="fullscreen" />}
+      {isFullScreen && <Icon type="fullscreen-exit" />}
+    </FullScreen>
+  );
 };
 
-ScreenFull.defaultProps = {
-  prefixCls: 'lotus-screen-full'
+FullScreenIcon.defaultProps = {
+  prefixCls: 'lotus-screen-full',
 };
 
-export default ScreenFull;
+export default FullScreenIcon;

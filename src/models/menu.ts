@@ -111,7 +111,6 @@ const MenuModel: IMenuModel = {
     *getMenuData({ payload, callback }, { put, call, select }) {
       // 解决先于生成policy执行问题
       yield call(delay, 400);
-      console.log(123);
 
       const user = yield select(state => state.user);
 
