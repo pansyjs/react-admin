@@ -36,7 +36,6 @@ export default {
   hash: true,
   theme: themeConfig,
   ignoreMomentLocale: true,
-  disableCSSModules: true,
   // 配置按需加载
   extraBabelPlugins: [
     [

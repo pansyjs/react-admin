@@ -16,6 +16,11 @@
   resolved "https://registry.yarnpkg.com/@alitajs/autils/-/autils-0.1.2.tgz#74187aad75f45bd1dc5a4e34fe56942a74f320b3"
   integrity sha512-x6YbzeNBiF25evmkPuT7DO7TWhixOKp2uYgmRqGmflouY/SMCWiPE721ai8Y9pKt2cFph/e3UzkyU85WJd1q9w==
 
+"@alitajs/umi-plugin-css-modules@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@alitajs/umi-plugin-css-modules/-/umi-plugin-css-modules-0.0.1.tgz#4449aa1e5fb0c254f3cdf32ba8382e4b6c7b54fe"
+  integrity sha512-N5JefHyQsb5Gh9r5ojzsVYbzyY6uvkCeW2O4r4AhpZqBq7Rai+ablI+EU3aDX4EenxVEfEqUals79oMaiEKuUA==
+
 "@alitajs/umi-plugin-lodash@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@alitajs/umi-plugin-lodash/-/umi-plugin-lodash-0.1.0.tgz#cec1b35f50407195d5a438dbafbf23672af1a322"

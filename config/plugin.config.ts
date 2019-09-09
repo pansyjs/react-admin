@@ -21,6 +21,7 @@ const plugins: IPlugin[] = [
     },
   ],
   ['@alitajs/umi-plugin-lodash', {}],
+  ['@alitajs/umi-plugin-css-modules', {}],
 ];
 
 export default plugins;
