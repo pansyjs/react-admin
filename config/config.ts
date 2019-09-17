@@ -39,11 +39,22 @@ export default {
   // 配置按需加载
   extraBabelPlugins: [
     [
-      'import',
+      require.resolve('babel-plugin-import'),
       {
         libraryName: '@alitajs/antd-plus',
+        libraryDirectory: 'es',
         style: true,
       },
+      'ant-plus-import',
+    ],
+    [
+      require.resolve('babel-plugin-import'),
+      {
+        libraryName: '@alitajs/autils',
+        libraryDirectory: 'es',
+        camel2DashComponentName: false,
+      },
+      'autils-import',
     ],
   ],
   // 代理配置 - 请根据需要开启

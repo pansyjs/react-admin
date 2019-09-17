@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { delay } from 'dva/saga';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
-import Policy from '@jiumao/policy';
+import { Policy } from '@alitajs/autils';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
 import checkAuthority from '@/components/authorized/check-authority';

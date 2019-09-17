@@ -1,7 +1,7 @@
 import React from 'react';
 import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
-import Policy from '@jiumao/policy';
+import { Policy } from '@alitajs/autils';
 
 export type TAuthority = string[] | string;
 
@@ -10,10 +10,7 @@ export type TAuthority = string[] | string;
  * @param { 权限判定 | Permission judgment } authority
  * @param { 权限验证方法 | no pass components } policy
  */
-const checkAuthority = (
-  policy?: Policy,
-  authority?: TAuthority
-): boolean => {
+const checkAuthority = (policy?: Policy, authority?: TAuthority): boolean => {
   let result = true;
 
   // 数组处理

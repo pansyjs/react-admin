@@ -3,7 +3,7 @@ import isUndefined from 'lodash/isUndefined';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
-import Policy from '@jiumao/policy';
+import { Policy } from '@alitajs/autils';
 
 export type TAuthority = string[] | string;
 
@@ -18,9 +18,8 @@ const checkPermissions = (
   authority?: TAuthority,
   target?: React.ReactNode,
   Exception?: React.ReactNode,
-  policy?: Policy
+  policy?: Policy,
 ) => {
-
   if (!policy) {
     return target;
   }
@@ -55,10 +54,9 @@ const check = (
   authority?: TAuthority,
   target?: React.ReactNode,
   Exception?: React.ReactNode,
-  policy?: Policy
+  policy?: Policy,
 ) => {
   return checkPermissions(authority, target, Exception, policy);
 };
 
 export default check;
-

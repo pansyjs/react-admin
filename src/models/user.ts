@@ -1,7 +1,8 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
-import Policy, { IAction } from '@jiumao/policy';
+import { Policy } from '@alitajs/autils';
+import { IAction } from '@alitajs/autils/es/policy';
 import { fetchList } from '@/services/action';
 
 export interface IUserModelState {

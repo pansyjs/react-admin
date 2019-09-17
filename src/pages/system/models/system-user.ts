@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchList, fetchCreate, fetchRemove, fetchUpdate } from '@/services/user';
-import { IPolicyData } from '@jiumao/policy';
+import { IPolicyData } from '@alitajs/autils/es/policy';
 import { ITableData } from '@jiumao/rc-table';
 import { formatTime } from '@/utils/utils';
 

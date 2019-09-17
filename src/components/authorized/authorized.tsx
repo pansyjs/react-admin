@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { ConnectState } from '@/models/connect';
-import Policy from '@jiumao/policy';
+import { Policy } from '@alitajs/autils';
 import CheckPermissions, { TAuthority } from './check-permissions';
 
 export interface AuthorizedProps {
@@ -16,5 +16,5 @@ const Authorized: React.FC<AuthorizedProps> = ({ policy, children, authority, no
 };
 
 export default connect(({ user }: ConnectState) => ({
-  policy: user.policy
+  policy: user.policy,
 }))(Authorized);
