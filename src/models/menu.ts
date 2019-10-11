@@ -1,5 +1,4 @@
 import { Reducer } from 'redux';
-import { delay } from 'dva/saga';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
 import { Policy } from '@alitajs/autils';
@@ -108,14 +107,12 @@ const MenuModel: IMenuModel = {
     breadcrumbNameMap: {},
   },
   effects: {
-    *getMenuData({ payload, callback }, { put, call, select }) {
-      // 解决先于生成policy执行问题
-      yield call(delay, 400);
-
-      const user = yield select(state => state.user);
-
+    *getMenuData({ payload, callback }, { put }) {
       const { routes } = payload;
-      policy = user.policy;
+      policy = payload.policy;
+
+      console.log(routes);
+
       const originalMenuData = memoizeOneFormatter(routes);
       const menuData = filterMenuData(originalMenuData);
       const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(originalMenuData);

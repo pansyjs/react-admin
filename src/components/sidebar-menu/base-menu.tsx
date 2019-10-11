@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'umi/link';
 import { Menu } from 'antd';
-import { MenuMode, MenuTheme } from 'antd/es/menu';
+import { MenuMode } from 'antd/es/menu';
+import { MenuTheme } from 'antd/es/menu/MenuContext';
 import { urlToList } from '@alitajs/autils';
 import { ConnectProps } from '@/models/connect';
 import { getIcon, getMenuMatches } from './utils';

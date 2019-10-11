@@ -1,12 +1,12 @@
-import { MenuTheme } from 'antd/es/menu';
+import { MenuTheme } from 'antd/es/menu/MenuContext';
 
 export interface IDefaultSettings {
   // 页面主题
-  theme: MenuTheme,
+  theme: MenuTheme;
   // 菜单相关
   menu: {
     // 是否禁用多语言
-    disableLocal: boolean
+    disableLocal: boolean;
   };
   // 是否固定Header
   fixedHeader: boolean;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'dva';
 import pathToRegexp from 'path-to-regexp';
 import Authorized from '@/components/authorized';
@@ -6,28 +6,31 @@ import { Policy } from '@alitajs/autils';
 import PageLoading from '@/components/page-loading';
 import Exception403 from '@/pages/exception/403';
 import { ConnectProps, ConnectState } from '@/models/connect';
+import { ISidebarMenuProps } from '@/components/sidebar-menu';
 
-interface IProps extends ConnectProps {
+interface IProps extends Required<ConnectProps>, ISidebarMenuProps {
   policy: Policy;
   routerData: any[];
   loading: boolean;
 }
 
 const AuthComponent: React.FC<IProps> = props => {
-  const { policy, loading, location, children, routerData, dispatch } = props;
+  const {
+    policy,
+    loading,
+    location,
+    children,
+    routerData,
+    dispatch,
+    route: { routes = [] },
+  } = props;
 
-  React.useState(() => {
-    // 类似 Promise.all 实现比较合理，待优化
-    // 获取所有操作
+  useEffect(() => {
     dispatch({
-      type: 'user/fetchActions',
-    }).then(() => {
-      // 获取当前登录用户信息 -- 包含权限策略
-      dispatch({
-        type: 'user/fetchCurrent',
-      });
+      type: 'user/fetchCurrent',
+      payload: routes,
     });
-  });
+  }, []);
 
   const getRouteAuthority = (path, routeData) => {
     let authorities = undefined;

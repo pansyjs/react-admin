@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import classNames from 'classnames';
@@ -13,12 +13,11 @@ import Context from './menu-context';
 import Header from './header';
 import './basic-layout.less';
 
-interface IProps
-  extends Required<ConnectProps>, ISidebarMenuProps {
-    prefixCls?: string;
-    tabActiveKey?: string;
-    breadcrumbNameMap?: { [path: string]: IMenu };
-    setting?: ISettingModelState;
+interface IProps extends Required<ConnectProps>, ISidebarMenuProps {
+  prefixCls?: string;
+  tabActiveKey?: string;
+  breadcrumbNameMap?: { [path: string]: IMenu };
+  setting?: ISettingModelState;
 }
 
 const query = {
@@ -47,30 +46,10 @@ const query = {
 };
 const { Content } = Layout;
 
-const BasicLayout: React.FC<IProps> = (props) => {
-  const {
-    dispatch,
-    location,
-    route,
-    menuData,
-    breadcrumbNameMap,
-    setting,
-    children
-  } = props;
+const BasicLayout: React.FC<IProps> = props => {
+  const { location, menuData, breadcrumbNameMap, setting, children } = props;
   const { fixedHeader, theme } = setting;
   const { prefixCls, ...restProps } = props;
-  const { routes } = route!;
-
-  // constructor
-  useState(() => {
-    // 获取菜单数据
-    dispatch!({
-      type: 'menu/getMenuData',
-      payload: {
-        routes
-      },
-    });
-  });
 
   const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
@@ -89,14 +68,8 @@ const BasicLayout: React.FC<IProps> = (props) => {
           minHeight: '100vh',
         }}
       >
-        <Header
-          isMobile={isMobile}
-          {...restProps}
-        />
-        <Content
-          className={`${prefixCls}__wrapper`}
-          style={!fixedHeader ? { paddingTop: 0 } : {}}
-        >
+        <Header isMobile={isMobile} {...restProps} />
+        <Content className={`${prefixCls}__wrapper`} style={!fixedHeader ? { paddingTop: 0 } : {}}>
           {children}
         </Content>
       </Layout>
@@ -108,22 +81,20 @@ const BasicLayout: React.FC<IProps> = (props) => {
       <ContainerQuery query={query}>
         {params => (
           <Context.Provider value={{ location, breadcrumbNameMap }}>
-            <div className={classNames(params)}>
-              {layout}
-            </div>
+            <div className={classNames(params)}>{layout}</div>
           </Context.Provider>
         )}
       </ContainerQuery>
     </DocumentTitle>
-  )
+  );
 };
 
 BasicLayout.defaultProps = {
-  prefixCls: 'lotus-basic-layout'
+  prefixCls: 'lotus-basic-layout',
 };
 
 export default connect(({ menu, setting }: ConnectState) => ({
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
-  setting
+  setting,
 }))(BasicLayout);

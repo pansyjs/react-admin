@@ -17,7 +17,6 @@ export interface IUserModel {
   effects: {
     // 获取当前用户信息
     fetchCurrent: Effect;
-    fetchActions: Effect;
   };
   reducers: {
     savePolicy: Reducer<any>;
@@ -35,18 +34,35 @@ const UserModel: IUserModel = {
     currentUser: {},
   },
   effects: {
-    *fetchCurrent(_, { call, put, select }) {
-      const response = yield call(fetchCurrent);
-      if (response && response.code === 200) {
-        const info = response.data || {};
+    *fetchCurrent({ payload }, { call, put }) {
+      // 获取用户信息以及所有权限信息
+      const responses = yield [call(fetchCurrent), call(fetchList)];
+
+      if (responses.length !== 2) return;
+
+      const response1 = responses[0];
+      const response2 = responses[1];
+
+      if (response1.code === 200 && response2.code === 200) {
+        const list = response2.data;
+        const info = response1.data || {};
         const { policies = [] } = info;
 
-        const { actions = [] } = yield select(state => state.user);
+        // 所有权限
+        const actions = list.map(item => ({
+          module: item.module.name,
+          action: item.name,
+        }));
 
         const policy = new Policy(actions);
 
         policies.forEach(item => {
           policy.addPolicy(item);
+        });
+
+        yield put({
+          type: 'saveActions',
+          payload: actions,
         });
 
         yield put({
@@ -60,21 +76,13 @@ const UserModel: IUserModel = {
           type: 'savePolicy',
           payload: policy,
         });
-      }
-    },
-    *fetchActions(_, { call, put }) {
-      const response = yield call(fetchList);
-      if (response && response.code === 200) {
-        const list = response.data;
-
-        const actions = list.map(item => ({
-          module: item.module.name,
-          action: item.name,
-        }));
 
         yield put({
-          type: 'saveActions',
-          payload: actions,
+          type: 'menu/getMenuData',
+          payload: {
+            policy,
+            routes: payload,
+          },
         });
       }
     },
