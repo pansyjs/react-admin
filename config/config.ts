@@ -57,6 +57,7 @@ export default {
       'autils-import',
     ],
   ],
+  disableCSSModules: true,
   // 代理配置 - 请根据需要开启
   // 访问 `/api/users` 代理到 `http://api.jiumao.com/users`]
   // proxy: {
