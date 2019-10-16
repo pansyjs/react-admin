@@ -41,15 +41,15 @@
 ## 参与开发
 
 - 🎉🎉🎉 欢迎 PR
-- 🌴🌴🌴 钉钉交流群(23355178)
+- 🌴🌴🌴 请扫描下方二维码加入
 
 使用钉钉扫描下方二维码
 
-<img height="200" src="https://github.com/ts-react/react-admin-template/blob/master/public/assets/dingding.jpeg"></img>
+<img height="200" src="https://github.com/alitajs/alita/blob/master/public/dingding.png"></img>
 
 使用微信扫描下方二维码(过期请留言)
 
-<img height="200" src="https://github.com/ts-react/react-admin-template/blob/master/public/assets/wehact.jpg"></img>
+<img height="200" src="https://github.com/alitajs/alita/blob/master/public/wechat.png"></img>
 
 ## 使用案例
 
