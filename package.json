@@ -29,8 +29,8 @@
   "author": "JiuMao FE Team",
   "license": "MIT",
   "dependencies": {
-    "@alitajs/antd-plus": "^1.0.8",
-    "@alitajs/autils": "^0.5.1",
+    "@alitajs/antd-plus": "^1.0.10",
+    "@alitajs/autils": "^0.5.2",
     "@alitajs/hooks": "^0.0.3",
     "@jiumao/rc-table": "^0.0.2",
     "antd": "^3.24.0",

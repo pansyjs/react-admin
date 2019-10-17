@@ -4,7 +4,7 @@ import isEqual from 'lodash/isEqual';
 import { Policy } from '@alitajs/autils';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
-import checkAuthority from '@/components/authorized/check-authority';
+import { checkAuthority } from '@alitajs/antd-plus/lib/authorized';
 import { IMenu } from '@/components/sidebar-menu';
 import defaultSettings from '@/config/default-settings';
 
@@ -110,8 +110,6 @@ const MenuModel: IMenuModel = {
     *getMenuData({ payload, callback }, { put }) {
       const { routes } = payload;
       policy = payload.policy;
-
-      console.log(routes);
 
       const originalMenuData = memoizeOneFormatter(routes);
       const menuData = filterMenuData(originalMenuData);

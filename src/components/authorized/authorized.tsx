@@ -1,20 +1,13 @@
 import React from 'react';
 import { connect } from 'dva';
 import { ConnectState } from '@/models/connect';
-import { Policy } from '@alitajs/autils';
-import CheckPermissions, { TAuthority } from './check-permissions';
+import { Authorized } from '@alitajs/antd-plus';
+import { AuthorizedProps } from '@alitajs/antd-plus/lib/authorized/authorized';
 
-export interface AuthorizedProps {
-  authority?: TAuthority;
-  noMatch?: React.ReactNode;
-  policy?: Policy;
-}
-
-const Authorized: React.FC<AuthorizedProps> = ({ policy, children, authority, noMatch }) => {
-  const childrenRender = typeof children === 'undefined' ? null : children;
-  return CheckPermissions(authority, childrenRender, noMatch, policy) as React.ReactElement;
+const AuthorizedPus: React.FC<AuthorizedProps> = props => {
+  return <Authorized {...props} />;
 };
 
 export default connect(({ user }: ConnectState) => ({
   policy: user.policy,
-}))(Authorized);
+}))(AuthorizedPus);
