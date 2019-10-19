@@ -20,6 +20,9 @@ const plugins: IPlugin[] = [
       },
     },
   ],
+  ['@alitajs/umi-plugin-deploy-config', {
+    baseURL: '/'
+  }]
 ];
 
 export default plugins;

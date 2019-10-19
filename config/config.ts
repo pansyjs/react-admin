@@ -1,24 +1,24 @@
 import routes from './router.config';
 import plugins from './plugin.config';
 import themeConfig from './theme.config';
-import serverConfig from './server.config';
 
-const { SERVER_ENV } = process.env;
+const { NODE_ENV } = process.env;
+
+export interface ILocalServerConfig {
+  baseURL?: string;
+}
 
 // 设置后端接口地址
-let localServerConfig;
+let localServerConfig: ILocalServerConfig = {};
 let BaseURL = '';
 
 try {
-  localServerConfig = require('./local-server.config.ts');
+  localServerConfig = require('./local-server.config.ts').default;
 } catch (error) {}
 
-if (serverConfig[SERVER_ENV]) {
-  BaseURL = serverConfig[SERVER_ENV];
-} else if (localServerConfig && localServerConfig.baseURL) {
+// 开发环境使用 local-server.config.ts 中的配置
+if (NODE_ENV === 'development') {
   BaseURL = localServerConfig.baseURL;
-} else {
-  BaseURL = serverConfig.localhost;
 }
 
 export default {

@@ -23,3 +23,7 @@ declare namespace APP {
     name?: string;
   }
 }
+
+interface Window {
+  baseURL: string;
+}

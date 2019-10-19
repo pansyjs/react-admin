@@ -2,10 +2,15 @@
 export const AJAX_DEFAULT_CONFIG = {
   timeout: 20000,
   withCredentials: true,
-  // 使用webpack DefinePlugin 插件
-  // 具体配置请查看 /config/server.config.ts
-  baseURL: `${BASE_URL}/api/`,
+  baseURL: '',
 };
+
+try {
+  // 使用webpack DefinePlugin 插件
+  AJAX_DEFAULT_CONFIG.baseURL = `${BASE_URL || window.baseURL || ''}/api/`
+} catch (e) {
+  AJAX_DEFAULT_CONFIG.baseURL = '/api/'
+}
 
 // 项目相关配置
 export const APP_DEFAULT_CONFIG = {
