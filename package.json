@@ -12,6 +12,7 @@
     "functions:run": "cross-env NODE_ENV=dev netlify-lambda serve ./lambda",
     "site": "npm run build && npm run functions:build",
     "update-config": "walrus update-config",
+    "commitlint": "walrus commitlint --env HUSKY_GIT_PARAMS",
     "lint": "walrus lint",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
     "prettier": "walrus prettier",
@@ -51,8 +52,6 @@
     "@alitajs/umi-plugin-deploy-config": "^0.1.2",
     "@alitajs/umi-plugin-lodash": "^0.1.0",
     "@babel/runtime": "^7.4.2",
-    "@commitlint/cli": "^7.1.1",
-    "@jiumao/commitlint-config": "^0.1.3",
     "@types/classnames": "^2.2.6",
     "@types/js-cookie": "^2.2.0",
     "@types/lodash": "^4.14.116",
@@ -64,7 +63,7 @@
     "@types/react-document-title": "^2.0.2",
     "@types/react-dom": "^16.8.4",
     "@types/store": "^2.0.0",
-    "@walrus/cli": "^0.1.0",
+    "@walrus/cli": "^0.2.1",
     "@walrus/walrus-plugin-update-config": "^0.1.1",
     "babel-plugin-import": "^1.12.1",
     "body-parser": "^1.19.0",
@@ -94,7 +93,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && yarn prettier",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "yarn commitlint"
     }
   },
   "lint-staged": {
