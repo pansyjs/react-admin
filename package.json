@@ -15,9 +15,7 @@
     "lint": "walrus lint",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
     "prettier": "walrus prettier",
-    "tsc": "tsc",
-    "test": "umi test",
-    "test:component": "umi test ./src/components"
+    "test": "walrus test"
   },
   "repository": "https://github.com/ts-react/react-admin-template.git",
   "author": "JiuMao FE Team",
@@ -75,7 +73,6 @@
     "express": "^4.17.1",
     "husky": "^2.2.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.1.0",
     "lint-staged": "^8.1.7",
     "lotus-lint": "^0.0.1",
     "mockjs": "^1.0.1-beta3",
