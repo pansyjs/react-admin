@@ -25,11 +25,11 @@ export default {
   plugins,
   targets: {
     // 推荐设置，项目不用考虑IE可删除
-    ie: 9,
+    ie: 9
   },
   treeShaking: true,
   define: {
-    BASE_URL: BaseURL,
+    BASE_URL: BaseURL
   },
   // 路由配置
   routes,
@@ -43,21 +43,21 @@ export default {
       {
         libraryName: '@alitajs/antd-plus',
         libraryDirectory: 'es',
-        style: true,
+        style: true
       },
-      'ant-plus-import',
+      'ant-plus-import'
     ],
     [
       require.resolve('babel-plugin-import'),
       {
         libraryName: '@alitajs/autils',
         libraryDirectory: 'es',
-        camel2DashComponentName: false,
+        camel2DashComponentName: false
       },
-      'autils-import',
-    ],
+      'autils-import'
+    ]
   ],
-  disableCSSModules: true,
+  disableCSSModules: true
   // 代理配置 - 请根据需要开启
   // 访问 `/api/users` 代理到 `http://api.jiumao.com/users`]
   // proxy: {

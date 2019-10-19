@@ -6,23 +6,26 @@ const plugins: IPlugin[] = [
     {
       antd: true,
       dva: {
-        hmr: true,
+        hmr: true
       },
       locale: {
         enable: true,
         default: 'zh-CN',
-        baseNavigator: true,
+        baseNavigator: true
       },
       dynamicImport: {
         loadingComponent: './components/page-loading/index',
         webpackChunkName: true,
-        level: 3,
-      },
-    },
+        level: 3
+      }
+    }
   ],
-  ['@alitajs/umi-plugin-deploy-config', {
-    baseURL: '/'
-  }]
+  [
+    '@alitajs/umi-plugin-deploy-config',
+    {
+      baseURL: '/'
+    }
+  ]
 ];
 
 export default plugins;
