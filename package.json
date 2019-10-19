@@ -50,7 +50,6 @@
     "store": "^2.0.12"
   },
   "devDependencies": {
-    "@alitajs/umi-plugin-css-modules": "^0.0.1",
     "@alitajs/umi-plugin-deploy-config": "^0.1.2",
     "@alitajs/umi-plugin-lodash": "^0.1.0",
     "@babel/runtime": "^7.4.2",

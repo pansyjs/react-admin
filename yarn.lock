@@ -25,11 +25,6 @@
     lodash "^4.17.15"
     lodash-decorators "^6.0.1"
 
-"@alitajs/umi-plugin-css-modules@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@alitajs/umi-plugin-css-modules/-/umi-plugin-css-modules-0.0.1.tgz#4449aa1e5fb0c254f3cdf32ba8382e4b6c7b54fe"
-  integrity sha512-N5JefHyQsb5Gh9r5ojzsVYbzyY6uvkCeW2O4r4AhpZqBq7Rai+ablI+EU3aDX4EenxVEfEqUals79oMaiEKuUA==
-
 "@alitajs/umi-plugin-deploy-config@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@alitajs/umi-plugin-deploy-config/-/umi-plugin-deploy-config-0.1.2.tgz#f706a0ccfa27340bbbfaa6313cf2636d50dbc75a"
