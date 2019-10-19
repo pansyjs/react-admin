@@ -19,6 +19,7 @@
     "gh-pages": "yarn build:prod && gh-pages -d dist",
     "lint:ts": "tslint --project tsconfig.json --format codeFrame",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
+    "prettier": "walrus prettier",
     "docker:build": "./scripts/docker-build.sh",
     "tsc": "tsc",
     "test": "umi test",
@@ -72,7 +73,7 @@
     "@types/react-document-title": "^2.0.2",
     "@types/react-dom": "^16.8.4",
     "@types/store": "^2.0.0",
-    "@walrus/cli": "^0.0.6",
+    "@walrus/cli": "^0.1.0",
     "babel-plugin-import": "^1.12.1",
     "body-parser": "^1.19.0",
     "cross-env": "^5.2.0",
@@ -86,7 +87,6 @@
     "lotus-lint": "^0.0.1",
     "mockjs": "^1.0.1-beta3",
     "netlify-lambda": "^1.5.1",
-    "prettier": "^1.17.1",
     "rimraf": "^2.6.2",
     "serverless-http": "^2.0.2",
     "stylelint": "^10.0.1",
@@ -103,16 +103,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lint-staged && yarn prettier",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
-    "**/*.{js,ts,tsx,md,json,jsx,less}": [
-      "prettier --write",
-      "git add"
-    ]
+    "**/*.less": "stylelint --syntax less"
   },
   "engines": {
     "node": ">=8.9.0"

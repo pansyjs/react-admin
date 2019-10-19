@@ -13,7 +13,7 @@ export function onRouteChange({ location }) {
   const token = getCookie();
   let isLogin = true;
 
-  whiteList.forEach(item => {
+  whiteList.forEach((item) => {
     if (pathToRegexp(item).test(location.pathname)) {
       isLogin = false;
     }
