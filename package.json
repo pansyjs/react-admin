@@ -11,10 +11,10 @@
     "functions:build": "netlify-lambda build ./lambda",
     "functions:run": "cross-env NODE_ENV=dev netlify-lambda serve ./lambda",
     "site": "npm run build && npm run functions:build",
-    "update-config": "walrus update-config",
-    "commitlint": "walrus commitlint --env HUSKY_GIT_PARAMS",
     "lint": "walrus lint",
     "lint:style": "stylelint --fix 'src/**/*.less' --syntax less",
+    "lint:commit": "walrus commitlint --env HUSKY_GIT_PARAMS",
+    "update-config": "walrus update-config",
     "prettier": "walrus prettier",
     "test": "walrus test"
   },
@@ -93,7 +93,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && yarn prettier",
-      "commit-msg": "yarn commitlint"
+      "commit-msg": "yarn lint:commit"
     }
   },
   "lint-staged": {
