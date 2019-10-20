@@ -2882,28 +2882,6 @@
     "@walrus/walrus-plugin-jest" "^0.2.1"
     "@walrus/walrus-plugin-prettier" "^0.2.1"
 
-"@walrus/shared-utils@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@walrus/shared-utils/-/shared-utils-0.0.6.tgz#56be130f38651a24eb29f62b7d2677540ce884e2"
-  integrity sha512-i8rX4/BZCWUimqr/4JH1rrX7J7u4aYxlLi0UlWp3TyU//lmcQQmCkPk7UH7b5wp/qITE1b088Hnk66UNZDYx6w==
-  dependencies:
-    "@babel/core" "^7.6.2"
-    "@babel/preset-env" "^7.6.2"
-    "@babel/preset-typescript" "^7.6.0"
-    "@types/debug" "^4.1.5"
-    "@types/lodash" "^4.14.139"
-    "@types/semver" "^6.0.2"
-    chalk "^2.4.2"
-    debug "^4.1.1"
-    is-url "^1.2.4"
-    joycon "^2.2.5"
-    lodash "^4.17.15"
-    minimist "^1.2.0"
-    read-pkg "^5.2.0"
-    require-from-string "^2.0.2"
-    semver "^6.3.0"
-    slash2 "^2.0.0"
-
 "@walrus/shared-utils@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@walrus/shared-utils/-/shared-utils-0.2.1.tgz#9fa8e26a2dc3b6d39def716a5ae471d5b2b347d7"
@@ -2925,15 +2903,6 @@
     require-from-string "^2.0.2"
     semver "^6.3.0"
     slash2 "^2.0.0"
-
-"@walrus/types@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@walrus/types/-/types-0.0.6.tgz#8f8f03466f764dbcc966be42e0d62c735bc37f6d"
-  integrity sha512-zJytYHdr1hlgF91qW3d/4GHPd/nWvAy53YcgfT9Ep4ESSJLfJ2hrO5SR5iBgLdcdDqm2KkwOQplw6N5gjnpJoA==
-  dependencies:
-    "@types/debug" "^4.1.5"
-    "@types/lodash" "^4.14.138"
-    "@types/signale" "^1.2.1"
 
 "@walrus/types@^0.2.1":
   version "0.2.1"
@@ -3026,17 +2995,17 @@
     multimatch "^4.0.0"
     prettier "^1.18.2"
 
-"@walrus/walrus-plugin-update-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-update-config/-/walrus-plugin-update-config-0.1.1.tgz#722f2d22c33c51a3e0158dd36b299b2b8f917b65"
-  integrity sha512-tTrmltRnevO0LPZe+5u5E2q5+SvIZ30V8Gqir3E/W1uO7wuMk+xsSl+e4W1fuNbcHx05ZcSZEcXbMwJ3QoIxsw==
+"@walrus/walrus-plugin-update-config@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-update-config/-/walrus-plugin-update-config-0.1.2.tgz#03e892a321567e00c48e03f1d207c30bd9ecf82c"
+  integrity sha512-VwE8BqtQRW+j0LUBbVOdkLq9DhagwAZvQtv93TB2lpHDfSSxZ+SLtdI32tpi9WMjXY413Uy7IRp8AknSbVPluQ==
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/parser" "^7.6.4"
     "@babel/traverse" "^7.6.3"
     "@babel/types" "^7.6.3"
-    "@walrus/shared-utils" "^0.0.6"
-    "@walrus/types" "^0.0.6"
+    "@walrus/shared-utils" "^0.2.1"
+    "@walrus/types" "^0.2.1"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
