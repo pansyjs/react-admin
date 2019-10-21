@@ -22,13 +22,10 @@ const SidebarMenuWrapper: React.FC<ISidebarMenuProps> = (props) => {
       placement="left"
       style={{
         padding: 0,
-        height: '100vh',
+        height: '100vh'
       }}
     >
-      <SidebarMenu
-        {...props}
-        collapsed={false}
-      />
+      <SidebarMenu {...props} collapsed={false} />
     </Drawer>
   ) : (
     <div
@@ -42,9 +39,7 @@ const SidebarMenuWrapper: React.FC<ISidebarMenuProps> = (props) => {
       <SidebarMenu
         {...props}
         style={{
-          transform: collapsedPlus
-            ? 'translate(0, 0)'
-            : 'translate(200px, 0)'
+          transform: collapsedPlus ? 'translate(0, 0)' : 'translate(200px, 0)'
         }}
         flatMenuKeys={flatMenuKeys}
         collapsed={collapsedPlus}
@@ -57,8 +52,5 @@ SidebarMenuWrapper.defaultProps = {
   isMobile: false
 };
 
-export {
-  ISidebarMenuProps,
-  IMenu
-};
+export { ISidebarMenuProps, IMenu };
 export default React.memo(SidebarMenuWrapper);
