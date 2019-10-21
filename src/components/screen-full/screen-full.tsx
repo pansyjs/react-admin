@@ -9,7 +9,7 @@ interface IProps {
   className?: string;
 }
 
-const FullScreenIcon: React.FC<IProps> = props => {
+const FullScreenIcon: React.FC<IProps> = (props) => {
   const { prefixCls, className } = props;
   const [show, toggle] = useToggle(false);
   const isFullScreen = useFullScreen(null, show, {
@@ -19,7 +19,7 @@ const FullScreenIcon: React.FC<IProps> = props => {
   return (
     <span
       className={classNames(className, {
-        [`${prefixCls}`]: true,
+        [`${prefixCls}`]: true
       })}
       onClick={() => {
         toggle();
@@ -32,7 +32,7 @@ const FullScreenIcon: React.FC<IProps> = props => {
 };
 
 FullScreenIcon.defaultProps = {
-  prefixCls: 'lotus-screen-full',
+  prefixCls: 'lotus-screen-full'
 };
 
 export default FullScreenIcon;

@@ -71,7 +71,6 @@
     "express": "^4.17.1",
     "husky": "^2.2.0",
     "identity-obj-proxy": "^3.0.0",
-    "lint-staged": "^8.1.7",
     "lotus-lint": "^0.0.1",
     "mockjs": "^1.0.1-beta3",
     "netlify-lambda": "^1.5.1",
@@ -91,12 +90,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn prettier",
+      "pre-commit": "yarn prettier",
       "commit-msg": "yarn lint:commit"
     }
-  },
-  "lint-staged": {
-    "**/*.less": "stylelint --syntax less"
   },
   "engines": {
     "node": ">=8.9.0"
