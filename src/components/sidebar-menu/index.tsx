@@ -1,5 +1,6 @@
 import React from 'react';
 import { Drawer } from 'antd';
+import { IMenu } from './base-menu';
 import SidebarMenu, { ISidebarMenuProps } from './sidebar-menu';
 import { getFlatMenuKeys } from './utils';
 
@@ -56,6 +57,8 @@ SidebarMenuWrapper.defaultProps = {
   isMobile: false
 };
 
-export { ISidebarMenuProps };
-export { IMenu } from './base-menu';
+export {
+  ISidebarMenuProps,
+  IMenu
+};
 export default React.memo(SidebarMenuWrapper);
