@@ -4,11 +4,11 @@ import DefaultSettings, { IDefaultSettings } from '@/config/default-settings';
 export interface ISettingModelState extends IDefaultSettings {}
 
 export interface ISettingModel {
-  name: 'setting',
+  name: 'setting';
   state: IDefaultSettings;
   reducers: {
     getSetting: Reducer<IDefaultSettings>;
-  }
+  };
 }
 
 const SettingModel: ISettingModel = {
@@ -18,7 +18,7 @@ const SettingModel: ISettingModel = {
     getSetting(state) {
       const setting: any = {};
       const urlParams = new URL(window.location.href);
-      Object.keys(state).forEach(key => {
+      Object.keys(state).forEach((key) => {
         if (urlParams.searchParams.has(key)) {
           const value = urlParams.searchParams.get(key);
           setting[key] = value === '1' ? true : value;
@@ -26,9 +26,9 @@ const SettingModel: ISettingModel = {
       });
       return {
         ...state,
-        ...setting,
+        ...setting
       };
-    },
+    }
   }
 };
 
