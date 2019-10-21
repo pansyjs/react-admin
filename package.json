@@ -24,7 +24,7 @@
   "dependencies": {
     "@alitajs/antd-plus": "^1.0.10",
     "@alitajs/autils": "^0.5.2",
-    "@alitajs/hooks": "^0.0.3",
+    "@alitajs/hooks": "^0.1.1",
     "@jiumao/rc-table": "^0.0.2",
     "antd": "^3.24.0",
     "axios": "^0.19.0",

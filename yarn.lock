@@ -17,13 +17,14 @@
   resolved "https://registry.yarnpkg.com/@alitajs/autils/-/autils-0.5.2.tgz#d5af579fc7cc41e6248f1d29a1d3f767211ddd77"
   integrity sha512-IYyxFOjKrYA+UcG7dUG5jVeHvrG28L3BBNkuY48AhE+10tMP5r4BqueSN0uBmkjdwKq4a1tHjs0haHqKNItpGQ==
 
-"@alitajs/hooks@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@alitajs/hooks/-/hooks-0.0.3.tgz#911fdcef5f689b512e7ef34ab6c21fa65c782a5f"
-  integrity sha512-GRzQwlXs6qNaa7wZG7wZuN9a7xtjcdjlqzNtEd0pxIUusp+SBeqdTEqCNgv0KVE9pK3d3M6oRpms3LBPTGrMEw==
+"@alitajs/hooks@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@alitajs/hooks/-/hooks-0.1.1.tgz#f05d9d0a1599a5c6fed3bc6019a169bf787cd046"
+  integrity sha512-l2N3O16N4tBe3+EJsmIzEJ41t0ZStMANp7ygcXZjZ0I/I/HwpRGNYHFfmJSKQRRGnUTXlFV9cp6cd9q9eE6qWA==
   dependencies:
     lodash "^4.17.15"
     lodash-decorators "^6.0.1"
+    screenfull "^5.0.0"
 
 "@alitajs/umi-plugin-deploy-config@^0.1.2":
   version "0.1.2"

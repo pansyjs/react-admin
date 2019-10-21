@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Icon } from 'antd';
-import { FullScreen } from '@alitajs/antd-plus';
+import { useFullScreen, useToggle } from '@alitajs/hooks';
 import './screen-full.less';
 
 interface IProps {
@@ -11,23 +11,23 @@ interface IProps {
 
 const FullScreenIcon: React.FC<IProps> = props => {
   const { prefixCls, className } = props;
-  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
-
-  const handleChange = status => {
-    setIsFullScreen(status);
-  };
+  const [show, toggle] = useToggle(false);
+  const isFullScreen = useFullScreen(null, show, {
+    onClose: () => toggle(false)
+  });
 
   return (
-    <FullScreen
-      isBody={true}
+    <span
       className={classNames(className, {
         [`${prefixCls}`]: true,
       })}
-      onChange={handleChange}
+      onClick={() => {
+        toggle();
+      }}
     >
       {!isFullScreen && <Icon type="fullscreen" />}
       {isFullScreen && <Icon type="fullscreen-exit" />}
-    </FullScreen>
+    </span>
   );
 };
 
