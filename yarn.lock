@@ -243,7 +243,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.4.5", "@babel/core@^7.5.4", "@babel/core@^7.6.2", "@babel/core@^7.6.4":
+"@babel/core@^7.4.5", "@babel/core@^7.5.4", "@babel/core@^7.6.2":
   version "7.6.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.6.4.tgz#6ebd9fe00925f6c3e177bb726a188b5f578088ff"
   integrity sha512-Rm0HGw101GY8FTzpWSyRbki/jzq+/PkNQJ+nSulrdY6gFGOsNseCqD6KHRYe2E+EdzuBdr2pxCp6s4Uk6eJ+XQ==
@@ -3055,18 +3055,6 @@
     ignore "^5.1.4"
     multimatch "^4.0.0"
     prettier "^1.18.2"
-
-"@walrus/walrus-plugin-update-config@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-update-config/-/walrus-plugin-update-config-0.1.2.tgz#03e892a321567e00c48e03f1d207c30bd9ecf82c"
-  integrity sha512-VwE8BqtQRW+j0LUBbVOdkLq9DhagwAZvQtv93TB2lpHDfSSxZ+SLtdI32tpi9WMjXY413Uy7IRp8AknSbVPluQ==
-  dependencies:
-    "@babel/core" "^7.6.4"
-    "@babel/parser" "^7.6.4"
-    "@babel/traverse" "^7.6.3"
-    "@babel/types" "^7.6.3"
-    "@walrus/shared-utils" "^0.2.1"
-    "@walrus/types" "^0.2.1"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"

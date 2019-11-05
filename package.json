@@ -64,7 +64,6 @@
     "@types/react-dom": "^16.8.4",
     "@types/store": "^2.0.0",
     "@walrus/cli": "^0.2.1",
-    "@walrus/walrus-plugin-update-config": "^0.1.2",
     "babel-plugin-import": "^1.12.1",
     "body-parser": "^1.19.0",
     "cross-env": "^5.2.0",
