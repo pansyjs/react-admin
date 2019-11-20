@@ -11,7 +11,7 @@ export interface ITrendProps {
   reverseColor?: boolean;
 }
 
-const Trend: React.FC<ITrendProps> = props => {
+const Trend: React.FC<ITrendProps> = (props) => {
   const prefixCls: string = 'lotus-trend';
   const { colorful = true, reverseColor = false, flag, children, className, style } = props;
 
@@ -20,7 +20,7 @@ const Trend: React.FC<ITrendProps> = props => {
       className={classNames(className, {
         [`${prefixCls}`]: true,
         [`is-grey`]: !colorful,
-        [`is-reverse`]: reverseColor && colorful,
+        [`is-reverse`]: reverseColor && colorful
       })}
       style={style}
     >
@@ -29,7 +29,7 @@ const Trend: React.FC<ITrendProps> = props => {
         <span
           className={classNames(`${prefixCls}__flag`, {
             [`up`]: flag === 'up',
-            [`down`]: flag === 'down',
+            [`down`]: flag === 'down'
           })}
         >
           <Icon type={`caret-${flag}`} />
@@ -41,7 +41,7 @@ const Trend: React.FC<ITrendProps> = props => {
 
 Trend.defaultProps = {
   colorful: true,
-  reverseColor: false,
+  reverseColor: false
 };
 
 export default Trend;

@@ -11,12 +11,7 @@ interface IProps extends DropDownProps {
 export const HeaderDropdown: React.FC<IProps> = (props) => {
   const { prefixCls, overlayClassName, ...restProps } = props;
 
-  return (
-    <Dropdown
-      overlayClassName={classNames(prefixCls, overlayClassName)}
-      {...restProps}
-    />
-  )
+  return <Dropdown overlayClassName={classNames(prefixCls, overlayClassName)} {...restProps} />;
 };
 
 HeaderDropdown.defaultProps = {

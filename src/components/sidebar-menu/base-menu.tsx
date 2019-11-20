@@ -49,15 +49,15 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
     openKeys: [],
     collapsed: false,
     menuData: [],
-    onOpenChange: () => void 0,
+    onOpenChange: () => void 0
   };
 
   // 获得菜单子节点
   getNavMenuItems = (menusData: IMenu[] = []): React.ReactNode[] => {
     return menusData
-      .filter(item => item.name && !item.hideInMenu)
-      .map(item => this.getSubMenuOrItem(item))
-      .filter(item => item);
+      .filter((item) => item.name && !item.hideInMenu)
+      .map((item) => this.getSubMenuOrItem(item))
+      .filter((item) => item);
   };
 
   // get SubMenu or Item
@@ -65,7 +65,7 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
     if (
       Array.isArray(item.children) &&
       !item.hideChildrenInMenu &&
-      item.children.some(child => !!child.name)
+      item.children.some((child) => !!child.name)
     ) {
       return (
         <SubMenu
@@ -119,7 +119,7 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
   };
 
   // 转换路径
-  conversionPath = path => {
+  conversionPath = (path) => {
     if (path && path.indexOf('http') === 0) {
       return path;
     }
@@ -130,8 +130,8 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
   getSelectedMenuKeys = (pathname: string): string[] => {
     const { flatMenuKeys } = this.props;
     return urlToList(pathname)
-      .map(itemPath => getMenuMatches(flatMenuKeys, itemPath).pop())
-      .filter(item => item) as string[];
+      .map((itemPath) => getMenuMatches(flatMenuKeys, itemPath).pop())
+      .filter((item) => item) as string[];
   };
 
   render() {
@@ -144,7 +144,7 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
       menuData,
       collapsed,
       onOpenChange,
-      location,
+      location
     } = this.props;
 
     let selectedKeys = this.getSelectedMenuKeys(location!.pathname);
@@ -155,7 +155,7 @@ class BaseMenu extends React.Component<IBaseMenuProps, any> {
     let props = {};
     if (openKeys && !collapsed) {
       props = {
-        openKeys: openKeys.length === 0 ? [...selectedKeys] : openKeys,
+        openKeys: openKeys.length === 0 ? [...selectedKeys] : openKeys
       };
     }
 

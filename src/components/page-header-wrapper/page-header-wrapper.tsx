@@ -12,7 +12,7 @@ interface IProps extends PageHeaderProps {
   wrapperClassName?: string;
 }
 
-const PageHeaderWrapper: React.FC<IProps> = props => {
+const PageHeaderWrapper: React.FC<IProps> = (props) => {
   const { wrapperClassName, prefixCls, ...restProps } = props;
   const { location, breadcrumbNameMap } = React.useContext(MenuContext);
 
@@ -20,8 +20,8 @@ const PageHeaderWrapper: React.FC<IProps> = props => {
     const pathSnippets = urlToList(pathname);
     const routes = [];
 
-    pathSnippets.forEach(url => {
-      const list = Object.keys(breadcrumbNameMap).filter(item => {
+    pathSnippets.forEach((url) => {
+      const list = Object.keys(breadcrumbNameMap).filter((item) => {
         return pathToRegexp(item).test(url);
       });
       if (list && list.length) {
@@ -29,7 +29,7 @@ const PageHeaderWrapper: React.FC<IProps> = props => {
         if (menuData) {
           routes.push({
             path: menuData.path,
-            breadcrumbName: menuData.name,
+            breadcrumbName: menuData.name
           });
         }
       }
@@ -53,13 +53,13 @@ const PageHeaderWrapper: React.FC<IProps> = props => {
   return (
     <div
       className={classNames(wrapperClassName, {
-        [`${prefixCls}`]: true,
+        [`${prefixCls}`]: true
       })}
     >
       <PageHeader
         breadcrumb={{
           itemRender: handleItemRender,
-          routes,
+          routes
         }}
         {...restProps}
       />
@@ -68,7 +68,7 @@ const PageHeaderWrapper: React.FC<IProps> = props => {
 };
 
 PageHeaderWrapper.defaultProps = {
-  prefixCls: 'lotus-page-header-wrapper',
+  prefixCls: 'lotus-page-header-wrapper'
 };
 
 export default PageHeaderWrapper;

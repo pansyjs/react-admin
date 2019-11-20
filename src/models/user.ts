@@ -31,7 +31,7 @@ const UserModel: IUserModel = {
   state: {
     policy: null,
     actions: [],
-    currentUser: {},
+    currentUser: {}
   },
   effects: {
     *fetchCurrent({ payload }, { call, put }) {
@@ -49,61 +49,61 @@ const UserModel: IUserModel = {
         const { policies = [] } = info;
 
         // 所有权限
-        const actions = list.map(item => ({
+        const actions = list.map((item) => ({
           module: item.module.name,
-          action: item.name,
+          action: item.name
         }));
 
         const policy = new Policy(actions);
 
-        policies.forEach(item => {
+        policies.forEach((item) => {
           policy.addPolicy(item);
         });
 
         yield put({
           type: 'saveActions',
-          payload: actions,
+          payload: actions
         });
 
         yield put({
           type: 'saveCurrentUser',
           payload: {
-            ...info,
-          },
+            ...info
+          }
         });
 
         yield put({
           type: 'savePolicy',
-          payload: policy,
+          payload: policy
         });
 
         yield put({
           type: 'menu/getMenuData',
           payload: {
             policy,
-            routes: payload,
-          },
+            routes: payload
+          }
         });
       }
-    },
+    }
   },
   reducers: {
     savePolicy(state, { payload }) {
       return {
         ...state,
-        policy: payload,
+        policy: payload
       };
     },
     saveActions(state, { payload }) {
       return {
         ...state,
-        actions: payload,
+        actions: payload
       };
     },
     saveCurrentUser(state, { payload }) {
       return {
         ...state,
-        currentUser: payload,
+        currentUser: payload
       };
     },
     changeNotifyCount(state, { payload }) {
@@ -112,11 +112,11 @@ const UserModel: IUserModel = {
         currentUser: {
           ...state.currentUser,
           notifyCount: payload.totalCount,
-          unreadCount: payload.unreadCount,
-        },
+          unreadCount: payload.unreadCount
+        }
       };
-    },
-  },
+    }
+  }
 };
 
 export default UserModel;

@@ -12,10 +12,10 @@ interface IProps {
 
 const locales = {
   'zh-CN': { label: '简体中文', icon: '🇨🇳' },
-  'en-US': { label: 'English', icon: '🇬🇧' },
+  'en-US': { label: 'English', icon: '🇬🇧' }
 };
 
-export const SelectLang: React.FC<IProps> = props => {
+export const SelectLang: React.FC<IProps> = (props) => {
   const { className, prefixCls } = props;
   const selectedLang = getLocale();
 
@@ -25,7 +25,7 @@ export const SelectLang: React.FC<IProps> = props => {
 
   const langMenu = (
     <Menu className={`${prefixCls}__menu`} selectedKeys={[selectedLang]} onClick={changeLang}>
-      {Object.keys(locales).map(locale => {
+      {Object.keys(locales).map((locale) => {
         const data = locales[locale];
         return (
           <Menu.Item key={locale}>
@@ -43,13 +43,13 @@ export const SelectLang: React.FC<IProps> = props => {
     <HeaderDropdown overlay={langMenu} placement="bottomRight">
       <span
         className={classNames(className, {
-          [`${prefixCls}__dropdown`]: true,
+          [`${prefixCls}__dropdown`]: true
         })}
       >
         <Icon
           type="global"
           title={formatMessage({
-            id: 'navBar.lang',
+            id: 'navBar.lang'
           })}
         />
       </span>
@@ -58,5 +58,5 @@ export const SelectLang: React.FC<IProps> = props => {
 };
 
 SelectLang.defaultProps = {
-  prefixCls: 'lotus-select-lang',
+  prefixCls: 'lotus-select-lang'
 };

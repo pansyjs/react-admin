@@ -13,7 +13,7 @@ interface IProps {
   currentUser?: APP.ICurrentUser;
 }
 
-const GlobalHeaderRight: React.FC<IProps> = props => {
+const GlobalHeaderRight: React.FC<IProps> = (props) => {
   const { prefixCls, onMenuClick, currentUser } = props;
 
   const handleMenuClick = ({ key }) => {
@@ -49,7 +49,7 @@ const GlobalHeaderRight: React.FC<IProps> = props => {
           <span
             className={classNames({
               [`${prefixCls}__action`]: true,
-              [`${prefixCls}__account`]: true,
+              [`${prefixCls}__account`]: true
             })}
           >
             <Avatar size="small" src={currentUser.avatar} alt="avatar" />
@@ -65,7 +65,7 @@ const GlobalHeaderRight: React.FC<IProps> = props => {
 
 GlobalHeaderRight.defaultProps = {
   prefixCls: 'lotus-global-header',
-  currentUser: {},
+  currentUser: {}
 };
 
 export default GlobalHeaderRight;

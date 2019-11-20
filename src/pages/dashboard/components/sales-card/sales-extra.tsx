@@ -14,7 +14,7 @@ export interface ISalesExtraProps {
 
 const { RangePicker } = DatePicker;
 
-const SalesExtra: React.FC<ISalesExtraProps> = props => {
+const SalesExtra: React.FC<ISalesExtraProps> = (props) => {
   const prefixCls: string = 'lotus-sales-card-extra';
   const { className, style } = props;
   const [times, setTimes] = React.useState<RangePickerValue>([moment(), moment()]);
@@ -22,7 +22,7 @@ const SalesExtra: React.FC<ISalesExtraProps> = props => {
 
   React.useEffect(() => {}, []);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const key = e.target.value;
 
     if (key === 'today') {
@@ -45,7 +45,7 @@ const SalesExtra: React.FC<ISalesExtraProps> = props => {
   return (
     <div
       className={classNames(className, {
-        [`${prefixCls}`]: true,
+        [`${prefixCls}`]: true
       })}
       style={style}
     >

@@ -11,7 +11,7 @@ export interface IChartCardProps extends CardProps {
   statistic?: StatisticProps;
 }
 
-const ChartCard: React.FC<IChartCardProps> = props => {
+const ChartCard: React.FC<IChartCardProps> = (props) => {
   const prefixCls: string = 'lotus-chart-card';
   const { footer, contentHeight, statistic, loading, children, ...rest } = props;
 
@@ -21,7 +21,7 @@ const ChartCard: React.FC<IChartCardProps> = props => {
       loading={loading}
       className={prefixCls}
       bodyStyle={{
-        padding: 0,
+        padding: 0
       }}
       {...rest}
     >
@@ -31,7 +31,7 @@ const ChartCard: React.FC<IChartCardProps> = props => {
         <div className={`${prefixCls}__content`} style={{ height: contentHeight || 'auto' }}>
           <div
             className={classNames({
-              [`${prefixCls}__content-fixed`]: true,
+              [`${prefixCls}__content-fixed`]: true
             })}
           >
             {children}
@@ -41,7 +41,7 @@ const ChartCard: React.FC<IChartCardProps> = props => {
       {footer && (
         <div
           className={classNames(`${prefixCls}__footer`, {
-            [`is-margin`]: !children,
+            [`is-margin`]: !children
           })}
         >
           {footer}
@@ -53,7 +53,7 @@ const ChartCard: React.FC<IChartCardProps> = props => {
 
 ChartCard.defaultProps = {
   loading: false,
-  contentHeight: 46,
+  contentHeight: 46
 };
 
 export default ChartCard;

@@ -14,9 +14,9 @@ let policy: Policy = null;
 function formatterMenu(data: IRoute[], parentName?: string): IMenu[] {
   let newMenus: IMenu[] = [];
 
-  const menus = data.filter(item => item.name && item.path);
+  const menus = data.filter((item) => item.name && item.path);
 
-  menus.forEach(item => {
+  menus.forEach((item) => {
     const locale = `${parentName || 'menu'}.${item.name!}`;
 
     const name = menu.disableLocal
@@ -28,7 +28,7 @@ function formatterMenu(data: IRoute[], parentName?: string): IMenu[] {
       name,
       locale,
       routes: void 0,
-      authority: item.authority || undefined,
+      authority: item.authority || undefined
     };
 
     if (item.routes) {
@@ -54,8 +54,8 @@ function formatterMenu(data: IRoute[], parentName?: string): IMenu[] {
 // 获取面包屑映射
 const getBreadcrumbNameMap = (menuData: IMenu[]) => {
   const routerMap: { [key: string]: IMenu } = {};
-  const flattenMenuData: (data: IMenu[]) => void = data => {
-    data.forEach(menuItem => {
+  const flattenMenuData: (data: IMenu[]) => void = (data) => {
+    data.forEach((menuItem) => {
       if (menuItem.children) {
         flattenMenuData(menuItem.children);
       }
@@ -72,7 +72,7 @@ const memoizeOneGetBreadcrumbNameMap = memoizeOne(getBreadcrumbNameMap, isEqual)
 
 // 过滤菜单数据
 const filterMenuData = (menuData: IMenu[] = []): IMenu[] => {
-  return menuData.filter(item => item.name && !item.hideInMenu).filter(item => item);
+  return menuData.filter((item) => item.name && !item.hideInMenu).filter((item) => item);
 };
 
 export interface IRoute extends IMenu {
@@ -104,7 +104,7 @@ const MenuModel: IMenuModel = {
   state: {
     menuData: [],
     routerData: [],
-    breadcrumbNameMap: {},
+    breadcrumbNameMap: {}
   },
   effects: {
     *getMenuData({ payload, callback }, { put }) {
@@ -120,21 +120,21 @@ const MenuModel: IMenuModel = {
         payload: {
           menuData,
           breadcrumbNameMap,
-          routerData: routes,
-        },
+          routerData: routes
+        }
       });
 
       callback && callback();
-    },
+    }
   },
   reducers: {
     saveState(state, action) {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
-    },
-  },
+    }
+  }
 };
 
 export default MenuModel;

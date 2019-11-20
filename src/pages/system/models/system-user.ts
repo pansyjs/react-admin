@@ -43,9 +43,9 @@ const SystemUserModel: ISystemUserModel = {
   state: {
     list: [],
     tableData: {
-      list: [],
+      list: []
     },
-    policies: [],
+    policies: []
   },
   effects: {
     *fetchList({ payload }, { call, put }) {
@@ -54,10 +54,10 @@ const SystemUserModel: ISystemUserModel = {
         const data = response.data || {};
         const { list = [], total = 0 } = data;
 
-        const users = list.map(item => {
+        const users = list.map((item) => {
           return {
             ...item,
-            createTime: formatTime(item.createTime),
+            createTime: formatTime(item.createTime)
           };
         });
 
@@ -68,9 +68,9 @@ const SystemUserModel: ISystemUserModel = {
             pagination: {
               total,
               current: payload.page,
-              pageSize: payload.limit,
-            },
-          },
+              pageSize: payload.limit
+            }
+          }
         });
       }
     },
@@ -91,22 +91,22 @@ const SystemUserModel: ISystemUserModel = {
       if (response && response.code === 200) {
         callback && callback();
       }
-    },
+    }
   },
   reducers: {
     saveTableData(state, { payload }) {
       return {
         ...state,
-        tableData: payload,
+        tableData: payload
       };
     },
     savePolicies(state, { payload }) {
       return {
         ...state,
-        policies: payload,
+        policies: payload
       };
-    },
-  },
+    }
+  }
 };
 
 export default SystemUserModel;

@@ -14,7 +14,7 @@ interface IProps extends Required<ConnectProps>, ISidebarMenuProps {
   loading: boolean;
 }
 
-const AuthComponent: React.FC<IProps> = props => {
+const AuthComponent: React.FC<IProps> = (props) => {
   const {
     policy,
     loading,
@@ -22,19 +22,19 @@ const AuthComponent: React.FC<IProps> = props => {
     children,
     routerData,
     dispatch,
-    route: { routes = [] },
+    route: { routes = [] }
   } = props;
 
   useEffect(() => {
     dispatch({
       type: 'user/fetchCurrent',
-      payload: routes,
+      payload: routes
     });
   }, []);
 
   const getRouteAuthority = (path, routeData) => {
     let authorities = undefined;
-    routeData.forEach(route => {
+    routeData.forEach((route) => {
       // match prefix
       if (pathToRegexp(`${route.path}(.*)`).test(path)) {
         authorities = route.authority || authorities;
@@ -62,11 +62,11 @@ const AuthComponent: React.FC<IProps> = props => {
 };
 
 AuthComponent.defaultProps = {
-  policy: null,
+  policy: null
 };
 
 export default connect(({ menu, user, loading }: ConnectState) => ({
   policy: user.policy,
   routerData: menu.routerData,
-  loading: loading['user/fetchCurrent'],
+  loading: loading['user/fetchCurrent']
 }))(AuthComponent);

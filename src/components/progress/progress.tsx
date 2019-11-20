@@ -13,14 +13,14 @@ export interface IProgressProps {
   percent?: number;
 }
 
-const Progress: React.FC<IProgressProps> = props => {
+const Progress: React.FC<IProgressProps> = (props) => {
   const prefixCls: string = 'lotus-progress';
   const { targetLabel, target, color, strokeWidth, percent, className, style } = props;
 
   return (
     <div
       className={classNames(className, {
-        [`${prefixCls}`]: true,
+        [`${prefixCls}`]: true
       })}
       style={style}
     >
@@ -36,7 +36,7 @@ const Progress: React.FC<IProgressProps> = props => {
           style={{
             backgroundColor: color || undefined,
             width: percent ? `${percent}%` : undefined,
-            height: strokeWidth || undefined,
+            height: strokeWidth || undefined
           }}
         />
       </div>
@@ -45,7 +45,7 @@ const Progress: React.FC<IProgressProps> = props => {
 };
 
 Progress.defaultProps = {
-  color: 'rgb(19, 194, 194)',
+  color: 'rgb(19, 194, 194)'
 };
 
 export default Progress;

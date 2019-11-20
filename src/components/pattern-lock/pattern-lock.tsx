@@ -5,7 +5,7 @@ import './pattern-lock.less';
 interface IProps {
   prefixCls: string;
   className?: string;
-  matrix: [number, number],
+  matrix: [number, number];
   margin: number;
   radius: number;
   // 绘图时图案是否可见
@@ -17,11 +17,7 @@ interface IProps {
 
 const PatternLock: React.FC<IProps> = (props) => {
   const { prefixCls, className } = props;
-  return (
-    <div>
-
-    </div>
-  )
+  return <div></div>;
 };
 
 PatternLock.defaultProps = {

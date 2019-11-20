@@ -22,31 +22,31 @@ interface IProps extends Required<ConnectProps>, ISidebarMenuProps {
 
 const query = {
   'screen-xs': {
-    maxWidth: 575,
+    maxWidth: 575
   },
   'screen-sm': {
     minWidth: 576,
-    maxWidth: 767,
+    maxWidth: 767
   },
   'screen-md': {
     minWidth: 768,
-    maxWidth: 991,
+    maxWidth: 991
   },
   'screen-lg': {
     minWidth: 992,
-    maxWidth: 1199,
+    maxWidth: 1199
   },
   'screen-xl': {
     minWidth: 1200,
-    maxWidth: 1599,
+    maxWidth: 1599
   },
   'screen-xxl': {
-    minWidth: 1600,
-  },
+    minWidth: 1600
+  }
 };
 const { Content } = Layout;
 
-const BasicLayout: React.FC<IProps> = props => {
+const BasicLayout: React.FC<IProps> = (props) => {
   const { location, menuData, breadcrumbNameMap, setting, children } = props;
   const { fixedHeader, theme } = setting;
   const { prefixCls, ...restProps } = props;
@@ -65,7 +65,7 @@ const BasicLayout: React.FC<IProps> = props => {
       />
       <Layout
         style={{
-          minHeight: '100vh',
+          minHeight: '100vh'
         }}
       >
         <Header isMobile={isMobile} {...restProps} />
@@ -79,7 +79,7 @@ const BasicLayout: React.FC<IProps> = props => {
   return (
     <DocumentTitle title={moGetPageTitle(location!.pathname, breadcrumbNameMap)}>
       <ContainerQuery query={query}>
-        {params => (
+        {(params) => (
           <Context.Provider value={{ location, breadcrumbNameMap }}>
             <div className={classNames(params)}>{layout}</div>
           </Context.Provider>
@@ -90,11 +90,11 @@ const BasicLayout: React.FC<IProps> = props => {
 };
 
 BasicLayout.defaultProps = {
-  prefixCls: 'lotus-basic-layout',
+  prefixCls: 'lotus-basic-layout'
 };
 
 export default connect(({ menu, setting }: ConnectState) => ({
   menuData: menu.menuData,
   breadcrumbNameMap: menu.breadcrumbNameMap,
-  setting,
+  setting
 }))(BasicLayout);

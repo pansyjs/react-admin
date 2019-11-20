@@ -32,14 +32,10 @@ const FooterToolbar: React.FC<IProps> = (props) => {
         width
       }}
     >
-      <div className="left">
-        {extra}
-      </div>
-      <div className="right">
-        {children}
-      </div>
+      <div className="left">{extra}</div>
+      <div className="right">{children}</div>
     </div>
-  )
+  );
 };
 
 FooterToolbar.defaultProps = {

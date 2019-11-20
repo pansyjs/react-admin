@@ -41,13 +41,9 @@ export const GlobalFooter: React.FC<IProps> = (props) => {
           ))}
         </div>
       )}
-      {copyright && (
-        <div className={`${prefixCls}__copyright`}>
-          {copyright}
-        </div>
-      )}
+      {copyright && <div className={`${prefixCls}__copyright`}>{copyright}</div>}
     </div>
-  )
+  );
 };
 
 GlobalFooter.defaultProps = {

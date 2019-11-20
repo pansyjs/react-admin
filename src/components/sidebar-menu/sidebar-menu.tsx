@@ -19,14 +19,14 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = (props) => {
   const [openKeys, setOpenKeys] = React.useState<string[]>([]);
 
   React.useEffect(() => {
-    setOpenKeys(getDefaultCollapsedSubMenus(props))
+    setOpenKeys(getDefaultCollapsedSubMenus(props));
   }, []);
 
   const defaultProps = collapsed ? {} : { openKeys };
 
-  const isMainMenu: (key: string) => boolean = key => {
+  const isMainMenu: (key: string) => boolean = (key) => {
     const { menuData } = props;
-    return menuData.some(item => {
+    return menuData.some((item) => {
       if (key) {
         return item.key === key || item.path === key;
       }
@@ -34,9 +34,9 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = (props) => {
     });
   };
 
-  const handleOpenChange: (openKeys: string[]) => void = openKeys => {
-    const moreThanOne = openKeys.filter(openKey => isMainMenu(openKey)).length > 1;
-    setOpenKeys(moreThanOne ? [openKeys.pop()] : [...openKeys])
+  const handleOpenChange: (openKeys: string[]) => void = (openKeys) => {
+    const moreThanOne = openKeys.filter((openKey) => isMainMenu(openKey)).length > 1;
+    setOpenKeys(moreThanOne ? [openKeys.pop()] : [...openKeys]);
   };
 
   return (
@@ -61,7 +61,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = (props) => {
         />
       </React.Suspense>
     </div>
-  )
+  );
 };
 
 SidebarMenu.defaultProps = {

@@ -19,7 +19,7 @@ interface IProps {
   redirect?: string;
 }
 
-const Exception: React.FC<IProps> = props => {
+const Exception: React.FC<IProps> = (props) => {
   const {
     prefixCls,
     className,
@@ -31,14 +31,14 @@ const Exception: React.FC<IProps> = props => {
     actions,
     redirect,
     linkElement,
-    backText,
+    backText
   } = props;
   const pageType = type in config ? type : '404';
 
   return (
     <div
       className={classNames(className, {
-        [`${prefixCls}`]: true,
+        [`${prefixCls}`]: true
       })}
       style={style}
     >
@@ -55,9 +55,9 @@ const Exception: React.FC<IProps> = props => {
               linkElement,
               {
                 to: redirect,
-                href: redirect,
+                href: redirect
               },
-              <Button type="primary">{backText}</Button>,
+              <Button type="primary">{backText}</Button>
             )}
         </div>
       </div>
@@ -70,7 +70,7 @@ Exception.defaultProps = {
   backText: 'back to home',
   linkElement: 'a',
   type: '404',
-  redirect: '/',
+  redirect: '/'
 };
 
 export default Exception;

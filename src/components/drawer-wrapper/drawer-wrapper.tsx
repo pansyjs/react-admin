@@ -68,7 +68,7 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
   };
 
   const handleClose = (e) => {
-    onClose && onClose(e)
+    onClose && onClose(e);
   };
 
   return (
@@ -83,39 +83,28 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
       closable={false}
     >
       <div className={`${prefixCls}__header`}>
-        <div className={`${prefixCls}__title`}>
-          {title}
-        </div>
+        <div className={`${prefixCls}__title`}>{title}</div>
         <div className="buttons">
           <button onClick={handleFullScreen}>
-            {!isFullScreen && (
-              <Icon type="arrows-alt" />
-            )}
-            {isFullScreen && (
-              <Icon type="shrink" />
-            )}
+            {!isFullScreen && <Icon type="arrows-alt" />}
+            {isFullScreen && <Icon type="shrink" />}
           </button>
           <button onClick={handleClose}>
             <Icon type="close" />
           </button>
         </div>
-
       </div>
-      <div className={`${prefixCls}__body`}>
-        {children}
-      </div>
+      <div className={`${prefixCls}__body`}>{children}</div>
       {showFooter && (
         <div className={`${prefixCls}__footer`}>
-          <Button
-            type="primary"
-            {...confirmButton}
-            onClick={handleConfirm}
-          >确定</Button>
+          <Button type="primary" {...confirmButton} onClick={handleConfirm}>
+            确定
+          </Button>
           <Button onClick={handleCancel}>取消</Button>
         </div>
       )}
     </Drawer>
-  )
+  );
 };
 
 DrawerWrapper.defaultProps = {
