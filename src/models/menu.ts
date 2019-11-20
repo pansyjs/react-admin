@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import memoizeOne from 'memoize-one';
 import isEqual from 'lodash/isEqual';
-import { Policy } from '@alitajs/autils';
+import { Policy } from '@/components/authorized';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Effect } from '@/models/connect';
 import { checkAuthority } from '@alitajs/antd-plus/lib/authorized';

@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { Card, Statistic } from 'antd';
 import { CardProps } from 'antd/es/card';
 import { StatisticProps } from 'antd/es/statistic/Statistic';

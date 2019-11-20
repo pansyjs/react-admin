@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import router from 'umi/router';
 import { Layout } from 'antd';
 import { connect } from 'dva';

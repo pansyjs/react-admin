@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'antd';
 import { DropDownProps } from 'antd/es/dropdown';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import './header-dropdown.less';
 
 interface IProps extends DropDownProps {

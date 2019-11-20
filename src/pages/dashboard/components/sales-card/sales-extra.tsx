@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { DatePicker, Radio } from 'antd';
 import { RangePickerProps, RangePickerValue } from 'antd/es/date-picker/interface';
 import './sales-extra.less';

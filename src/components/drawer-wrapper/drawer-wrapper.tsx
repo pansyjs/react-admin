@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { Drawer, Icon, Button } from 'antd';
 import { ButtonProps } from 'antd/es/button';
 import { DrawerProps } from 'antd/es/drawer';

@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'umi/link';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { PageHeader } from 'antd';
 import { PageHeaderProps } from 'antd/es/page-header';
 import pathToRegexp from 'path-to-regexp';
 import MenuContext from '@/layouts/menu-context';
-import { urlToList } from '@alitajs/autils';
+import { urlToList } from '@pansy/url-utils';
 import './page-header-wrapper.less';
 
 interface IProps extends PageHeaderProps {

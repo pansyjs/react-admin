@@ -8,7 +8,7 @@ import { FormComponentProps } from 'antd/es/form';
 import PageHeaderWrapper from '@/components/page-header-wrapper/index';
 import FooterToolbar from '@/components/footer-toolbar/index';
 import StandardTable from '@jiumao/rc-table';
-import { IStatement } from '@alitajs/autils/es/policy';
+import { Statement } from '@pansy/policy';
 import { IModule, IAction } from '@/models/action';
 import { ConnectProps, ConnectState } from '@/models/connect';
 import StatementDrawer from './components/statement-drawer';
@@ -22,7 +22,7 @@ const CreatePolicy: React.FC<IProps> = props => {
   const { dispatch, form, modules, actions } = props;
   const { getFieldDecorator } = form;
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [statements, setStatement] = React.useState<IStatement[]>([]);
+  const [statements, setStatement] = React.useState<Statement[]>([]);
 
   React.useState(() => {
     dispatch({

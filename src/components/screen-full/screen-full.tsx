@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { Icon } from 'antd';
 import { useFullScreen, useToggle } from '@alitajs/hooks';
 import './screen-full.less';

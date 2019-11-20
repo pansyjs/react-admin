@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import Link from 'umi/link';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import config from './config';
 import './exception.less';
 

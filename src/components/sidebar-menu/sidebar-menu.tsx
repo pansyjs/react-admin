@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import PageLoading from '@/components/page-loading';
 import defaultSettings from '@/config/default-settings';
 import BaseMenu, { IBaseMenuProps } from './base-menu';

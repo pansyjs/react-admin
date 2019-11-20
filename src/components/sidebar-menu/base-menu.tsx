@@ -3,7 +3,7 @@ import Link from 'umi/link';
 import { Menu } from 'antd';
 import { MenuMode } from 'antd/es/menu';
 import { MenuTheme } from 'antd/es/menu/MenuContext';
-import { urlToList } from '@alitajs/autils';
+import { urlToList } from '@pansy/url-utils';
 import { ConnectProps } from '@/models/connect';
 import { getIcon, getMenuMatches } from './utils';
 

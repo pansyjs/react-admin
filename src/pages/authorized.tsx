@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'dva';
 import pathToRegexp from 'path-to-regexp';
 import Authorized from '@/components/authorized';
-import { Policy } from '@alitajs/autils';
+import { Policy } from '@/components/authorized';
 import PageLoading from '@/components/page-loading';
 import Exception403 from '@/pages/exception/403';
 import { ConnectProps, ConnectState } from '@/models/connect';

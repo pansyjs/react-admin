@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import useMedia from 'react-media-hook2';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';

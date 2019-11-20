@@ -1,13 +1,13 @@
 import { Reducer } from 'redux';
 import { Effect } from '@/models/connect';
 import { fetchCurrent } from '@/services/user';
-import { Policy } from '@alitajs/autils';
-import { IAction } from '@alitajs/autils/es/policy';
+import { Policy } from '@/components/authorized';
+import { Action } from '@pansy/policy';
 import { fetchList } from '@/services/action';
 
 export interface IUserModelState {
   policy: Policy;
-  actions: IAction[];
+  actions: Action[];
   currentUser: APP.ICurrentUser;
 }
 

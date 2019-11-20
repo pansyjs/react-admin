@@ -45,16 +45,7 @@ export default {
         libraryDirectory: 'es',
         style: true
       },
-      'ant-plus-import'
-    ],
-    [
-      require.resolve('babel-plugin-import'),
-      {
-        libraryName: '@alitajs/autils',
-        libraryDirectory: 'es',
-        camel2DashComponentName: false
-      },
-      'autils-import'
+      'ant-plus'
     ]
   ],
   disableCSSModules: true

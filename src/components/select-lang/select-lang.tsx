@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import { Menu, Icon } from 'antd';
 import { formatMessage, getLocale, setLocale } from 'umi-plugin-react/locale';
 import HeaderDropdown from '@/components/header-dropdown';

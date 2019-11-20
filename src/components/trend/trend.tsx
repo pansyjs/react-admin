@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'antd';
-import classNames from 'classnames';
+import classNames from '@pansy/classnames';
 import './trend.less';
 
 export interface ITrendProps {
