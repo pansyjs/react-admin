@@ -1,15 +1,30 @@
 {
-  "name": "react-admin-template",
-  "version": "1.0.0",
+  "name": "worksapce",
   "private": true,
   "description": "react template",
   "main": "index.js",
   "repository": "git@github.com:ts-react/react-admin-template.git",
   "author": "wangxingkang <156148958@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "bootstrap": "yarn && lerna bootstrap",
+    "prettier": "walrus prettier",
+    "commitlint": "walrus commitlint --env HUSKY_GIT_PARAMS"
+  },
   "devDependencies": {
     "@walrus/cli": "^0.4.1",
     "husky": "^3.1.0",
-    "lerna": "^3.19.0"
-  }
+    "lerna": "^3.19.0",
+    "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier",
+      "commit-msg": "yarn commitlint"
+    }
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from '@pansy/classnames';
 import { Icon } from 'antd';
-import { useFullScreen, useToggle } from '@alitajs/hooks';
+import { useFullscreen, useToggle } from '@pansy/hooks';
 import './screen-full.less';
 
 interface IProps {
@@ -12,7 +12,7 @@ interface IProps {
 const FullScreenIcon: React.FC<IProps> = (props) => {
   const { prefixCls, className } = props;
   const [show, toggle] = useToggle(false);
-  const isFullScreen = useFullScreen(null, show, {
+  const isFullScreen = useFullscreen(null, show, {
     onClose: () => toggle(false)
   });
 

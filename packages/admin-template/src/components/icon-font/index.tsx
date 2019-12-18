@@ -1,9 +1,6 @@
-import { Icon } from 'antd';
+import { createFromIconfontCN } from '@ant-design/icons';
 import defaultSettings from '@/config/default-settings';
 
-// 使用：
-// import IconFont from '@/components/icon-font';
-// <IconFont type='icon-demo' className='xxx-xxx' />
-export default Icon.createFromIconfontCN({
-  scriptUrl: defaultSettings.iconFontUrl || ''
+export default createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
 });
