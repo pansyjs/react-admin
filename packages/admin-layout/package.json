@@ -1,0 +1,22 @@
+{
+  "name": "@pansy/admin-layout",
+  "version": "1.0.0",
+  "description": "react admin layout",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@pansy/classnames": "^1.0.1",
+    "antd": "^4.0.0-beta.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
