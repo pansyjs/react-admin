@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col, Icon, Row, Tooltip } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { Col, Row, Tooltip } from 'antd';
 import { Area, Bar } from 'rc-charts';
 import ChartCard from '@/components/chart-card';
 import Trend from '@/components/trend';
@@ -11,7 +12,7 @@ const responsiveProps = {
   md: 12,
   lg: 12,
   xl: 6,
-  style: { marginBottom: 24 },
+  style: { marginBottom: 24 }
 };
 
 const chartData = [
@@ -31,7 +32,7 @@ const chartData = [
   { x: '2019-07-20', y: 5 },
   { x: '2019-07-21', y: 3 },
   { x: '2019-07-22', y: 6 },
-  { x: '2019-07-23', y: 5 },
+  { x: '2019-07-23', y: 5 }
 ];
 
 const IntroduceRow = () => {
@@ -42,12 +43,12 @@ const IntroduceRow = () => {
           title="总销售额"
           extra={
             <Tooltip title="指标说明">
-              <Icon type="info-circle-o" />
+              <InfoCircleOutlined />
             </Tooltip>
           }
           statistic={{
             value: 126560,
-            prefix: '¥',
+            prefix: '¥'
           }}
         >
           <Trend flag="up" style={{ marginRight: 16 }}>
@@ -63,11 +64,11 @@ const IntroduceRow = () => {
           title="访问量"
           extra={
             <Tooltip title="指标说明">
-              <Icon type="info-circle-o" />
+              <InfoCircleOutlined />
             </Tooltip>
           }
           statistic={{
-            value: 8846,
+            value: 8846
           }}
         >
           <Area
@@ -77,7 +78,7 @@ const IntroduceRow = () => {
             height={46}
             mini={true}
             titleMap={{
-              y: '访问量',
+              y: '访问量'
             }}
           />
         </ChartCard>
@@ -87,11 +88,11 @@ const IntroduceRow = () => {
           title="支付笔数"
           extra={
             <Tooltip title="指标说明">
-              <Icon type="info-circle-o" />
+              <InfoCircleOutlined />
             </Tooltip>
           }
           statistic={{
-            value: 6560,
+            value: 6560
           }}
         >
           <Bar
@@ -100,7 +101,7 @@ const IntroduceRow = () => {
             data={chartData}
             mini={true}
             titleMap={{
-              y: '访问量',
+              y: '访问量'
             }}
           />
         </ChartCard>
@@ -110,12 +111,12 @@ const IntroduceRow = () => {
           title="运营活动效果"
           extra={
             <Tooltip title="指标说明">
-              <Icon type="info-circle-o" />
+              <InfoCircleOutlined />
             </Tooltip>
           }
           statistic={{
             value: 78,
-            suffix: '%',
+            suffix: '%'
           }}
         >
           <Progress percent={78} strokeWidth={8} target={80} color="#13C2C2" />

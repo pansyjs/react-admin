@@ -1,12 +1,11 @@
 import React from 'react';
-import { Form, Input } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import { Input, Form } from 'antd';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import { IUser } from '../models/system-user';
 
 export type TType = 'create' | 'update';
 
-interface IProps extends FormComponentProps {
+interface UserDrawerProps {
   type?: TType;
   currentUser?: IUser;
   visible?: boolean;
@@ -16,9 +15,8 @@ interface IProps extends FormComponentProps {
 
 const { TextArea } = Input;
 
-const UserDrawer: React.FC<IProps> = props => {
-  const { visible, onClose, onSubmit, form, type, currentUser } = props;
-  const { getFieldDecorator } = form;
+const UserDrawer: React.FC<UserDrawerProps> = (props) => {
+  const { visible, onClose, onSubmit, type, currentUser } = props;
 
   const [title, setTitle] = React.useState<string>('');
 
@@ -28,35 +26,31 @@ const UserDrawer: React.FC<IProps> = props => {
 
   React.useEffect(() => {
     if (!visible) {
-      form.resetFields();
+      // form.resetFields();
     }
   }, [props.visible]);
 
-  const handleConfirm = () => {
-    form.validateFields((error, values) => {
-      if (!error) {
-        const data = { ...values };
+  const handleConfirm = (values) => {
+    const data = { ...values };
 
-        if (type === 'update') {
-          // @ts-ignore
-          data.id = currentUser.id;
-        }
+    if (type === 'update') {
+      // @ts-ignore
+      data.id = currentUser.id;
+    }
 
-        onSubmit && onSubmit(data);
-      }
-    });
+    onSubmit && onSubmit(data);
   };
 
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 5 },
+      sm: { span: 5 }
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 12 },
-      md: { span: 15 },
-    },
+      md: { span: 15 }
+    }
   };
 
   return (
@@ -69,44 +63,47 @@ const UserDrawer: React.FC<IProps> = props => {
       title={title}
     >
       <Form>
-        <Form.Item {...formItemLayout} label="用户名">
-          {getFieldDecorator('username', {
-            initialValue: currentUser.username,
-            rules: [
-              {
-                required: true,
-                message: '用户名不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入用户名" />)}
+        <Form.Item
+          {...formItemLayout}
+          name="username"
+          label="用户名"
+          rules={[
+            {
+              required: true,
+              message: '用户名不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入用户名" />
         </Form.Item>
-        <Form.Item {...formItemLayout} label="手机号">
-          {getFieldDecorator('mobile', {
-            initialValue: currentUser.mobile,
-            rules: [
-              {
-                required: true,
-                message: '手机号不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入手机号" />)}
+        <Form.Item
+          {...formItemLayout}
+          name="mobile"
+          label="手机号"
+          rules={[
+            {
+              required: true,
+              message: '手机号不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入手机号" />
         </Form.Item>
-        <Form.Item {...formItemLayout} label="邮箱地址">
-          {getFieldDecorator('email', {
-            initialValue: currentUser.email,
-            rules: [
-              {
-                required: true,
-                message: '邮箱地址不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入邮箱" />)}
+        <Form.Item
+          {...formItemLayout}
+          name="email"
+          label="邮箱地址"
+          rules={[
+            {
+              required: true,
+              message: '邮箱地址不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入邮箱" />
         </Form.Item>
-        <Form.Item {...formItemLayout} label="备注">
-          {getFieldDecorator('remark', {
-            initialValue: currentUser.remark,
-            rules: [],
-          })(<TextArea rows={3} />)}
+        <Form.Item {...formItemLayout} name="remark" label="备注">
+          <TextArea rows={3} />
         </Form.Item>
       </Form>
     </DrawerWrapper>
@@ -115,7 +112,7 @@ const UserDrawer: React.FC<IProps> = props => {
 
 UserDrawer.defaultProps = {
   visible: false,
-  currentUser: {},
+  currentUser: {}
 };
 
-export default Form.create<IProps>()(UserDrawer);
+export default UserDrawer;

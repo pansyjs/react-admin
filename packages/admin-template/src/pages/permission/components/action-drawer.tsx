@@ -1,12 +1,11 @@
-import React from 'react';
-import { Form, Input, Select } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import React, { FC } from 'react';
+import { Input, Select, Form } from 'antd';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import { IModule, IAction } from '@/models/action';
 
 export type TFormType = 'create' | 'update';
 
-interface IProps extends FormComponentProps {
+interface ActionDrawerProps {
   formType: TFormType;
   visible: boolean;
   modules: IModule[];
@@ -15,13 +14,11 @@ interface IProps extends FormComponentProps {
   onSubmit: (values) => void;
 }
 
-const FormItem = Form.Item;
 const { Option } = Select;
 const { TextArea } = Input;
 
-const ActionDrawer: React.FC<IProps> = props => {
-  const { visible, modules, onClose, onSubmit, formType, form, currentAction } = props;
-  const { getFieldDecorator } = form;
+const ActionDrawer: FC<ActionDrawerProps> = (props) => {
+  const { visible, modules, onClose, onSubmit, formType, currentAction } = props;
   const [title, setTitle] = React.useState<string>('');
 
   React.useEffect(() => {
@@ -32,37 +29,35 @@ const ActionDrawer: React.FC<IProps> = props => {
 
   React.useEffect(() => {
     if (!visible) {
-      form.resetFields();
+      // form.resetFields();
     }
   }, [props.visible]);
 
-  const handleConfirm = () => {
-    form.validateFields((error, values) => {
-      const data = { ...values };
+  const handleConfirm = (values) => {
+    const data = { ...values };
 
-      if (formType === 'update') {
-        // @ts-ignore
-        data.id = currentAction.id;
-      }
+    if (formType === 'update') {
+      // @ts-ignore
+      data.id = currentAction.id;
+    }
 
-      onSubmit && onSubmit(data);
-    });
+    onSubmit && onSubmit(data);
   };
 
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 5 },
+      sm: { span: 5 }
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 12 },
-      md: { span: 15 },
-    },
+      md: { span: 15 }
+    }
   };
 
   const moduleOptions = React.useMemo(() => {
-    return modules.map(item => (
+    return modules.map((item) => (
       <Option key={item.id} value={item.id}>
         {item.name}
       </Option>
@@ -79,56 +74,57 @@ const ActionDrawer: React.FC<IProps> = props => {
       title={title}
     >
       <Form>
-        <FormItem {...formItemLayout} label="操作名称">
-          {getFieldDecorator('name', {
-            initialValue: currentAction.name,
-            rules: [
-              {
-                required: true,
-                message: '名称不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入操作名称" />)}
-        </FormItem>
-        <FormItem {...formItemLayout} label="显示名称">
-          {getFieldDecorator('displayName', {
-            initialValue: currentAction.displayName,
-            rules: [
-              {
-                required: true,
-                message: '显示名称不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入显示名称" />)}
-        </FormItem>
-        <FormItem {...formItemLayout} label="所属模块">
-          {getFieldDecorator('moduleId', {
-            initialValue: (currentAction.module || {}).id,
-            rules: [
-              {
-                required: true,
-                message: '所属模块不能为空',
-              },
-            ],
-          })(
-            <Select showSearch placeholder="请选择所属模块" optionFilterProp="children">
-              {moduleOptions}
-            </Select>,
-          )}
-        </FormItem>
-        <FormItem {...formItemLayout} label="备注">
-          {getFieldDecorator('remark', {
-            initialValue: currentAction.remark,
-            rules: [],
-          })(<TextArea rows={3} />)}
-        </FormItem>
+        <Form.Item
+          {...formItemLayout}
+          name="name"
+          label="操作名称"
+          rules={[
+            {
+              required: true,
+              message: '名称不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入操作名称" />
+        </Form.Item>
+        <Form.Item
+          {...formItemLayout}
+          name="displayName"
+          label="显示名称"
+          rules={[
+            {
+              required: true,
+              message: '显示名称不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入显示名称" />
+        </Form.Item>
+        <Form.Item
+          {...formItemLayout}
+          name="moduleId"
+          label="所属模块"
+          rules={[
+            {
+              required: true,
+              message: '所属模块不能为空'
+            }
+          ]}
+        >
+          <Select showSearch placeholder="请选择所属模块" optionFilterProp="children">
+            {moduleOptions}
+          </Select>
+        </Form.Item>
+        <Form.Item {...formItemLayout} name="remark" label="备注">
+          <TextArea rows={3} />
+        </Form.Item>
       </Form>
     </DrawerWrapper>
   );
 };
 
 ActionDrawer.defaultProps = {
-  modules: [],
+  modules: []
 };
 
-export default Form.create<IProps>()(ActionDrawer);
+export default ActionDrawer;

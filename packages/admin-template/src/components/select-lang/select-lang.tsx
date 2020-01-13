@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from '@pansy/classnames';
-import { Menu, Icon } from 'antd';
+import { GlobalOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
 import { formatMessage, getLocale, setLocale } from 'umi-plugin-react/locale';
 import HeaderDropdown from '@/components/header-dropdown';
 import './select-lang.less';
@@ -46,8 +47,7 @@ export const SelectLang: React.FC<IProps> = (props) => {
           [`${prefixCls}__dropdown`]: true
         })}
       >
-        <Icon
-          type="global"
+        <GlobalOutlined
           title={formatMessage({
             id: 'navBar.lang'
           })}

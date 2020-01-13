@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
+import { DeleteOutlined } from '@ant-design/icons';
 import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import useQueryData from '@/hooks/use-query-data';
@@ -17,7 +18,7 @@ interface IProps extends ConnectProps {
 const { Paragraph } = Typography;
 const confirm = Modal.confirm;
 
-const PoliciesPage: React.FC<IProps> = props => {
+const PoliciesPage: React.FC<IProps> = (props) => {
   const { prefixCls, policies, dispatch } = props;
   const [queryData, setQueryData] = useQueryData(props.location.pathname);
 
@@ -28,7 +29,7 @@ const PoliciesPage: React.FC<IProps> = props => {
   const getList = () => {
     dispatch({
       type: 'policy/fetchList',
-      payload: queryData,
+      payload: queryData
     });
   };
 
@@ -37,7 +38,7 @@ const PoliciesPage: React.FC<IProps> = props => {
   };
 
   // 删除权限策略
-  const handleConfirmRemove = record => {
+  const handleConfirmRemove = (record) => {
     confirm({
       title: `确定删除${record.name}策略?`,
       content: '删除不可恢复',
@@ -46,40 +47,40 @@ const PoliciesPage: React.FC<IProps> = props => {
       cancelText: '取消',
       onOk() {
         handleRemove(record);
-      },
+      }
     });
   };
 
-  const handleRemove = record => {
+  const handleRemove = (record) => {
     dispatch({
       type: 'policy/fetchRemove',
       payload: record.id,
       callback: () => {
         message.success('删除成功！');
         getList();
-      },
+      }
     });
   };
 
   const columns = [
     {
       title: '权限策略名称',
-      dataIndex: 'name',
+      dataIndex: 'name'
     },
     {
       title: '策略类型',
       dataIndex: 'type',
-      render: text => {
+      render: (text) => {
         return text === 1 ? '系统策略' : '用户自定义策略';
-      },
+      }
     },
     {
       title: '引用次数',
-      dataIndex: 'attachmentCount',
+      dataIndex: 'attachmentCount'
     },
     {
       title: '备注',
-      dataIndex: 'remark',
+      dataIndex: 'remark'
     },
     {
       title: '操作',
@@ -89,14 +90,14 @@ const PoliciesPage: React.FC<IProps> = props => {
           <Button
             type="danger"
             size="small"
-            icon="delete"
+            icon={<DeleteOutlined />}
             onClick={() => {
               handleConfirmRemove(record);
             }}
           />
         </Tooltip>
-      ),
-    },
+      )
+    }
   ];
 
   return (
@@ -106,7 +107,7 @@ const PoliciesPage: React.FC<IProps> = props => {
         extra={[
           <Button key="1" type="primary" onClick={showCreateView}>
             新建权限策略
-          </Button>,
+          </Button>
         ]}
       >
         <div className="content">
@@ -123,7 +124,7 @@ const PoliciesPage: React.FC<IProps> = props => {
         <Card bordered={false}>
           <Table
             data={{
-              list: policies,
+              list: policies
             }}
             columns={columns}
           />
@@ -135,9 +136,9 @@ const PoliciesPage: React.FC<IProps> = props => {
 
 PoliciesPage.defaultProps = {
   prefixCls: 'lotus-policies-page',
-  policies: [],
+  policies: []
 };
 
 export default connect(({ policy }: ConnectState) => ({
-  policies: policy.list,
+  policies: policy.list
 }))(PoliciesPage);

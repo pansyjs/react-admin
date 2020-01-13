@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from '@pansy/classnames';
-import { Drawer, Icon, Button } from 'antd';
+import { ArrowsAltOutlined, CloseOutlined, ShrinkOutlined } from '@ant-design/icons';
+import { Drawer, Button } from 'antd';
 import { ButtonProps } from 'antd/es/button';
 import { DrawerProps } from 'antd/es/drawer';
 import './drawer-wrapper.less';
@@ -86,11 +87,11 @@ const DrawerWrapper: React.FC<IProps> = (props) => {
         <div className={`${prefixCls}__title`}>{title}</div>
         <div className="buttons">
           <button onClick={handleFullScreen}>
-            {!isFullScreen && <Icon type="arrows-alt" />}
-            {isFullScreen && <Icon type="shrink" />}
+            {!isFullScreen && <ArrowsAltOutlined />}
+            {isFullScreen && <ShrinkOutlined />}
           </button>
           <button onClick={handleClose}>
-            <Icon type="close" />
+            <CloseOutlined />
           </button>
         </div>
       </div>

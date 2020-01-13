@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import Icon from '@/components/icon-font';
 import classNames from '@pansy/classnames';
 import './trend.less';
 

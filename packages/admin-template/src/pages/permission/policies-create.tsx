@@ -3,8 +3,7 @@ import isEqual from 'lodash/isEqual';
 import uniqueId from 'lodash/uniqueId';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Button, Card, Form, Input, Tag } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import { Button, Card, Input, Tag, Form } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper/index';
 import FooterToolbar from '@/components/footer-toolbar/index';
 import StandardTable from '@jiumao/rc-table';
@@ -13,14 +12,13 @@ import { IModule, IAction } from '@/models/action';
 import { ConnectProps, ConnectState } from '@/models/connect';
 import StatementDrawer from './components/statement-drawer';
 
-interface IProps extends ConnectProps, FormComponentProps {
+interface IProps extends ConnectProps {
   modules: IModule[];
   actions: IAction[];
 }
 
 const CreatePolicy: React.FC<IProps> = (props) => {
-  const { dispatch, form, modules, actions } = props;
-  const { getFieldDecorator } = form;
+  const { dispatch, modules, actions } = props;
   const [visible, setVisible] = React.useState<boolean>(false);
   const [statements, setStatement] = React.useState<Statement[]>([]);
 
@@ -38,21 +36,17 @@ const CreatePolicy: React.FC<IProps> = (props) => {
     setVisible(false);
   };
 
-  const handleCreate = () => {
-    form.validateFields((error, values) => {
-      if (!error) {
-        dispatch({
-          type: 'policy/fetchCreate',
-          payload: {
-            ...values,
-            document: statements
-          },
-          callback: () => {
-            setStatement([]);
-            form.resetFields();
-            handelCancel();
-          }
-        });
+  const handleCreate = (values) => {
+    dispatch({
+      type: 'policy/fetchCreate',
+      payload: {
+        ...values,
+        document: statements
+      },
+      callback: () => {
+        setStatement([]);
+        // form.resetFields();
+        handelCancel();
       }
     });
   };
@@ -119,18 +113,20 @@ const CreatePolicy: React.FC<IProps> = (props) => {
         ]}
       >
         <Form layout="inline">
-          <Form.Item label="策略名称">
-            {getFieldDecorator('name', {
-              rules: [
-                {
-                  required: true,
-                  message: '策略名称不能为空'
-                }
-              ]
-            })(<Input placeholder="请输入策略名称" />)}
+          <Form.Item
+            label="策略名称"
+            name="name"
+            rules={[
+              {
+                required: true,
+                message: '策略名称不能为空'
+              }
+            ]}
+          >
+            <Input placeholder="请输入策略名称" />
           </Form.Item>
-          <Form.Item label="策略备注">
-            {getFieldDecorator('remark', {})(<Input placeholder="请输入策略备注" />)}
+          <Form.Item label="策略备注" name="remark">
+            <Input placeholder="请输入策略备注" />
           </Form.Item>
         </Form>
       </PageHeaderWrapper>
@@ -172,4 +168,4 @@ CreatePolicy.defaultProps = {
 export default connect(({ action }: ConnectState) => ({
   modules: action.modules,
   actions: action.list
-}))(Form.create()(CreatePolicy));
+}))(CreatePolicy);

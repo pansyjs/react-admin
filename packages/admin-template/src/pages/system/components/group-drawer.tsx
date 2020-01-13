@@ -1,12 +1,11 @@
-import React from 'react';
-import { Form, Input } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import React, { FC } from 'react';
+import { Input, Form } from 'antd';
 import DrawerWrapper from '@/components/drawer-wrapper';
 import { IGroup } from '../models/user-group';
 
 export type TType = 'create' | 'update';
 
-interface IProps extends FormComponentProps {
+interface GroupDrawerProps {
   type?: TType;
   visible?: boolean;
   currentGroup?: IGroup;
@@ -16,9 +15,8 @@ interface IProps extends FormComponentProps {
 
 const { TextArea } = Input;
 
-const GroupDrawer: React.FC<IProps> = props => {
-  const { visible, onClose, onSubmit, currentGroup, form, type } = props;
-  const { getFieldDecorator } = form;
+const GroupDrawer: FC<GroupDrawerProps> = (props) => {
+  const { visible, onClose, onSubmit, currentGroup, type } = props;
 
   const [title, setTitle] = React.useState<string>('');
 
@@ -26,31 +24,27 @@ const GroupDrawer: React.FC<IProps> = props => {
     setTitle(type === 'create' ? '添加用户组' : '更新用户组');
   }, [props.type]);
 
-  const handleConfirm = () => {
-    form.validateFields((error, values) => {
-      if (!error) {
-        const data = { ...values };
+  const handleConfirm = (values) => {
+    const data = { ...values };
 
-        if (type === 'update') {
-          // @ts-ignore
-          data.id = currentGroup.id;
-        }
+    if (type === 'update') {
+      // @ts-ignore
+      data.id = currentGroup.id;
+    }
 
-        onSubmit && onSubmit(data);
-      }
-    });
+    onSubmit && onSubmit(data);
   };
 
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 5 },
+      sm: { span: 5 }
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 12 },
-      md: { span: 15 },
-    },
+      md: { span: 15 }
+    }
   };
 
   return (
@@ -65,35 +59,34 @@ const GroupDrawer: React.FC<IProps> = props => {
       <Form>
         <Form.Item
           {...formItemLayout}
+          name="name"
           label="用户组名称"
           help="不超过64个字符，允许英文字母、数字，或'-'"
+          rules={[
+            {
+              required: true,
+              message: '用户组名称不能为空'
+            }
+          ]}
         >
-          {getFieldDecorator('name', {
-            initialValue: currentGroup.name,
-            rules: [
-              {
-                required: true,
-                message: '用户组名称不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入用户组名称" />)}
+          <Input placeholder="请输入用户组名称" />
         </Form.Item>
-        <Form.Item {...formItemLayout} label="显示名称" help="最大长度24个字符或汉字">
-          {getFieldDecorator('displayName', {
-            initialValue: currentGroup.displayName,
-            rules: [
-              {
-                required: true,
-                message: '显示名称不能为空',
-              },
-            ],
-          })(<Input placeholder="请输入显示名称" />)}
+        <Form.Item
+          {...formItemLayout}
+          name="displayName"
+          label="显示名称"
+          help="最大长度24个字符或汉字"
+          rules={[
+            {
+              required: true,
+              message: '显示名称不能为空'
+            }
+          ]}
+        >
+          <Input placeholder="请输入显示名称" />
         </Form.Item>
-        <Form.Item {...formItemLayout} label="备注">
-          {getFieldDecorator('remark', {
-            initialValue: currentGroup.remark,
-            rules: [],
-          })(<TextArea rows={3} />)}
+        <Form.Item {...formItemLayout} name="remark" label="备注">
+          <TextArea rows={3} />
         </Form.Item>
       </Form>
     </DrawerWrapper>
@@ -102,7 +95,7 @@ const GroupDrawer: React.FC<IProps> = props => {
 
 GroupDrawer.defaultProps = {
   visible: false,
-  currentGroup: {},
+  currentGroup: {}
 };
 
-export default Form.create<IProps>()(GroupDrawer);
+export default GroupDrawer;

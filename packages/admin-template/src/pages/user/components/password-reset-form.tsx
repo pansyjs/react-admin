@@ -1,32 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
 import router from 'umi/router';
-import { Form, Input, Icon, Button } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Input, Button, Form } from 'antd';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
 
-interface IProps extends FormComponentProps {
+interface PasswordResetFormProps {
   prefixCls?: string;
   loading?: boolean;
   onSubmit?: (values) => void;
 }
 
-const FormItem = Form.Item;
+const PasswordResetForm: FC<PasswordResetFormProps> = (props) => {
+  const { prefixCls, loading, onSubmit } = props;
 
-const PasswordResetForm: React.FC<IProps> = props => {
-  const {
-    prefixCls,
-    loading,
-    onSubmit,
-    form: { validateFields, getFieldDecorator },
-  } = props;
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    validateFields((error, values) => {
-      if (!error) return;
-      onSubmit && onSubmit(values);
-    });
+  const handleSubmit = (values) => {
+    onSubmit && onSubmit(values);
   };
 
   const handleReturnLogin = () => {
@@ -34,76 +22,72 @@ const PasswordResetForm: React.FC<IProps> = props => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormItem>
-        {getFieldDecorator('username', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.username.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            prefix={<Icon type="user" />}
-            placeholder={`${formatMessage({ id: 'app.login.username' })}`}
-          />,
-        )}
-      </FormItem>
-      <FormItem>
-        {getFieldDecorator('oldPassword', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.verification-code.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            prefix={<Icon type="lock" />}
-            placeholder={`${formatMessage({ id: 'app.password-reset.old-password' })}`}
-          />,
-        )}
-      </FormItem>
-      <FormItem>
-        {getFieldDecorator('password', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.verification-code.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            type="password"
-            autoComplete="off"
-            prefix={<Icon type="lock" />}
-            placeholder={`${formatMessage({ id: 'app.password-reset.new-password' })}`}
-          />,
-        )}
-      </FormItem>
-      <FormItem>
-        {getFieldDecorator('confirmPassword', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.verification-code.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            type="password"
-            autoComplete="off"
-            prefix={<Icon type="lock" />}
-            placeholder={`${formatMessage({ id: 'app.password-reset.confirm-password' })}`}
-          />,
-        )}
-      </FormItem>
-      <FormItem>
+    <Form onFinish={handleSubmit}>
+      <Form.Item
+        name="username"
+        rules={[
+          {
+            required: true,
+            message: formatMessage({ id: 'validation.username.required' })
+          }
+        ]}
+      >
+        <Input
+          size="large"
+          prefix={<UserOutlined />}
+          placeholder={`${formatMessage({ id: 'app.login.username' })}`}
+        />
+      </Form.Item>
+      <Form.Item
+        name="oldPassword"
+        rules={[
+          {
+            required: true,
+            message: formatMessage({ id: 'validation.verification-code.required' })
+          }
+        ]}
+      >
+        <Input
+          size="large"
+          prefix={<LockOutlined />}
+          placeholder={`${formatMessage({ id: 'app.password-reset.old-password' })}`}
+        />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: formatMessage({ id: 'validation.verification-code.required' })
+          }
+        ]}
+      >
+        <Input
+          size="large"
+          type="password"
+          autoComplete="off"
+          prefix={<LockOutlined />}
+          placeholder={`${formatMessage({ id: 'app.password-reset.new-password' })}`}
+        />
+      </Form.Item>
+      <Form.Item
+        name="confirmPassword"
+        rules={[
+          {
+            required: true,
+            message: formatMessage({ id: 'validation.verification-code.required' })
+          }
+        ]}
+      >
+        <Input
+          size="large"
+          type="password"
+          autoComplete="off"
+          prefix={<LockOutlined />}
+          placeholder={`${formatMessage({ id: 'app.password-reset.confirm-password' })}`}
+        />
+      </Form.Item>
+      <Form.Item>
         <Button loading={loading} type="primary" htmlType="submit" size="large" block>
           <FormattedMessage id="app.password-reset.button" />
         </Button>
@@ -112,13 +96,13 @@ const PasswordResetForm: React.FC<IProps> = props => {
             <FormattedMessage id="app.password-reset.login" />
           </span>
         </div>
-      </FormItem>
+      </Form.Item>
     </Form>
   );
 };
 
 PasswordResetForm.defaultProps = {
-  loading: false,
+  loading: false
 };
 
-export default Form.create<IProps>()(PasswordResetForm);
+export default PasswordResetForm;

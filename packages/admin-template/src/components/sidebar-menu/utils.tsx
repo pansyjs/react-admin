@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import Icon from '@ant-design/icons';
 import pathToRegexp from 'path-to-regexp';
 import IconFont from '@/components/icon-font';
 import { urlToList } from '@pansy/url-utils';
@@ -14,7 +14,6 @@ export const getIcon = (icon?: string | React.ReactNode) => {
     if (icon.startsWith('icon-')) {
       return <IconFont type={icon} />;
     }
-    return <Icon type={icon} />;
   }
   return icon;
 };

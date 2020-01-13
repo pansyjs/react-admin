@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from '@pansy/classnames';
-import { Spin, Menu, Icon, Avatar } from 'antd';
+import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { Spin, Menu, Avatar } from 'antd';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import HeaderDropdown from '@/components/header-dropdown';
 import SelectLang from '@/components/select-lang';
@@ -23,16 +24,16 @@ const GlobalHeaderRight: React.FC<IProps> = (props) => {
   const menu = (
     <Menu className={`${prefixCls}__menu`} selectedKeys={[]} onClick={handleMenuClick}>
       <Menu.Item key="account-center">
-        <Icon type="user" />
+        <UserOutlined />
         <FormattedMessage id="menu.account.center" defaultMessage="account center" />
       </Menu.Item>
       <Menu.Item key="account-settings">
-        <Icon type="setting" />
+        <SettingOutlined />
         <FormattedMessage id="menu.account.settings" defaultMessage="account settings" />
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="logout">
-        <Icon type="logout" />
+        <LogoutOutlined />
         <FormattedMessage id="menu.account.logout" defaultMessage="logout" />
       </Menu.Item>
     </Menu>

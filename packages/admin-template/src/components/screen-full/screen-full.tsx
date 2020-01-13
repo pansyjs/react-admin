@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from '@pansy/classnames';
-import { Icon } from 'antd';
+import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { useFullscreen, useToggle } from '@pansy/hooks';
 import './screen-full.less';
 
@@ -25,8 +25,8 @@ const FullScreenIcon: React.FC<IProps> = (props) => {
         toggle();
       }}
     >
-      {!isFullScreen && <Icon type="fullscreen" />}
-      {isFullScreen && <Icon type="fullscreen-exit" />}
+      {!isFullScreen && <FullscreenOutlined />}
+      {isFullScreen && <FullscreenExitOutlined />}
     </span>
   );
 };

@@ -1,40 +1,27 @@
-import React from 'react';
-import { Form, Input, Icon, Button } from 'antd';
-import { FormComponentProps } from 'antd/es/form';
+import React, { FC } from 'react';
+import { KeyOutlined, MobileOutlined } from '@ant-design/icons';
+import { Input, Button, Form } from 'antd';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
 import { SendCode } from '@alitajs/antd-plus';
 
-interface IProps extends FormComponentProps {
+interface SMSLoginFormProps {
   prefixCls: string;
   loading?: boolean;
   onLogin?: (values) => void;
   onChangeType?: (type: string) => void;
 }
 
-const FormItem = Form.Item;
-
-const SMSLoginForm: React.FC<IProps> = props => {
-  const {
-    prefixCls,
-    loading,
-    onLogin,
-    onChangeType,
-    form: { validateFields, getFieldDecorator },
-  } = props;
+const SMSLoginForm: FC<SMSLoginFormProps> = (props) => {
+  const { prefixCls, loading, onLogin, onChangeType } = props;
   const loginType = 'password';
   const [start, setStart] = React.useState<boolean>(false);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    validateFields((error, values) => {
-      if (!error) return;
-      onLogin &&
-        onLogin({
-          ...values,
-          type: loginType,
-        });
-    });
+  const handleSubmit = (values) => {
+    onLogin &&
+      onLogin({
+        ...values,
+        type: loginType
+      });
   };
 
   const handleChangeLoginType = () => {
@@ -46,49 +33,38 @@ const SMSLoginForm: React.FC<IProps> = props => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormItem>
-        {getFieldDecorator('mobile', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.mobile.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            prefix={<Icon type="mobile" />}
-            placeholder={`${formatMessage({ id: 'app.login.mobile' })}`}
-          />,
-        )}
-      </FormItem>
-      <FormItem>
-        {getFieldDecorator('code', {
-          rules: [
-            {
-              required: true,
-              message: formatMessage({ id: 'validation.verification-code.required' }),
-            },
-          ],
-        })(
-          <Input
-            size="large"
-            autoComplete="off"
-            maxLength={6}
-            prefix={<Icon type="key" />}
-            placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
-            suffix={
-              <SendCode
-                start={start}
-                onClick={handleSendCode}
-                className="verification-code-button"
-              />
-            }
-          />,
-        )}
-      </FormItem>
-      <FormItem>
+    <Form onFinish={handleSubmit}>
+      <Form.Item
+        name="username"
+        rules={[{ required: true, message: formatMessage({ id: 'validation.mobile.required' }) }]}
+      >
+        <Input
+          size="large"
+          prefix={<MobileOutlined />}
+          placeholder={`${formatMessage({ id: 'app.login.mobile' })}`}
+        />
+      </Form.Item>
+      <Form.Item
+        name="code"
+        rules={[
+          {
+            required: true,
+            message: formatMessage({ id: 'validation.verification-code.required' })
+          }
+        ]}
+      >
+        <Input
+          size="large"
+          autoComplete="off"
+          maxLength={6}
+          prefix={<KeyOutlined />}
+          placeholder={`${formatMessage({ id: 'app.login.verification-code' })}`}
+          suffix={
+            <SendCode start={start} onClick={handleSendCode} className="verification-code-button" />
+          }
+        />
+      </Form.Item>
+      <Form.Item>
         <Button loading={loading} type="primary" htmlType="submit" size="large" block>
           <FormattedMessage id="app.login.login" />
         </Button>
@@ -97,13 +73,13 @@ const SMSLoginForm: React.FC<IProps> = props => {
             <FormattedMessage id="app.login.login-type-password" />
           </span>
         </div>
-      </FormItem>
+      </Form.Item>
     </Form>
   );
 };
 
 SMSLoginForm.defaultProps = {
-  loading: false,
+  loading: false
 };
 
-export default Form.create<IProps>()(SMSLoginForm);
+export default SMSLoginForm;

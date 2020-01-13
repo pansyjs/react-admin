@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { connect } from 'dva';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, Card, Tooltip, Typography, Modal } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
 import Table from '@jiumao/rc-table';
@@ -15,7 +16,7 @@ interface IProps extends ConnectProps {
 const { Paragraph } = Typography;
 const { confirm } = Modal;
 
-const ActionPage: React.FC<IProps> = props => {
+const ActionPage: React.FC<IProps> = (props) => {
   const { dispatch, modules, actions } = props;
   const [visible, setVisible] = useState<boolean>(false);
   const [formType, setFormType] = useState<TFormType>('create');
@@ -23,14 +24,14 @@ const ActionPage: React.FC<IProps> = props => {
 
   React.useEffect(() => {
     dispatch({
-      type: 'action/fetchModules',
+      type: 'action/fetchModules'
     });
     getActions();
   }, []);
 
   const getActions = () => {
     dispatch({
-      type: 'action/fetchList',
+      type: 'action/fetchList'
     });
   };
 
@@ -40,7 +41,7 @@ const ActionPage: React.FC<IProps> = props => {
     setFormType('create');
   };
 
-  const showUpdateView = record => {
+  const showUpdateView = (record) => {
     setCurrentAction(record);
     setVisible(true);
     setFormType('update');
@@ -50,7 +51,7 @@ const ActionPage: React.FC<IProps> = props => {
     setVisible(false);
   };
 
-  const handleSubmit = data => {
+  const handleSubmit = (data) => {
     if (formType === 'create') {
       dispatch({
         type: 'action/fetchCreate',
@@ -58,7 +59,7 @@ const ActionPage: React.FC<IProps> = props => {
         callback: () => {
           setVisible(false);
           getActions();
-        },
+        }
       });
     } else {
       dispatch({
@@ -67,12 +68,12 @@ const ActionPage: React.FC<IProps> = props => {
         callback: () => {
           setVisible(false);
           getActions();
-        },
+        }
       });
     }
   };
 
-  const handleConfirmRemove = value => {
+  const handleConfirmRemove = (value) => {
     confirm({
       title: `确定删除${value.name}操作?`,
       content: '删除不可恢复',
@@ -81,19 +82,19 @@ const ActionPage: React.FC<IProps> = props => {
       cancelText: '取消',
       onOk() {
         handleRemove(value);
-      },
+      }
     });
   };
 
-  const handleRemove = value => {
+  const handleRemove = (value) => {
     dispatch({
       type: 'action/fetchRemove',
       payload: {
-        id: value.id,
-      },
+        id: value.id
+      }
     }).then(() => {
       dispatch({
-        type: 'action/fetchList',
+        type: 'action/fetchList'
       });
     });
   };
@@ -102,28 +103,28 @@ const ActionPage: React.FC<IProps> = props => {
     {
       title: '所属模块',
       dataIndex: 'module',
-      render: text => {
+      render: (text) => {
         return text.name || '--';
-      },
+      }
     },
     {
       title: '操作名称',
-      dataIndex: 'name',
+      dataIndex: 'name'
     },
     {
       title: '显示名称',
-      dataIndex: 'displayName',
+      dataIndex: 'displayName'
     },
     {
       title: '操作类型',
       dataIndex: 'type',
-      render: text => {
+      render: (text) => {
         return text === 1 ? '系统操作' : '其他操作';
-      },
+      }
     },
     {
       title: '备注',
-      dataIndex: 'remark',
+      dataIndex: 'remark'
     },
     {
       title: '操作',
@@ -137,7 +138,7 @@ const ActionPage: React.FC<IProps> = props => {
               <Tooltip placement="top" title="更新">
                 <Button
                   size="small"
-                  icon="edit"
+                  icon={<EditOutlined />}
                   onClick={() => {
                     showUpdateView(record);
                   }}
@@ -147,7 +148,7 @@ const ActionPage: React.FC<IProps> = props => {
                 <Button
                   type="danger"
                   size="small"
-                  icon="delete"
+                  icon={<DeleteOutlined />}
                   onClick={() => {
                     handleConfirmRemove(record);
                   }}
@@ -156,15 +157,15 @@ const ActionPage: React.FC<IProps> = props => {
             </div>
           );
         }
-      },
-    },
+      }
+    }
   ];
 
   const table = useMemo(() => {
     return (
       <Table
         data={{
-          list: actions,
+          list: actions
         }}
         columns={columns}
       />
@@ -178,7 +179,7 @@ const ActionPage: React.FC<IProps> = props => {
         extra={[
           <Button key="1" type="primary" onClick={showCreateView}>
             新建操作
-          </Button>,
+          </Button>
         ]}
       >
         <Paragraph>
@@ -202,5 +203,5 @@ const ActionPage: React.FC<IProps> = props => {
 
 export default connect(({ action }: ConnectState) => ({
   modules: action.modules,
-  actions: action.list,
+  actions: action.list
 }))(ActionPage);
