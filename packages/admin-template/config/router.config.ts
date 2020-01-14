@@ -9,14 +9,14 @@ export default [
       {
         path: '/user/login',
         name: 'login',
-        component: './user/login',
+        component: './user/login'
       },
       {
         path: '/user/password-reset',
         name: 'password-reset',
-        component: './user/password-reset',
-      },
-    ],
+        component: './user/password-reset'
+      }
+    ]
   },
   // app
   {
@@ -29,21 +29,21 @@ export default [
       {
         path: '/dashboard',
         name: 'dashboard',
-        icon: 'dashboard',
+        icon: 'icon-dashboard',
         routes: [
           {
             path: '/dashboard/analysis',
             name: 'analysis',
             authority: 'dashboard/analysis',
-            component: './dashboard/analysis',
+            component: './dashboard/analysis'
           },
           {
             path: '/dashboard/workplace',
             name: 'workplace',
             authority: 'dashboard/workplace',
-            component: './dashboard/workplace',
-          },
-        ],
+            component: './dashboard/workplace'
+          }
+        ]
       },
       {
         name: 'exception',
@@ -55,81 +55,81 @@ export default [
           {
             path: '/exception/403',
             name: 'not-permission',
-            component: './exception/403',
+            component: './exception/403'
           },
           {
             path: '/exception/404',
             name: 'not-find',
-            component: './exception/404',
+            component: './exception/404'
           },
           {
             path: '/exception/500',
             name: 'server-error',
-            component: './exception/500',
-          },
-        ],
+            component: './exception/500'
+          }
+        ]
       },
       {
         name: 'permission',
-        icon: 'lock',
+        icon: 'icon-auth',
         path: '/permission',
         routes: [
           {
             path: '/permission/actions',
             name: 'actions',
             authority: ['permission/actionList'],
-            component: './permission/actions',
+            component: './permission/actions'
           },
           {
             path: '/permission/policies',
             name: 'policies',
             authority: ['permission/policyList'],
-            component: './permission/policies',
+            component: './permission/policies'
           },
           {
             path: '/permission/policies/create',
             name: 'policy-create',
             hideInMenu: true,
-            component: './permission/policies-create',
-          },
-        ],
+            component: './permission/policies-create'
+          }
+        ]
       },
       {
         name: 'system',
-        icon: 'desktop',
+        icon: 'icon-system',
         path: '/system',
         routes: [
           {
             path: '/system/user',
             name: 'user',
             authority: '*',
-            component: './system/users',
+            component: './system/users'
           },
           {
             path: '/system/group',
             name: 'group',
             authority: '*',
-            component: './system/groups',
-          },
-        ],
+            component: './system/groups'
+          }
+        ]
       },
       {
         name: 'account',
-        icon: 'user',
+        icon: 'icon-account',
         path: '/account',
         routes: [
           {
             path: '/account/center',
             name: 'center',
-            component: './account/center',
+            component: './account/center'
           },
           {
             path: '/account/settings',
             name: 'settings',
-            component: './account/settings',
-          },
-        ],
-      },
-    ],
-  },
+            component: './account/settings'
+          }
+        ]
+      }
+    ]
+  }
 ];
