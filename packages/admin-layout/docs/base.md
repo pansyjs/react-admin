@@ -7,7 +7,7 @@ order: 9
 
 @pansy/admin-layout 与 umi 配合使用会有最好的效果，umi 会把 config.ts 中的路由帮我们自动注入到配置的 layout 中，这样我们就可以免去手写菜单的烦恼。
 
-@pansy/admin-layout 扩展了 umi 的 router 配置，新增了 name，icon，locale,hideInMenu,hideChildrenInMenu 等配置，这样可以更方便的生成菜单，在一个地方配置即可。数据格式如下：
+@pansy/admin-layout 扩展了 umi 的 router 配置，新增了 name、icon、locale、hideInMenu、hideChildrenInMenu 等配置，这样可以更方便的生成菜单，在一个地方配置即可。数据格式如下：
 
 ```ts | pure
 export interface MenuDataItem {
