@@ -1,6 +1,7 @@
 {
-  "name": "react-admin-template",
+  "name": "@pansy/admin-template",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@alitajs/antd-plus": "^1.2.0",
     "@jiumao/rc-table": "^0.0.5",
+    "@pansy/admin-layout": "^1.0.0",
     "@pansy/classnames": "^1.0.1",
     "@pansy/hooks": "^0.0.3",
     "@pansy/utils": "^0.3.6",

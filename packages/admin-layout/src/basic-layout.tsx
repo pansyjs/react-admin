@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const BasicLayout: FC = () => {
-  return <div></div>;
+  return <div>BasicLayout</div>;
 };
 
 export default BasicLayout;

@@ -7,7 +7,7 @@ const { company } = defaultSettings;
 const Copyright = () => {
   return (
     <div>
-      Copyright <CopyrightOutlined /> 2019{company}技术部出品
+      Copyright <CopyrightOutlined /> 2020{company}技术部出品
     </div>
   );
 };
