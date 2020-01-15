@@ -1,5 +1,7 @@
 # production
-/dist
+dist
+es
+lib
 
 # misc
 .DS_Store
@@ -21,8 +23,5 @@ node_modules
 
 package-lock.json
 
-
 # dev
 functions
-packages/admin-layout/es
-packages/admin-layout/lib
