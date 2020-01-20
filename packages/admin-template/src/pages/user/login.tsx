@@ -1,36 +1,31 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { connect } from 'dva';
 import store from 'store';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
-import { TLoginType } from '@/models/login';
+import { LoginType } from '@/models/login';
 import { ConnectState } from '@/models/connect';
 import PasswordLoginForm from './components/password-login-form';
 import SMSLoginForm from './components/sms-login-form';
 import './login.less';
 
-interface IProps {
+interface LoginPageProps {
   prefixCls?: string;
-  loginType: TLoginType;
+  loginType: LoginType;
   loading: boolean;
   dispatch: (args: any) => void;
 }
 
-class LoginPage extends React.Component<IProps, any> {
-  static defaultProps = {
-    prefixCls: 'login-page',
-  };
+const LoginPage: FC<LoginPageProps> = (props) => {
+  const { prefixCls, loginType, loading, dispatch } = props;
 
-  handleLogin = values => {
-    const { dispatch } = this.props;
-
+  const handleLogin = (values) => {
     dispatch({
       type: 'login/fetchLogin',
       payload: values,
     });
   };
 
-  handleChangeType = type => {
-    const { dispatch } = this.props;
+  const handleChangeType = (type) => {
     const { loginType } = STORAGE_KEY_DEFAULT_CONFIG;
 
     store.set(loginType, type);
@@ -41,34 +36,34 @@ class LoginPage extends React.Component<IProps, any> {
     });
   };
 
-  render() {
-    const { prefixCls, loginType, loading } = this.props;
+  return (
+    <div className={prefixCls}>
+      {/** 账户密码登录 */}
+      {loginType === 'password' && (
+        <PasswordLoginForm
+          prefixCls={prefixCls}
+          loading={loading}
+          onLogin={handleLogin}
+          onChangeType={handleChangeType}
+        />
+      )}
 
-    return (
-      <div className={prefixCls}>
-        {/** 账户密码登录 */}
-        {loginType === 'password' && (
-          <PasswordLoginForm
-            prefixCls={prefixCls}
-            loading={loading}
-            onLogin={this.handleLogin}
-            onChangeType={this.handleChangeType}
-          />
-        )}
-
-        {/** 短信验证码登录 */}
-        {loginType === 'sms' && (
-          <SMSLoginForm
-            prefixCls={prefixCls}
-            loading={loading}
-            onLogin={this.handleLogin}
-            onChangeType={this.handleChangeType}
-          />
-        )}
-      </div>
-    );
-  }
+      {/** 短信验证码登录 */}
+      {loginType === 'sms' && (
+        <SMSLoginForm
+          prefixCls={prefixCls}
+          loading={loading}
+          onLogin={handleLogin}
+          onChangeType={handleChangeType}
+        />
+      )}
+    </div>
+  );
 }
+
+LoginPage.defaultProps = {
+  prefixCls: 'login-page',
+};
 
 export default connect(({ login, loading }: ConnectState) => ({
   loginType: login.type,

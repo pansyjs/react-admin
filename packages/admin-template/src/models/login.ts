@@ -9,11 +9,11 @@ import { parseQuery } from '@/utils/path-tools';
 import { setCookie, removeCookie } from '@/utils/cookie';
 import { STORAGE_KEY_DEFAULT_CONFIG } from '@/config';
 
-export type TLoginType = 'password' | 'sms';
+export type LoginType = 'password' | 'sms';
 
 export interface ILoginModelState {
   status: boolean;
-  type: TLoginType;
+  type: LoginType;
 }
 
 export interface ILoginModel {
