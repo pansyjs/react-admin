@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/ts-react/react-admin-template">
-    <img width="100" src="https://github.com/ts-react/react-admin-template/blob/gh-pages/assets/logo.svg">
+    <img width="100" src="https://github.com/ts-react/react-admin-template/blob/feat/next/packages/admin-template/src/assets/logo.svg">
   </a>
 </p>
 
