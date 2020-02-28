@@ -3259,6 +3259,72 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@formily/antd@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/antd/-/antd-1.0.2.tgz#5777caf57c9c98b9ea13664c710dad218f870ecf"
+  integrity sha512-PzeVzz/yq6s1O7QImFqB24x7q80+UuzrdeIK/hRxAQFpIzmvsMKxGAqK5T3o+ukhjt/+MJHj+FMR2rZTj5XqOw==
+  dependencies:
+    "@formily/react-schema-renderer" "^1.0.2"
+    "@formily/react-shared-components" "^1.0.2"
+    "@formily/shared" "^1.0.2"
+    classnames "^2.2.6"
+    react-eva "^1.0.0-alpha.0"
+    react-stikky "^0.1.15"
+    rxjs "^6.5.1"
+    styled-components "^4.1.1"
+
+"@formily/core@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/core/-/core-1.0.2.tgz#ce73e36c447c88b5dd66c8703ef8c7be869c46e3"
+  integrity sha512-AgAU5QZ4Du6jEa0n0A3zRUffj6bfvEzWReOtoLIWp4rlbzPL8xoDDMQ6G4U2eEKLSiNXcLsi3psT6op6MKWB3g==
+  dependencies:
+    "@formily/shared" "^1.0.2"
+    "@formily/validator" "^1.0.2"
+    immer "^3.2.0"
+
+"@formily/react-schema-renderer@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/react-schema-renderer/-/react-schema-renderer-1.0.2.tgz#255ad23333d693022c9478cb71f0a7ae5f69db76"
+  integrity sha512-ZqF8rMgSqzsExLwM8Tn6v7vRaN9pBi373Ygc+6YMVwCc7YqGnxSyhbJvJcfJYNOoimTAURPeD0ALyz4kYeLR9Q==
+  dependencies:
+    "@formily/core" "^1.0.2"
+    "@formily/react" "^1.0.2"
+    "@formily/shared" "^1.0.2"
+    "@formily/validator" "^1.0.2"
+    pascal-case "^2.0.1"
+
+"@formily/react-shared-components@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/react-shared-components/-/react-shared-components-1.0.2.tgz#8a3f9b001c148624e426cd61bd06bbd3f9e95cd3"
+  integrity sha512-woZnJT7stpNcDwTHI+o6klSAde/yKM0DUGUnFswE/Bf3AGK+a6q1CdRz364WpFk3civPGglPnv+2xxOZJgh/aQ==
+  dependencies:
+    "@formily/shared" "^1.0.2"
+    react-drag-listview "^0.1.6"
+
+"@formily/react@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/react/-/react-1.0.2.tgz#e044ffe7e2ec8fbb74792945201f1383c2cca484"
+  integrity sha512-otEkNrASXbFkzziQ6EFj/UM+/DtQ30luYYf5I2bfVtEcPf5Oy4ltHgK3Yli+CStbBcFNU0jKiGElP2QdBKIzbg==
+  dependencies:
+    "@formily/core" "^1.0.2"
+    "@formily/shared" "^1.0.2"
+
+"@formily/shared@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/shared/-/shared-1.0.2.tgz#63b1da708c97b054e006a2f780291cd6eb09251d"
+  integrity sha512-A4fKS20xvowX58DbA2XwWJTiTXjxARl0g7c3Ak6PlfSC8EqeenNxaF2hSZlgZ8pjsRiqAy9ZCMNEebQWoipmJQ==
+  dependencies:
+    camel-case "^3.0.0"
+    cool-path "^0.1.23"
+    deepmerge "^4.0.0"
+
+"@formily/validator@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@formily/validator/-/validator-1.0.2.tgz#3b37747722473883939224b2a1abbc45842fbe12"
+  integrity sha512-cTlQGB5gbjbHbTWcPduuwiQpOu9XnEkMsA+mzGdv9t2RCbb6c1/icBr8q8TpJ48kZCtyrZjOWpxqYF/q0fzNMg==
+  dependencies:
+    "@formily/shared" "^1.0.2"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -5117,70 +5183,6 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
     tsutils "^3.17.1"
-
-"@uform/antd@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/antd/-/antd-1.0.0-rc.3.tgz#05d9a6ef0917307688c7bf0749093caa30b52b4d"
-  integrity sha512-07kc/64KKLwplb702Un7S05T8eehx8UcmBgOyk+iF96UJuzIqqEus2XUnJ3bsrpy7ITxX9n1DpnuLeO1KGLjww==
-  dependencies:
-    "@uform/react-schema-renderer" "^1.0.0-rc.3"
-    "@uform/react-shared-components" "^1.0.0-rc.3"
-    "@uform/shared" "^1.0.0-rc.3"
-    classnames "^2.2.6"
-    react-eva "^1.0.0-alpha.0"
-    react-stikky "^0.1.15"
-    rxjs "^6.5.1"
-    styled-components "^4.1.1"
-
-"@uform/core@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/core/-/core-1.0.0-rc.3.tgz#08a7aa7c865f7f90f84664e22252038449038911"
-  integrity sha512-rkZ+MTM9zulDiXYQtubKf2YFsX7IdX/ST1BpM6VCx79I/PcP9UcDG344v3ZyVLLvKobqbDf8NJRGmF7E0/v7pA==
-  dependencies:
-    "@uform/shared" "^1.0.0-rc.3"
-    "@uform/validator" "^1.0.0-rc.3"
-    immer "^3.2.0"
-
-"@uform/react-schema-renderer@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/react-schema-renderer/-/react-schema-renderer-1.0.0-rc.3.tgz#72eb3de803bbcde975ee7181a3b006b3a67595e3"
-  integrity sha512-fMrcuU5aibVww8cvesfa1QE8BmVg2AyDR1mQ2m18bxl/ZdrxRqZcc0MLZO2uIIln1W+BdxXH39PeCvIXCHqtsQ==
-  dependencies:
-    "@uform/react" "^1.0.0-rc.3"
-    "@uform/shared" "^1.0.0-rc.3"
-    "@uform/validator" "^1.0.0-rc.3"
-    pascal-case "^2.0.1"
-
-"@uform/react-shared-components@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/react-shared-components/-/react-shared-components-1.0.0-rc.3.tgz#2bd878fe95f338d2721ca1e8dbcbb989af0dc605"
-  integrity sha512-hU6UqBJOdZ/lhS9xEvrc1BZiyK6sDSr68KVb2sbEbYAXvsY2JlnHFp1pyF4HpZuorzkab8wc6A8jl4NWjAG7ow==
-  dependencies:
-    "@uform/shared" "^1.0.0-rc.3"
-
-"@uform/react@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/react/-/react-1.0.0-rc.3.tgz#d9a71058177cce494aa4b24239cdbe4bbf5f9272"
-  integrity sha512-pA22wVwL/ShOhN3cOgKfowiYXLNOhBIyNHi3HOH5wKR84bi5Jtk/6OXdMU9XPHyQYfIguQg1q40ZH/EEiAx/OQ==
-  dependencies:
-    "@uform/core" "^1.0.0-rc.3"
-    "@uform/shared" "^1.0.0-rc.3"
-
-"@uform/shared@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/shared/-/shared-1.0.0-rc.3.tgz#322a18a41d9b90d1e8375b54c42d28e42c37e7b3"
-  integrity sha512-RRDoiMdwc8FWl8K99kPN0p/HUVgST2j4mt3/XStS4cmy9C+DoU74DOh2nOW/TCna+UsEAb5zKnkuefSNMSC4fA==
-  dependencies:
-    camel-case "^3.0.0"
-    cool-path "^0.1.23"
-    deepmerge "^4.0.0"
-
-"@uform/validator@^1.0.0-rc.3":
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@uform/validator/-/validator-1.0.0-rc.3.tgz#09aede9f0ae4494de20a9ea64c3c284df0c2d061"
-  integrity sha512-V3bHCrzriLHr8lw2WPq9exJvflHUCia/hkFxn7K0jOGZZNQ1mqjcfSgmKSsFgjBvTfkNvFkYNvD3i5Zbel4K1g==
-  dependencies:
-    "@uform/shared" "^1.0.0-rc.3"
 
 "@umijs/error-code-map@^1.0.0":
   version "1.0.1"
@@ -18692,6 +18694,13 @@ react-dom@^16.12.0, react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
+react-drag-listview@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-drag-listview/-/react-drag-listview-0.1.6.tgz#2aa9e0446edfea618ca209814b72fd110e8ed290"
+  integrity sha512-0nSWkR1bMLKgLZIYY2YVURYapppzy46FNSs9uAcCxceo2lnajngzLQ3tBgWaTjKTlWMXD0MAcDUWFDYdqMPYUg==
+  dependencies:
+    prop-types "^15.5.8"
+
 react-error-overlay@5.1.6, react-error-overlay@^5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
@@ -22557,6 +22566,14 @@ umi-plugin-ui@1.5.1:
     sockjs-client "1.3.0"
     styled-components "^4.4.0"
     umi-ui-tasks "1.3.10"
+
+umi-request@^1.2.19:
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/umi-request/-/umi-request-1.2.19.tgz#57ec16322506674f2d6392d553119829cedb1589"
+  integrity sha512-gN3OyEJGs+h4Ly2UFBL/5vhFmTM11VJ3OIq2AB3tq3PCVwqwpjY09MAwzCT4rr8Ti02kdxcPaAEUllLP5XvJRQ==
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+    qs "^6.9.1"
 
 umi-test@1.9.3:
   version "1.9.3"

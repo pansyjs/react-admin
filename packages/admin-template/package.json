@@ -18,13 +18,12 @@
   "license": "MIT",
   "dependencies": {
     "@alitajs/antd-plus": "^1.2.0",
+    "@formily/antd": "^1.0.2",
     "@jiumao/rc-table": "^0.0.5",
     "@pansy/admin-layout": "^1.0.0",
     "@pansy/classnames": "^1.0.1",
     "@pansy/hooks": "^0.0.3",
     "@pansy/utils": "^0.3.6",
-    "@uform/antd": "^1.0.0-rc.3",
-    "@uform/core": "^1.0.0-rc.3",
     "antd": "^4.0.0",
     "axios": "^0.19.1",
     "dva": "^2.6.0-beta.19",
@@ -45,7 +44,8 @@
     "rollbar": "^2.14.4",
     "rxjs": "^6.5.4",
     "scheduler": "^0.18.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "umi-request": "^1.2.19"
   },
   "devDependencies": {
     "@alitajs/umi-plugin-deploy-config": "^0.1.2",
