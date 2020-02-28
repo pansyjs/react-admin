@@ -6,7 +6,7 @@ import { formatMessage, getLocale, setLocale } from 'umi-plugin-react/locale';
 import HeaderDropdown from '@/components/header-dropdown';
 import './select-lang.less';
 
-interface IProps {
+interface SelectLangProps {
   className?: string;
   prefixCls?: string;
 }
@@ -16,7 +16,7 @@ const locales = {
   'en-US': { label: 'English', icon: '🇬🇧' }
 };
 
-export const SelectLang: React.FC<IProps> = (props) => {
+export const SelectLang: React.FC<SelectLangProps> = (props) => {
   const { className, prefixCls } = props;
   const selectedLang = getLocale();
 

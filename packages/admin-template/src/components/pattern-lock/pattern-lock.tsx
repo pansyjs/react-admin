@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from '@pansy/classnames';
 import './pattern-lock.less';
 
-interface IProps {
+interface PatternLockProps {
   prefixCls: string;
   className?: string;
   matrix: [number, number];
@@ -15,7 +15,7 @@ interface IProps {
   allowRepeat: boolean;
 }
 
-const PatternLock: React.FC<IProps> = (props) => {
+const PatternLock: React.FC<PatternLockProps> = (props) => {
   const { prefixCls, className } = props;
   return <div></div>;
 };

@@ -1,6 +1,6 @@
 import { MenuTheme } from 'antd/es/menu/MenuContext';
 
-export interface IDefaultSettings {
+export interface DefaultSettings {
   // 页面主题
   theme: MenuTheme;
   // 菜单相关
@@ -18,7 +18,7 @@ export interface IDefaultSettings {
   company: string;
 }
 
-const defaultSettings: IDefaultSettings = {
+const defaultSettings: DefaultSettings = {
   theme: 'dark',
   menu: {
     disableLocal: false,

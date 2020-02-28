@@ -8,11 +8,11 @@ import MenuContext from '@/layouts/menu-context';
 import { urlToList } from '@pansy/url-utils';
 import './page-header-wrapper.less';
 
-interface IProps extends PageHeaderProps {
+interface PageHeaderWrapperProps extends PageHeaderProps {
   wrapperClassName?: string;
 }
 
-const PageHeaderWrapper: React.FC<IProps> = (props) => {
+const PageHeaderWrapper: React.FC<PageHeaderWrapperProps> = (props) => {
   const { wrapperClassName, prefixCls, ...restProps } = props;
   const { location, breadcrumbNameMap } = React.useContext(MenuContext);
 

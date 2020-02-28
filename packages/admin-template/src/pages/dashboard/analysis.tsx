@@ -11,6 +11,8 @@ import IntroduceRow from './components/introduce-row';
 import SalesCard from './components/sales-card';
 
 const AnalysisPage: React.FC = () => {
+  let data = undefined;
+
   return (
     <div>
       <IntroduceRow />

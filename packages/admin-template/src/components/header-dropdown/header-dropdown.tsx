@@ -4,11 +4,11 @@ import { DropDownProps } from 'antd/es/dropdown';
 import classNames from '@pansy/classnames';
 import './header-dropdown.less';
 
-interface IProps extends DropDownProps {
+interface HeaderDropdownProps extends DropDownProps {
   prefixCls?: string;
 }
 
-export const HeaderDropdown: React.FC<IProps> = (props) => {
+export const HeaderDropdown: React.FC<HeaderDropdownProps> = (props) => {
   const { prefixCls, overlayClassName, ...restProps } = props;
 
   return <Dropdown overlayClassName={classNames(prefixCls, overlayClassName)} {...restProps} />;

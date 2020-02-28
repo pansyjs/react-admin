@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { FC, ReactNode, CSSProperties, useState, useEffect } from 'react';
 import classNames from '@pansy/classnames';
 import './footer-toolbar.less';
 
-interface IProps {
+interface FooterToolbarProps {
   prefixCls?: string;
   className?: string;
-  extra?: React.ReactNode;
-  style?: React.CSSProperties;
+  extra?: ReactNode;
+  style?: CSSProperties;
 }
 
-const FooterToolbar: React.FC<IProps> = (props) => {
+const FooterToolbar: FC<FooterToolbarProps> = (props) => {
   const { prefixCls, className, style, extra, children } = props;
-  const [width, setWidth] = React.useState<number | string>(undefined);
+  const [width, setWidth] = useState<number | string>(undefined);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = () => {
       const width = `calc(100% - 80)`;
       setWidth(width);

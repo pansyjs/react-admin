@@ -7,14 +7,14 @@ import HeaderDropdown from '@/components/header-dropdown';
 import SelectLang from '@/components/select-lang';
 import ScreenFull from '@/components/screen-full';
 
-interface IProps {
+interface GlobalHeaderRightProps {
   prefixCls?: string;
   notices?: any[];
   onMenuClick?: (key: string) => void;
   currentUser?: APP.ICurrentUser;
 }
 
-const GlobalHeaderRight: React.FC<IProps> = (props) => {
+const GlobalHeaderRight: React.FC<GlobalHeaderRightProps> = (props) => {
   const { prefixCls, onMenuClick, currentUser } = props;
 
   const handleMenuClick = ({ key }) => {

@@ -1,19 +1,19 @@
 import { Reducer } from 'redux';
-import DefaultSettings, { IDefaultSettings } from '@/config/default-settings';
+import settings, { DefaultSettings } from '@/config/default-settings';
 
-export interface ISettingModelState extends IDefaultSettings {}
+export interface ISettingModelState extends DefaultSettings {}
 
 export interface ISettingModel {
   name: 'setting';
-  state: IDefaultSettings;
+  state: DefaultSettings;
   reducers: {
-    getSetting: Reducer<IDefaultSettings>;
+    getSetting: Reducer<DefaultSettings>;
   };
 }
 
 const SettingModel: ISettingModel = {
   name: 'setting',
-  state: DefaultSettings,
+  state: settings,
   reducers: {
     getSetting(state) {
       const setting: any = {};

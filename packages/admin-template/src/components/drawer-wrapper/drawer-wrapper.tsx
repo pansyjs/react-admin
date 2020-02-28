@@ -6,7 +6,7 @@ import { ButtonProps } from 'antd/es/button';
 import { DrawerProps } from 'antd/es/drawer';
 import './drawer-wrapper.less';
 
-interface IProps extends DrawerProps {
+interface DrawerWrapperProps extends DrawerProps {
   prefixCls?: string;
   onConfirm?: (e) => void;
   confirmButton?: ButtonProps;
@@ -14,7 +14,7 @@ interface IProps extends DrawerProps {
   showFooter?: boolean;
 }
 
-const DrawerWrapper: React.FC<IProps> = (props) => {
+const DrawerWrapper: React.FC<DrawerWrapperProps> = (props) => {
   const {
     className,
     prefixCls,

@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "jsx": "react",
     "sourceMap": true,
+    "removeComments": true,
     "esModuleInterop": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,

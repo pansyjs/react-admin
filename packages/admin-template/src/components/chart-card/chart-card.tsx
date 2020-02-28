@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from '@pansy/classnames';
 import { Card, Statistic } from 'antd';
 import { CardProps } from 'antd/es/card';
 import { StatisticProps } from 'antd/es/statistic/Statistic';
 import './chart-card.less';
 
-export interface IChartCardProps extends CardProps {
+export interface ChartCardProps extends CardProps {
   contentHeight?: number;
   footer?: React.ReactNode;
   statistic?: StatisticProps;
 }
 
-const ChartCard: React.FC<IChartCardProps> = (props) => {
+const ChartCard: FC<ChartCardProps> = (props) => {
   const prefixCls: string = 'lotus-chart-card';
   const { footer, contentHeight, statistic, loading, children, ...rest } = props;
 

@@ -3,7 +3,7 @@ import classNames from '@pansy/classnames';
 import { Tooltip } from 'antd';
 import './progress.less';
 
-export interface IProgressProps {
+export interface ProgressProps {
   className?: string;
   style?: React.CSSProperties;
   target: number;
@@ -13,7 +13,7 @@ export interface IProgressProps {
   percent?: number;
 }
 
-const Progress: React.FC<IProgressProps> = (props) => {
+const Progress: React.FC<ProgressProps> = (props) => {
   const prefixCls: string = 'lotus-progress';
   const { targetLabel, target, color, strokeWidth, percent, className, style } = props;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import store from 'store';
 
-interface IQueryData {
+interface QueryData {
   page: number;
   limit: number;
   [key: string]: any;
@@ -17,7 +17,7 @@ interface IQueryData {
 const useQueryData = (
   storageKey: string,
   initQueryData?: { [key: string]: any },
-): [IQueryData, (nextValue?: IQueryData) => void] => {
+): [QueryData, (nextValue?: QueryData) => void] => {
   let storageData = {};
   if (storageKey) {
     storageData = store.get(storageKey);
@@ -30,14 +30,14 @@ const useQueryData = (
     ...storageData,
   };
 
-  const [queryData, setQueryData] = React.useState<IQueryData>(defaultQueryData);
+  const [queryData, setQueryData] = React.useState<QueryData>(defaultQueryData);
 
   const storageQueryData = data => {
     storageKey && store.set(storageKey, data);
   };
 
   const toggle = React.useCallback(
-    (nextValue: IQueryData) => {
+    (nextValue: QueryData) => {
       storageQueryData(nextValue);
       setQueryData(nextValue);
     },

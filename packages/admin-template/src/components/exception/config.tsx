@@ -1,4 +1,4 @@
-interface IConfig {
+interface ExceptionConfig {
   [key: number]: {
     img: string;
     title: string;
@@ -6,7 +6,7 @@ interface IConfig {
   }
 }
 
-const config: IConfig = {
+const config: ExceptionConfig = {
   403: {
     img: 'https://gw.alipayobjects.com/zos/rmsportal/wZcnGqRDyhPOEYFcZDnb.svg',
     title: '403',

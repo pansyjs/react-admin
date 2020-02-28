@@ -4,12 +4,12 @@ import themeConfig from './theme.config';
 
 const { NODE_ENV } = process.env;
 
-export interface ILocalServerConfig {
+export interface LocalServerConfig {
   baseURL?: string;
 }
 
 // 设置后端接口地址
-let localServerConfig: ILocalServerConfig = {};
+let localServerConfig: LocalServerConfig = {};
 let BaseURL = '';
 
 try {

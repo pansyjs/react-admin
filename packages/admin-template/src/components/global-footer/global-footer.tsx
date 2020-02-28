@@ -9,7 +9,7 @@ type TLink = {
   blankTarget?: boolean;
 };
 
-interface IProps {
+interface GlobalFooterProps {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -17,7 +17,7 @@ interface IProps {
   copyright?: React.ReactNode;
 }
 
-export const GlobalFooter: React.FC<IProps> = (props) => {
+export const GlobalFooter: React.FC<GlobalFooterProps> = (props) => {
   const { prefixCls, className, style, links, copyright } = props;
 
   return (
