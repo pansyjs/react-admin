@@ -6,7 +6,7 @@ import { Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio/interface';
 import moment from 'moment';
 import classNames from 'classnames';
-import { formatMessage } from 'umi-plugin-react/locale';
+import { formatMessage } from 'umi';
 import { processQueryTimeRange } from './utils';
 import './days-range.less';
 

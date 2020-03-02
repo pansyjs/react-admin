@@ -1,7 +1,5 @@
 // https://umijs.org/zh/guide/runtime-config.html
 import pathToRegexp from 'path-to-regexp';
-import { message } from 'antd';
-import router from 'umi/router';
 import { APP_DEFAULT_CONFIG } from '@/config';
 import { getCookie } from '@/utils/cookie';
 
@@ -13,11 +11,11 @@ export function onRouteChange({ location }) {
   const token = getCookie();
   let isLogin = true;
 
-  whiteList.forEach((item) => {
-    if (pathToRegexp(item).test(location.pathname)) {
-      isLogin = false;
-    }
-  });
+  // whiteList.forEach((item) => {
+  //   if (pathToRegexp(item).test(location.pathname)) {
+  //     isLogin = false;
+  //   }
+  // });
 
   // 需要登录页面 未登录状态不可访问
   // if (!token && isLogin) {

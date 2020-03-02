@@ -17,7 +17,8 @@
     "lib": ["esnext", "dom"],
     "rootDirs": ["/src", "/test", "/mock", "./typings"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@@/*": ["src/.umi/*"]
     }
   },
   "include": ["./src"],

@@ -1,5 +1,5 @@
+import { defineConfig } from 'umi';
 import routes from './router.config';
-import plugins from './plugin.config';
 import themeConfig from './theme.config';
 
 const { NODE_ENV } = process.env;
@@ -21,13 +21,11 @@ if (NODE_ENV === 'development') {
   BaseURL = localServerConfig.baseURL;
 }
 
-export default {
-  plugins,
+export default defineConfig({
   targets: {
     // 推荐设置，项目不用考虑IE可删除
     ie: 9
   },
-  treeShaking: true,
   define: {
     BASE_URL: BaseURL
   },
@@ -44,18 +42,19 @@ export default {
         libraryName: '@alitajs/antd-plus',
         libraryDirectory: 'es',
         style: true
-      },
-      'ant-plus'
+      }
     ]
   ],
-  disableCSSModules: true
-  // 代理配置 - 请根据需要开启
-  // 访问 `/api/users` 代理到 `http://api.jiumao.com/users`]
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://api.jiumao.com/',
-  //     changeOrigin: true,
-  //     pathRewrite: { '^/api' : '' }
-  //   }
-  // }
-};
+  // 插件相关
+  antd: true,
+  dva: {
+    hmr: true
+  },
+  dynamicImport: {
+    loading: '@/components/page-loading/index'
+  },
+  locale: {
+    default: 'zh-CN',
+    baseNavigator: true,
+  },
+});
