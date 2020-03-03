@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from '@pansy/classnames';
-import router from 'umi/router';
+import { history } from 'umi';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/global-header';
@@ -24,12 +24,12 @@ const HeaderView: React.FC<IHeaderViewProps> = (props) => {
   const handleMenuClick = (key) => {
     // 跳转到个人中心
     if (key === 'account-center') {
-      router.push('/account/center');
+      history.push('/account/center');
       return;
     }
 
     if (key === 'account-settings') {
-      router.push('/account/settings');
+      history.push('/account/settings');
       return;
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import { Menu } from 'antd';
 import { MenuMode } from 'antd/es/menu';
 import { MenuTheme } from 'antd/es/menu/MenuContext';

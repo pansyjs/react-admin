@@ -46,7 +46,7 @@ export default defineConfig({
     ]
   ],
   // 插件相关
-  antd: true,
+  antd: {},
   dva: {
     hmr: true
   },

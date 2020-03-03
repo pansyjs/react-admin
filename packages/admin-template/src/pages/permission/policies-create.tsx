@@ -2,7 +2,7 @@ import React from 'react';
 import isEqual from 'lodash/isEqual';
 import uniqueId from 'lodash/uniqueId';
 import { connect } from 'dva';
-import router from 'umi/router';
+import { history } from 'umi';
 import { Button, Card, Input, Tag, Form } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper/index';
 import FooterToolbar from '@/components/footer-toolbar/index';
@@ -61,7 +61,7 @@ const CreatePolicy: React.FC<IProps> = (props) => {
   };
 
   const handelCancel = () => {
-    router.push('/permission/policies');
+    history.push('/permission/policies');
   };
 
   const columns = [

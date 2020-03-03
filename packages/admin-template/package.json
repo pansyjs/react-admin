@@ -48,8 +48,6 @@
     "umi-request": "^1.2.19"
   },
   "devDependencies": {
-    "@alitajs/umi-plugin-deploy-config": "^0.1.2",
-    "@alitajs/umi-plugin-lodash": "^0.1.1",
     "@types/js-cookie": "^2.2.4",
     "@types/lodash": "^4.14.149",
     "@types/memoize-one": "^5.1.2",
@@ -68,7 +66,7 @@
     "identity-obj-proxy": "^3.0.0",
     "mockjs": "^1.1.0",
     "typescript": "^3.8.3",
-    "umi": "^3.0.1"
+    "umi": "^3.0.2"
   },
   "engines": {
     "node": ">=10.13.0"

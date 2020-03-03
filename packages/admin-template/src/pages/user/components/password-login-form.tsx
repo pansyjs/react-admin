@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Button, Form } from 'antd';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';

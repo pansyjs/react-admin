@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import router from 'umi/router';
+import { history } from 'umi';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Button, Form } from 'antd';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
@@ -18,7 +18,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = (props) => {
   };
 
   const handleReturnLogin = () => {
-    router.push('/user/login');
+    history.push('/user/login');
   };
 
   return (

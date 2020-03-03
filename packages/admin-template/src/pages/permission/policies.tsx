@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import router from 'umi/router';
+import { history } from 'umi';
 import { DeleteOutlined } from '@ant-design/icons';
 import { Typography, Button, Card, Tooltip, Modal, message } from 'antd';
 import PageHeaderWrapper from '@/components/page-header-wrapper';
@@ -34,7 +34,7 @@ const PoliciesPage: React.FC<IProps> = (props) => {
   };
 
   const showCreateView = () => {
-    router.push('/permission/policies/create');
+    history.push('/permission/policies/create');
   };
 
   // 删除权限策略

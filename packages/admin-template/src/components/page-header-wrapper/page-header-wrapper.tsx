@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import classNames from '@pansy/classnames';
 import { PageHeader } from 'antd';
 import { PageHeaderProps } from 'antd/es/page-header';

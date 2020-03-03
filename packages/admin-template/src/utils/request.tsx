@@ -1,5 +1,5 @@
 import Axios, { AxiosRequestConfig } from 'axios';
-import router from 'umi/router';
+import { history } from 'umi';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { AJAX_DEFAULT_CONFIG } from '@/config';
@@ -71,7 +71,7 @@ export const request = (config: AxiosRequestConfig) => {
       const code = error.response.code;
 
       if (code === 401) {
-        router.push('/user/login');
+        history.push('/user/login');
       }
 
       // 开发调试
