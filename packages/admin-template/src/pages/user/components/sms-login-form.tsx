@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { KeyOutlined, MobileOutlined } from '@ant-design/icons';
 import { Input, Button, Form } from 'antd';
-import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
+import { formatMessage, FormattedMessage } from 'umi';
 import { SendCode } from '@alitajs/antd-plus';
 
 interface SMSLoginFormProps {

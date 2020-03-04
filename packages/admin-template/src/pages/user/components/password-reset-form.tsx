@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { history } from 'umi';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Button, Form } from 'antd';
-import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
+import { formatMessage, FormattedMessage } from 'umi';
 
 interface PasswordResetFormProps {
   prefixCls?: string;

@@ -5,11 +5,17 @@ import { getCookie } from '@/utils/cookie';
 
 const { whiteList } = APP_DEFAULT_CONFIG;
 
+export function patchRoutes({ routes }) {
+  console.log(routes);
+}
+
 // 用于在初始加载和路由切换时做一些事情
 // 以token是否存在判断用户是否登录
-export function onRouteChange({ location }) {
+export function onRouteChange({ location, matchedRoutes }) {
   const token = getCookie();
   let isLogin = true;
+
+  console.log(matchedRoutes);
 
   // whiteList.forEach((item) => {
   //   if (pathToRegexp(item).test(location.pathname)) {
