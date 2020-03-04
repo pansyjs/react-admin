@@ -2,7 +2,6 @@
   "name": "@pansy/admin-template",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
     "start": "cross-env PORT=8888 umi dev",
@@ -14,11 +13,12 @@
     "test": "walrus test"
   },
   "repository": "https://github.com/ts-react/react-admin-template.git",
-  "author": "wangxingkang <wang_xingkang@qq.com>",
+  "author": "Pansy Team",
   "license": "MIT",
   "dependencies": {
     "@alitajs/antd-plus": "^1.2.0",
-    "@formily/antd": "^1.0.2",
+    "@ant-design/icons": "^4.0.2",
+    "@formily/antd": "^1.0.4",
     "@jiumao/rc-table": "^0.0.5",
     "@pansy/admin-layout": "^1.0.0",
     "@pansy/classnames": "^1.0.1",
@@ -45,6 +45,7 @@
     "rxjs": "^6.5.4",
     "scheduler": "^0.18.0",
     "store": "^2.0.12",
+    "umi": "^3.0.3",
     "umi-request": "^1.2.19"
   },
   "devDependencies": {
@@ -65,8 +66,7 @@
     "cross-env": "^6.0.3",
     "identity-obj-proxy": "^3.0.0",
     "mockjs": "^1.1.0",
-    "typescript": "^3.8.3",
-    "umi": "^3.0.3"
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=10.13.0"

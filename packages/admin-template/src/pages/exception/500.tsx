@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'umi';
-import { formatMessage } from 'umi-plugin-react/locale';
+import { Link, formatMessage } from 'umi';
 import Exception from '@/components/exception';
 
 const Exception500: React.FC = () => (

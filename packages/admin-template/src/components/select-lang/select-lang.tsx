@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from '@pansy/classnames';
 import { GlobalOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import { formatMessage, getLocale, setLocale } from 'umi-plugin-react/locale';
+import { formatMessage, getLocale, setLocale } from 'umi';
 import HeaderDropdown from '@/components/header-dropdown';
 import './select-lang.less';
 

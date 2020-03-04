@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { connect } from 'dva';
 import DocumentTitle from 'react-document-title';
 import GlobalFooter from '@/components/global-footer';
@@ -10,12 +10,12 @@ import logo from '@/assets/logo.svg';
 import Copyright from './copyright';
 import './user-layout.less';
 
-export interface IProps extends Required<ConnectProps> {
+export interface UserLayoutProps extends Required<ConnectProps> {
   prefixCls?: string;
   breadcrumbNameMap: { [path: string]: IMenu };
 }
 
-const UserLayout: React.FC<IProps> = props => {
+const UserLayout: FC<UserLayoutProps> = props => {
   const {
     prefixCls,
     location,

@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
-import pathToRegexp from 'path-to-regexp';
-import { formatMessage } from 'umi-plugin-react/locale';
+import { pathToRegexp } from 'path-to-regexp';
+import { formatMessage } from 'umi';
 import defaultSettings from '@/config/default-settings';
 
 const { menu, title } = defaultSettings;

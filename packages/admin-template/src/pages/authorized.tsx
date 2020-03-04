@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'dva';
-import pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import Authorized from '@/components/authorized';
 import { Policy } from '@/components/authorized';
 import PageLoading from '@/components/page-loading';

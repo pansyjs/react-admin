@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '@ant-design/icons';
-import pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import IconFont from '@/components/icon-font';
 import { urlToList } from '@pansy/url-utils';
 import { isUrl } from '@/utils/utils';

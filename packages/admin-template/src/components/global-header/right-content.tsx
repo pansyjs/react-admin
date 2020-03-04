@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from '@pansy/classnames';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Spin, Menu, Avatar } from 'antd';
-import { FormattedMessage } from 'umi-plugin-react/locale';
+import { FormattedMessage } from 'umi';
 import HeaderDropdown from '@/components/header-dropdown';
 import SelectLang from '@/components/select-lang';
 import ScreenFull from '@/components/screen-full';
