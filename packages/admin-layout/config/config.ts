@@ -1,7 +1,6 @@
 export default {
-  doc: {
-    title: 'admin-layout'
-  },
+  mode: 'site',
+  title: 'Admin Layout',
   extraBabelPlugins: [
     [
       'import',
@@ -12,6 +11,4 @@ export default {
       }
     ]
   ],
-  hash: true,
-  disableCSSModules: true
 };

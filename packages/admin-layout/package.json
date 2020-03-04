@@ -11,8 +11,8 @@
     "/es"
   ],
   "scripts": {
-    "start": "father-doc dev",
-    "build": "father-build build"
+    "start": "dumi dev",
+    "build": "dumi build"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@alitajs/antd-plus": "^1.2.0",
     "@pansy/classnames": "^1.0.1",
-    "antd": "^4.0.0-rc.1"
+    "antd": "^4.0.1"
   },
   "devDependencies": {
+    "dumi": "^1.0.0",
     "father-build": "^1.17.2",
-    "father-doc": "^1.0.0-beta.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
