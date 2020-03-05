@@ -1,9 +1,10 @@
 import React from 'react';
+import { PFC } from '@/common/types';
 
-class Monitor extends React.Component {
-  render() {
-    return <div>Monitor</div>;
-  }
+const Monitor: PFC = () => {
+  return (
+    <div>Monitor</div>
+  );
 }
 
 export default Monitor;

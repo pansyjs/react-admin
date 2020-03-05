@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { connect } from 'dva';
 import { ConnectState } from '@/models/connect';
 import PasswordResetForm from './components/password-reset-form';
-import './password-reset.less';
+import './index.less';
 
 interface PasswordResetProps {
   prefixCls?: string;

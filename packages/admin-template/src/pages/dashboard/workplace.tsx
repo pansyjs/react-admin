@@ -1,9 +1,12 @@
 import React from 'react';
+import { PFC } from '@/common/types';
 
-class WorkplacePage extends React.Component {
-  render() {
-    return <div>Workplace</div>;
-  }
+interface WorkplaceProps {
+
 }
 
-export default WorkplacePage;
+const Workplace: PFC<WorkplaceProps> = () => {
+  return <div>Workplace</div>;
+}
+
+export default Workplace;

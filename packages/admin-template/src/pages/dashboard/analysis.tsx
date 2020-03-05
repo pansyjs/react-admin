@@ -7,10 +7,15 @@
  * @last-modified-time 2019-07-15 22:20
  */
 import React from 'react';
+import { PFC } from '@/common/types';
 import IntroduceRow from './components/introduce-row';
 import SalesCard from './components/sales-card';
 
-const AnalysisPage: React.FC = () => {
+interface AnalysisProps {
+
+}
+
+const Analysis: PFC<AnalysisProps> = () => {
   let data = undefined;
 
   return (
@@ -21,4 +26,4 @@ const AnalysisPage: React.FC = () => {
   );
 };
 
-export default AnalysisPage;
+export default Analysis;
