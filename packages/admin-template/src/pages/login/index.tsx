@@ -19,6 +19,9 @@ interface LoginProps {
 const Login: PFC<LoginProps> = (props) => {
   const { prefixCls, loginType, loading, dispatch } = props;
 
+  console.log('******');
+  console.log(props);
+
   const handleLogin = (values) => {
     dispatch({
       type: 'login/fetchLogin',
@@ -73,6 +76,7 @@ const ConnectedLogin = connect(({ login, loading }: ConnectState) => ({
 
 // 路由相关配置
 ConnectedLogin.title = 'Home Page';
+ConnectedLogin.useDefaultLayout = false;
 ConnectedLogin.authority = '';
 
 export default ConnectedLogin;

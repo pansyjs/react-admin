@@ -1,6 +1,5 @@
-import { RouterTypes } from 'umi';
+import { RouterTypes } from '@/common/types';
 import { AnyAction } from 'redux';
-import { IRoute } from 'umi-types';
 import { EffectsCommandMap } from 'dva';
 import { match } from 'react-router-dom';
 import { IMenuModelState } from '@/models/menu';
@@ -12,6 +11,7 @@ import { IActionModelState } from '@/models/action';
 import { IUserGroupModelState } from '@/pages/system/models/user-group';
 import { ISystemUserModelState } from '@/pages/system/models/system-user';
 import { IPolicyModelState } from '@/models/policy';
+import { IMenu } from '@/components/sidebar-menu/base-menu';
 
 export interface ConnectState {
   loading: Loading;
@@ -57,8 +57,12 @@ export interface Loading {
   };
 }
 
+export interface Route extends IMenu {
+  routes?: Route[];
+}
+
 export interface ConnectProps<P extends { [K in keyof P]?: string } = {}>
-  extends Partial<RouterTypes<IRoute>> {
+  extends Partial<RouterTypes<Route>> {
   dispatch?: Dispatch;
   match?: match<P>;
 }

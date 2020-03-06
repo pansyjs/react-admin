@@ -1,23 +1,4 @@
 export default [
-  // user
-  {
-    path: '/user',
-    name: 'user',
-    component: '../layouts/user-layout',
-    routes: [
-      { path: '/user', redirect: '/user/login' },
-      {
-        path: '/user/login',
-        name: 'login',
-        component: './user/login'
-      },
-      {
-        path: '/user/password-reset',
-        name: 'password-reset',
-        component: './user/password-reset'
-      }
-    ]
-  },
   // app
   {
     path: '/',

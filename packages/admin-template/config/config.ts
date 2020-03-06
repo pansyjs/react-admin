@@ -1,5 +1,4 @@
 import { defineConfig } from 'umi';
-import routes from './router.config';
 import themeConfig from './theme.config';
 
 const { NODE_ENV } = process.env;
@@ -29,8 +28,6 @@ export default defineConfig({
   define: {
     BASE_URL: BaseURL
   },
-  // 路由配置
-  routes,
   hash: true,
   theme: themeConfig,
   ignoreMomentLocale: true,
@@ -57,4 +54,8 @@ export default defineConfig({
     default: 'zh-CN',
     baseNavigator: true,
   },
+  plugins: [
+    '@alitajs/main-path'
+  ],
+  mainPath: '/dashboard/analysis'
 });

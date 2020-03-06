@@ -21,7 +21,8 @@
   "dependencies": {
     "@alitajs/antd-plus": "^1.2.0",
     "@pansy/classnames": "^1.0.1",
-    "antd": "^4.0.1"
+    "antd": "^4.0.1",
+    "path-to-regexp": "^6.1.0"
   },
   "devDependencies": {
     "dumi": "^1.0.0",

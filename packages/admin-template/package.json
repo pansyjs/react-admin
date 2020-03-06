@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "start": "cross-env PORT=8888 umi dev",
+    "start": "umi dev",
     "build": "umi build",
     "analyze": "cross-env ANALYZE=1 umi build",
     "lint": "walrus lint",
@@ -49,6 +49,7 @@
     "umi-request": "^1.2.19"
   },
   "devDependencies": {
+    "@alitajs/main-path": "^2.1.1",
     "@types/js-cookie": "^2.2.4",
     "@types/lodash": "^4.14.149",
     "@types/memoize-one": "^5.1.2",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import classNames from '@pansy/classnames';
@@ -13,7 +13,7 @@ import Context from './menu-context';
 import Header from './header';
 import './basic-layout.less';
 
-interface IProps extends Required<ConnectProps>, ISidebarMenuProps {
+interface BasicLayoutProps extends Required<ConnectProps>, ISidebarMenuProps {
   prefixCls?: string;
   tabActiveKey?: string;
   breadcrumbNameMap?: { [path: string]: IMenu };
@@ -46,10 +46,12 @@ const query = {
 };
 const { Content } = Layout;
 
-const BasicLayout: React.FC<IProps> = (props) => {
+const BasicLayout: FC<BasicLayoutProps> = (props) => {
   const { location, menuData, breadcrumbNameMap, setting, children } = props;
   const { fixedHeader, theme } = setting;
   const { prefixCls, ...restProps } = props;
+
+  console.log(props);
 
   const isMobile = useMedia({ id: 'BasicLayout', query: '(max-width: 599px)' })[0];
 
