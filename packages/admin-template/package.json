@@ -24,9 +24,8 @@
     "@pansy/classnames": "^1.0.1",
     "@pansy/hooks": "^0.0.3",
     "@pansy/utils": "^0.3.6",
-    "antd": "^4.0.2",
+    "antd": "^4.0.4",
     "axios": "^0.19.2",
-    "dva": "^2.6.0-beta.19",
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.15",
     "memoize-one": "^5.1.1",
@@ -45,7 +44,7 @@
     "rxjs": "^6.5.4",
     "scheduler": "^0.19.0",
     "store": "^2.0.12",
-    "umi": "^3.0.5",
+    "umi": "^2.13.9",
     "umi-request": "^1.2.19"
   },
   "devDependencies": {
