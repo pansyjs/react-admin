@@ -7,11 +7,13 @@
   "author": "kang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
+    "analyze": "cross-env ANALYZE=1 umi build",
     "start": "umi dev",
-    "build": "umi build"
+    "build": "umi build",
+    "test": "walrus test"
   },
   "dependencies": {
-    "@alitajs/antd-plus": "^2.2.0",
+    "@alitajs/antd-plus": "^2.2.2",
     "@ant-design/icons": "^4.2.2",
     "@ant-design/pro-layout": "^6.4.15",
     "@formily/antd": "^1.3.2",
@@ -32,6 +34,8 @@
     "use-merge-value": "^1.0.2"
   },
   "devDependencies": {
+    "@alitajs/umi-plugin-console-version": "^0.4.0",
+    "@alitajs/umi-plugin-locale-plus": "^0.11.0",
     "@types/classnames": "^2.2.10",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
@@ -39,6 +43,7 @@
     "@walrus/cli": "^1.3.4",
     "@walrus/plugin-release": "^1.9.1",
     "@walrus/preset-lint": "^1.1.7",
+    "cross-env": "^7.0.2",
     "mockjs": "^1.1.0",
     "typescript": "^4.0.2"
   }

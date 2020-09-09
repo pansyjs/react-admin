@@ -12,6 +12,9 @@ export default defineConfig({
     antd: true,
     baseNavigator: true,
   },
+  consoleVersion: {
+    projectName: 'admin-template'
+  },
   dynamicImport: {
     loading: '@/components/page-loading/index',
   },
