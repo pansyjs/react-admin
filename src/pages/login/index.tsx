@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import {
   AlipayCircleOutlined,
   TaobaoCircleOutlined,
@@ -7,7 +7,7 @@ import {
 import { Alert, Checkbox } from 'antd';
 import { Link } from 'umi';
 import { LoginParamsType } from '@/common/types/login';
-import LoginForm from './components';
+import LoginForm from '@/components/login';
 import styles from './style.less';
 
 const {
@@ -23,7 +23,7 @@ interface LoginProps {
   submitting?: boolean;
 }
 
-const LoginMessage: FC<{
+const LoginMessage: React.FC<{
   content: string;
 }> = ({ content }) => (
   <Alert
@@ -36,7 +36,7 @@ const LoginMessage: FC<{
   />
 );
 
-const Login: FC<LoginProps> = (props) => {
+const Login: React.FC<LoginProps> = (props) => {
   // @ts-ignore
   const { userLogin = {}, submitting } = props;
   const { status, type: loginType } = userLogin;
@@ -97,9 +97,6 @@ const Login: FC<LoginProps> = (props) => {
           <Captcha
             name="captcha"
             placeholder="验证码"
-            countDown={120}
-            getCaptchaButtonText=""
-            getCaptchaSecondText="秒"
             rules={[
               {
                 required: true,

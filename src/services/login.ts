@@ -1,4 +1,4 @@
-import request from '@/common/utils/request';
+import request from '@/utils/request';
 import { LoginParamsType } from '@/common/types/login';
 
 export async function fetchLogin(data: LoginParamsType) {

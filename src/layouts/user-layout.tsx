@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, useIntl } from 'umi';
+import { Link, useIntl, SelectLang } from 'umi';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import {
   DefaultFooter,
@@ -8,7 +8,6 @@ import {
   getPageTitle,
   BasicLayoutProps as ProLayoutProps,
 } from '@ant-design/pro-layout';
-import SelectLang from '@/components/select-lang';
 import logo from '@/assets/logo.svg';
 import styles from './user-layout.less';
 
