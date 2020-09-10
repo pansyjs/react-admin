@@ -9,3 +9,5 @@ declare module '*.jpeg';
 declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
+
+declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;
