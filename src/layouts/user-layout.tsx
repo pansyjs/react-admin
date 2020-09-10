@@ -1,22 +1,21 @@
 import React, { FC } from 'react';
 import { Link, useIntl, SelectLang } from 'umi';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import {
-  DefaultFooter,
   MenuDataItem,
   getMenuData,
   getPageTitle,
   BasicLayoutProps as ProLayoutProps,
 } from '@ant-design/pro-layout';
+import Footer from '@/components/footer';
 import logo from '@/assets/logo.svg';
 import styles from './user-layout.less';
 
 export interface UserLayoutProps {
-  breadcrumbNameMap: {
+  breadcrumbNameMap?: {
     [path: string]: MenuDataItem;
   };
-  location: ProLayoutProps['location'];
-  route: ProLayoutProps['route'];
+  location?: ProLayoutProps['location'];
+  route?: ProLayoutProps['route'];
 }
 
 const UserLayout: FC<UserLayoutProps> = (props) => {
@@ -41,11 +40,11 @@ const UserLayout: FC<UserLayoutProps> = (props) => {
   });
 
   return (
-    <HelmetProvider>
-      <Helmet>
+    <div>
+      <div>
         <title>{title}</title>
         <meta name="description" content={title} />
-      </Helmet>
+      </div>
 
       <div className={styles.container}>
         <div className={styles.lang}>
@@ -65,9 +64,9 @@ const UserLayout: FC<UserLayoutProps> = (props) => {
             </div>
             {children}
           </div>
-        <DefaultFooter links={[]} copyright="2020 AlitaJS团队出品" />
+        <Footer />
       </div>
-    </HelmetProvider>
+    </div>
   )
 }
 
