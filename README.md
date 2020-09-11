@@ -22,7 +22,7 @@
 
 ## 🔒 关于权限
 
-提供 [umi-plugin-authority](https://github.com/alitajs/umi-plugins/tree/master/packages/umi-plugin-authority) 提供权限功能，暴露 `useAuthority` hooks 和 `Authority` 组件实现权限控制的能力
+基于 [umi-plugin-authority](https://github.com/alitajs/umi-plugins/tree/master/packages/umi-plugin-authority) 提供权限功能，暴露 `useAuthority` hooks 和 `Authority` 组件实现权限控制的能力
 
 使用示例如下
 
@@ -51,6 +51,13 @@ const PageA = props => {
       {/** 直接指定权限 */}
       <Authority
         accessible={combinationVerify('module1/action1')}
+        fallback={<div>Can not update foo.</div>}
+      >
+        Update foo.
+      </Access>
+      {/** 复杂的校验 */}
+      <Authority
+        accessible={combinationVerify('(module1/action1 || module1/action2) && module1/action3')}
         fallback={<div>Can not update foo.</div>}
       >
         Update foo.
