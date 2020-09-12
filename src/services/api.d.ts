@@ -1,6 +1,17 @@
 declare namespace API {
+  export interface PermissionCode<T = string[]> {
+    group: string;
+    actions: T;
+  }
+
   export interface CurrentUser {
+    /**
+     * 用户头像
+     */
     avatar?: string;
+    /**
+     * 用户名
+     */
     name?: string;
     title?: string;
     group?: string;
@@ -10,13 +21,15 @@ declare namespace API {
       label: string;
     }[];
     userid?: string;
-    actions?: any[];
-    access?: {
-      group: string;
-      actions: string[]
-    }[];
     unreadCount?: number;
-
+    /**
+     * 所有的权限
+     */
+    permissionCodes?: PermissionCode[];
+    /**
+     * 赋予的权限
+     */
+    access?: PermissionCode<'*' | string[]>[];
   }
 
   export interface LoginStateType {

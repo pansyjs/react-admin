@@ -13,15 +13,15 @@ function getCurrentUser(req: Request, res: Response) {
     signature: '海纳百川，有容乃大',
     title: '交互专家',
     group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
-    actions: [
-      { module: 'module1', action: 'action1' },
-      { module: 'module1', action: 'action2' },
-      { module: 'module1', action: 'action3' },
-      { module: 'module2', action: 'action1' },
-      { module: 'module2', action: 'action2' },
+    // 所有的权限
+    permissionCodes: [
+      { group: 'module1', actions: ['action1', 'action2', 'action3'] },
+      { group: 'module2', actions: ['action1', 'action2'] }
     ],
+    // 赋予的权限
     access: [
-      { group: 'module1', actions: ['action1', 'action2', 'action3'] }
+      { group: 'module1', actions: '*' },
+      { group: 'module2', actions: ['action1'] }
     ],
     tags: [
       {
