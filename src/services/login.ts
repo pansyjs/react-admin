@@ -1,8 +1,9 @@
-import request from '@/utils/request';
+import { request } from 'umi';
 import { LoginParamsType } from '@/common/types/login';
 
 export async function fetchLogin(data: LoginParamsType) {
-  return request.post('/api/login/account', {
+  return request('/api/login/account', {
+    method: 'POST',
     data
   });
 }

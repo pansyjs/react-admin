@@ -1,4 +1,4 @@
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 
 /**
  * 格式化时间
@@ -6,7 +6,7 @@ import moment, { Moment } from 'moment';
  * @param format
  */
 export function formatDate(
-  date: Moment | Date | string | number,
+  date: moment.Moment | Date | string | number,
   format = 'YYYY-MM-DD HH:mm:ss'
 ): string {
   if (!date) return '';
