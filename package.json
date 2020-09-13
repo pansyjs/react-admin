@@ -1,9 +1,9 @@
 {
-  "name": "react-admin-template",
+  "name": "react-admin",
   "version": "2.0.0",
   "description": "react development template",
   "main": "index.js",
-  "repository": "git@github.com:ts-react/react-admin-template.git",
+  "repository": "git@github.com:pansyjs/react-admin.git",
   "author": "kang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
