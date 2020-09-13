@@ -31,7 +31,7 @@ export interface LoginProps {
 interface LoginType extends FC<LoginProps> {
   Tab: typeof LoginTab;
   Submit: typeof LoginSubmit;
-  UserName: FunctionComponent<LoginItemProps>;
+  Username: FunctionComponent<LoginItemProps>;
   Password: FunctionComponent<LoginItemProps>;
   Mobile: FunctionComponent<LoginItemProps>;
   Captcha: FunctionComponent<LoginItemProps>;
@@ -118,7 +118,7 @@ const Login: LoginType = (props) => {
 Login.Tab = LoginTab;
 Login.Submit = LoginSubmit;
 
-Login.UserName = LoginItem.UserName;
+Login.Username = LoginItem.Username;
 Login.Password = LoginItem.Password;
 Login.Mobile = LoginItem.Mobile;
 Login.Captcha = LoginItem.Captcha;

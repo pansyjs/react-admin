@@ -9,26 +9,33 @@ import Footer from '@/components/footer';
 import defaultSettings from '../config/default-settings';
 
 export async function getInitialState(): Promise<{
-  currentUser?: API.CurrentUser;
   settings?: LayoutSettings;
+  currentUser?: API.CurrentUser;
+  fetchUserInfo: () => Promise<API.CurrentUser | undefined>;
 }> {
+  const fetchUserInfo = async () => {
+    try {
+      const { data } = await fetchCurrent();
+      return data;
+    } catch (error) {
+      history.push('/login');
+    }
+    return undefined;
+  };
   // 如果是登录页面，不执行
   if (history.location.pathname !== '/login') {
-    try {
-      const currentUser = await fetchCurrent();
-      return {
-        currentUser,
-        settings: defaultSettings,
-      };
-    } catch (error) {
-      history.push('/user/login');
-    }
+    const currentUser = await fetchUserInfo();
+    return {
+      fetchUserInfo,
+      currentUser,
+      settings: defaultSettings,
+    };
   }
   return {
+    fetchUserInfo,
     settings: defaultSettings,
   };
 }
-
 export const layout = ({
   initialState,
 }: {

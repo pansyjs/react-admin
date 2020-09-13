@@ -1,16 +1,25 @@
 import { AuthorityConfigFun } from 'umi';
-import { Action, IPolicyData, Statement } from '@pansy/policy';
+import { Action, PolicyData, Statement } from '@pansy/policy';
 
 const separator = ':';
 
+/**
+ * 提供Policy相关配置，可与后端约定相关数据结构进行修改
+ * 具体请查看
+ *   https://github.com/alitajs/umi-plugins/tree/master/packages/umi-plugin-authority
+ *   https://github.com/pansyjs/utils/tree/master/packages/policy
+ * @param initialState
+ */
 const authorityConfig: AuthorityConfigFun = (initialState: { currentUser?: API.CurrentUser } = {}) => {
   const { currentUser } = initialState;
+
+  console.log(currentUser);
 
   const access = currentUser?.access || [];
   const permissionCodes = currentUser?.permissionCodes || [];
 
   const allActions: Action[] = [];
-  const policies: IPolicyData[] = [];
+  const policies: PolicyData[] = [];
 
   permissionCodes.forEach(({ actions = [], group }) => {
     if (group && typeof group === 'string') {
@@ -37,9 +46,6 @@ const authorityConfig: AuthorityConfigFun = (initialState: { currentUser?: API.C
       ]
     });
   });
-
-  console.log(allActions);
-  console.log(policies);
 
   return {
     actions: allActions,

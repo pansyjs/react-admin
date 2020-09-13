@@ -4,25 +4,22 @@ import {
   TaobaoCircleOutlined,
   WeiboCircleOutlined
 } from '@ant-design/icons';
-import { Alert, Checkbox } from 'antd';
-import { Link } from 'umi';
+import { Alert, Checkbox, message } from 'antd';
+import { Link, history, History, useModel, useRequest } from 'umi';
 import UserLayout from '@/layouts/user-layout';
 import { LoginParamsType } from '@/common/types/login';
 import LoginForm from '@/components/login';
+import { fetchLogin } from '@/services/login';
 import styles from './style.less';
 
 const {
   Tab,
-  UserName,
+  Username,
   Password,
   Mobile,
   Captcha,
   Submit
 } = LoginForm;
-
-interface LoginProps {
-  submitting?: boolean;
-}
 
 const LoginMessage: React.FC<{
   content: string;
@@ -37,15 +34,56 @@ const LoginMessage: React.FC<{
   />
 );
 
-const Login: React.FC<LoginProps> = (props) => {
-  // @ts-ignore
-  const { userLogin = {}, submitting } = props;
-  const { status, type: loginType } = userLogin;
+/**
+ * 此方法会跳转到 redirect 参数所在的位置
+ */
+const replaceGoto = () => {
+  setTimeout(() => {
+    const { query } = history.location;
+    const { redirect } = query as { redirect: string };
+    if (!redirect) {
+      history.replace('/');
+      return;
+    }
+    (history as History).replace(redirect);
+  }, 10);
+};
+
+const Login: React.FC = () => {
+  const [userLoginState, setUserLoginState] = useState<API.LoginStateType>({});
+  const { initialState, setInitialState } = useModel('@@initialState');
   const [autoLogin, setAutoLogin] = useState(true);
   const [type, setType] = useState<string>('account');
 
-  const handleSubmit = (values: LoginParamsType) => {
+  const loginRequest = useRequest(
+    (values: LoginParamsType) => {
+      return fetchLogin({ ...values, type })
+    },
+    {
+      manual: true,
+      onSuccess: (data) => {
+        data && loginSuccess();
+      }
+    }
+  );
 
+  const loginSuccess = async () => {
+    if (initialState) {
+      message.success('登录成功！');
+      const currentUser = await initialState?.fetchUserInfo();
+      setInitialState({
+        ...initialState,
+        currentUser,
+      });
+      replaceGoto();
+      return;
+    }
+  }
+
+  const { status, type: loginType } = userLoginState;
+
+  const handleSubmit = (values: LoginParamsType) => {
+    loginRequest.run(values);
   };
 
   return (
@@ -53,12 +91,12 @@ const Login: React.FC<LoginProps> = (props) => {
       <div className={styles.main}>
         <LoginForm activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
           <Tab key="account" tab="账户密码登录">
-            {status === 'error' && loginType === 'account' && !submitting && (
+            {status === 'error' && loginType === 'account' && !loginRequest.loading && (
               <LoginMessage content="账户或密码错误（admin/ant.design）" />
             )}
 
-            <UserName
-              name="userName"
+            <Username
+              name="username"
               placeholder="用户名: admin or user"
               rules={[
                 {
@@ -69,7 +107,7 @@ const Login: React.FC<LoginProps> = (props) => {
             />
             <Password
               name="password"
-              placeholder="密码: ant.design"
+              placeholder="密码: 123456"
               rules={[
                 {
                   required: true,
@@ -79,7 +117,7 @@ const Login: React.FC<LoginProps> = (props) => {
             />
           </Tab>
           <Tab key="mobile" tab="手机号登录">
-            {status === 'error' && loginType === 'mobile' && !submitting && (
+            {status === 'error' && loginType === 'mobile' && !loginRequest.loading && (
               <LoginMessage content="验证码错误" />
             )}
             <Mobile
@@ -119,7 +157,7 @@ const Login: React.FC<LoginProps> = (props) => {
               忘记密码
             </a>
           </div>
-          <Submit loading={submitting}>登录</Submit>
+          <Submit loading={loginRequest.loading}>登录</Submit>
           <div className={styles.other}>
             其他登录方式
             <AlipayCircleOutlined className={styles.icon} />

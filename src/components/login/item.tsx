@@ -8,7 +8,7 @@ import Captcha from './captcha';
 export type WrappedLoginItemProps = LoginItemProps;
 export type LoginItemKeyType = keyof typeof ItemMap;
 export interface LoginItemType {
-  UserName: React.FC<WrappedLoginItemProps>;
+  Username: React.FC<WrappedLoginItemProps>;
   Password: React.FC<WrappedLoginItemProps>;
   Mobile: React.FC<WrappedLoginItemProps>;
   Captcha: React.FC<WrappedLoginItemProps>;

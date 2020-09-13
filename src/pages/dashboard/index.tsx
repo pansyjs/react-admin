@@ -6,8 +6,6 @@ import { PageContainer } from '@ant-design/pro-layout';
 const Dashboard: React.FC = () => {
   const { multipleVerify, combinationVerify } = useAuthority();
 
-  console.log(useAuthority());
-
   console.log(multipleVerify(['module1:action1', 'module1:action2']));
 
   console.log(combinationVerify('module1:action5'));

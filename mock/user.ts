@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
+import { packResult } from './utils';
 
 function getFakeCaptcha(req: Request, res: Response) {
   return res.json('captcha-xxx');
 }
 
 function getCurrentUser(req: Request, res: Response) {
-  res.send({
+
+  const data = {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
@@ -64,11 +66,45 @@ function getCurrentUser(req: Request, res: Response) {
     },
     address: '西湖区工专路 77 号',
     phone: '0752-268888888',
-  });
+  }
+
+  res.send(packResult(data));
+}
+
+function fetchLogin(req: Request, res: Response) {
+  const { password, username, type } = req.body;
+  if (password === '123456' && username === 'admin') {
+    res.send(packResult({
+      type,
+      currentAuthority: 'admin',
+    }));
+    return;
+  }
+  if (password === '123456' && username === 'user') {
+    res.send(packResult({
+      type,
+      currentAuthority: 'user',
+    }));
+    return;
+  }
+  if (type === 'mobile') {
+    res.send(packResult({
+      type,
+      currentAuthority: 'admin',
+    }));
+    return;
+  }
+
+  res.send(packResult({
+    type,
+    currentAuthority: 'guest',
+  }));
 }
 
 export default {
   'GET  /api/login/captcha': getFakeCaptcha,
+
+  'POST /api/login/account': fetchLogin,
 
   'GET /api/currentUser': getCurrentUser
 }

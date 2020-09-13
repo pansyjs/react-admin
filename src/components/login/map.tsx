@@ -8,10 +8,10 @@ import {
 import styles from './index.less';
 
 export default {
-  UserName: {
+  Username: {
     props: {
       size: 'large',
-      id: 'userName',
+      id: 'username',
       prefix: (
         <UserOutlined
           className={styles.prefixIcon}

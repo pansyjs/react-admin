@@ -4,6 +4,12 @@ declare namespace API {
     actions: T;
   }
 
+  export interface ResponseResult<T = any> {
+    data: T,
+    code: number;
+    message: string;
+  }
+
   export interface CurrentUser {
     /**
      * 用户头像
