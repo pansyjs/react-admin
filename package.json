@@ -24,7 +24,7 @@
     "@pansy/hooks": "^2.2.0",
     "@pansy/react-aliplayer": "^0.3.2",
     "@pansy/react-charts": "^0.3.0",
-    "antd": "^4.6.3",
+    "antd": "^4.6.4",
     "classnames": "^2.2.6",
     "moment": "^2.27.0",
     "omit.js": "^2.0.2",
@@ -47,6 +47,7 @@
     "@walrus/plugin-release": "^1.9.1",
     "@walrus/preset-lint": "^1.1.7",
     "cross-env": "^7.0.2",
+    "husky": "^4.3.0",
     "mockjs": "^1.1.0",
     "typescript": "^4.0.2"
   },
