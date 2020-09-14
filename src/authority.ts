@@ -13,8 +13,6 @@ const separator = ':';
 const authorityConfig: AuthorityConfigFun = (initialState: { currentUser?: API.CurrentUser } = {}) => {
   const { currentUser } = initialState;
 
-  console.log(currentUser);
-
   const access = currentUser?.access || [];
   const permissionCodes = currentUser?.permissionCodes || [];
 

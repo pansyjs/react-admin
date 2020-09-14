@@ -10,6 +10,7 @@ import UserLayout from '@/layouts/user-layout';
 import { LoginParamsType } from '@/common/types/login';
 import LoginForm from '@/components/login';
 import { fetchLogin } from '@/services/login';
+import { setCookie } from '@/utils/cookie';
 import styles from './style.less';
 
 const {
@@ -62,21 +63,23 @@ const Login: React.FC = () => {
     {
       manual: true,
       onSuccess: (data) => {
-        data && loginSuccess();
+        if (data && data.token) {
+          loginSuccess(data.token);
+        }
       }
     }
   );
 
-  const loginSuccess = async () => {
-    if (initialState) {
+  const loginSuccess = async (token: string) => {
+    if (initialState && token) {
       message.success('登录成功！');
+      setCookie(token);
       const currentUser = await initialState?.fetchUserInfo();
       setInitialState({
         ...initialState,
         currentUser,
       });
       replaceGoto();
-      return;
     }
   }
 

@@ -6,7 +6,10 @@ import { history, RequestConfig } from 'umi';
 import { fetchCurrent } from '@/services/user';
 import RightContent from '@/components/right-content';
 import Footer from '@/components/footer';
+import { getCookie, removeCookie } from '@/utils/cookie';
 import defaultSettings from '../config/default-settings';
+
+const token = getCookie();
 
 export async function getInitialState(): Promise<{
   settings?: LayoutSettings;
@@ -90,6 +93,14 @@ const errorHandler = (error: ResponseError) => {
     });
   }
 
+  const httpCode = error?.response?.status;
+
+  if (httpCode === 401) {
+    removeCookie();
+    history.replace('/login');
+    return;
+  }
+
   if (!response) {
     notification.error({
       description: '您的网络发生异常，无法连接服务器',
@@ -101,4 +112,27 @@ const errorHandler = (error: ResponseError) => {
 
 export const request: RequestConfig = {
   errorHandler,
+  errorConfig: {
+    adaptor: (resData) => {
+      return {
+        ...resData,
+        success: resData.code === 200,
+        errorMessage: resData.message,
+      }
+    }
+  },
+  requestInterceptors: [
+    (url, options) => {
+      return {
+        url: `${url}`,
+        options: {
+          ...options,
+          headers: {
+            ...options.headers,
+            authorization: `Bearer ${token}`
+          }
+        },
+      };
+    }
+  ]
 };

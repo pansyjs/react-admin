@@ -76,29 +76,28 @@ function fetchLogin(req: Request, res: Response) {
   if (password === '123456' && username === 'admin') {
     res.send(packResult({
       type,
-      currentAuthority: 'admin',
+      token: 'admin',
     }));
     return;
   }
   if (password === '123456' && username === 'user') {
     res.send(packResult({
       type,
-      currentAuthority: 'user',
+      token: 'user',
     }));
     return;
   }
   if (type === 'mobile') {
     res.send(packResult({
       type,
-      currentAuthority: 'admin',
+      token: 'admin',
     }));
     return;
   }
 
   res.send(packResult({
-    type,
-    currentAuthority: 'guest',
-  }));
+    type
+  }, 10010, '用户名或密码不正确'));
 }
 
 export default {
