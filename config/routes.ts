@@ -6,7 +6,7 @@ export const routes =  [
     component: 'dashboard',
     menu: {
       name: '首页', // 兼容此写法
-      icon: 'testicon',
+      icon: 'dashboard',
     },
   },
   {

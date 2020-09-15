@@ -3,7 +3,7 @@ import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons
 import { Avatar, Menu, Spin } from 'antd';
 import { history, useModel } from 'umi';
 import { getPageQuery } from '@/utils';
-// import { outLogin } from '@/services/login';
+import { fetchLogout } from '@/services/login';
 import { stringify } from 'querystring';
 import HeaderDropdown from '../header-dropdown';
 import styles from './index.less';
@@ -16,12 +16,12 @@ export interface GlobalHeaderRightProps {
  * 退出登录，并且将当前的 url 保存
  */
 const loginOut = async () => {
-  // await outLogin();
+  await fetchLogout();
   const { redirect } = getPageQuery();
   // Note: There may be security issues, please note
-  if (window.location.pathname !== '/user/login' && !redirect) {
+  if (window.location.pathname !== '/login' && !redirect) {
     history.replace({
-      pathname: '/user/login',
+      pathname: '/login',
       search: stringify({
         redirect: window.location.href,
       }),
@@ -41,6 +41,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     }) => {
       const { key } = event;
       if (key === 'logout') {
+        // @ts-ignore
         setInitialState({ ...initialState, currentUser: undefined });
         loginOut();
         return;

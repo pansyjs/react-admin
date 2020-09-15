@@ -7,6 +7,7 @@ import { fetchCurrent } from '@/services/user';
 import RightContent from '@/components/right-content';
 import Footer from '@/components/footer';
 import { getCookie, removeCookie } from '@/utils/cookie';
+import logo from '@/assets/logo.svg';
 import defaultSettings from '../config/default-settings';
 
 const token = getCookie();
@@ -49,13 +50,17 @@ export const layout = ({
     disableContentMargin: false,
     footerRender: () => <Footer />,
     onPageChange: () => {
+      const { currentUser } = initialState;
+      const { location } = history;
+
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser?.userid && history.location.pathname !== '/login') {
+      if (!currentUser?.userid && location.pathname !== '/login') {
         history.push('/login');
       }
     },
     menuHeaderRender: undefined,
     ...initialState?.settings,
+    logo: logo
   };
 };
 

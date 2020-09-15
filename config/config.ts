@@ -12,9 +12,9 @@ export default defineConfig({
   },
   antd: {},
   layout: {
-    name: 'Admin Template',
+    name: defaultSettings.title,
     locale: true,
-    siderWidth: 240,
+    siderWidth: 240
   },
   locale: {
     default: 'zh-CN',

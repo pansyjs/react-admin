@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
 import { packResult } from './utils';
 
-function getFakeCaptcha(req: Request, res: Response) {
-  return res.json('captcha-xxx');
+function fetchCaptcha(req: Request, res: Response) {
+  res.send(packResult(undefined));
 }
 
-function getCurrentUser(req: Request, res: Response) {
-
+function fetchCurrentUser(req: Request, res: Response) {
   const data = {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
@@ -100,10 +99,16 @@ function fetchLogin(req: Request, res: Response) {
   }, 10010, '用户名或密码不正确'));
 }
 
+function fetchLogout(req: Request, res: Response) {
+  res.send(packResult({}));
+}
+
 export default {
-  'GET  /api/login/captcha': getFakeCaptcha,
+  'GET  /api/user/captcha': fetchCaptcha,
 
-  'POST /api/login/account': fetchLogin,
+  'POST /api/user/login': fetchLogin,
 
-  'GET /api/currentUser': getCurrentUser
+  'GET /api/user/current': fetchCurrentUser,
+
+  'POST /api/user/logout': fetchLogout
 }

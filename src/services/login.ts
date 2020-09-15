@@ -1,13 +1,31 @@
 import { request } from 'umi';
 import { LoginParamsType } from '@/common/types/login';
 
+/**
+ * 用户登录
+ * @param data
+ */
 export async function fetchLogin(data: LoginParamsType) {
-  return request('/api/login/account', {
+  return request('/api/user/login', {
     method: 'POST',
     data
   });
 }
 
+/**
+ * 退出登录
+ * @param data
+ */
+export async function fetchLogout() {
+  return request('/api/user/logout', {
+    method: 'POST',
+  });
+}
+
+/**
+ * 获取手机验证码
+ * @param mobile
+ */
 export async function fetchCaptcha(mobile: string) {
-  return request(`/api/login/captcha?mobile=${mobile}`);
+  return request(`/api/user/captcha?mobile=${mobile}`);
 }
