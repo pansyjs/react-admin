@@ -31,7 +31,6 @@ export default defineConfig({
     loading: '@/components/page-loading/index',
   },
   theme: {
-    // ...darkTheme,
     'primary-color': defaultSettings.primaryColor,
   },
   ignoreMomentLocale: true,
