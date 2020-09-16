@@ -1,6 +1,7 @@
 import React from 'react';
 import { notification } from 'antd';
 import { ResponseError } from 'umi-request';
+import { ConfigProviderProps } from 'antd/es/config-provider';
 import { BasicLayoutProps, Settings as LayoutSettings } from '@ant-design/pro-layout';
 import { history, RequestConfig } from 'umi';
 import { fetchCurrent } from '@/services/user';
@@ -40,6 +41,7 @@ export async function getInitialState(): Promise<{
     settings: defaultSettings,
   };
 }
+
 export const layout = ({
   initialState,
 }: {
@@ -141,3 +143,9 @@ export const request: RequestConfig = {
     }
   ]
 };
+
+// antd 配置
+// 具体请查看 https://ant.design/components/config-provider-cn/#API
+export const antd: ConfigProviderProps = {
+  autoInsertSpaceInButton: false
+}

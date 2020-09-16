@@ -3,7 +3,7 @@ import { Settings } from '@ant-design/pro-layout';
 const settings: Settings = {
   navTheme: 'light',
   // 拂晓蓝
-  primaryColor: '#1890ff',
+  primaryColor: '#409EFF',
   layout: 'mix',
   contentWidth: 'Fluid',
   fixedHeader: false,

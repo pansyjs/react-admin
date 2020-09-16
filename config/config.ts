@@ -7,10 +7,13 @@ const { REACT_APP_ENV } = process.env;
 
 export default defineConfig({
   hash: true,
+  routes,
   targets: {
     ie: 11,
   },
-  antd: {},
+  antd: {
+    config: {}
+  },
   layout: {
     name: defaultSettings.title,
     locale: true,
@@ -21,7 +24,6 @@ export default defineConfig({
     antd: true,
     baseNavigator: true,
   },
-  routes,
   consoleVersion: {
     projectName: 'admin-template'
   },
