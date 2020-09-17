@@ -56,7 +56,7 @@ const GlobalHeaderRight: React.FC<{}> = () => {
         <span
           className={styles.action}
           onClick={() => {
-            window.location.href = 'https://pro.ant.design/docs/getting-started';
+            window.location.href = 'https://react-admin-site.vercel.app/guide/getting-started';
           }}
         >
           <QuestionCircleOutlined />

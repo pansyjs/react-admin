@@ -25,17 +25,17 @@
 ```
 ├── config                     # umi 相关配置
 ├── docker                     # docker 相关配置
-├── mock                       # 项目mock 模拟数据
+├── mock                       # 本地模拟数据
 ├── public                     # 静态资源
 ├── src                        # 源代码
-│   ├── assets                 # 主题 字体等静态资源
+│   ├── assets                 # 本地静态资源
 │   ├── common                 # 类型定义、常量
 │   ├── components             # 全局公用组件
 │   ├── config                 # 全局配置
 │   ├── layouts                # 布局文件
-│   ├── locales                # 国际化 language
+│   ├── locales                # 国际化资源
 │   ├── models                 # 路由
-│   ├── pages                  # 所有页面
+│   ├── pages                  # 业务页面入口和常用模板
 │   ├── services               # 所有请求
 │   ├── utils                  # 全局公用方法
 │   ├── app.tsx                # 运行时配置文件
