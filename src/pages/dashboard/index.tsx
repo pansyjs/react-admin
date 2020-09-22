@@ -1,34 +1,29 @@
-import React from 'react';
-import { Divider } from 'antd';
-import { useAuthority, Authority } from 'umi';
-import { PageContainer } from '@ant-design/pro-layout';
+import React, { Suspense } from 'react';
+import { Space } from 'antd';
+import { useRequest } from 'umi';
+import { GridContent, PageLoading } from '@ant-design/pro-layout';
+import { fetchChartData } from '@/services/dashboard';
+
+const IntroduceRow = React.lazy(() => import('./components/introduce-row'));
+const SalesCard = React.lazy(() => import('./components/sales-card'));
 
 const Dashboard: React.FC = () => {
-  const { multipleVerify, combinationVerify } = useAuthority();
+  const { data, loading } = useRequest(
+    () => { return fetchChartData() }
+  )
 
-  console.log(multipleVerify(['module1:action1', 'module1:action2']));
-
-  console.log(combinationVerify('module1:action5'));
   return (
-    <PageContainer>
-      <Authority access={'module1:action1'}>
-        <span>有权限</span>
-      </Authority>
+    <GridContent>
+      <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+        <Suspense fallback={<PageLoading />}>
+          <IntroduceRow data={data?.visitData || []} loading={loading}  />
+        </Suspense>
 
-      <Divider dashed />
-
-      <Authority access={'module5:action1'} fallback="权限不通过">
-        <span>无权限</span>
-      </Authority>
-
-      <Divider dashed />
-
-      <Authority
-        accessible={multipleVerify(['module1:action1'])}
-      >
-        {(isMatch: boolean) => <span>权限校验结果: {isMatch + ''}</span>}
-      </Authority>
-    </PageContainer>
+        <Suspense fallback={null}>
+          <SalesCard />
+        </Suspense>
+      </Space>
+    </GridContent>
   )
 }
 
