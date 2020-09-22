@@ -18,7 +18,7 @@
 - 🌐 **国际化**：内建业界通用的国际化方案
 - 🔢 **Mock 数据**：实用的本地数据调试方案
 - ⚙️  **最佳实践**：良好的工程实践助您持续产出高质量代码
-- 🔒 **优秀的权限设计**：目前能找到的最好的权限实现方案
+- 🔐  **优秀的权限设计**：目前能找到的最好的权限实现方案
 
 ## 📜 目录
 
@@ -46,7 +46,7 @@
 └── tsconfig.json              # tsconfig.json
 ```
 
-## 🔒 关于权限
+## 🔐  关于权限
 
 基于 [umi-plugin-authority](https://github.com/alitajs/umi-plugins/tree/master/packages/umi-plugin-authority) 提供权限功能，暴露 `useAuthority` hooks 和 `Authority` 组件实现权限控制的能力
 
