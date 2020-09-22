@@ -1,10 +1,10 @@
 import { Settings } from '@ant-design/pro-layout';
 
 const settings: Settings = {
-  navTheme: 'light',
+  navTheme: 'dark',
   // 拂晓蓝
   primaryColor: '#409EFF',
-  layout: 'mix',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
