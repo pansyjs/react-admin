@@ -16,7 +16,7 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
   data = []
 }) => {
   return (
-    <Card gutter={8} ghost>
+    <Card gutter={16} ghost>
       <Card
         title="总销售额"
         extra={

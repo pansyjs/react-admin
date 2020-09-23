@@ -14,8 +14,17 @@ for (let i = 0; i < fakeY.length; i += 1) {
   });
 }
 
+const salesData = [];
+for (let i = 0; i < 12; i += 1) {
+  salesData.push({
+    date: `${i + 1}月`,
+    value: Math.floor(Math.random() * 1000) + 200,
+  });
+}
+
 const getFakeChartData = {
-  visitData
+  visitData,
+  salesData
 };
 
 const fetchChartData = (_: Request, res: Response) => {
