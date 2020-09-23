@@ -91,6 +91,33 @@ export const routes = [
     ]
   },
   {
+    path: '/permission',
+    menu: {
+      name: '权限管理',
+      icon: 'lock',
+    },
+    routes: [
+      {
+        path: '/permission',
+        redirect: '/permission/action',
+      },
+      {
+        path: '/permission/action',
+        menu: {
+          name: '操作管理'
+        },
+        component: '@/pages/permission/action'
+      },
+      {
+        path: '/permission/policy',
+        menu: {
+          name: '策略管理'
+        },
+        component: '@/pages/permission/policy'
+      },
+    ]
+  },
+  {
     path: '/system',
     menu: {
       name: '系统管理',
@@ -103,8 +130,17 @@ export const routes = [
       },
       {
         path: '/system/user',
-        title: '用户管理',
+        menu: {
+          name: '用户管理'
+        },
         component: '@/pages/system/user'
+      },
+      {
+        path: '/system/role',
+        menu: {
+          name: '角色管理'
+        },
+        component: '@/pages/system/role'
       }
     ]
   },
