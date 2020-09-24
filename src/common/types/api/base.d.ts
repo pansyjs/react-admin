@@ -10,6 +10,15 @@ declare namespace API {
     message: string;
   }
 
+  export interface ResponsePaginationResult<T = any> {
+    data: {
+      list: T[];
+      total: number;
+    },
+    code: number;
+    message: string;
+  }
+
   export interface CurrentUser {
     /**
      * 用户头像
