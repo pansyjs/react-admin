@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { packResult } from './utils';
 
 function fetchCaptcha(req: Request, res: Response) {
-  res.send(packResult(undefined));
+  res.send(packResult());
 }
 
 function fetchCurrentUser(req: Request, res: Response) {
@@ -67,40 +67,40 @@ function fetchCurrentUser(req: Request, res: Response) {
     phone: '0752-268888888',
   }
 
-  res.send(packResult(data));
-}
+  res.send(packResult({ data }));
+};
 
 function fetchLogin(req: Request, res: Response) {
   const { password, username, type } = req.body;
   if (password === '123456' && username === 'admin') {
-    res.send(packResult({
-      type,
-      token: 'admin',
+    res.send(packResult(
+      { data: { type, token: 'admin', }
     }));
     return;
   }
   if (password === '123456' && username === 'user') {
     res.send(packResult({
-      type,
-      token: 'user',
+      data: { type, token: 'user', }
     }));
     return;
   }
   if (type === 'mobile') {
     res.send(packResult({
-      type,
-      token: 'admin',
-    }));
+      data: { type, token: 'admin'} }));
     return;
   }
 
   res.send(packResult({
-    type
-  }, 10010, '用户名或密码不正确'));
+    data: {
+      type
+    },
+    code: 10010,
+    message: '用户名或密码不正确'
+  }));
 }
 
 function fetchLogout(req: Request, res: Response) {
-  res.send(packResult({}));
+  res.send(packResult());
 }
 
 export default {

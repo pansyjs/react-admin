@@ -14,7 +14,7 @@ for (let i = 0; i < fakeY.length; i += 1) {
   });
 }
 
-const salesData = [];
+const salesData: { date: string; value: number }[] = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
     date: `${i + 1}月`,
@@ -22,13 +22,8 @@ for (let i = 0; i < 12; i += 1) {
   });
 }
 
-const getFakeChartData = {
-  visitData,
-  salesData
-};
-
 const fetchChartData = (_: Request, res: Response) => {
-  return res.json(packResult(getFakeChartData));
+  return res.json(packResult({ data: { visitData, salesData } }));
 }
 
 export default {
