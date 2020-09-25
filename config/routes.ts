@@ -91,6 +91,36 @@ export const routes = [
     ]
   },
   {
+    path: '/exception',
+    menu: {
+      name: '异常页',
+      icon: 'warning',
+    },
+    routes: [
+      {
+        path: '/exception/403',
+        menu: {
+          name: '403'
+        },
+        component: '@/pages/exception/403'
+      },
+      {
+        path: '/exception/404',
+        menu: {
+          name: '404'
+        },
+        component: '@/pages/exception/404'
+      },
+      {
+        path: '/exception/500',
+        menu: {
+          name: '500'
+        },
+        component: '@/pages/exception/500'
+      },
+    ]
+  },
+  {
     path: '/permission',
     menu: {
       name: '权限管理',
