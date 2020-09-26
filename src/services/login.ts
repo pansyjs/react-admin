@@ -23,6 +23,17 @@ export async function fetchLogout() {
 }
 
 /**
+ * 用户注册
+ * @param data
+ */
+export async function fakeRegister(data: any) {
+  return request('/api/user/register', {
+    method: 'POST',
+    data
+  });
+}
+
+/**
  * 获取手机验证码
  * @param mobile
  */

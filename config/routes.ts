@@ -15,6 +15,11 @@ export const routes = [
     layout: false
   },
   {
+    path: '/register',
+    component: 'register',
+    layout: false
+  },
+  {
     path: '/',
     redirect: '/dashboard',
   },

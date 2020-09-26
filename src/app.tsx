@@ -28,7 +28,7 @@ export async function getInitialState(): Promise<{
     return undefined;
   };
   // 如果是登录页面，不执行
-  if (history.location.pathname !== '/login') {
+  if (history.location.pathname !== '/login' || history.location.pathname !== '/register') {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -56,7 +56,7 @@ export const layout = ({
       const { location } = history;
 
       // 如果没有登录，重定向到 login
-      if (!currentUser?.userid && location.pathname !== '/login') {
+      if (!currentUser?.userid && (location.pathname !== '/login' || location.pathname !== '/register')) {
         history.push('/login');
       }
     },

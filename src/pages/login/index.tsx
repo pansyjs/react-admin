@@ -179,7 +179,7 @@ const Login: React.FC = () => {
             <AlipayCircleOutlined className={styles.icon} />
             <TaobaoCircleOutlined className={styles.icon} />
             <WeiboCircleOutlined className={styles.icon} />
-            <Link className={styles.register} to="/user/register">
+            <Link className={styles.register} to="/register">
               注册账户
             </Link>
           </div>
