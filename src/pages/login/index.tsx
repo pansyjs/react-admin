@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import {
-  AlipayCircleOutlined,
-  TaobaoCircleOutlined,
-  WeiboCircleOutlined
-} from '@ant-design/icons';
-import { Alert, Checkbox, message } from 'antd';
+import AlipayCircleOutlined from '@ant-design/icons/AlipayCircleOutlined';
+import TaobaoCircleOutlined from '@ant-design/icons/TaobaoCircleOutlined';
+import WeiboCircleOutlined from '@ant-design/icons/WeiboCircleOutlined';
+import { Alert, Checkbox, message, Form } from 'antd';
 import { Link, history, History, useModel, useRequest } from 'umi';
 import UserLayout from '@/layouts/user-layout';
 import { LoginParamsType } from '@/common/types/login';
-import LoginForm from '@/components/login';
-import { fetchLogin } from '@/services/login';
+import LoginForm from './components';
+import { fetchLogin, fetchCaptcha } from '@/services/login';
 import { setCookie } from '@/utils/cookie';
 import styles from './style.less';
 
@@ -22,9 +20,7 @@ const {
   Submit
 } = LoginForm;
 
-const LoginMessage: React.FC<{
-  content: string;
-}> = ({ content }) => (
+const LoginMessage: React.FC<{ content: string;}> = ({ content }) => (
   <Alert
     style={{
       marginBottom: 24,
@@ -54,6 +50,7 @@ const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginStateType>({});
   const { initialState, setInitialState } = useModel('@@initialState');
   const [autoLogin, setAutoLogin] = useState(true);
+  const [form] = Form.useForm();
   const [type, setType] = useState<string>('account');
 
   const loginRequest = useRequest(
@@ -63,9 +60,11 @@ const Login: React.FC = () => {
     {
       manual: true,
       onSuccess: (data) => {
-        if (data && data.token) {
+        if (data.token) {
           loginSuccess(data.token);
+          return;
         }
+        setUserLoginState(data);
       }
     }
   );
@@ -83,6 +82,19 @@ const Login: React.FC = () => {
     }
   }
 
+  const handleCaptcha = async () => {
+    const { mobile } = await form.validateFields(['mobile']);
+
+    if (mobile) {
+      const result = await fetchCaptcha(mobile);
+      if (result?.code === 200) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   const { status, type: loginType } = userLoginState;
 
   const handleSubmit = (values: LoginParamsType) => {
@@ -92,10 +104,10 @@ const Login: React.FC = () => {
   return (
     <UserLayout>
       <div className={styles.main}>
-        <LoginForm activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
+        <LoginForm activeKey={type} form={form} onTabChange={setType} onSubmit={handleSubmit}>
           <Tab key="account" tab="账户密码登录">
             {status === 'error' && loginType === 'account' && !loginRequest.loading && (
-              <LoginMessage content="账户或密码错误（admin/ant.design）" />
+              <LoginMessage content="账户或密码错误" />
             )}
 
             <Username
@@ -146,6 +158,7 @@ const Login: React.FC = () => {
                   message: '请输入验证码！',
                 },
               ]}
+              onCaptcha={handleCaptcha}
             />
           </Tab>
           <div>

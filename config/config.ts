@@ -23,6 +23,7 @@ export default defineConfig({
     default: 'zh-CN',
     antd: true,
     baseNavigator: true,
+    libraryName: '@alitajs/antd-plus'
   },
   consoleVersion: {
     projectName: 'admin-template'

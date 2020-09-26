@@ -15,18 +15,23 @@ export interface LoginItemType {
 }
 
 export interface LoginItemProps extends Partial<FormItemProps> {
-  name?: string;
-  style?: React.CSSProperties;
-  placeholder?: string;
-  buttonText?: React.ReactNode;
-  updateActive?: LoginContextProps['updateActive'];
   type?: string;
+  placeholder?: string;
   defaultValue?: string;
   customProps?: { [key: string]: unknown };
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   tabUtil?: LoginContextProps['tabUtil'];
+  updateActive?: LoginContextProps['updateActive'];
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * 获取验证码回调
+   */
+  onCaptcha?: () => Promise<boolean>;
 }
 
+/**
+ * 获取表单项的参数
+ * @param params
+ */
 const getFormItemOptions = ({
   onChange,
   defaultValue,
@@ -71,10 +76,9 @@ const LoginItem: React.FC<LoginItemProps> = (props) => {
 
   if (type === 'Captcha') {
     return (
-      <Captcha
-        options={otherProps}
-        inputProps={{...customProps, ...otherProps }}
-      />
+      <Form.Item name={name} {...options}>
+        <Captcha {...customProps} {...otherProps}  />
+      </Form.Item>
     );
   }
   return (
