@@ -7,6 +7,7 @@ import { history, RequestConfig } from 'umi';
 import { fetchCurrent } from '@/services/user';
 import RightContent from '@/components/right-content';
 import Footer from '@/components/footer';
+import { NO_LOGIN_WHITELIST } from '@/config';
 import { getCookie, removeCookie } from '@/utils/cookie';
 import logo from '@/assets/logo.svg';
 import defaultSettings from '../config/default-settings';
@@ -28,7 +29,7 @@ export async function getInitialState(): Promise<{
     return undefined;
   };
   // 如果是登录页面，不执行
-  if (history.location.pathname !== '/login' || history.location.pathname !== '/register') {
+  if (NO_LOGIN_WHITELIST.indexOf(history.location.pathname) === -1) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -56,7 +57,7 @@ export const layout = ({
       const { location } = history;
 
       // 如果没有登录，重定向到 login
-      if (!currentUser?.userid && (location.pathname !== '/login' || location.pathname !== '/register')) {
+      if (!currentUser?.userid && NO_LOGIN_WHITELIST.indexOf(location.pathname) === -1) {
         history.push('/login');
       }
     },
