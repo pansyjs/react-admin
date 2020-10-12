@@ -12,8 +12,6 @@ import { getCookie, removeCookie } from '@/utils/cookie';
 import logo from '@/assets/logo.svg';
 import defaultSettings from '../config/default-settings';
 
-const token = getCookie();
-
 export async function getInitialState(): Promise<{
   settings?: LayoutSettings;
   currentUser?: API.CurrentUser;
@@ -103,6 +101,7 @@ const errorHandler = (error: ResponseError) => {
 
   const httpCode = error?.response?.status;
 
+  // 登录过期
   if (httpCode === 401) {
     removeCookie();
     history.replace('/login');
@@ -131,6 +130,12 @@ export const request: RequestConfig = {
   },
   requestInterceptors: [
     (url, options) => {
+      const token = getCookie();
+      // token 不存在，则跳转到登录页面
+      if (!token) {
+        removeCookie();
+        history.replace('/login');
+      }
       return {
         url: `${url}`,
         options: {

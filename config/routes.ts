@@ -1,14 +1,4 @@
-import {  } from 'umi';
-
 export const routes = [
-  {
-    path: '/dashboard',
-    component: 'dashboard',
-    menu: {
-      name: '首页',
-      icon: 'dashboard',
-    },
-  },
   {
     path: '/login',
     component: 'login',
@@ -18,6 +8,14 @@ export const routes = [
     path: '/register',
     component: 'register',
     layout: false
+  },
+  {
+    path: '/dashboard',
+    component: 'dashboard',
+    menu: {
+      name: '首页',
+      icon: 'dashboard',
+    },
   },
   {
     path: '/',
@@ -126,6 +124,22 @@ export const routes = [
     ]
   },
   {
+    path: '/components',
+    menu: {
+      name: '组件',
+      icon: 'appstore',
+    },
+    routes: [
+      {
+        path: '/components/map',
+        menu: {
+          name: '高德地图'
+        },
+        component: '@/pages/components/map'
+      }
+    ]
+  },
+  {
     path: '/permission',
     menu: {
       name: '权限管理',
@@ -137,10 +151,25 @@ export const routes = [
         redirect: '/permission/action',
       },
       {
+        path: '/permission/page',
+        menu: {
+          name: '页面权限测试'
+        },
+        component: '@/pages/permission/page'
+      },
+      {
+        path: '/permission/button',
+        menu: {
+          name: '按钮权限测试'
+        },
+        component: '@/pages/permission/button'
+      },
+      {
         path: '/permission/action',
         menu: {
           name: '操作管理'
         },
+        authority: 'permission:actionView',
         component: '@/pages/permission/action'
       },
       {
@@ -148,6 +177,7 @@ export const routes = [
         menu: {
           name: '策略管理'
         },
+        authority: 'permission:policyView',
         component: '@/pages/permission/policy'
       },
     ]

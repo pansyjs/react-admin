@@ -1,7 +1,7 @@
 import cookie from 'js-cookie';
-import { COOKIE_DEFAULT_CONFIG } from '@/common/constant';
+import { TOKEN_KEY } from '@/config';
 
-const cookieKey = COOKIE_DEFAULT_CONFIG.TOKEN;
+const cookieKey = TOKEN_KEY;
 
 export function getCookie() {
   return cookie.get(cookieKey);

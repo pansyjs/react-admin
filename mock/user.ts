@@ -1,11 +1,36 @@
 import { Request, Response } from 'express';
 import { packResult } from './utils';
 
+const permissionCodes = [
+  { group: 'dashboard', actions: ['view'] },
+  {
+    group: 'permission',
+    actions: [
+      'view',
+      'policyAdd',
+      'policyDelete',
+      'policyModify',
+      'policyView',
+      'actionAdd',
+      'actionDelete',
+      'actionModify',
+      'actionView',
+    ]
+  }
+]
+
 function fetchCaptcha(req: Request, res: Response) {
   res.send(packResult());
 }
 
 function fetchCurrentUser(req: Request, res: Response) {
+  const authorization = req.headers?.authorization;
+  const token = authorization?.split(' ')?.[1];
+
+  if (token !== 'admin' && token !== 'user') {
+    res.status(401).send(packResult({ data: {}, code: 401 }))
+  }
+
   const data = {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
@@ -15,10 +40,7 @@ function fetchCurrentUser(req: Request, res: Response) {
     title: '交互专家',
     group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
     // 所有的权限
-    permissionCodes: [
-      { group: 'module1', actions: ['action1', 'action2', 'action3'] },
-      { group: 'module2', actions: ['action1', 'action2'] }
-    ],
+    permissionCodes,
     // 赋予的权限
     access: [
       { group: 'module1', actions: '*' },
