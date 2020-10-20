@@ -1,9 +1,8 @@
 import React from 'react';
-import numeral from 'numeral';
 import Card from '@ant-design/pro-card';
-import { Donut } from '@ant-design/charts';
+import { Pie } from '@ant-design/charts';
 import { Radio, Typography } from 'antd';
-import { DonutConfig } from '@ant-design/charts/es/donut'
+import { PieConfig } from '@ant-design/charts/es/pie'
 import { RadioChangeEvent } from 'antd/es/radio';
 
 export type SalesType = 'all' | 'online' | 'stores';
@@ -15,12 +14,12 @@ interface ProportionSalesProps {
 
 const { Text } = Typography;
 const salesTypeData = [
-  { x: '家用电器', y: 4544 },
-  { x: '食用酒水', y: 3321 },
-  { x: '个护健康', y: 3113 },
-  { x: '服饰箱包', y: 2341 },
-  { x: '母婴产品', y: 1231 },
-  { x: '其他', y: 1231 },
+  { type: '家用电器', value: 4544 },
+  { type: '食用酒水', value: 3321 },
+  { type: '个护健康', value: 3113 },
+  { type: '服饰箱包', value: 2341 },
+  { type: '母婴产品', value: 1231 },
+  { type: '其他', value: 1231 },
 ];
 
 const ProportionSales: React.FC<ProportionSalesProps> = ({
@@ -30,6 +29,21 @@ const ProportionSales: React.FC<ProportionSalesProps> = ({
   const handleChangeSalesType = (e: RadioChangeEvent) => {
     onChangeSalesType?.(e.target.value);
   }
+
+  const config: PieConfig = {
+    appendPadding: 10,
+    data: salesTypeData,
+    angleField: 'value',
+    colorField: 'type',
+    radius: 0.8,
+    innerRadius: 0.6,
+    label: {
+      type: 'outer',
+      content: '{name} {percentage}',
+    },
+    height: 382,
+    interactions: [{ type: 'pie-legend-active' }],
+  };
 
   return (
     <Card
@@ -50,28 +64,7 @@ const ProportionSales: React.FC<ProportionSalesProps> = ({
       }
     >
       <Text>销售额</Text>
-      <Donut
-        forceFit
-        height={382}
-        radius={0.8}
-        angleField="y"
-        colorField="x"
-        data={salesTypeData}
-        legend={{
-          visible: false
-        }}
-        label={{
-          visible: true,
-          type: 'spider',
-          formatter: (text, item) => {
-            // eslint-disable-next-line no-underscore-dangle
-            return `${item._origin.x}: ${numeral(item._origin.y).format('0,0')}`;
-          }
-        }}
-        statistic={{
-          totalLabel: '销售额'
-        } as DonutConfig['statistic']}
-      />
+      <Pie {...config} />
     </Card>
   )
 }

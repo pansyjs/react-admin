@@ -62,7 +62,7 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
               color="#975FE4"
               xField="date"
               height={46}
-              forceFit
+              autoFit
               yField="value"
               smooth
               data={data}
@@ -114,7 +114,7 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
               height={46}
               percent={0.78}
               color="#13C2C2"
-              forceFit
+              autoFit
               size={8}
               marker={[
                 {
