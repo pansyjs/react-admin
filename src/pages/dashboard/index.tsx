@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
     <GridContent>
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
         <Suspense fallback={<PageLoading />}>
-          <IntroduceRow data={data?.visitData || []} loading={loading}  />
+          <IntroduceRow loading={loading}  />
         </Suspense>
 
         <Suspense fallback={null}>

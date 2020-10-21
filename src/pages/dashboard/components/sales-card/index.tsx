@@ -76,33 +76,12 @@ const SalesCard: React.FC<SalesCardProps> = ({
           <Col xl={16} lg={12} md={12} sm={24} xs={24}>
             <Column
               height={300}
-              forceFit
               data={data}
               xField= 'date'
               yField='value'
-              xAxis={{
-                visible: true,
-                title: {
-                  visible: false
-                }
-              }}
-              yAxis={{
-                visible: true,
-                title: {
-                  visible: false
-                }
-              }}
-              title={{
-                visible: true,
-                text: '销售趋势',
-                style: {
-                  fontSize: 14
-                }
-              }}
-              meta={{
-                y: {
-                  alias: '销售量'
-                }
+              meta= {{
+                type: { alias: '类别' },
+                sales: { alias: '销售额' },
               }}
             />
           </Col>
@@ -113,44 +92,23 @@ const SalesCard: React.FC<SalesCardProps> = ({
       </Card.TabPane>
       <Card.TabPane key="views" tab="访问量">
       <Row>
-          <Col xl={16} lg={12} md={12} sm={24} xs={24}>
-            <Column
-              height={300}
-              forceFit
-              data={data}
-              xField="date"
-              yField="value"
-              xAxis={{
-                visible: true,
-                title: {
-                  visible: false
-                }
-              }}
-              yAxis={{
-                visible: true,
-                title: {
-                  visible: false
-                }
-              }}
-              title={{
-                visible: true,
-                text: '访问量趋势',
-                style: {
-                  fontSize: 14
-                }
-              }}
-              meta={{
-                y: {
-                  alias: '访问量'
-                }
-              }}
-            />
-          </Col>
-          <Col xl={8} lg={12} md={12} sm={24} xs={24}>
-            <Rank title="门店访问量排名" list={rankingListData} />
-          </Col>
-        </Row>
-      </Card.TabPane>
+        <Col xl={16} lg={12} md={12} sm={24} xs={24}>
+          <Column
+            height={300}
+            data={data}
+            xField="date"
+            yField="value"
+            meta= {{
+              type: { alias: '类别' },
+              sales: { alias: '访问量' },
+            }}
+          />
+        </Col>
+        <Col xl={8} lg={12} md={12} sm={24} xs={24}>
+          <Rank title="门店访问量排名" list={rankingListData} />
+        </Col>
+      </Row>
+    </Card.TabPane>
     </Card>
   )
 }

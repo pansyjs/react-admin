@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import { Row, Col, Statistic, Table } from 'antd';
 import Card from '@ant-design/pro-card';
 import { TinyArea } from '@ant-design/charts';
@@ -11,16 +10,6 @@ interface SearchData {
   count: number;
   range: number;
   status: number;
-}
-
-const visitData: { x: string, y: number }[] = [];
-const beginDay = new Date().getTime();
-const fakeY = [1, 6, 4, 8, 3, 7, 2];
-for (let i = 0; i < fakeY.length; i += 1) {
-  visitData.push({
-    x: moment(new Date(beginDay + 1000 * 60 * 60 * 24 * i)).format('YYYY-MM-DD'),
-    y: fakeY[i],
-  });
 }
 
 const searchData: SearchData[] = [];
@@ -35,6 +24,19 @@ for (let i = 0; i < 50; i += 1) {
 }
 
 const TopSearch: React.FC = () => {
+  const config = {
+    height: 45,
+    width: 300,
+    autoFit: false,
+    data: new Array(50).fill(0).map(() => Math.random() * 100),
+    smooth: true,
+    lineStyle: {
+      lineDash: [2, 2],
+      stroke: 'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
+    },
+    areaStyle: { fill: 'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff' },
+  };
+
   const columns = [
     {
       title: '排名',
@@ -71,25 +73,11 @@ const TopSearch: React.FC = () => {
       <Row gutter={68} style={{ marginBottom: 24 }}>
         <Col sm={12} xs={24}>
           <Statistic title="搜索用户数" value={112893} />
-          <TinyArea
-            xField="x"
-            height={45}
-            forceFit
-            yField="y"
-            smooth
-            data={visitData}
-          />
+          <TinyArea {...config} />
         </Col>
         <Col sm={12} xs={24}>
           <Statistic title="人均搜索次数" value={2.7} />
-          <TinyArea
-            xField="x"
-            height={45}
-            forceFit
-            yField="y"
-            smooth
-            data={visitData}
-          />
+          <TinyArea {...config} />
         </Col>
       </Row>
 

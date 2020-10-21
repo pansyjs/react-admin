@@ -7,14 +7,18 @@ import Trend from '../trend';
 import styles from './index.less';
 
 interface IntroduceRowProps {
-  data?: { time: string; value: number }[];
   loading?: boolean;
 }
 
 const IntroduceRow: React.FC<IntroduceRowProps> = ({
-  loading,
-  data = []
+  loading
 }) => {
+  const progressConfig = {
+    height: 46,
+    percent: 0.7,
+    barWidthRatio: 0.2,
+  };
+
   return (
     <Card gutter={16} ghost>
       <Card
@@ -59,13 +63,10 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
           <Statistic value={8846} />
           <div className={styles.contentFixed}>
             <TinyArea
-              color="#975FE4"
-              xField="date"
               height={46}
               autoFit
-              yField="value"
               smooth
-              data={data}
+              data={new Array(100).fill(0).map(() => Math.random() * 20)}
             />
           </div>
         </div>
@@ -86,11 +87,8 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
           <Statistic value={6560} />
           <div className={styles.contentFixed}>
             <TinyColumn
-              xField="date"
               height={46}
-              forceFit
-              yField="value"
-              data={data}
+              data={new Array(20).fill(0).map(() => Math.random() * 100)}
             />
           </div>
         </div>
@@ -110,21 +108,7 @@ const IntroduceRow: React.FC<IntroduceRowProps> = ({
         <div className={styles.content}>
           <Statistic value={78} suffix="%" />
           <div className={styles.contentFixed}>
-            <Progress
-              height={46}
-              percent={0.78}
-              color="#13C2C2"
-              autoFit
-              size={8}
-              marker={[
-                {
-                  value: 0.8,
-                  style: {
-                    stroke: '#13C2C2',
-                  },
-                }
-              ]}
-            />
+            <Progress {...progressConfig} />
           </div>
         </div>
       </Card>
