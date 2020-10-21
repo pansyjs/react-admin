@@ -54,7 +54,7 @@ const User: React.FC = () => {
         dateFormatter="string"
         headerTitle="用户列表"
         toolBarRender={() => [
-          <Button type="primary">添加</Button>,
+          <Button key="add" type="primary">添加</Button>,
         ]}
       />
     </PageContainer>
