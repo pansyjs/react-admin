@@ -25,9 +25,6 @@ for (let i = 0; i < 50; i += 1) {
 
 const TopSearch: React.FC = () => {
   const config = {
-    height: 45,
-    width: 300,
-    autoFit: false,
     data: new Array(50).fill(0).map(() => Math.random() * 100),
     smooth: true,
     lineStyle: {
@@ -73,11 +70,15 @@ const TopSearch: React.FC = () => {
       <Row gutter={68} style={{ marginBottom: 24 }}>
         <Col sm={12} xs={24}>
           <Statistic title="搜索用户数" value={112893} />
-          <TinyArea {...config} />
+          <div style={{ height: 45 }}>
+            <TinyArea {...config} />
+          </div>
         </Col>
         <Col sm={12} xs={24}>
           <Statistic title="人均搜索次数" value={2.7} />
-          <TinyArea {...config} />
+          <div style={{ height: 45 }}>
+            <TinyArea {...config} />
+          </div>
         </Col>
       </Row>
 
