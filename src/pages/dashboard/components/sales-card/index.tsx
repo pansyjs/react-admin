@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import numeral from 'numeral';
 import Card from '@ant-design/pro-card';
 import { DaysRange } from '@alitajs/antd-plus';
-import { Column } from '@ant-design/charts';
+import { Column } from '@pansy/react-charts';
 import styles from './index.less';
 
 interface SalesCardProps {

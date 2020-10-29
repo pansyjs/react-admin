@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@ant-design/pro-card';
 import InfoCircleOutlined from '@ant-design/icons/InfoCircleOutlined';
 import { Tooltip, Statistic } from 'antd';
-import { TinyArea, TinyColumn, Progress } from '@ant-design/charts';
+import { TinyArea, TinyColumn, Progress } from '@pansy/react-charts';
 import Trend from '../trend';
 import styles from './index.less';
 

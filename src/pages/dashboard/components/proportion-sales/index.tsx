@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from '@ant-design/pro-card';
-import { Pie } from '@ant-design/charts';
+import { Pie } from '@pansy/react-charts';
 import { Radio, Typography } from 'antd';
-import { PieConfig } from '@ant-design/charts/es/pie'
+import { PieConfig } from '@pansy/react-charts/es/pie'
 import { RadioChangeEvent } from 'antd/es/radio';
 
 export type SalesType = 'all' | 'online' | 'stores';

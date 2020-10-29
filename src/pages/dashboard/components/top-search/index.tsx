@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Statistic, Table } from 'antd';
 import Card from '@ant-design/pro-card';
-import { TinyArea } from '@ant-design/charts';
+import { TinyArea } from '@pansy/react-charts';
 import Trend from '../trend';
 
 interface SearchData {
