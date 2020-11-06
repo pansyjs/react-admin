@@ -163,7 +163,7 @@ const Register: React.FC = () => {
                 },
               ]}
             >
-              <Input size="large" placeholder="手机号" />
+              <Input size="large" maxLength={11} placeholder="手机号" />
             </FormItem>
           </Group>
           <Captcha
