@@ -72,7 +72,6 @@ const Register: React.FC = () => {
     return false;
   }
 
-
   const { loading: submitting, run: register } = useRequest<{ data: any }>(fakeRegister, {
     manual: true,
     onSuccess: (data, params) => {
@@ -202,8 +201,7 @@ const Register: React.FC = () => {
             <FormItem
               name="password"
               className={
-                form.getFieldValue('password') &&
-                form.getFieldValue('password').length > 0 &&
+                form.getFieldValue('password')?.length > 0 &&
                 styles.password
               }
               rules={[

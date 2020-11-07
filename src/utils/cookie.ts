@@ -1,16 +1,15 @@
-import cookie from 'js-cookie';
 import { TOKEN_KEY } from '@/config';
 
 const cookieKey = TOKEN_KEY;
 
 export function getCookie() {
-  return cookie.get(cookieKey);
+  return localStorage.get(cookieKey);
 }
 
 export function setCookie(value: string | object) {
-  return cookie.set(cookieKey, value);
+  return localStorage.set(cookieKey, value);
 }
 
 export function removeCookie() {
-  return cookie.remove(cookieKey);
+  return localStorage.remove(cookieKey);
 }
