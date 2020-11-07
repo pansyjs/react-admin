@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Map, Markers, ToolBar } from '@pansy/react-amap';
 import { Marker } from './components';
-import './map.less';
+import './styles.less';
 
 const randomMarker = (len: number) => (
   Array(len).fill(true).map(() => ({

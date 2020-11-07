@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Space, Row, Col } from 'antd';
+import moment from 'moment';
 import { useRequest } from 'umi';
+import Watermark from '@pansy/react-watermark';
 import { GridContent, PageLoading } from '@ant-design/pro-layout';
 import { fetchChartData } from '@/services/dashboard';
 
@@ -19,6 +21,8 @@ const Dashboard: React.FC = () => {
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
         <Suspense fallback={<PageLoading />}>
           <IntroduceRow loading={loading}  />
+
+          <Watermark zIndex={998} text={['王某某 6909', moment().format('YYYY-MM-DD HH:mm:ss')]} isBody />
         </Suspense>
 
         <Suspense fallback={null}>

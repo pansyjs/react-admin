@@ -124,18 +124,25 @@ export const routes = [
     ]
   },
   {
-    path: '/components',
+    path: '/libraries',
     menu: {
       name: '组件',
       icon: 'appstore',
     },
     routes: [
       {
-        path: '/components/map',
+        path: '/libraries/amap',
         menu: {
           name: '高德地图'
         },
-        component: '@/pages/components/map'
+        component: '@/pages/libraries/amap'
+      },
+      {
+        path: '/libraries/watermark',
+        menu: {
+          name: '水印组件'
+        },
+        component: '@/pages/libraries/watermark'
       }
     ]
   },
