@@ -3,13 +3,13 @@ import { TOKEN_KEY } from '@/config';
 const cookieKey = TOKEN_KEY;
 
 export function getCookie() {
-  return localStorage.get(cookieKey);
+  return localStorage.getItem(cookieKey);
 }
 
-export function setCookie(value: string | object) {
-  return localStorage.set(cookieKey, value);
+export function setCookie(value: string) {
+  return localStorage.setItem(cookieKey, value);
 }
 
 export function removeCookie() {
-  return localStorage.remove(cookieKey);
+  return localStorage.removeItem(cookieKey);
 }
