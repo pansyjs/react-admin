@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { Authority } from 'umi';
+import React, { useState, useEffect } from 'react';
+import { Authority, useAuthority } from 'umi';
 import { Radio, Divider, Alert, Tag, Space } from 'antd';
 import { RadioChangeEvent } from 'antd/es/radio/interface';
 import { PageContainer } from '@ant-design/pro-layout';
 
 const PermissionButton: React.FC = () => {
   const [role, setRole] = useState<string>('admin');
+
+  const { singleVerify } = useAuthority();
+
+  const showList = singleVerify('dashboard:list')
+
+  useEffect(
+    () => {
+      if (showList) {
+        // 请求数据
+
+      }
+    },
+    [showList]
+  )
 
   const handleChange = (e: RadioChangeEvent) => {
     setRole(e.target.value);
