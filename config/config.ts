@@ -25,6 +25,9 @@ export default defineConfig({
     baseNavigator: true,
     libraryName: '@alitajs/antd-plus'
   },
+  webpack5: {
+    lazyCompilation: {},
+  },
   consoleVersion: {
     projectName: 'admin-template'
   },
