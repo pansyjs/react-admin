@@ -37,6 +37,7 @@ export default defineConfig({
   theme: {
     'primary-color': defaultSettings.primaryColor,
   },
+  cssModulesTypescriptLoader: {},
   ignoreMomentLocale: true,
   // proxy: proxy[REACT_APP_ENV || 'dev'],
 })
