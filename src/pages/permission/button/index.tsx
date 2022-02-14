@@ -4,7 +4,7 @@ import { Radio, Divider, Alert, Tag, Space } from 'antd';
 import { RadioChangeEvent } from 'antd/es/radio/interface';
 import { PageContainer } from '@ant-design/pro-layout';
 
-const PermissionButton: React.FC = () => {
+export default () => {
   const [role, setRole] = useState<string>('admin');
 
   const { singleVerify } = useAuthority();
@@ -53,5 +53,3 @@ const PermissionButton: React.FC = () => {
     </PageContainer>
   )
 }
-
-export default PermissionButton;

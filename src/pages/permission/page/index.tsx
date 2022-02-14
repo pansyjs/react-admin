@@ -3,8 +3,7 @@ import { Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/es/radio/interface';
 import { PageContainer } from '@ant-design/pro-layout';
 
-const PermissionPage: React.FC = (props) => {
-  console.log(props);
+export default () => {
   const [role, setRole] = useState<string>('admin');
 
   const handleChange = (e: RadioChangeEvent) => {
@@ -27,5 +26,3 @@ const PermissionPage: React.FC = (props) => {
     </PageContainer>
   )
 }
-
-export default PermissionPage;

@@ -2,7 +2,7 @@ import { Button, Result } from 'antd';
 import React from 'react';
 import { useHistory } from 'umi';
 
-const NoFoundPage: React.FC<{}> = () => {
+export default () => {
   const history = useHistory();
 
   return (
@@ -18,5 +18,3 @@ const NoFoundPage: React.FC<{}> = () => {
     />
   )
 };
-
-export default NoFoundPage;

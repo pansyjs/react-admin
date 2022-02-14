@@ -41,7 +41,7 @@ const columns: ProColumns<API.UserInfo>[] = [
   },
 ]
 
-const User: React.FC = () => {
+export default () => {
   return (
     <PageContainer>
       <Table<API.UserInfo>
@@ -60,5 +60,3 @@ const User: React.FC = () => {
     </PageContainer>
   )
 }
-
-export default User;

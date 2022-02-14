@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
+import { MenuProps } from 'antd/es/menu';
 import { history, useModel } from 'umi';
 import { getPageQuery } from '@/utils';
 import { fetchLogout } from '@/services/login';
@@ -32,13 +33,8 @@ const loginOut = async () => {
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   const { initialState, setInitialState } = useModel('@@initialState');
 
-  const onMenuClick = useCallback(
-    (event: {
-      key: React.Key;
-      keyPath: React.Key[];
-      item: React.ReactInstance;
-      domEvent: React.MouseEvent<HTMLElement>;
-    }) => {
+  const onMenuClick: MenuProps['onClick'] = useCallback(
+    (event) => {
       const { key } = event;
       if (key === 'logout') {
         // @ts-ignore

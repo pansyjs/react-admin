@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Link, useIntl, SelectLang } from 'umi';
 import {
   MenuDataItem,
@@ -18,7 +18,7 @@ export interface UserLayoutProps {
   route?: ProLayoutProps['route'];
 }
 
-const UserLayout: FC<UserLayoutProps> = (props) => {
+const UserLayout: React.FC<UserLayoutProps> = (props) => {
   const {
     children,
     location = {

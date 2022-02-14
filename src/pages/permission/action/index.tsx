@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import Table, { ProColumns } from '@ant-design/pro-table';
-import { useModal } from '@pansy/hooks';
+import { useModal } from '@pansy/react-hooks';
 import { fetchActionList } from '@/services/permission';
 import { handleTableRequest } from '@/utils';
 import Operation from './components/operation';
@@ -41,11 +41,11 @@ const columns: ProColumns<API.PermissionActionData>[] = [
   },
 ]
 
-const ActionList: React.FC = () => {
+export default  () => {
   const modal = useModal();
 
   const handleClick = () => {
-    modal.openModal();
+    modal.open();
   }
 
   return (
@@ -53,6 +53,7 @@ const ActionList: React.FC = () => {
       <Table<API.PermissionActionData>
         columns={columns}
         request={(params, sorter, filter) => {
+          // @ts-ignore
           return handleTableRequest(params, sorter, filter, fetchActionList);
         }}
         rowKey="id"
@@ -71,5 +72,3 @@ const ActionList: React.FC = () => {
     </PageContainer>
   )
 }
-
-export default ActionList;

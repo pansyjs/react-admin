@@ -1,23 +1,24 @@
 import React from 'react';
 import {
-  SchemaForm,
-  SchemaMarkupField as Field,
-  createFormActions
+  Select,
+  Input,
 } from '@formily/antd';
+import { FormProvider, Field } from '@formily/react'
+import { createForm } from '@formily/core'
 import { useRequest } from 'umi';
-import { Input, Select } from '@formily/antd-components'
 import { Button, Drawer } from 'antd';
-import { UseModalResult } from '@pansy/hooks/es/use-modal';
-import { createAction, updateAction } from '@/services/permission';
+import { UseModalResult } from '@pansy/react-hooks';
+import { createAction } from '@/services/permission';
 import { modules } from '../../constant';
 
 const TextArea = Input.TextArea;
-const actions = createFormActions()
 
 const Operation: React.FC<UseModalResult> = ({
   visible,
-  closeModal
+  close
 }) => {
+  const form = createForm()
+
   const request = useRequest(
     (data: API.PermissionActionData) => {
       return createAction(data);
@@ -31,14 +32,14 @@ const Operation: React.FC<UseModalResult> = ({
   );
 
   const handleSubmit = () => {
-    actions.submit((values) => {
+    form.submit((values) => {
       request.run(values);
     });
   }
 
   const handleCancel = () => {
-    actions.reset();
-    closeModal?.();
+    form.reset();
+    close?.();
   }
 
   return (
@@ -63,43 +64,47 @@ const Operation: React.FC<UseModalResult> = ({
         </div>
       }
     >
-      <SchemaForm
-        layout="vertical"
-        actions={actions}
-        components={{ Input, Select, TextArea }}
-        onSubmit={(values) => { console.log(values); }}
+      <FormProvider
+        form={form}
       >
         <Field
           name="module"
-          type="string"
           title="所属模块"
-          enum={modules}
-          x-component="Select"
-          x-component-props={{
-            placeholder: '请选择'
-          }}
+          component={[
+            Select,
+            {
+              placeholder: '请选择',
+              options: modules
+            },
+          ]}
           required
         />
 
         <Field
           name="name"
-          type="string"
           title="操作名称"
           x-component="Input"
           x-component-props={{
             placeholder: '请输入'
           }}
+          component={[
+            Input,
+            {
+              placeholder: '请输入'
+            },
+          ]}
           required
         />
 
         <Field
           name="code"
-          type="string"
           title="操作标识"
-          x-component="Input"
-          x-component-props={{
-            placeholder: '请输入'
-          }}
+          component={[
+            Input,
+            {
+              placeholder: '请输入'
+            },
+          ]}
           required
           pattern="^(?!_)(?!.*?_$)[a-zA-Z0-9_]+$"
           description="只能包含数字、字母、下划线，且不能以下划线开头和结尾"
@@ -107,15 +112,15 @@ const Operation: React.FC<UseModalResult> = ({
 
         <Field
           name="remark"
-          type="string"
           title="备注"
-          x-component="TextArea"
-          x-component-props={{
-            placeholder: '请输入'
-          }}
-          maxLength={100}
+          component={[
+            TextArea,
+            {
+              placeholder: '请输入'
+            },
+          ]}
         />
-      </SchemaForm>
+      </FormProvider>
     </Drawer>
   )
 }

@@ -41,7 +41,7 @@ const passwordProgressMap: {
   poor: 'exception',
 };
 
-const Register: React.FC = () => {
+export default () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [prefix, setPrefix] = useState<string>('86');
   const [popover, setPopover] = useState<boolean>(false);
@@ -256,4 +256,3 @@ const Register: React.FC = () => {
     </UserLayout>
   );
 };
-export default Register;
