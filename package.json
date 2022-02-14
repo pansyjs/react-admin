@@ -59,7 +59,7 @@
     "@walrus/preset-lint": "1.1.8",
     "better-mock": "0.3.2",
     "cross-env": "7.0.3",
-    "husky": "5.2.0",
+    "husky": "7.0.4",
     "typescript": "4.5.5"
   },
   "husky": {
