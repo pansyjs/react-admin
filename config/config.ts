@@ -1,43 +1,29 @@
 import { defineConfig } from 'umi';
-import { routes } from './routes';
-import defaultSettings from './default-settings';
-import proxy from './proxy';
-
-const { REACT_APP_ENV } = process.env;
+import { defaultSettings } from './defaultSettings';
 
 export default defineConfig({
   hash: true,
-  routes,
-  targets: {
-    ie: 11,
+  model: {},
+  antd: {},
+  request: {},
+  initialState: {},
+  srcTranspiler: 'esbuild',
+  mock: {
+    include: ['src/pages/**/_mock.ts'],
   },
-  antd: {
-    config: {}
-  },
-  layout: {
-    name: defaultSettings.title,
-    locale: true,
-    siderWidth: 240
-  },
-  locale: {
-    default: 'zh-CN',
-    antd: true,
-    baseNavigator: true,
-    libraryName: '@alitajs/antd-plus'
-  },
-  webpack5: {
-    lazyCompilation: {},
-  },
-  consoleVersion: {
-    projectName: 'admin-template'
-  },
-  dynamicImport: {
-    loading: '@/components/page-loading/index',
-  },
-  theme: {
-    'primary-color': defaultSettings.primaryColor,
-  },
-  cssModulesTypescriptLoader: {},
+  // layout: {
+  //   // https://umijs.org/zh-CN/plugins/plugin-layout
+  //   // locale: true,
+  //   // siderWidth: 208,
+  //   ...defaultSettings,
+  // },
+  // locale: {
+  //   default: 'zh-CN',
+  //   antd: true,
+  //   baseNavigator: true,
+  // },
+  mfsu: {},
   ignoreMomentLocale: true,
-  // proxy: proxy[REACT_APP_ENV || 'dev'],
-})
+  fastRefresh: true,
+  npmClient: 'pnpm'
+});
