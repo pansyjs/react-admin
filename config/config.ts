@@ -11,17 +11,16 @@ export default defineConfig({
   mock: {
     include: ['src/pages/**/_mock.ts'],
   },
-  // layout: {
-  //   // https://umijs.org/zh-CN/plugins/plugin-layout
-  //   // locale: true,
-  //   // siderWidth: 208,
-  //   ...defaultSettings,
-  // },
-  // locale: {
-  //   default: 'zh-CN',
-  //   antd: true,
-  //   baseNavigator: true,
-  // },
+  layout: {
+    locale: true,
+    siderWidth: 208,
+    ...defaultSettings,
+  },
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+    baseNavigator: true,
+  },
   mfsu: {},
   ignoreMomentLocale: true,
   fastRefresh: true,
