@@ -7,7 +7,7 @@ export default defineConfig({
   antd: {},
   request: {},
   initialState: {},
-  srcTranspiler: 'esbuild',
+  // srcTranspiler: 'esbuild',
   mock: {
     include: ['src/pages/**/_mock.ts'],
   },
@@ -21,7 +21,9 @@ export default defineConfig({
     antd: true,
     baseNavigator: true,
   },
-  mfsu: {},
+  mfsu: {
+    esbuild: true,
+  },
   ignoreMomentLocale: true,
   fastRefresh: true,
   npmClient: 'pnpm'
