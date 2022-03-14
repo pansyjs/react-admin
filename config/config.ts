@@ -1,5 +1,6 @@
 import { defineConfig } from 'umi';
 import { defaultSettings } from './defaultSettings';
+import routes from './routes';
 
 export default defineConfig({
   hash: true,
@@ -7,6 +8,7 @@ export default defineConfig({
   antd: {},
   request: {},
   initialState: {},
+  routes,
   // srcTranspiler: 'esbuild',
   mock: {
     include: ['src/pages/**/_mock.ts'],
