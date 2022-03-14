@@ -1,5 +1,10 @@
 ﻿export default [
   {
+    path: '/login',
+    component: 'login',
+    layout: false
+  },
+  {
     path: '/libraries',
     name: 'libraries',
     icon: 'crown',
