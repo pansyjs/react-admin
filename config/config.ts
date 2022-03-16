@@ -9,7 +9,6 @@ export default defineConfig({
   request: {},
   initialState: {},
   routes,
-  // srcTranspiler: 'esbuild',
   mock: {
     include: ['src/pages/**/_mock.ts'],
   },

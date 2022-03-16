@@ -7,13 +7,19 @@
   {
     path: '/libraries',
     name: 'libraries',
-    icon: 'crown',
+    icon: 'appstore',
     routes: [
       {
         path: '/libraries/watermark',
         name: 'watermark',
         icon: 'smile',
         component: './libraries/watermark',
+      },
+      {
+        path: '/libraries/amap',
+        name: 'amap',
+        icon: 'smile',
+        component: './libraries/amap',
       }
     ],
   },
