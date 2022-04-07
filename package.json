@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@ant-design/pro-form": "^1.61.0",
-    "@ant-design/pro-layout": "^6.34.8",
+    "@ant-design/pro-form": "^1.62.0",
+    "@ant-design/pro-layout": "^6.34.9",
     "@pansy/classnames": "^1.0.1",
     "@pansy/react-amap": "^2.12.3",
-    "@pansy/react-hooks": "^0.9.3",
+    "@pansy/react-hooks": "^0.9.4",
     "@pansy/react-watermark": "^3.1.10",
     "antd": "^4.19.5",
     "dayjs": "^1.11.0",
@@ -24,8 +24,7 @@
   "devDependencies": {
     "@types/react": "^17",
     "@types/react-dom": "^17",
-    "@umijs/max": "^4.0.0-rc.10",
-    "typescript": "^4.6.3",
-    "umi": "^4.0.0-rc.10"
+    "@umijs/max": "^4.0.0-rc.11",
+    "typescript": "^4.6.3"
   }
 }

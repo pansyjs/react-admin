@@ -1,4 +1,4 @@
-import { defineConfig } from 'umi';
+import { defineConfig } from '@umijs/max';
 import { defaultSettings } from './defaultSettings';
 import routes from './routes';
 
