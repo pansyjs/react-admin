@@ -3,6 +3,8 @@ import { defaultSettings } from './defaultSettings';
 import routes from './routes';
 
 export default defineConfig({
+  // base: '/console',
+  // publicPath: '/console/',
   hash: true,
   model: {},
   antd: {},
