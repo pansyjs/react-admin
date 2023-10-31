@@ -57,7 +57,7 @@
     "@walrus/cli": "1.3.4",
     "@walrus/plugin-release": "1.14.3",
     "@walrus/preset-lint": "1.1.8",
-    "better-mock": "0.3.2",
+    "better-mock": "0.3.7",
     "cross-env": "7.0.3",
     "husky": "5.2.0",
     "typescript": "4.5.5"
