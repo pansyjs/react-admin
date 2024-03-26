@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@alitajs/antd-plus": "^2.5.0",
-    "@ant-design/icons": "^4.7.0",
+    "@ant-design/icons": "^5.0.0",
     "@ant-design/pro-card": "^1.18.30",
     "@ant-design/pro-layout": "^6.32.12",
     "@ant-design/pro-table": "^2.63.4",
